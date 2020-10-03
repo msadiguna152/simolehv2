@@ -95,6 +95,7 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="promosi">Promosi</label>
                             <?php
                               if ($promosi==1) {
                                 echo '<i style="color: green;" class="fas fa-check"></i>';
@@ -102,10 +103,10 @@
                                 echo '<i style="color: red;" class="fas fa-times"></i>';
                               }
                             ?> 
-                            <label for="promosi">Promosi</label>
                         </div>
 
                         <div class="form-group">
+                            <label for="promosi">Terlaris</label>
                             <?php
                               if ($terlaris==1) {
                                 echo '<i style="color: green;" class="fas fa-check"></i>';
@@ -113,7 +114,6 @@
                                 echo '<i style="color: red;" class="fas fa-times"></i>';
                               }
                             ?>
-                            <label for="promosi">Terlaris</label>
                         </div>
 
                   </div>

@@ -223,7 +223,7 @@
             initComplete: function () {
                 this.api().columns().every( function () {
                     var column = this;
-                    var select = $('<br><select><option value="">ALL</option></select>')
+                    var select = $('<br><select class="form-control"><option value="">Semua</option></select>')
                         .appendTo( $(column.footer()).empty() )
                         .on( 'change', function () {
                             var val = $.fn.dataTable.util.escapeRegex(
@@ -268,7 +268,7 @@
           // menerapkan pencarian pada tabel
           table.columns().every( function () {
             var column = this;
-            var select = $('<select><option value="">ALL</option></select>')
+            var select = $('<select class="form-control"><option value="">Semua</option></select>')
             .appendTo($(column.header()))
             .on('change', function () {
               var val = $.fn.dataTable.util.escapeRegex($(this).val());

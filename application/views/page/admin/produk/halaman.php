@@ -63,7 +63,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body  table-responsive">
-                <table id="example4" class="table table-hover table-bordered table-striped">
+                <table id="example2" class="table table-hover table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>No</th>
@@ -77,6 +77,19 @@
                     <th>Pilihan</th>
                   </tr>
                   </thead>
+                  <tfoot>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama Produk</th>
+                    <th>Kategori</th>
+                    <th>Harga</th>
+                    <th>Harga Promosi</th>
+                    <th onclick="return false" >Gambar</th>
+                    <th>Promosi</th>
+                    <th>Terlaris</th>
+                    <th>Pilihan</th>
+                  </tr>
+                  </tfoot>
                   <tbody>
                     <?php $no=1; foreach ($data_produk->result() as $data): ?>
                     <tr>
@@ -107,7 +120,7 @@
 
                       <td align="center">
                         <!-- Tombol Edit -->
-                        <a target="_BLANK" class="btn btn-info btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Produk : <?php echo $data->nama_produk ?>" href="<?php echo base_url()?>page/admin/produk/lihat?id=<?php echo $data->id_produk ?>&token=<?php echo md5($data->id_produk) ?>">
+                        <a class="btn btn-info btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Produk : <?php echo $data->nama_produk ?>" href="<?php echo base_url()?>page/admin/produk/lihat?id=<?php echo $data->id_produk ?>&token=<?php echo md5($data->id_produk) ?>">
                             <i class="fas fa-eye"></i>
                         </a>
 
