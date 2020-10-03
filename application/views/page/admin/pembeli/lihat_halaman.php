@@ -4,19 +4,15 @@
   $token = $this->session->flashdata('token');
 
   if (!empty($token) AND $token==$token2) {
-    foreach ($data_artikel->result() as $data):
-    $id_artikel = $data->id_artikel;
-    $nama_pengguna = $data->nama_pengguna;
-    $foto_pengguna = $data->foto_pengguna;
-    $judul_artikel = $data->judul_artikel;
-    $isi_artikel = $data->isi_artikel;
-    $tanggal_artikel = $data->tanggal_artikel;
-    $status_artikel = $data->status_artikel;
-    $foto_artikel = $data->foto_artikel;
-    $file_artikel = $data->file_artikel;
+    foreach ($data_pembeli->result() as $data):
+    $id_pembeli = $data->id_pembeli;
+    $nama_pembeli = $data->nama_pembeli;
+    $no_telpon = $data->no_telpon;
+    $email = $data->email;
+    $password = $data->password;
     endforeach;
   } else {
-      echo '<script language="javascript">document.location="'.site_url('page/admin/Artikel').'";</script>';
+      echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
   }
 ?>
 
@@ -45,63 +41,117 @@
         <!-- Main row -->
         <div class="row">
 
-          <div class="col-md-12 connectedSortable">
-            <!-- Box Comment -->
-            <div class="card card-widget">
+          <div class="col-md-4 connectedSortable">
+
+            <!-- PRODUCT LIST -->
+            <div class="card">
               <div class="card-header">
-                <div class="user-block">
-                  <img class="img-circle" src="<?php echo base_url()?>profile/<?php echo $foto_pengguna;?>" alt="User Image">
-                  <span class="username"><a href="#"><?php echo $nama_pengguna; ?></a></span>
-                  <span class="description">Tanggal : <?php echo $tanggal_artikel ?></span>
-                </div>
-                <!-- /.user-block -->
+                <h3 class="card-title"><?php echo strtoupper($this->session->userdata('aksi')." data"); ?></h3>
+
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
                   </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
                   </button>
                 </div>
-                <!-- /.card-tools -->
-              </div>
-              <div class="card-header" style="text-align: center; font-size: 18px">
-                <b><?php echo $judul_artikel; ?></b>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <img class="mx-auto d-block pad img-fluid" src="<?php echo base_url()?>file/<?php echo $foto_artikel;?>" alt="<?php echo $foto_artikel;?>">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pembeli/update')?>" method="post" id="quickForm">
+                <div class="row">
+                  <div class="col-md-12">
 
-                <p style="text-align: justify;"><?php echo $isi_artikel; ?></p>
+                        <div class="form-group">
+                          <label for="nama_pembeli">Nama Pembeli</label>
+                          <input type="text" class="form-control" id="" name="nama_pembeli" required="" value="<?= $nama_pembeli; ?>">
+                          <input type="text" hidden="" name="id_pembeli" required="" value="<?= $id_pembeli; ?>">
+                        </div>
 
-                <span class="float-right text-muted"> Komentar</span>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer card-comments">
-                <div class="card-comment">
-                  <!-- User image -->
-                  <img class="img-circle img-sm" src="<?php echo base_url()?>assets/dist/img/user3-128x128.jpg" alt="User Image">
+                        <div class="form-group">
+                          <label for="no_telpon">Nomor Telpon</label>
+                          <input type="number" min="0" maxlength="13" class="form-control" id="" name="no_telpon" required="" value="<?= $no_telpon; ?>">
+                        </div>
 
-                  <div class="comment-text">
-                    <span class="username">
-                      Maria Gonzales
-                      <span class="text-muted float-right">8:03 PM Today</span>
-                    </span><!-- /.username -->
-                    It is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its layout.
+                        <div class="form-group">
+                          <label for="email">Email</label>
+                          <input type="text" class="form-control" id="" name="email" required="" value="<?= $email; ?>">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="text" class="form-control" id="" name="password" required="" value="<?= $password; ?>">
+                        </div>
+
                   </div>
-                  <!-- /.comment-text -->
                 </div>
-              </div>
-              <!-- /.card-footer -->
-              <div class="card-footer">
-                <form action="#" method="post">
-                  <img class="img-fluid img-circle img-sm" src="<?php echo base_url()?>assets/dist/img/user4-128x128.jpg" alt="Alt Text">
-                  <!-- .img-push is used to add margin to elements next to floating images -->
-                  <div class="img-push">
-                    <input type="text" class="form-control form-control-sm" placeholder="Press enter to post comment">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <button type="submit" name="simpan" class="btn btn-primary btn-block btn-sm">Simpan</button>
+                    </div>
                   </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <button type="reset" name="reset" class="btn btn-danger btn-block btn-sm">Reset</button>
+                    </div>
+                  </div>
+                </div>
                 </form>
               </div>
-              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+
+          <div class="col-md-8 connectedSortable">
+
+            <!-- PRODUCT LIST -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Alamat Pembeli</h3>
+
+                <div class="card-tools">
+                  <a class="btn btn-primary btn-block btn-sm" href="">Tambah</a>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body  table-responsive">
+                <table id="alamat" class="table table-hover table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama Pembeli</th>
+                    <th>Alamat Lengkap</th>
+                    <th>Rincian Alamat</th>
+                    <th>Map</th>
+                    <th>Pilihan</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <?php $no=1; foreach ($data_alamat->result() as $data): ?>
+                    <tr>
+                      <td><?php echo $no ?></td>
+                      <td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
+                      <td><?php echo htmlspecialchars($data->alamat_lengkap); ?></td>
+                      <td><?php echo htmlspecialchars($data->rincian_alamat); ?></td>
+                      <td><?php echo htmlspecialchars($data->lat); ?></td>
+                      <td align="center">
+
+                        <!-- Tombol Edit -->
+                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Edit Data Alamat : <?php echo $data->id_pembeli ?>" href="<?php echo base_url()?>page/admin/alamat/edit?id=<?php echo $data->id_alamat ?>&token=<?php echo md5($data->id_alamat) ?>">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <!-- Tombol Delete -->
+                        <a class="btn btn-danger btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Hapus Data Alamat <?php echo $data->id_pembeli ?>" href="<?php echo base_url()?>page/admin/alamat/delete?id_alamat=<?php echo $data->id_alamat ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->id_pembeli ?> ?')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <?php $no++; endforeach;?>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <!-- /.card -->
           </div>

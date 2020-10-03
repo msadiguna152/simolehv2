@@ -1,10 +1,8 @@
 
   <footer class="main-footer text-sm">
-    <strong>Copyright &copy; 2020 <a href="www.lusiapw.com">www.lusiapw.com</a>.</strong>
-      All rights reserved. <b>Version</b> 1.0.0
-    
+    <strong>Copyright &copy; 2020 <a href="www.lusiapw.com">SIMOLEH</a></strong> Sistem Informasi Oleh-oleh.
     <div class="float-right d-none d-sm-inline-block">
-      
+      <b>Version</b> 1.0.0
     </div>
   </footer>
 </div>

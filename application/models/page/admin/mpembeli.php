@@ -14,11 +14,20 @@ public function get_edit_pembeli($id_pembeli)
 		return $query;
 	}
 
+public function get_detail_pembeli($id_pembeli)
+	{
+		$query = $this->db->query("SELECT * FROM `tb_pembeli` JOIN tb_alamat ON tb_pembeli.id_pembeli=tb_alamat.id_pembeli WHERE `tb_pembeli`.`id_pembeli` = '$id_pembeli'");
+		return $query;
+	}
+
 public function insert_pembeli()
 	{
 		$nama_pembeli = $this->input->post('nama_pembeli');
+		$no_telpon = $this->input->post('no_telpon');
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
 
-		$query = $this->db->query("INSERT INTO `tb_pembeli` (`id_pembeli`, `nama_pembeli`) VALUES (NULL, '$nama_pembeli');");
+		$query = $this->db->query("INSERT INTO `tb_pembeli` (`id_pembeli`, `nama_pembeli`, `no_telpon`, `email`, `password`) VALUES (NULL, '$nama_pembeli', '$no_telpon', '$email', '$password');");
 		return $query;
 	}
 
@@ -35,7 +44,7 @@ public function update_pembeli()
 
 	}
 
-function delete_pembeli($id_pembeli)
+public function delete_pembeli($id_pembeli)
 	{
 		$query = $this->db->query("DELETE FROM `tb_pembeli` WHERE `tb_pembeli`.`id_pembeli` = '$id_pembeli'");
 		return $query;

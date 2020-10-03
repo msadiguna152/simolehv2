@@ -23,7 +23,7 @@
         <!-- Main row -->
         <div class="row">
 
-          <div class="col-md-12 connectedSortable">
+          <div class="col-md-6 connectedSortable">
 
             <!-- PRODUCT LIST -->
             <div class="card">
@@ -41,13 +41,28 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/kategori/insert')?>" method="post" id="quickForm">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pembeli/insert')?>" method="post" id="quickForm">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
 
                         <div class="form-group">
-                          <label for="nama_kategori">Nama Kategori</label>
-                          <input type="text" class="form-control" id="" name="nama_kategori" required="" placeholder="Masukan Nama Kategori...">
+                          <label for="nama_pembeli">Nama Pembeli</label>
+                          <input type="text" class="form-control" id="" name="nama_pembeli" required="" placeholder="Masukan nama Pembeli...">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="no_telpon">Nomor Telpon</label>
+                          <input type="text" class="form-control" id="" name="no_telpon" required="" placeholder="Maukan nomor telpon pembeli...">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="email">Email</label>
+                          <input type="text" class="form-control" id="" name="email" required="" placeholder="Masukan email pembeli...">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="text" class="form-control" id="" name="password" required="" placeholder="Masukan password pembeli...">
                         </div>
 
                   </div>

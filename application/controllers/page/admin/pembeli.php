@@ -13,7 +13,6 @@ class Pembeli extends CI_Controller {
 		$this->load->model('page/admin/mpembeli');
 		$this->session->set_userdata('menu', 'pembeli');
 		$this->session->set_userdata('menu2', 'pembeli');
-
 	}
 
 	//fungsi halaman awal pembeli
@@ -28,12 +27,10 @@ class Pembeli extends CI_Controller {
 		$this->load->view('page/admin/tema/footer');
 	}
 
-	//fungsi memanggil data yang akan di edit
 	public function tambah()
 	{
 		$this->session->set_userdata('aksi', 'tambah');
 		$data['level'] = $this->session->userdata('level');
-
 		$this->load->view('page/admin/tema/head',$data);
 		$this->load->view('page/admin/tema/menu');
 		$this->load->view('page/admin/pembeli/tambah_halaman');
@@ -43,7 +40,6 @@ class Pembeli extends CI_Controller {
 	public function insert()
 	{
 		$query = $this->mpembeli->insert_pembeli();
-
 		if ($query==true) {
 			$this->session->set_flashdata('hasil', 'swalberhasilsimpan');
 			echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
@@ -99,19 +95,13 @@ class Pembeli extends CI_Controller {
 		}
 	}
 
-	public function download()
-	{
-		$nama_file = $this->input->get('file');;
-		force_download('file/'.$nama_file,NULL);
-	}
-
-	public function lihat_pembeli()
+	public function lihat()
 	{
 		$id_pembeli = $this->input->get('id');
 		$this->session->set_userdata('aksi', 'lihat');
 		
+		$data['data_alamat'] = $this->mpembeli->get_detail_pembeli($id_pembeli);
 		$data['data_pembeli'] = $this->mpembeli->get_edit_pembeli($id_pembeli);
-
 		$this->session->set_flashdata('token', $this->input->get('token'));
 		$data['get_token2'] = $this->input->get('id');
 

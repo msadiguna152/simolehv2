@@ -41,7 +41,7 @@
         <!-- Main row -->
         <div class="row">
 
-          <div class="col-md-12 connectedSortable">
+          <div class="col-md-6 connectedSortable">
 
             <!-- PRODUCT LIST -->
             <div class="card">
@@ -61,18 +61,17 @@
               <div class="card-body">
                 <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pembeli/update')?>" method="post" id="quickForm">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
 
                         <div class="form-group">
                           <label for="nama_pembeli">Nama Pembeli</label>
                           <input type="text" class="form-control" id="" name="nama_pembeli" required="" value="<?= $nama_pembeli; ?>">
-                          <input type="text" class="form-control" id="" name="id_pembeli" required="" value="<?= $id_pembeli; ?>">
-
+                          <input type="text" hidden="" name="id_pembeli" required="" value="<?= $id_pembeli; ?>">
                         </div>
 
                         <div class="form-group">
                           <label for="no_telpon">Nomor Telpon</label>
-                          <input type="text" class="form-control" id="" name="no_telpon" required="" value="<?= $no_telpon; ?>">
+                          <input type="number" min="0" maxlength="13" class="form-control" id="" name="no_telpon" required="" value="<?= $no_telpon; ?>">
                         </div>
 
                         <div class="form-group">

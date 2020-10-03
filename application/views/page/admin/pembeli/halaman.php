@@ -78,22 +78,22 @@
                     <?php $no=1; foreach ($data_pembeli->result() as $data): ?>
                     <tr>
                       <td><?php echo $no ?></td>
-                      <td>
-                        <a href="<?php echo site_url('page/admin/pembeli/lihat?id=')?><?php echo $data->id_pembeli ?>">
-                        <?php echo htmlspecialchars($data->nama_pembeli); ?>
-                        </a>
-                      </td>
+                      <td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
                       <td><?php echo htmlspecialchars($data->no_telpon); ?></td>
                       <td><?php echo htmlspecialchars($data->email); ?></td>
                       <td><?php echo htmlspecialchars($data->password); ?></td>
                       <td align="center">
+                        <!-- Tombol Edit -->
+                        <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Data Pembeli : <?php echo $data->nama_pembeli ?>" href="<?php echo base_url()?>page/admin/pembeli/lihat?id=<?php echo $data->id_pembeli ?>&token=<?php echo md5($data->id_pembeli)?>">
+                            <i class="fas fa-eye"></i>
+                        </a>
 
                         <!-- Tombol Edit -->
-                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Edit Data Pembeli : <?php echo $data->nama_pembeli ?>" href="<?php echo base_url()?>page/admin/pembeli/edit?id=<?php echo $data->id_pembeli ?>&token=<?php echo md5($data->id_pembeli) ?>">
+                        <a class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit Data Pembeli : <?php echo $data->nama_pembeli ?>" href="<?php echo base_url()?>page/admin/pembeli/edit?id=<?php echo $data->id_pembeli ?>&token=<?php echo md5($data->id_pembeli)?>">
                             <i class="fas fa-edit"></i>
                         </a>
                         <!-- Tombol Delete -->
-                        <a class="btn btn-danger btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Hapus Data Pembeli <?php echo $data->nama_pembeli ?>" href="<?php echo base_url()?>page/admin/pembeli/delete?id_pembeli=<?php echo $data->id_pembeli ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->nama_pembeli ?> ?')">
+                        <a class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Data Pembeli <?php echo $data->nama_pembeli ?>" href="<?php echo base_url()?>page/admin/pembeli/delete?id_pembeli=<?php echo $data->id_pembeli ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->nama_pembeli ?>?')">
                             <i class="fas fa-trash"></i>
                         </a>
                       </td>
