@@ -11,6 +11,7 @@ class Alamat extends CI_Controller {
 			echo 'document.location="'.site_url('auth').'";</script>';
 		}		
 		$this->load->model('page/admin/malamat');
+		$this->load->model('page/admin/mpembeli');
 		$this->session->set_userdata('menu', 'alamat');
 		$this->session->set_userdata('menu2', 'pembeli');
 
@@ -33,6 +34,11 @@ class Alamat extends CI_Controller {
 	{
 		$this->session->set_userdata('aksi', 'tambah');
 		$data['level'] = $this->session->userdata('level');
+
+		$id_pembeli = $this->input->get('id');
+		$data['data_pembeli'] = $this->mpembeli->get_edit_pembeli($id_pembeli);
+		$this->session->set_flashdata('token', $this->input->get('token'));
+		$data['get_token2'] = $this->input->get('id');
 
 		$this->load->view('page/admin/tema/head',$data);
 		$this->load->view('page/admin/tema/menu');

@@ -16,9 +16,14 @@ public function get_edit_alamat($id_alamat)
 
 public function insert_alamat()
 	{
-		$nama_alamat = $this->input->post('nama_alamat');
+		$id_alamat = $this->input->post('id_alamat');
+		$id_pembeli = $this->input->post('id_pembeli');
+		$alamat_lengkap = $this->input->post('alamat_lengkap');
+		$rincian_alamat = $this->input->post('rincian_alamat');
+		$lat = $this->input->post('lat');
+		$long = $this->input->post('long');
 
-		$query = $this->db->query("INSERT INTO `tb_alamat` (`id_alamat`, `nama_alamat`) VALUES (NULL, '$nama_alamat');");
+		$query = $this->db->query("INSERT INTO `tb_alamat` (`id_alamat`, `id_pembeli`, `alamat_lengkap`, `rincian_alamat`, `lat`, `long`) VALUES (NULL, '$id_pembeli', '$alamat_lengkap', '$rincian_alamat', '$lat', '$long');");
 		return $query;
 	}
 

@@ -69,7 +69,6 @@
                           <label for="id_pembeli">Nama Pembeli</label>
                           <input disabled="" type="text" class="form-control" id="" name="nama_pembeli" required="" value="<?= $nama_pembeli; ?>">
                           <input type="text" hidden="" name="id_alamat" required="" value="<?= $id_alamat; ?>">
-
                         </div>
 
                         <div class="form-group">

@@ -95,7 +95,7 @@
                 <h3 class="card-title">Alamat Pembeli</h3>
 
                 <div class="card-tools">
-                  <a class="btn btn-primary btn-block btn-sm" href="">Tambah</a>
+                  <a class="btn btn-primary btn-block btn-sm" href="<?php echo base_url()?>page/admin/alamat/tambah?id=<?php echo $id_pembeli ?>&token=<?php echo md5($id_pembeli) ?>">Tambah</a>
                 </div>
               </div>
               <!-- /.card-header -->

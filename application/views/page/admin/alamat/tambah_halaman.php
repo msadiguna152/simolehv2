@@ -1,3 +1,21 @@
+<?php
+
+  $token2 = md5($get_token2);
+  $token = $this->session->flashdata('token');
+
+  if (!empty($token) AND $token==$token2) {
+    foreach ($data_pembeli->result() as $data):
+    $id_pembeli = $data->id_pembeli;
+    $nama_pembeli = $data->nama_pembeli;
+    $no_telpon = $data->no_telpon;
+    $email = $data->email;
+    $password = $data->password;
+    endforeach;
+  } else {
+      echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
+  }
+?>
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -23,7 +41,7 @@
         <!-- Main row -->
         <div class="row">
 
-          <div class="col-md-12 connectedSortable">
+          <div class="col-md-6 connectedSortable">
 
             <!-- PRODUCT LIST -->
             <div class="card">
@@ -41,15 +59,35 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/kategori/insert')?>" method="post" id="quickForm">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/alamat/insert')?>" method="post" id="quickForm">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
 
                         <div class="form-group">
-                          <label for="nama_kategori">Nama Kategori</label>
-                          <input type="text" class="form-control" id="" name="nama_kategori" required="" placeholder="Masukan Nama Kategori...">
+                          <label for="id_pembeli">Nama Pembeli</label>
+                          <input disabled="" type="text" class="form-control" id="" name="nama_pembeli" required="" value="<?= $nama_pembeli; ?>">
+                          <input type="text" hidden="" name="id_pembeli" required="" value="<?= $id_pembeli; ?>">
                         </div>
 
+                        <div class="form-group">
+                          <label for="alamat_lengkap">Alamat Lengkap</label>
+                          <textarea class="form-control" id="" name="alamat_lengkap" required="" placeholder="Masukan Alamat Lengkap..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="rincian_alamat">Rincian Alamat</label>
+                          <textarea class="form-control" id="" name="rincian_alamat" required="" placeholder="Masukan Rincian Alamat..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="lat">Latitude</label>
+                          <input type="text" class="form-control" id="" name="lat" required="" value="" placeholder="Masukan Latitude...">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="long">Longitude</label>
+                          <input type="text" class="form-control" id="" name="long" required="" value="" placeholder="Masukan Longitude...">
+                        </div>
                   </div>
                 </div>
                 <div class="row">
