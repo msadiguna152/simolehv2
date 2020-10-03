@@ -117,7 +117,7 @@
                       <td><?php echo htmlspecialchars($data->alamat_lengkap); ?></td>
                       <td><?php echo htmlspecialchars($data->rincian_alamat); ?></td>
                       <td>
-                        <a target="_BLANK" class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Alamat Di Map" href="https://www.google.com/maps/@<?php echo htmlspecialchars($data->lat); ?>,<?php echo htmlspecialchars($data->long); ?>,15.5z">
+                        <a target="_BLANK" class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Alamat Di Map" href="http://www.google.com/maps/place/<?php echo htmlspecialchars($data->lat); ?>,<?php echo htmlspecialchars($data->long); ?>">
                             <i class="fas fa-map"></i>
                         </a>
                       </td>
