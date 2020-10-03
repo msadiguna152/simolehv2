@@ -118,7 +118,7 @@
     <a href="<?php echo base_url()?>page/admin/Admin" class="brand-link navbar-white">
       <img src="<?php echo base_url()?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light"><b data-toggle="tooltip" data-placement="right" title="www.lusiapw.com">www.lusiapw.com</b></span>
+      <span class="brand-text font-weight-light"><b>SIMOLEH</b></span>
     </a>
 
     <!-- Sidebar -->
