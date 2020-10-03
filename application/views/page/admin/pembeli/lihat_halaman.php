@@ -65,37 +65,20 @@
 
                         <div class="form-group">
                           <label for="nama_pembeli">Nama Pembeli</label>
-                          <input type="text" class="form-control" id="" name="nama_pembeli" required="" value="<?= $nama_pembeli; ?>">
+                          <p class="text-justify"><?= htmlspecialchars($nama_pembeli); ?></p>
                           <input type="text" hidden="" name="id_pembeli" required="" value="<?= $id_pembeli; ?>">
                         </div>
 
                         <div class="form-group">
                           <label for="no_telpon">Nomor Telpon</label>
-                          <input type="number" min="0" maxlength="13" class="form-control" id="" name="no_telpon" required="" value="<?= $no_telpon; ?>">
+                          <p class="text-justify"><?= htmlspecialchars($no_telpon); ?></p>
                         </div>
 
                         <div class="form-group">
                           <label for="email">Email</label>
-                          <input type="text" class="form-control" id="" name="email" required="" value="<?= $email; ?>">
+                          <p class="text-justify"><?= htmlspecialchars($email); ?></p>
                         </div>
 
-                        <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="text" class="form-control" id="" name="password" required="" value="<?= $password; ?>">
-                        </div>
-
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <button type="submit" name="simpan" class="btn btn-primary btn-block btn-sm">Simpan</button>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <button type="reset" name="reset" class="btn btn-danger btn-block btn-sm">Reset</button>
-                    </div>
                   </div>
                 </div>
                 </form>
@@ -121,7 +104,6 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Pembeli</th>
                     <th>Alamat Lengkap</th>
                     <th>Rincian Alamat</th>
                     <th>Map</th>
@@ -132,18 +114,21 @@
                     <?php $no=1; foreach ($data_alamat->result() as $data): ?>
                     <tr>
                       <td><?php echo $no ?></td>
-                      <td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
                       <td><?php echo htmlspecialchars($data->alamat_lengkap); ?></td>
                       <td><?php echo htmlspecialchars($data->rincian_alamat); ?></td>
-                      <td><?php echo htmlspecialchars($data->lat); ?></td>
+                      <td>
+                        <a target="_BLANK" class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Alamat Di Map" href="https://www.google.com/maps/@<?php echo htmlspecialchars($data->lat); ?>,<?php echo htmlspecialchars($data->long); ?>,15.5z">
+                            <i class="fas fa-map"></i>
+                        </a>
+                      </td>
                       <td align="center">
 
                         <!-- Tombol Edit -->
-                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Edit Data Alamat : <?php echo $data->id_pembeli ?>" href="<?php echo base_url()?>page/admin/alamat/edit?id=<?php echo $data->id_alamat ?>&token=<?php echo md5($data->id_alamat) ?>">
+                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Edit Data Alamat" href="<?php echo base_url()?>page/admin/alamat/edit?id=<?php echo $data->id_alamat ?>&token=<?php echo md5($data->id_alamat) ?>">
                             <i class="fas fa-edit"></i>
                         </a>
                         <!-- Tombol Delete -->
-                        <a class="btn btn-danger btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Hapus Data Alamat <?php echo $data->id_pembeli ?>" href="<?php echo base_url()?>page/admin/alamat/delete?id_alamat=<?php echo $data->id_alamat ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->id_pembeli ?> ?')">
+                        <a class="btn btn-danger btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Hapus Data Alamat" href="<?php echo base_url()?>page/admin/alamat/delete?id_alamat=<?php echo $data->id_alamat ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->id_pembeli ?> ?')">
                             <i class="fas fa-trash"></i>
                         </a>
                       </td>

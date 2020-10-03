@@ -115,10 +115,10 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-light-navy elevation-4">
     <!-- Brand Logo -->
-    <a href="<?php echo base_url()?>page/admin/Admin" class="brand-link navbar-white">
+    <a href="" class="brand-link navbar-white">
       <img src="<?php echo base_url()?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light"><b>SIMOLEH</b></span>
+      <span class="brand-text font-weight-light"><marquee><b>E-Commerce Simpel Oleh Oleh (SIMOLEH)</b></marquee></span>
     </a>
 
     <!-- Sidebar -->

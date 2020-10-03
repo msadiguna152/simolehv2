@@ -6,7 +6,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <script language='javaScript'>
-      var txt="SIMOLEH - Sistem Informasi Oleh-oleh       ";
+      var txt="E-Commerce Simpel Oleh Oleh (SIMOLEH)       ";
       var speed=300;
       var refresh=null;
       function action() { document.title=txt;

@@ -25,13 +25,6 @@
 
           <div class="col-md-12 connectedSortable">
 
-            <div class="card">
-              <div class="card-header">
-                <a href="<?php echo site_url('page/admin/alamat/tambah')?>" data-toggle="tooltip" data-placement="right" title="Tambah Data Kategori"><button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah</button></a>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-                  </button>
-
                   <label hidden=""
                   <?php if ($this->session->flashdata('hasil')=="swalberhasilsimpan") { echo 'class="swalberhasilsimpan"';}?>>
                   </label>
@@ -41,11 +34,6 @@
                   <label hidden=""
                   <?php if ($this->session->flashdata('hasil')=="swalberhasilubah") { echo 'class="swalberhasilubah"';};?>>
                   </label>
-
-                </div>
-              </div>
-            </div>
-            <!-- /.card -->
 
             <!-- PRODUCT LIST -->
             <div class="card">
