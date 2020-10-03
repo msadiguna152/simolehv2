@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>SIMOLEH</title>
-
+    <script language='javaScript'>
+      var txt="SIMOLEH - Sistem Informasi Oleh-oleh       ";
+      var speed=300;
+      var refresh=null;
+      function action() { document.title=txt;
+      txt=txt.substring(1,txt.length)+txt.charAt(0);
+      refresh=setTimeout("action()",speed);}action();
+    </script>
+    
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   

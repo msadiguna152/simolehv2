@@ -1,5 +1,5 @@
 
-<body class="hold-transition layout-top-nav layout-navbar-fixed layout-footer-fixed pace-success">
+<body class="hold-transition layout-top-nav layout-navbar-fixed layout-footer-fixed pace-success ignielPelangi">
 <div class="wrapper">
 
   <!-- Navbar -->

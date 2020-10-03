@@ -2,21 +2,20 @@
 
   $token2 = md5($get_token2);
   $token = $this->session->flashdata('token');
-
   if (!empty($token) AND $token==$token2) {
-    foreach ($data_artikel->result() as $data):
-    $id_artikel = $data->id_artikel;
-    $nama_pengguna = $data->nama_pengguna;
-    $foto_pengguna = $data->foto_pengguna;
-    $judul_artikel = $data->judul_artikel;
-    $isi_artikel = $data->isi_artikel;
-    $tanggal_artikel = $data->tanggal_artikel;
-    $status_artikel = $data->status_artikel;
-    $foto_artikel = $data->foto_artikel;
-    $file_artikel = $data->file_artikel;
+    foreach ($data_produk->result() as $data):
+    $nama_kategori = $data->nama_kategori;
+    $nama_produk = $data->nama_produk;
+    $harga = $data->harga;
+    $harga_promosi = $data->harga_promosi;
+    $deskripsi = $data->deskripsi;
+    $gambar = $data->gambar;
+    $promosi = $data->promosi;
+    $terlaris = $data->terlaris;
+
     endforeach;
   } else {
-      echo '<script language="javascript">document.location="'.site_url('page/admin/Artikel').'";</script>';
+      echo '<script language="javascript">document.location="'.site_url('page/admin/produk').'";</script>';
   }
 ?>
 
@@ -46,62 +45,81 @@
         <div class="row">
 
           <div class="col-md-12 connectedSortable">
-            <!-- Box Comment -->
-            <div class="card card-widget">
+
+            <!-- PRODUCT LIST -->
+            <div class="card">
               <div class="card-header">
-                <div class="user-block">
-                  <img class="img-circle" src="<?php echo base_url()?>profile/<?php echo $foto_pengguna;?>" alt="User Image">
-                  <span class="username"><a href="#"><?php echo $nama_pengguna; ?></a></span>
-                  <span class="description">Tanggal : <?php echo $tanggal_artikel ?></span>
-                </div>
-                <!-- /.user-block -->
+                <h3 class="card-title"><?php echo strtoupper($this->session->userdata('aksi')." data"); ?></h3>
+
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
                   </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
                   </button>
                 </div>
-                <!-- /.card-tools -->
-              </div>
-              <div class="card-header" style="text-align: center; font-size: 18px">
-                <b><?php echo $judul_artikel; ?></b>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <img class="mx-auto d-block pad img-fluid" src="<?php echo base_url()?>file/<?php echo $foto_artikel;?>" alt="<?php echo $foto_artikel;?>">
-
-                <p style="text-align: justify;"><?php echo $isi_artikel; ?></p>
-
-                <span class="float-right text-muted"> Komentar</span>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer card-comments">
-                <div class="card-comment">
-                  <!-- User image -->
-                  <img class="img-circle img-sm" src="<?php echo base_url()?>assets/dist/img/user3-128x128.jpg" alt="User Image">
-
-                  <div class="comment-text">
-                    <span class="username">
-                      Maria Gonzales
-                      <span class="text-muted float-right">8:03 PM Today</span>
-                    </span><!-- /.username -->
-                    It is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its layout.
+                <div class="row">
+                  <div class="col-md-6">
+                    <img src="<?php echo base_url()?>file/<?php echo $gambar ?>" class="img-thumbnail" style="width:500px;">
                   </div>
-                  <!-- /.comment-text -->
+
+                  <div class="col-md-6">
+
+                        <div class="form-group">
+                          <label for="nama_produk">Nama Produk</label>
+                          <p class="text-justify"><?= htmlspecialchars($nama_produk); ?></p>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="id_kategori">Kategori</label>
+                          <p class="text-justify"><?= htmlspecialchars($nama_kategori); ?></p>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="harga">Harga</label>
+                          <p class="text-justify"><?= "Rp " . number_format(htmlspecialchars($harga),2,',','.'); ?></p>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="harga_promosi">Harga Promosi</label>
+                          <p class="text-justify"><?= "Rp " . number_format(htmlspecialchars($harga_promosi),2,',','.'); ?></p>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="deskripsi">Deskripsi</label>
+                          <p class="text-justify"><?= htmlspecialchars($deskripsi); ?></p>
+                        </div>
+
+                        <div class="form-group">
+                            <?php
+                              if ($promosi==1) {
+                                echo '<i style="color: green;" class="fas fa-check"></i>';
+                              } else {
+                                echo '<i style="color: red;" class="fas fa-times"></i>';
+                              }
+                            ?> 
+                            <label for="promosi">Promosi</label>
+                        </div>
+
+                        <div class="form-group">
+                            <?php
+                              if ($terlaris==1) {
+                                echo '<i style="color: green;" class="fas fa-check"></i>';
+                              } else {
+                                echo '<i style="color: red;" class="fas fa-times"></i>';
+                              }
+                            ?>
+                            <label for="promosi">Terlaris</label>
+                        </div>
+
+                  </div>
+
                 </div>
               </div>
-              <!-- /.card-footer -->
-              <div class="card-footer">
-                <form action="#" method="post">
-                  <img class="img-fluid img-circle img-sm" src="<?php echo base_url()?>assets/dist/img/user4-128x128.jpg" alt="Alt Text">
-                  <!-- .img-push is used to add margin to elements next to floating images -->
-                  <div class="img-push">
-                    <input type="text" class="form-control form-control-sm" placeholder="Press enter to post comment">
-                  </div>
-                </form>
-              </div>
-              <!-- /.card-footer -->
             </div>
             <!-- /.card -->
           </div>

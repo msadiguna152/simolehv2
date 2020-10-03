@@ -46,7 +46,7 @@
         <!-- Main row -->
         <div class="row">
 
-          <div class="col-md-12 connectedSortable">
+          <div class="col-md-6 connectedSortable">
 
             <!-- PRODUCT LIST -->
             <div class="card">
@@ -66,12 +66,12 @@
               <div class="card-body">
                 <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/produk/update')?>" method="post" id="quickForm">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
 
                         <div class="form-group">
                           <label for="nama_produk">Nama Produk</label>
                           <input type="text" class="form-control" id="" name="nama_produk" required="" value="<?= htmlspecialchars($nama_produk); ?>">
-                          <input type="text" class="form-control" id="" name="id_produk" required="" value="<?= htmlspecialchars($id_produk); ?>">
+                          <input type="text" hidden="" name="id_produk" required="" value="<?= htmlspecialchars($id_produk); ?>">
 
                         </div>
 

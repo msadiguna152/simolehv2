@@ -8,6 +8,12 @@ public function get_produk()
 		return $query;
 	}
 
+public function get_detail_produk($id_produk)
+	{
+		$query = $this->db->query("SELECT * FROM `tb_produk` JOIN tb_kategori ON tb_kategori.id_kategori=tb_produk.id_kategori WHERE `tb_produk`.`id_produk` = '$id_produk'");
+		return $query;
+	}
+
 public function get_edit_produk($id_produk)
 	{
 		$query = $this->db->query("SELECT * FROM `tb_produk` WHERE `tb_produk`.`id_produk` = '$id_produk'");

@@ -71,7 +71,6 @@
                     <th>Kategori</th>
                     <th>Harga</th>
                     <th>Harga Promosi</th>
-                    <th>Deskripsi</th>
                     <th>Gambar</th>
                     <th>Promosi</th>
                     <th>Terlaris</th>
@@ -86,7 +85,6 @@
                       <td><?php echo $data->nama_kategori ?></td>
                       <td><?php echo "Rp " . number_format($data->harga,2,',','.'); ?> </td>
                       <td><?php echo "Rp " . number_format($data->harga_promosi,2,',','.'); ?> </td>
-                      <td><?php echo $data->deskripsi; ?></td>
                       <td><img class="img-thumbnail" style="width: 150px; height: 100px;" src="<?php echo base_url()?>file/<?php echo $data->gambar ?>"></td>
                       <td style="text-align: center;vertical-align: middle;">
                         <?php
@@ -109,7 +107,7 @@
 
                       <td align="center">
                         <!-- Tombol Edit -->
-                        <a class="btn btn-info btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Produk : <?php echo $data->nama_produk ?>" href="<?php echo base_url()?>page/admin/produk/lihat_produk?id=<?php echo $data->id_produk ?>&token=<?php echo md5($data->id_produk) ?>">
+                        <a target="_BLANK" class="btn btn-info btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Produk : <?php echo $data->nama_produk ?>" href="<?php echo base_url()?>page/admin/produk/lihat?id=<?php echo $data->id_produk ?>&token=<?php echo md5($data->id_produk) ?>">
                             <i class="fas fa-eye"></i>
                         </a>
 

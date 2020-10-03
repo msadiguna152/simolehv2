@@ -102,18 +102,12 @@ class Produk extends CI_Controller {
 		}
 	}
 
-	public function download()
-	{
-		$nama_file = $this->input->get('file');;
-		force_download('file/'.$nama_file,NULL);
-	}
-
-	public function lihat_produk()
+	public function lihat()
 	{
 		$id_produk = $this->input->get('id');
 		$this->session->set_userdata('aksi', 'lihat');
 		
-		$data['data_produk'] = $this->mproduk->get_edit_produk($id_produk);
+		$data['data_produk'] = $this->mproduk->get_detail_produk($id_produk);
 
 		$this->session->set_flashdata('token', $this->input->get('token'));
 		$data['get_token2'] = $this->input->get('id');

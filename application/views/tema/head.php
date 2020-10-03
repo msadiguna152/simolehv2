@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <script language='javaScript'>
-      var txt="www.lusiapw.com       ";
+      var txt="SIMOLEH - Sistem Informasi Oleh-oleh       ";
       var speed=300;
       var refresh=null;
       function action() { document.title=txt;
