@@ -6,7 +6,14 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <link rel="icon" type="image/png" href="img/logo.svg">
-      <title>Grofar - Online Grocery Supermarket HTML Mobile Template</title>
+      <script language='javaScript'>
+         var txt="E-Commerce Simpel Oleh Oleh (SIMOLEH)       ";
+         var speed=300;
+         var refresh=null;
+         function action() { document.title=txt;
+         txt=txt.substring(1,txt.length)+txt.charAt(0);
+         refresh=setTimeout("action()",speed);}action();
+      </script>
       <!-- Slick Slider -->
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets2/vendor/slick/slick.min.css"/>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets2/vendor/slick/slick-theme.min.css"/>
@@ -26,7 +33,7 @@
             <div class="slider round"></div>
             <i class="icofont-moon"></i>
          </label>
-         <em>Enable Dark Mode!</em>
+         <em>Nyalakan Mode Gelap!</em>
       </div>
       <!-- home page -->
       <div class="osahan-home-page">
@@ -34,7 +41,7 @@
             <div class="title d-flex align-items-center">
                <a href="home.html" class="text-decoration-none text-dark d-flex align-items-center">
                   <img class="osahan-logo mr-2" src="img/logo.svg">
-                  <h4 class="font-weight-bold text-success m-0">Grocery</h4>
+                  <h4 class="font-weight-bold text-success m-0">SIMOLEH</h4>
                </a>
                <p class="ml-auto m-0">
                   <a href="notification.html" class="text-decoration-none bg-white p-1 rounded shadow-sm d-flex align-items-center">
@@ -49,7 +56,7 @@
                   <div class="input-group-prepend">
                      <button class="border-0 btn btn-outline-secondary text-success bg-white"><i class="icofont-search"></i></button>
                   </div>
-                  <input type="text" class="shadow-none border-0 form-control pl-0" placeholder="Search for Products.." aria-label="" aria-describedby="basic-addon1">
+                  <input type="text" class="shadow-none border-0 form-control pl-0" placeholder="Pencarian.." aria-label="" aria-describedby="basic-addon1">
                </div>
             </a>
          </div>
@@ -57,81 +64,26 @@
          <div class="osahan-body">
             <!-- categories -->
             <div class="p-3 osahan-categories">
-               <h6 class="mb-2">What do you looking for?</h6>
+               <h6 class="mb-2">Kategori</h6>
                <div class="row m-0">
+                  <?php foreach ($data_kategori->result() as $data): ?>
                   <div class="col pl-0 pr-1 py-1">
                      <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
                         <a href="listing.html">
                            <img src="img/categorie/1.svg" class="img-fluid px-2">
-                           <p class="m-0 pt-2 text-muted text-center">Vegetables</p>
+                           <p class="m-0 pt-2 text-muted text-center"><?= $data->nama_kategori; ?></p>
                         </a>
                      </div>
                   </div>
-                  <div class="col p-1">
-                     <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
-                        <a href="listing.html">
-                           <img src="img/categorie/2.svg" class="img-fluid px-2">
-                           <p class="m-0 pt-2 text-muted text-center">Fruits</p>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="col p-1">
-                     <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
-                        <a href="listing.html">
-                           <img src="img/categorie/3.svg" class="img-fluid px-2">
-                           <p class="m-0 pt-2 text-muted text-center">Meat</p>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="col pr-0 pl-1 py-1">
-                     <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
-                        <a href="listing.html">
-                           <img src="img/categorie/4.svg" class="img-fluid px-2">
-                           <p class="m-0 pt-2 text-muted text-center">Seafood</p>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-               <div class="row m-0">
-                  <div class="col pl-0 pr-1 py-1">
-                     <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
-                        <a href="listing.html">
-                           <img src="img/categorie/5.svg" class="img-fluid px-2">
-                           <p class="m-0 pt-2 text-muted text-center">Milk & Egg</p>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="col p-1">
-                     <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
-                        <a href="listing.html">
-                           <img src="img/categorie/6.svg" class="img-fluid px-2">
-                           <p class="m-0 pt-2 text-muted text-center">Bread</p>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="col p-1">
-                     <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
-                        <a href="listing.html">
-                           <img src="img/categorie/7.svg" class="img-fluid px-2">
-                           <p class="m-0 pt-2 text-muted text-center">Frozen</p>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="col pr-0 pl-1 py-1">
-                     <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
-                        <a href="listing.html">
-                           <img src="img/categorie/8.svg" class="img-fluid px-2">
-                           <p class="m-0 pt-2 text-muted text-center">Organic</p>
-                        </a>
-                     </div>
-                  </div>
+                  <?php endforeach;?>
                </div>
             </div>
+
             <!-- Promos -->
             <div class="py-3 bg-white osahan-promos shadow-sm">
                <div class="d-flex align-items-center px-3 mb-2">
                   <h6 class="m-0">Promos for you</h6>
-                  <a href="promos.html" class="ml-auto text-success">See more</a>
+                  <a href="promos.html" class="ml-auto text-success">Lihat Semua</a>
                </div>
                <div class="promo-slider">
                   <div class="osahan-slider-item m-2">
@@ -145,12 +97,14 @@
                   </div>
                </div>
             </div>
+
             <!-- Pick's Today -->
             <div class="title d-flex align-items-center mb-3 mt-3 px-3">
                <h6 class="m-0">Pick's Today</h6>
-               <a class="ml-auto text-success" href="picks_today.html">See more</a>
+               <a class="ml-auto text-success" href="picks_today.html">Lihat Semua</a>
             </div>
             <!-- pick today -->
+
             <div class="pick_today px-3">
                <div class="row">
                   <div class="col-6 pr-2">
@@ -188,6 +142,7 @@
                      </div>
                   </div>
                </div>
+
                <div class="row pt-3">
                   <div class="col-6 pr-2">
                      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
@@ -234,43 +189,10 @@
                      </div>
                   </div>
                </div>
-               <div class="row pt-3">
-                  <div class="col-6 pr-2">
-                     <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                        <div class="list-card-image">
-                           <a href="product_details.html" class="text-dark">
-                              <div class="member-plan position-absolute"><span class="badge m-3 badge-success">10%</span></div>
-                              <div class="p-3">
-                                 <img src="img/listing/v5.jpg" class="img-fluid item-img w-100 mb-3">
-                                 <h6>Cauliflower</h6>
-                                 <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$1.8/kg</h6>
-                           <a href="cart.html" class="btn btn-success btn-sm ml-auto">+</a>
-                           </div>
-                           </div>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-6 pl-2">
-                     <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                        <div class="list-card-image">
-                           <a href="product_details.html" class="text-dark">
-                              <div class="member-plan position-absolute"><span class="badge m-3 badge-success">10%</span></div>
-                              <div class="p-3">
-                                 <img src="img/listing/v6.jpg" class="img-fluid item-img w-100 mb-3">
-                                 <h6>Carrot</h6>
-                                 <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$0.8/kg</h6>
-                           <a href="cart.html" class="btn btn-success btn-sm ml-auto">+</a>
-                           </div>
-                           </div>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+
+
             </div>
+
             <!-- Most sales -->
             <div class="title d-flex align-items-center p-3">
                <h6 class="m-0">Recommend for You</h6>
@@ -315,82 +237,12 @@
                      </div>
                      </a>
                   </div>
-                  <div class="col-12 mb-3">
-                     <a href="product_details.html" class="text-dark text-decoration-none">
-                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                           <div class="recommend-slider rounded pt-2">
-                              <div class="osahan-slider-item m-2">
-                                 <img src="img/recommend/r4.jpg" class="img-fluid mx-auto rounded shadow-sm" alt="Responsive image">
-                              </div>
-                              <div class="osahan-slider-item m-2">
-                                 <img src="img/recommend/r5.jpg" class="img-fluid mx-auto rounded shadow-sm" alt="Responsive image">
-                              </div>
-                              <div class="osahan-slider-item m-2">
-                                 <img src="img/recommend/r6.jpg" class="img-fluid mx-auto rounded shadow-sm" alt="Responsive image">
-                              </div>
-                           </div>
-                           <div class="p-3 position-relative">
-                              <h6 class="mb-1 font-weight-bold text-success">Green Apple</h6>
-                              <p class="text-muted">Green Apple Premium item from Vietnam.</p>
-                              <div class="d-flex align-items-center">
-                                 <h6 class="m-0">$10.8/kg</h6>
-                     <a class="ml-auto" href="cart.html">
-                     <div class="input-group input-spinner ml-auto cart-items-number">
-                     <div class="input-group-prepend">
-                     <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
-                     </div>
-                     <input type="text" class="form-control" value="1">
-                     <div class="input-group-append">
-                     <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
-                     </div>
-                     </div>
-                     </a>
-                     </div>
-                     </div>
-                     </div>
-                     </a>
-                  </div>
-                  <div class="col-12 mb-3">
-                     <a href="product_details.html" class="text-dark text-decoration-none">
-                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                           <div class="recommend-slider rounded pt-2">
-                              <div class="osahan-slider-item m-2">
-                                 <img src="img/recommend/r7.jpg" class="img-fluid mx-auto rounded shadow-sm" alt="Responsive image">
-                              </div>
-                              <div class="osahan-slider-item m-2">
-                                 <img src="img/recommend/r8.jpg" class="img-fluid mx-auto rounded shadow-sm" alt="Responsive image">
-                              </div>
-                              <div class="osahan-slider-item m-2">
-                                 <img src="img/recommend/r9.jpg" class="img-fluid mx-auto rounded shadow-sm" alt="Responsive image">
-                              </div>
-                           </div>
-                           <div class="p-3 position-relative">
-                              <h6 class="mb-1 font-weight-bold text-success">Fresh Apple
-                              </h6>
-                              <p class="text-muted">Fresh Apple Premium item from Thailand.</p>
-                              <div class="d-flex align-items-center">
-                                 <h6 class="m-0">$12.8/kg</h6>
-                     <a class="ml-auto" href="cart.html">
-                     <div class="input-group input-spinner ml-auto cart-items-number">
-                     <div class="input-group-prepend">
-                     <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
-                     </div>
-                     <input type="text" class="form-control" value="1">
-                     <div class="input-group-append">
-                     <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
-                     </div>
-                     </div>
-                     </a>
-                     </div>
-                     </div>
-                     </div>
-                     </a>
-                  </div>
                </div>
             </div>
          </div>
       </div>
       <!-- Footer -->
+
       <div class="osahan-menu-fotter fixed-bottom bg-white text-center border-top">
          <div class="row m-0">
             <a href="home.html" class="text-dark small col font-weight-bold text-decoration-none p-2 selected">
@@ -411,6 +263,7 @@
             </a>
          </div>
       </div>
+
       <nav id="main-nav">
          <ul class="second-nav">
             <li><a href="index.html"><i class="icofont-smart-phone mr-2"></i> Splash</a></li>
