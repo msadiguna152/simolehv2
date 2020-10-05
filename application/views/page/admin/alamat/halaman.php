@@ -69,7 +69,11 @@
                       <td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
                       <td><?php echo htmlspecialchars($data->alamat_lengkap); ?></td>
                       <td><?php echo htmlspecialchars($data->rincian_alamat); ?></td>
-                      <td><?php echo htmlspecialchars($data->lat); ?></td>
+                      <td>
+                        <a target="_BLANK" class="btn btn-info btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Alamat Di Map" href="http://www.google.com/maps/place/<?php echo htmlspecialchars($data->lat); ?>,<?php echo htmlspecialchars($data->long); ?>">
+                            <i class="fas fa-map"></i>
+                        </a>
+                      </td>
                       <td align="center">
 
                         <!-- Tombol Edit -->

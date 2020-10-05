@@ -2,21 +2,19 @@
 
   $token2 = md5($get_token2);
   $token = $this->session->flashdata('token');
-
   if (!empty($token) AND $token==$token2) {
-    foreach ($data_artikel->result() as $data):
-    $id_artikel = $data->id_artikel;
-    $nama_pengguna = $data->nama_pengguna;
-    $foto_pengguna = $data->foto_pengguna;
-    $judul_artikel = $data->judul_artikel;
-    $isi_artikel = $data->isi_artikel;
-    $tanggal_artikel = $data->tanggal_artikel;
-    $status_artikel = $data->status_artikel;
-    $foto_artikel = $data->foto_artikel;
-    $file_artikel = $data->file_artikel;
+    foreach ($data_pembeli->result() as $data):
+    $id_pembeli = $data->id_pembeli;
+    $nama_pembeli = $data->nama_pembeli;
+    $no_telpon = $data->no_telpon;
+    $alamat_lengkap = $data->alamat_lengkap;
+    $status = $data->status;
+    $cara_pembayaran = $data->cara_pembayaran;
+    $tanggal_pesanan = $data->tanggal_pesanan;
+
     endforeach;
   } else {
-      echo '<script language="javascript">document.location="'.site_url('page/admin/Artikel').'";</script>';
+      echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
   }
 ?>
 
@@ -28,7 +26,7 @@
           <div class="col-sm-6">
             <h5 class="m-0 text-dark">
               <?php 
-              $menu = $this->session->userdata('menu')." / ".$this->session->userdata('aksi')." data";
+              $menu = $this->session->userdata('menu')." / ".$this->session->userdata('aksi')." Rincinan Pesanan";
               echo strtoupper($menu);
               ?>
             </h5>
@@ -45,63 +43,96 @@
         <!-- Main row -->
         <div class="row">
 
-          <div class="col-md-12 connectedSortable">
-            <!-- Box Comment -->
-            <div class="card card-widget">
+          <div class="col-md-4 connectedSortable">
+
+            <!-- PRODUCT LIST -->
+            <div class="card">
               <div class="card-header">
-                <div class="user-block">
-                  <img class="img-circle" src="<?php echo base_url()?>profile/<?php echo $foto_pengguna;?>" alt="User Image">
-                  <span class="username"><a href="#"><?php echo $nama_pengguna; ?></a></span>
-                  <span class="description">Tanggal : <?php echo $tanggal_artikel ?></span>
-                </div>
-                <!-- /.user-block -->
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-                  </button>
-                </div>
-                <!-- /.card-tools -->
-              </div>
-              <div class="card-header" style="text-align: center; font-size: 18px">
-                <b><?php echo $judul_artikel; ?></b>
+                <h3 class="card-title">Rincian Pembeli</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <img class="mx-auto d-block pad img-fluid" src="<?php echo base_url()?>file/<?php echo $foto_artikel;?>" alt="<?php echo $foto_artikel;?>">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pembeli/update')?>" method="post" id="quickForm">
+                <div class="row">
+                  <div class="col-md-12">
 
-                <p style="text-align: justify;"><?php echo $isi_artikel; ?></p>
+                        <div class="form-group">
+                          <label for="nama_pembeli">Nama Pembeli</label>
+                          <p class="text-justify"><?= $nama_pembeli; ?></p>
+                          <input type="text" hidden="" name="id_pembeli" required="" value="<?= $id_pembeli; ?>">
+                        </div>
 
-                <span class="float-right text-muted"> Komentar</span>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer card-comments">
-                <div class="card-comment">
-                  <!-- User image -->
-                  <img class="img-circle img-sm" src="<?php echo base_url()?>assets/dist/img/user3-128x128.jpg" alt="User Image">
+                        <div class="form-group">
+                          <label for="no_telpon">Nomor Telpon</label>
+                          <p class="text-justify"><?= $no_telpon; ?></p>
+                        </div>
 
-                  <div class="comment-text">
-                    <span class="username">
-                      Maria Gonzales
-                      <span class="text-muted float-right">8:03 PM Today</span>
-                    </span><!-- /.username -->
-                    It is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its layout.
+                        <div class="form-group">
+                          <label for="alamat_lengkap">Alamat</label>
+                          <p class="text-justify"><?= $alamat_lengkap; ?></p>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="status">Status</label>
+                          <p class="text-justify"><?= $status; ?></p>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="cara_pembayaran">Cara Pembayaran</label>
+                          <p class="text-justify"><?= $cara_pembayaran; ?></p>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="tanggal_pesanan">Tanggal Pesanan</label>
+                          <p class="text-justify"><?= $tanggal_pesanan; ?></p>
+                        </div>
+
                   </div>
-                  <!-- /.comment-text -->
                 </div>
-              </div>
-              <!-- /.card-footer -->
-              <div class="card-footer">
-                <form action="#" method="post">
-                  <img class="img-fluid img-circle img-sm" src="<?php echo base_url()?>assets/dist/img/user4-128x128.jpg" alt="Alt Text">
-                  <!-- .img-push is used to add margin to elements next to floating images -->
-                  <div class="img-push">
-                    <input type="text" class="form-control form-control-sm" placeholder="Press enter to post comment">
-                  </div>
+
                 </form>
               </div>
-              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+
+          <div class="col-md-8 connectedSortable">
+
+            <!-- PRODUCT LIST -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Rincian Pesanan</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="alamat" class="table table-hover table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama Produk</th>
+                    <th>Banyak</th>
+                    <th>Sub Total</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <?php $no=1;$total=0; foreach ($data_produk->result() as $data): ?>
+                    <tr>
+                      <td><?php echo $no ?></td>
+                      <td><?php echo $data->nama_produk; ?></td>
+                      <td><?php echo $data->banyak; ?></td>
+                      <td><?php echo "Rp " . number_format($data->sub_total,2,',','.'); $total = $total + $data->sub_total; ?></td>
+                    </tr>
+                    
+                    <?php $no++; endforeach;?>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th colspan="3">Total Pembayaran</th>
+                    <th><?= "Rp " . number_format($total,2,',','.'); ?></th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
             </div>
             <!-- /.card -->
           </div>

@@ -99,17 +99,18 @@ class Pesanan extends CI_Controller {
 		}
 	}
 
-	public function lihat_pesanan()
+	public function lihat()
 	{
 		$id_pesanan = $this->input->get('id');
 		$this->session->set_userdata('aksi', 'lihat');
 		
-		$data['data_pesanan'] = $this->mpesanan->get_edit_pesanan($id_pesanan);
+		$data['data_pembeli'] = $this->mpesanan->get_detail_pesanan($id_pesanan);
+		$data['data_produk'] = $this->mpesanan->get_detail_produk($id_pesanan);
 
 		$this->session->set_flashdata('token', $this->input->get('token'));
 		$data['get_token2'] = $this->input->get('id');
-
 		$data['level'] = $this->session->userdata('level');
+
 		$this->load->view('page/admin/tema/head',$data);
 		$this->load->view('page/admin/tema/menu');
 		$this->load->view('page/admin/pesanan/lihat_halaman');

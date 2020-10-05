@@ -84,7 +84,7 @@
                     <th>Kategori</th>
                     <th>Harga</th>
                     <th>Harga Promosi</th>
-                    <th onclick="return false" >Gambar</th>
+                    <th>Gambar</th>
                     <th>Promosi</th>
                     <th>Terlaris</th>
                     <th>Pilihan</th>
