@@ -96,50 +96,14 @@
 
             <!-- Pick's Today -->
             <div class="title d-flex align-items-center mb-3 mt-3 px-3">
-               <h6 class="m-0">Pick's Today</h6>
+               <h6 class="m-0">Pilih Hari Ini</h6>
                <a class="ml-auto text-success" href="picks_today.html">Lihat Semua</a>
             </div>
             <!-- pick today -->
 
             <div class="pick_today px-3">
-               <div class="row">
-                  <div class="col-6 pr-2">
-                     <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                        <div class="list-card-image">
-                           <a href="product_details.html" class="text-dark">
-                              <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">10%</span></div>
-                              <div class="p-3">
-                                 <img src="img/listing/v1.jpg" class="img-fluid item-img w-100 mb-3">
-                                 <h6>Chilli</h6>
-                                 <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$0.8/kg</h6>
-                           <a href="cart.html" class="btn btn-success btn-sm ml-auto">+</a>
-                           </div>
-                           </div>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-6 pl-2">
-                     <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                        <div class="list-card-image">
-                           <a href="product_details.html" class="text-dark">
-                              <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">5%</span></div>
-                              <div class="p-3">
-                                 <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
-                                 <h6>Onion</h6>
-                                 <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$1.8/kg</h6>
-                           <a href="cart.html" class="btn btn-success btn-sm ml-auto">+</a>
-                           </div>
-                           </div>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="row pt-3">
+               <?php $a=1; foreach ($data_kategori->result() as $data): ?>
+               <div class="row <?php if ($a>=2) { echo "pt-3"; }?>">
                   <div class="col-6 pr-2">
                      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                         <div class="list-card-image">
@@ -185,56 +149,13 @@
                      </div>
                   </div>
                </div>
-
-
+               <?php $a++; endforeach;?>
             </div>
 
             <!-- Most sales -->
             <div class="title d-flex align-items-center p-3">
-               <h6 class="m-0">Recommend for You</h6>
-               <a class="ml-auto text-success" href="recommend.html">26 more</a>
             </div>
-            <!-- osahan recommend -->
-            <div class="osahan-recommend px-3">
-               <div class="row">
-                  <div class="col-12 mb-3">
-                     <a href="product_details.html" class="text-dark text-decoration-none">
-                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                           <div class="recommend-slider rounded pt-2">
-                              <div class="osahan-slider-item m-2 rounded">
-                                 <img src="img/recommend/r1.jpg" class="img-fluid mx-auto rounded shadow-sm" alt="Responsive image">
-                              </div>
-                              <div class="osahan-slider-item m-2 rounded">
-                                 <img src="img/recommend/r2.jpg" class="img-fluid mx-auto rounded shadow-sm" alt="Responsive image">
-                              </div>
-                              <div class="osahan-slider-item m-2 rounded">
-                                 <img src="img/recommend/r3.jpg" class="img-fluid mx-auto rounded shadow-sm" alt="Responsive image">
-                              </div>
-                           </div>
-                           <div class="p-3 position-relative">
-                              <h6 class="mb-1 font-weight-bold text-success">Fresh Orange
-                              </h6>
-                              <p class="text-muted">Orange Great Quality item from Jamaica.</p>
-                              <div class="d-flex align-items-center">
-                                 <h6 class="m-0">$8.8/kg</h6>
-                     <a class="ml-auto" href="cart.html">
-                     <div class="input-group input-spinner ml-auto cart-items-number">
-                     <div class="input-group-prepend">
-                     <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
-                     </div>
-                     <input type="text" class="form-control" value="1">
-                     <div class="input-group-append">
-                     <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
-                     </div>
-                     </div>
-                     </a>
-                     </div>
-                     </div>
-                     </div>
-                     </a>
-                  </div>
-               </div>
-            </div>
+
          </div>
       </div>
       <!-- Footer -->
@@ -243,15 +164,15 @@
          <div class="row m-0">
             <a href="home.html" class="text-dark small col font-weight-bold text-decoration-none p-2 selected">
                <p class="h5 m-0"><i class="text-success icofont-grocery"></i></p>
-               Shop
+               Beranda
             </a>
             <a href="cart.html" class="text-muted col small text-decoration-none p-2">
                <p class="h5 m-0"><i class="icofont-cart"></i></p>
-               Cart
+               Keranjang
             </a>
             <a href="complete_order.html" class="text-muted col small text-decoration-none p-2">
                <p class="h5 m-0"><i class="icofont-bag"></i></p>
-               My Order
+               Pesanan ku
             </a>
             <a href="my_account.html" class="text-muted small col text-decoration-none p-2">
                <p class="h5 m-0"><i class="icofont-user"></i></p>
@@ -263,24 +184,7 @@
       <nav id="main-nav">
          <ul class="second-nav">
             <li>
-               <a href="#"><i class="icofont-login mr-2"></i> Authentication</a>
-               <ul>
-                  <li> <a href="account-setup.html">Account Setup</a></li>
-                  <li><a href="signin.html">Sign in</a></li>
-                  <li><a href="signup.html">Sign up</a></li>
-                  <li><a href="verification.html">Verification</a></li>
-               </ul>
-            </li>
-            
-            <li>
-               <a href="#"><i class="icofont-ui-user mr-2"></i> My Account</a>
-               <ul>
-                  <li> <a href="my_account.html">My Account</a></li>
-                  <li><a href="edit_profile.html">Edit Profile</a></li>
-                  <li><a href="change_password.html">Change Password</a></li>
-                  <li><a href="deactivate_account.html">Deactivate Account</a></li>
-                  <li><a href="my_address.html">My Address</a></li>
-               </ul>
+               <a href="account-setup.html">Account Setup</a>
             </li>
          </ul>
          <ul class="bottom-nav">
