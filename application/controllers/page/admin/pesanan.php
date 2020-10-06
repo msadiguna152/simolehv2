@@ -28,30 +28,6 @@ class Pesanan extends CI_Controller {
 		$this->load->view('page/admin/tema/footer');
 	}
 
-	//fungsi memanggil data yang akan di edit
-	public function tambah()
-	{
-		$this->session->set_userdata('aksi', 'tambah');
-		$data['level'] = $this->session->userdata('level');
-
-		$this->load->view('page/admin/tema/head',$data);
-		$this->load->view('page/admin/tema/menu');
-		$this->load->view('page/admin/pesanan/tambah_halaman');
-		$this->load->view('page/admin/tema/footer');
-	}
-
-	public function insert()
-	{
-		$query = $this->mpesanan->insert_pesanan();
-
-		if ($query==true) {
-			$this->session->set_flashdata('hasil', 'swalberhasilsimpan');
-			echo '<script language="javascript">document.location="'.site_url('page/admin/pesanan').'";</script>';
-		} elseif ($query==false) {
-			$this->session->set_flashdata('hasil', 'swalgagalsimpan');
-			echo '<script language="javascript">document.location="'.site_url('page/admin/pesanan').'";</script>';
-		}
-	}
 
 	public function edit()
 	{

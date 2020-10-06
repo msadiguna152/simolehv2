@@ -4,12 +4,15 @@
   $token = $this->session->flashdata('token');
 
   if (!empty($token) AND $token==$token2) {
-    foreach ($data_pembeli->result() as $data):
+    foreach ($data_pesanan->result() as $data):
+    $id_pesanan = $data->id_pesanan;
     $id_pembeli = $data->id_pembeli;
     $nama_pembeli = $data->nama_pembeli;
-    $no_telpon = $data->no_telpon;
-    $email = $data->email;
-    $password = $data->password;
+    $tanggal_pesanan = $data->tanggal_pesanan;
+    $cara_pembayaran = $data->cara_pembayaran;
+    $total_pembayaran = $data->total_pembayaran;
+    $voucher = $data->voucher;
+    $ongkir = $data->ongkir;
     endforeach;
   } else {
       echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
@@ -59,30 +62,39 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pembeli/update')?>" method="post" id="quickForm">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pesanan/update')?>" method="post" id="quickForm">
                 <div class="row">
                   <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="tanggal_pesanan">Tanggal Pesanan</label>
+                          <input type="text" class="form-control" id="" readonly="" value="<?= $tanggal_pesanan; ?>">
+                        </div>
 
                         <div class="form-group">
                           <label for="nama_pembeli">Nama Pembeli</label>
-                          <input type="text" class="form-control" id="" name="nama_pembeli" required="" value="<?= $nama_pembeli; ?>">
-                          <input type="text" class="form-control" id="" name="id_pembeli" required="" value="<?= $id_pembeli; ?>">
-
+                          <input type="text" class="form-control" id="" name="nama_pembeli" readonly="" value="<?= $nama_pembeli; ?>">
+                          <input type="text" hidden="" name="id_pembeli" required="" value="<?= $id_pembeli; ?>">
+                          <input type="text" hidden="" name="id_pesanan" required="" value="<?= $id_pesanan; ?>">
                         </div>
 
                         <div class="form-group">
-                          <label for="no_telpon">Nomor Telpon</label>
-                          <input type="text" class="form-control" id="" name="no_telpon" required="" value="<?= $no_telpon; ?>">
+                          <label for="cara_pembayaran">Cara Pembayaran</label>
+                          <input type="text" class="form-control" id="" readonly="" value="<?= $cara_pembayaran; ?>">
                         </div>
 
                         <div class="form-group">
-                          <label for="email">Email</label>
-                          <input type="text" class="form-control" id="" name="email" required="" value="<?= $email; ?>">
+                          <label for="total_pembayaran">Total Pembayaran</label>
+                          <input type="text" class="form-control" id="" name="total_pembayaran" value="<?= $total_pembayaran; ?>">
                         </div>
 
                         <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="text" class="form-control" id="" name="password" required="" value="<?= $password; ?>">
+                          <label for="voucher">Voucher</label>
+                          <input type="text" class="form-control" id="" name="voucher" value="<?= $voucher; ?>">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="ongkir">Ongkos Kirim</label>
+                          <input type="text" class="form-control" id="" name="ongkir" value="<?= $ongkir; ?>">
                         </div>
 
                   </div>

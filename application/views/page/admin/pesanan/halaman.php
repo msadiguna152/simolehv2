@@ -90,7 +90,7 @@
                         </a>
 
                         <!-- Tombol Edit -->
-                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Edit Data Pesanan" href="<?php echo base_url()?>page/admin/pesanan/edit?id=<?php echo $data->id_pesanan ?>&token=<?php echo md5($data->id_pesanan) ?>">
+                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Edit Data Pesanan" href="<?php echo base_url()?>page/admin/pesanan/edit?id=<?php echo $data->id_pesanan ?>&token=<?php echo md5($data->id_pesanan)?>">
                             <i class="fas fa-edit"></i>
                         </a>
                         <!-- Tombol Delete -->
