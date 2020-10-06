@@ -55,6 +55,15 @@
                           <input type="text" class="form-control" id="" name="slug" required="" placeholder="Masukan Slug Kategori...">
                         </div>
 
+                        <div class="form-group">
+                          <label for="icon">Icon</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="icon" accept="image/*" required="" onchange="return validasiFile()">
+                            <label class="custom-file-label" for="customFile">Pilih Icon</label>
+                          </div>
+                          <div id="pratinjauGambar"></div>
+                        </div>
+
                   </div>
                 </div>
                 <div class="row">

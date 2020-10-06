@@ -69,6 +69,7 @@
                     <th>No</th>
                     <th>Nama Kategori</th>
                     <th>Slug</th>
+                    <th>Icon</th>
                     <th>Pilihan</th>
                   </tr>
                   </thead>
@@ -78,6 +79,7 @@
                       <td><?php echo $no ?></td>
                       <td><?php echo $data->nama_kategori; ?></td>
                       <td><?php echo $data->slug; ?></td>
+                      <td><img style="width: 50px;height: 50px;" class="img-thumbnail" src="<?php echo base_url()?>file/<?php echo $data->icon; ?>"></td>
                       <td align="center">
 
                         <!-- Tombol Edit -->
@@ -87,7 +89,7 @@
                           </button>
                         </a>
                         <!-- Tombol Delete -->
-                        <a href="<?php echo base_url()?>page/admin/kategori/delete?id_kategori=<?php echo $data->id_kategori ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->nama_kategori ?> ?')">
+                        <a href="<?php echo base_url()?>page/admin/kategori/delete?id_kategori=<?php echo $data->id_kategori ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->nama_kategori ?>?')">
                           <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Data <?php echo $data->nama_kategori ?>">
                             <i class="fas fa-trash"></i>
                           </button>

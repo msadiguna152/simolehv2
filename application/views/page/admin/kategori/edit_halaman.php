@@ -8,6 +8,7 @@
     $id_kategori = $data->id_kategori;
     $nama_kategori = $data->nama_kategori;
     $slug = $data->slug;
+    $icon = $data->icon;
 
     endforeach;
   } else {
@@ -71,6 +72,15 @@
                         <div class="form-group">
                           <label for="slug">Slug</label>
                           <input type="text" class="form-control" id="" name="slug" required="" value="<?= htmlspecialchars($slug); ?>">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="icon">Icon</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="icon" accept="image/*" onchange="return validasiFile()">
+                            <label class="custom-file-label" for="customFile">Pilih Icon</label>
+                          </div>
+                          <div id="pratinjauGambar"><img src="<?php echo base_url()?>file/<?php echo $icon ?>" class="img-thumbnail" style="height: 200px;"></div>
                         </div>
 
                   </div>

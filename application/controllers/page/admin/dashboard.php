@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller {
 			echo '<script language="javascript">alert("Akses Di Tolak!");';
 			echo 'document.location="'.site_url('Auth').'";</script>';
 		}		
-		$this->load->model('page/admin/Madmin');
+		//$this->load->model('page/admin/Madmin');
 		$this->session->set_userdata('menu', 'dashboard');
 		$this->session->set_userdata('menu2', 'dashboard');
 
