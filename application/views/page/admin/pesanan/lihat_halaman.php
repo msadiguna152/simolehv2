@@ -14,7 +14,7 @@
 
     endforeach;
   } else {
-      echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
+      echo '<script language="javascript">document.location="'.site_url('page/admin/pesanan').'";</script>';
   }
 ?>
 

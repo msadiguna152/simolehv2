@@ -53,7 +53,7 @@ class Pesanan extends CI_Controller {
 		
 		if ($query==true) {
 			$this->session->set_flashdata('hasil', 'swalberhasilubah');
-			echo '<script language="javascript">document.location="'.site_url('page/admin/pesanan').'";</script>';
+			echo '<script language="javascript">document.location="'.site_url('page/admin/pesanan/lihat').'";</script>';
 		} elseif ($query==false) {
 			$this->session->set_flashdata('hasil', 'swalgagalubah');
 			echo '<script language="javascript">document.location="'.site_url('page/admin/pesanan').'";</script>';
