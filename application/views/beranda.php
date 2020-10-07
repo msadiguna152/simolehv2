@@ -104,16 +104,25 @@
             <div class="pick_today px-3">
                <?php $a=1; foreach ($data_kategori->result() as $data): ?>
                <div class="row <?php if ($a>=2) { echo "pt-3"; }?>">
+                  <?php
+                  $id_kategori = $data->id_kategori;
+                  $data_produk = $this->db->query("SELECT * FROM `tb_produk` JOIN tb_kategori ON tb_produk.id_kategori=tb_kategori.id_kategori WHERE tb_produk.id_kategori='$id_kategori' LIMIT 2"); 
+                  foreach ($data_produk->result() as $data_p): ?>
+
                   <div class="col-6 pr-2">
                      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                         <div class="list-card-image">
                            <a href="product_details.html" class="text-dark">
-                              <div class="member-plan position-absolute"><span class="badge m-3 badge-warning">5%</span></div>
+                              <div class="member-plan position-absolute">
+                                 <span class="badge mt-3 mb-3 ml-3 badge-success"><?= $data_p->nama_kategori; ?></span>
+                                 <span class="badge badge-warning">5%</span>
+                              </div>
                               <div class="p-3">
-                                 <img src="img/listing/v3.jpg" class="img-fluid item-img w-100 mb-3">
-                                 <h6>Tomato</h6>
+                                 <img src="<?= base_url()?>file/<?= $data_p->gambar;?>" class="img-fluid item-img w-100 mb-3">
+                                 <h6><?= $data_p->nama_produk; ?></h6>
+                                 <p><?= $data_p->deskripsi; ?></p>
                                  <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$1/kg</h6>
+                                    <h6 class="price m-0 text-success"><?= "Rp " . number_format($data_p->harga,2,',','.'); ?></h6>
                            <a class="ml-auto" href="cart.html">
                            <div class="input-group input-spinner ml-auto cart-items-number">
                            <div class="input-group-prepend">
@@ -131,23 +140,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="col-6 pl-2">
-                     <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                        <div class="list-card-image">
-                           <a href="product_details.html" class="text-dark">
-                              <div class="member-plan position-absolute"><span class="badge m-3 badge-warning">15%</span></div>
-                              <div class="p-3">
-                                 <img src="img/listing/v4.jpg" class="img-fluid item-img w-100 mb-3">
-                                 <h6>Cabbage</h6>
-                                 <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success">$0.8/kg</h6>
-                           <a href="cart.html" class="btn btn-success btn-sm ml-auto">+</a>
-                           </div>
-                           </div>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
+                  <?php endforeach;?>
                </div>
                <?php $a++; endforeach;?>
             </div>
