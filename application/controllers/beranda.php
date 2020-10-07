@@ -15,4 +15,13 @@ class Beranda extends CI_Controller {
 
 		$this->load->view('beranda',$data);
 	}
+
+	public function kategori()
+	{
+
+		$data['data_kategori'] = $this->mberanda->get_kategori();
+		$data['data_promosi'] = $this->mberanda->get_promosi();
+
+		$this->load->view('beranda',$data);
+	}
 }
