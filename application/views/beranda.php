@@ -109,7 +109,7 @@
                   $data_produk = $this->db->query("SELECT * FROM `tb_produk` JOIN tb_kategori ON tb_produk.id_kategori=tb_kategori.id_kategori WHERE tb_produk.id_kategori='$id_kategori' LIMIT 2"); 
                   foreach ($data_produk->result() as $data_p): ?>
 
-                  <div class="col-6 pr-2">
+                  <div class="col-6">
                      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                         <div class="list-card-image">
                            <a href="product_details.html" class="text-dark">
