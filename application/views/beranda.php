@@ -51,12 +51,12 @@
                </p>
                <a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a>
             </div>
-            <a href="search.html" class="text-decoration-none">
+            <a href="<?= site_url()?>pencarian" class="text-decoration-none">
                <div class="input-group mt-3 rounded shadow-sm overflow-hidden bg-white">
                   <div class="input-group-prepend">
                      <button class="border-0 btn btn-outline-secondary text-success bg-white"><i class="icofont-search"></i></button>
                   </div>
-                  <input type="text" class="shadow-none border-0 form-control pl-0" placeholder="Pencarian.." aria-label="" aria-describedby="basic-addon1">
+                  <input type="text" class="shadow-none border-0 form-control pl-0" placeholder="Pencarian . . ." aria-label="" aria-describedby="basic-addon1">
                </div>
             </a>
          </div>
@@ -69,7 +69,7 @@
                   <?php foreach ($data_kategori->result() as $data): ?>
                   <div class="col pl-0 pr-1 py-1">
                      <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
-                        <a href="<?= site_url('')?>beranda?kategori=<?= strtolower($data->nama_kategori); ?>">
+                        <a href="<?= base_url('')?>beranda/kategori/<?= strtolower($data->nama_kategori); ?>">
                            <img src="<?php echo base_url()?>file/<?php echo $data->icon; ?>" class="img-fluid px-2">
                            <p class="m-0 pt-2 text-muted text-center"><?= $data->nama_kategori; ?></p>
                         </a>
