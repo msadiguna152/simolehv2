@@ -19,6 +19,7 @@ class Beranda extends CI_Controller {
 	public function kategori()
 	{
 		$data['nama_kategori'] = $this->uri->segment(3);
+		$data['data_kategori'] = $this->mberanda->get_perkategori($id=$this->uri->segment(3));
 		$this->load->view('kategori',$data);
 	}
 }

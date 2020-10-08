@@ -14,6 +14,12 @@ public function get_promosi()
 		return $query;
 	}
 
+public function get_promosi()
+	{
+		$query = $this->db->query("SELECT * FROM `tb_produk` WHERE promosi=1");
+		return $query;
+	}
+
 public function get_edit_kategori($id_kategori)
 	{
 		$query = $this->db->query("SELECT * FROM `tb_kategori` WHERE `tb_kategori`.`id_kategori` = '$id_kategori'");

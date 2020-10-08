@@ -42,7 +42,7 @@
                      <a href="product_details.html" class="text-dark">
                         <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">10%</span></div>
                         <div class="p-3">
-                           <img src="img/listing/v1.jpg" class="img-fluid item-img w-100 mb-3">
+                           <img src="<?= base_url()?>assets2/img/listing/v1.jpg" class="img-fluid item-img w-100 mb-3">
                            <h6>Chilli</h6>
                            <div class="d-flex align-items-center">
                               <h6 class="price m-0 text-success">$0.8/kg</h6>
@@ -58,7 +58,7 @@
                      <a href="product_details.html" class="text-dark">
                         <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">5%</span></div>
                         <div class="p-3">
-                           <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+                           <img src="<?= base_url()?>assets2/img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
                            <h6>Onion</h6>
                            <div class="d-flex align-items-center">
                               <h6 class="price m-0 text-success">$1.8/kg</h6>
@@ -86,7 +86,7 @@
                      <a href="product_details.html" class="text-dark">
                         <div class="member-plan position-absolute"><span class="badge m-3 badge-warning">5%</span></div>
                         <div class="p-3">
-                           <img src="img/listing/v3.jpg" class="img-fluid item-img w-100 mb-3">
+                           <img src="<?= base_url()?>assets2/img/listing/v3.jpg" class="img-fluid item-img w-100 mb-3">
                            <h6>Tomato</h6>
                            <div class="d-flex align-items-center">
                               <h6 class="price m-0 text-success">$2.5/kg</h6>
@@ -101,7 +101,7 @@
                      <a href="product_details.html" class="text-dark">
                         <div class="member-plan position-absolute"><span class="badge m-3 badge-warning">15%</span></div>
                         <div class="p-3">
-                           <img src="img/listing/v4.jpg" class="img-fluid item-img w-100 mb-3">
+                           <img src="<?= base_url()?>assets2/img/listing/v4.jpg" class="img-fluid item-img w-100 mb-3">
                            <h6>Cabbage</h6>
                            <div class="d-flex align-items-center">
                               <h6 class="price m-0 text-success">$0.8/kg</h6>
