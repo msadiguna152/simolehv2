@@ -9,6 +9,8 @@ class Pencarian extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('pencarian');
+		$this->load->view('menu');
+		
 	}
 
 }
