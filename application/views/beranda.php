@@ -86,7 +86,7 @@
                                  <h6><?= $data_p->nama_produk; ?></h6>
                                  <p><?= $data_p->deskripsi; ?></p>
                                  <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success"><?= "Rp " . number_format($data_p->harga,2,',','.'); ?></h6>
+                                    <h6 class="price m-0 text-success"><?= "Rp" . number_format($data_p->harga,0,',','.'); ?></h6>
                            <a class="ml-auto" href="cart.html">
                            <div class="input-group input-spinner ml-auto cart-items-number">
                            <div class="input-group-prepend">
