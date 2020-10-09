@@ -59,9 +59,7 @@
                     <th>Nama Pembeli</th>
                     <th>Status</th>
                     <th>Cara Pembayaran</th>
-                    <th>Ongkos Kirim</th>
                     <th>Total Pembayaran</th>
-                    <th>Voucher</th>
                     <th>Rincian Pesanan</th>
                     <th>Pilihan</th>
                   </tr>
@@ -74,9 +72,7 @@
                       <td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
                       <td><?php echo htmlspecialchars($data->status); ?></td>
                       <td><?php echo htmlspecialchars($data->cara_pembayaran); ?></td>
-                      <td><?php echo "Rp " . number_format(htmlspecialchars($data->ongkir),2,',','.'); ?></td>
-                      <td><?php echo "Rp " . number_format(htmlspecialchars($data->total_pembayaran),2,',','.'); ?></td>
-                      <td><?php echo htmlspecialchars($data->voucher); ?></td>
+                      <td><?php echo "Rp " . number_format(htmlspecialchars($data->total_pembayaran),0,',','.'); ?></td>
                       <td>
                         <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Rincian Pesanan" href="<?php echo base_url()?>page/admin/pesanan/lihat?id=<?php echo $data->id_pesanan ?>&token=<?php echo md5($data->id_pesanan) ?>">
                             <i class="fas fa-eye"></i>

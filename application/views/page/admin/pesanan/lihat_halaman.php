@@ -10,6 +10,8 @@
     $alamat_lengkap = $data->alamat_lengkap;
     $status = $data->status;
     $cara_pembayaran = $data->cara_pembayaran;
+    $voucher = $data->voucher;
+    $ongkir = $data->ongkir;
     $tanggal_pesanan = $data->tanggal_pesanan;
 
     endforeach;
@@ -105,7 +107,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="alamat" class="table table-hover table-bordered table-striped">
+                <table id="" class="table table-hover table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>No</th>
@@ -120,16 +122,36 @@
                       <td><?php echo $no ?></td>
                       <td><?php echo $data->nama_produk; ?></td>
                       <td><?php echo $data->banyak; ?></td>
-                      <td><?php echo "Rp " . number_format($data->sub_total,2,',','.'); $total = $total + $data->sub_total; ?></td>
+                      <td><?php echo "Rp " . number_format($data->sub_total,0,',','.'); $total = $total + $data->sub_total; ?></td>
                     </tr>
                     
                     <?php $no++; endforeach;?>
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th colspan="3">Total Pembayaran</th>
-                    <th><?= "Rp " . number_format($total,2,',','.'); ?></th>
+                    <th colspan="3">Jumlah Belanja</th>
+                    <th><?= "Rp " . number_format($total,0,',','.'); ?></th>
                   </tr>
+
+                  <tr>
+                    <th colspan="3">Diskon Voucher</th>
+                    <th><?= "Rp " . number_format($voucher,0,',','.'); ?></th>
+                  </tr>
+
+                  <tr>
+                    <th colspan="3">Sub Total</th>
+                    <th><?= "Rp " . number_format($total-$voucher,0,',','.'); ?></th>
+                  </tr>
+
+                  <tr>
+                    <th colspan="3">Ongkos Kirim</th>
+                    <th><?= "Rp " . number_format($ongkir,0,',','.'); ?></th>
+                  </tr>
+                  <tr>
+                    <th colspan="3">Total Pembayaran</th>
+                    <th><?= "Rp " . number_format(($total-$voucher)+$ongkir,0,',','.'); ?></th>
+                  </tr>
+
                   </tfoot>
                 </table>
               </div>

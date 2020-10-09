@@ -5,16 +5,13 @@ class auth extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('Mauth');
+		$this->load->model('mauth');
 	}
 
 	//index atau halaman login
 	public function index()
 	{
-		$this->load->view('tema/head');
-		$this->load->view('tema/menu');
 		$this->load->view('login');
-		$this->load->view('tema/footer');
 	}
 
 	//memeriksa hasil inputan di halaman login
@@ -23,12 +20,12 @@ class auth extends CI_Controller {
 		$username = htmlspecialchars($this->input->post('username'));
 		$password = htmlspecialchars($this->input->post('password'));
 
-		$cek = $this->Mauth->cek($username, $password);
+		$cek = $this->mauth->cek($username, $password);
 
 		//jika username dan password ada didalam database maka proses pengecekan level akan dijalankan
 		if($cek->num_rows() == 1)
 		{
-			$get_pengguna = $this->Mauth->cek($username, $password);
+			$get_pengguna = $this->mauth->cek($username, $password);
 			foreach($get_pengguna->result() as $data){
 				$sess_data['username'] = $data->username;
 				$sess_data['password'] = $data->password;

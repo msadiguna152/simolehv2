@@ -8,6 +8,9 @@
     $provinsi = $data->provinsi;
     $latitude = $data->latitude;
     $longitude = $data->longitude;
+    $tipe_ongkir = $data->tipe_ongkir;
+    $harga_ongkir_flat = $data->harga_ongkir_flat;
+    $harga_ongkir_perkm = $data->harga_ongkir_perkm;
     endforeach;
 ?>
 
@@ -59,7 +62,7 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="kota">Kota</label>
+                          <label for="kota">Kabupaten/Kota</label>
                           <input type="text" class="form-control" id="" name="kota" value="<?= $kota; ?>">
                         </div>
 
@@ -69,7 +72,32 @@
                         </div>
                   </div>
                   <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="tipe_ongkir">Tipe Harga Ongkir</label>
+                          <div class="form-check">
+                            <input class="form-check-input" <?php if (htmlspecialchars($tipe_ongkir)==1) { echo "checked"; }?> type="radio" name="tipe_ongkir" id="exampleRadios1" value="1">
+                            <label class="form-check-label" for="exampleRadios1">
+                              Flat 
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" <?php if (htmlspecialchars($tipe_ongkir)==2) { echo "checked"; }?> type="radio" name="tipe_ongkir" id="exampleRadios2" value="2">
+                            <label class="form-check-label" for="exampleRadios2">
+                              Perkilometer
+                            </label>
+                          </div>
+                        </div>
 
+                        <div class="form-group">
+                          <label for="harga_ongkir_flat">Harga Ongkir Flat</label>
+                          <input type="number" min="-1" maxlength="12" class="form-control" id="" name="harga_ongkir_flat" value="<?= $harga_ongkir_flat; ?>">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="harga_ongkir_perkm">Harga Ongkir Perkm</label>
+                          <input type="number" min="-1" maxlength="12" class="form-control" id="" name="harga_ongkir_perkm" value="<?= $harga_ongkir_perkm; ?>">
+                        </div>
+                        
                         <div class="form-group">
                           <label for="latitude">Latitude</label>
                           <input type="text" class="form-control" id="" name="latitude" value="<?= $latitude; ?>">
