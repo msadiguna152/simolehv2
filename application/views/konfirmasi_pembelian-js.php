@@ -16,7 +16,7 @@
 			$.ajax({
 				url: "<?php echo site_url('keranjang/items') ?>",
 				data: {
-					ids
+					ids, qty
 				},
 				method: 'POST',
 				dataType: 'json',

@@ -89,9 +89,9 @@
 													class="btn btn-outline-secondary">
 												<i class="icofont-phone"></i></button>
 										</div>
-										<input name="nomorhp" data-mask="0000 0000 0000" class="form-control"
+										<input name="nomorhp" data-mask="0000-0000-0000" class="form-control"
 											   type="text"
-											   placeholder="0000 0000 0000"/>
+											   placeholder="0000-0000-0000"/>
 									</div>
 								</div>
 							</div>

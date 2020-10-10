@@ -170,7 +170,7 @@
 </head>
 <body class="fixed-bottom-padding">
 <div class="theme-switch-wrapper"
-	 style="display: <?php echo ($this->uri->segment(2) === 'alamatpeta' || $this->uri->segment(2) === 'checkout') ? 'none' : 'block' ?>">
+	 style="display: <?php echo ($this->uri->segment(2) === 'alamatpeta' || $this->uri->segment(2) === 'checkout' || $this->uri->segment(2) === 'proses') ? 'none' : 'block' ?>">
 	<label class="theme-switch" for="checkbox">
 		<input type="checkbox" id="checkbox"/>
 		<div class="slider round"></div>

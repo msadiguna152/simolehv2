@@ -105,5 +105,5 @@
 </div>
 <!-- continue -->
 <div class="fixed-bottom">
-	<a href="successful.html" class="btn btn-success btn-block">Proses Pembayaran</a>
+	<a href="<?php echo site_url('pesanan/proses') ?>" class="btn btn-success btn-block">Proses Pembayaran</a>
 </div>

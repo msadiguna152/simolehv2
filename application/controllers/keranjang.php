@@ -24,22 +24,15 @@ class Keranjang extends CI_Controller
 
 	public function items()
 	{
+		if ($this->input->post('qty')) {
+			$this->session->set_userdata('qty', $this->input->post('qty'));
+		}
 		if ($this->input->post('ids')) {
 			$ids = $this->input->post('ids');
 			$produk = $this->mproduk->get_produk_where_id($ids);
 			return response(['status' => 'success', 'data' => $produk->result()], 'json');
 		} else {
 			return response(['status' => 'error', 'message' => 'Id tidak tersedia', 'data' => []], 'json');
-		}
-	}
-
-	private function MyShuffle(&$arr)
-	{
-		for ($i = 0; $i < sizeof($arr); ++$i) {
-			$r = rand(0, $i);
-			$tmp = $arr[$i];
-			$arr[$i] = $arr[$r];
-			$arr[$r] = $tmp;
 		}
 	}
 

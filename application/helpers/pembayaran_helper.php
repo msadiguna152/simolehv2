@@ -18,18 +18,21 @@ if (!function_exists('init_xendit')) {
 //		\Xendit\Xendit::
 	}
 
-	function pembayaran_ovo()
+	function generate_pembayaran_ovo($ovoParams)
 	{
 		init_xendit();
-		$ovoParams = [
-			'external_id' => 'ovo-ewallet-test878',
-			'amount' => 80002,
-			'phone' => '08182345323',
-			'ewallet_type' => 'OVO'
-		];
+		$createOvo = null;
+		try {
+			$createOvo = \Xendit\EWallets::create($ovoParams);
+		} catch (\Xendit\Exceptions\ApiException $e) {
+			print_r($e);
+		}
+		return $createOvo;
+	}
 
-		$createOvo = \Xendit\EWallets::create($ovoParams);
-		var_dump($createOvo);
+	function pembayaran_linkaja()
+	{
+
 	}
 
 	function get_status_pembayaran()
