@@ -91,10 +91,16 @@ class Keranjang extends CI_Controller
 
 	public function pembayaran()
 	{
+		$data['fabanks'] = get_vabanks();
 		$this->load->view('tema/head');
-		$this->load->view('pembayaran');
-		$this->load->view('tema/menu');
+		$this->load->view('pembayaran',$data);
+//		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
+	}
+
+	public function proses_pembayaran()
+	{
+
 	}
 
 	public function konfirmasi_pembelian()

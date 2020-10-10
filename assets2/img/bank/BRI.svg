@@ -1,0 +1,35 @@
+<svg id="BRI" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="70" height="50" viewBox="0 0 70 50">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Background" width="70" height="50" rx="6.632" fill="#00529c"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff730a"/>
+      <stop offset="0.188" stop-color="#f66f0a"/>
+      <stop offset="1" stop-color="#ff7a18"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <path id="Clip_14" data-name="Clip 14" d="M0,14.706H61.91V0H0Z" transform="translate(0 0)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Background-2" data-name="Background">
+    <rect id="Background-3" data-name="Background" width="70" height="50" rx="6.632" fill="#00529c"/>
+    <g id="Background-4" data-name="Background" clip-path="url(#clip-path)">
+      <path id="White" d="M.5,8.254S-.233,10,12,10C39.5,10,70.5,0,70.5,0V16.509H0Z" transform="translate(-0.502 35.5)" fill="#fff"/>
+      <path id="Orange" d="M5.915,1s-13.309,2.547,0,3c29.5,1,70-4,70-4V11.009H5.413Z" transform="translate(-5.915 43)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+  <g id="Logo_Bank_BRI" data-name="Logo Bank BRI" transform="translate(4 18)">
+    <path id="Fill_1" data-name="Fill 1" d="M3.056,7.319H0V0H3.336C4.813,0,5.694.694,5.694,1.856A1.646,1.646,0,0,1,4.416,3.565v.021A1.556,1.556,0,0,1,5.882,5.2C5.882,6.951,4.345,7.319,3.056,7.319Zm-1.123-3.1v1.72H2.5c.714,0,1.444-.1,1.444-.85,0-.765-.684-.87-1.423-.87Zm0-2.831v1.51h.541c.588,0,1.289-.135,1.289-.777,0-.677-.626-.734-1.268-.734Z" transform="translate(16.751 3.691)" fill="#fff"/>
+    <path id="Fill_3" data-name="Fill 3" d="M1.964,7.319H0L2.754,0h2.37L7.919,7.317H5.8l-.54-1.562H2.536L1.964,7.319ZM3.918,1.51,2.983,4.373H4.8L3.939,1.51H3.918Z" transform="translate(22.416 3.691)" fill="#fff"/>
+    <path id="Fill_5" data-name="Fill 5" d="M0,0H2.463L4.916,4.97h.02L4.905,0H6.673V7.319h-2.4l-2.537-5h-.02l.062,5H0Z" transform="translate(30.605 3.691)" fill="#fff"/>
+    <path id="Fill_7" data-name="Fill 7" d="M0,0H1.933V2.989h.021L4.135,0H6.464L3.782,3.408l2.89,3.911H4.208L1.954,4H1.933V7.319H0Z" transform="translate(37.933 3.691)" fill="#fff"/>
+    <path id="Fill_9" data-name="Fill 9" d="M3.056,7.319H0V0H3.336C4.813,0,5.7.694,5.7,1.856A1.646,1.646,0,0,1,4.417,3.565v.021A1.556,1.556,0,0,1,5.882,5.2C5.882,6.951,4.346,7.319,3.056,7.319Zm-1.123-3.1v1.72h.572c.673,0,1.444-.1,1.444-.85s-.684-.87-1.424-.87Zm0-2.831v1.51h.54c.588,0,1.289-.135,1.289-.777,0-.677-.626-.734-1.267-.734Z" transform="translate(47.002 3.691)" fill="#fff"/>
+    <path id="Fill_11" data-name="Fill 11" d="M1.933,7.32H0V0H3.451c1.13,0,2.338.485,2.338,1.846A1.712,1.712,0,0,1,4.4,3.691v.021c.486.132.622.509.827,1.081.057.16.122.34.2.534l.706,1.991H4.116L3.7,6c-.4-1.28-.656-1.574-1.362-1.574H1.933V7.319Zm0-5.936V3.041h.509c.563,0,1.413,0,1.413-.85,0-.716-.755-.807-1.413-.807Z" transform="translate(53.313 3.691)" fill="#fff"/>
+    <path id="Clip_14-2" data-name="Clip 14" d="M0,14.706H61.91V0H0Z" transform="translate(0 0)" fill="none"/>
+    <g id="Logo_Bank_BRI-2" data-name="Logo Bank BRI" clip-path="url(#clip-path-2)">
+      <path id="Fill_13" data-name="Fill 13" d="M0,7.319H1.933V0H0Z" transform="translate(59.977 3.691)" fill="#fff"/>
+      <path id="Fill_15" data-name="Fill 15" d="M12.335,14.706H2.19A2.273,2.273,0,0,1,0,12.407V2.3A2.265,2.265,0,0,1,2.224,0H12.34a2.265,2.265,0,0,1,2.224,2.3l0,10.108A2.265,2.265,0,0,1,12.335,14.706ZM2.84,1.168A1.191,1.191,0,0,0,1.665,2.362l0,.5V12.2l0,.1a1.225,1.225,0,0,0,1.21,1.237l.553-.006a2.14,2.14,0,0,0,2.223-2.041,1.94,1.94,0,0,0-.555-1.35L2.411,7.379l2.863-2.93A1.927,1.927,0,0,0,5.8,3.112,1.9,1.9,0,0,0,3.962,1.168Zm3.937,0a3.554,3.554,0,0,1,.565,2,3.289,3.289,0,0,1-.866,2.364L4.73,7.349l1.711,1.76a3.611,3.611,0,0,1,.809,2.365,6.642,6.642,0,0,1-.578,2.042l5,0a1.219,1.219,0,0,0,.652-.169l-5.833-6L9.3,4.449a1.927,1.927,0,0,0,.529-1.336A1.9,1.9,0,0,0,7.989,1.168ZM10.8,1.146a3.575,3.575,0,0,1,.571,2.019,3.489,3.489,0,0,1-.662,2.141L8.717,7.347l4.18,4.3,0-9.235a1.226,1.226,0,0,0-1.21-1.238Z" transform="translate(0)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

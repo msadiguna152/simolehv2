@@ -90,6 +90,56 @@
 			font-weight: 500;
 			padding: 6px 12px;
 		}
+
+		.border-custom-radio .custom-control-label::before {
+			width: 100%;
+			height: 100%;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0;
+			border-radius: .25rem!important;
+			background: transparent !important;
+			box-shadow: none !important;
+		}
+
+		.border-custom-radio .custom-control-input:checked~.custom-control-label::before {
+			border-color: #28a744;
+			border: 2px solid #28a744;
+		}
+		.my-custom-control-label::before {
+			right: 1.5rem;
+			position: absolute;
+			display: block;
+			width: 1rem;
+			border-radius: 10px;
+			height: 1rem;
+			pointer-events: none;
+			content: "";
+			background-color: #fff;
+			border: #adb5bd solid 1px;
+		}
+
+		.my-custom-control-input:checked ~ .my-custom-control-label::before {
+			color: #fff;
+			border-color: #28a744;
+			background-color: #28a744;
+		}
+
+		.custom-radio .my-custom-control-input:checked ~ .my-custom-control-label::after {
+			background-image: url(data:image/svg+xml,%3csvg xmlns= 'http://www.w3.org/2000/svg' width= '12' height= '12' viewBox= '-4 -4 8 8' %3e%3ccircle r= '3' fill= '%23fff' /%3e%3c/svg%3e);
+		}
+
+		.my-custom-control-label::after {
+			position: absolute;
+			/*top: .25rem;*/
+			right: 1.5rem;
+			display: block;
+			width: 1rem;
+			height: 1rem;
+			content: "";
+			background: no-repeat 50%/50% 50%;
+		}
 	</style>
 	<script language='javaScript'>
 		var txt = "E-Commerce Simpel Oleh Oleh (SIMOLEH)       ";

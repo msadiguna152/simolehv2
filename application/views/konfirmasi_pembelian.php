@@ -64,17 +64,11 @@
 	<h6 class="text-dark m-0">Total</h6>
 </div>
 <div class="p-3">
-	<div class="clearfix">
-		<p class="mb-1 text-muted">Item Total <span class="float-right text-dark">$3140</span></p>
-		<p class="mb-1 text-muted">Restaurant Charges <span class="float-right text-dark">$62.8</span></p>
-		<p class="mb-1 text-muted">Delivery Fee<span class="text-info ml-1"><i
-						class="icofont-info-circle"></i></span><span class="float-right text-dark">$10</span></p>
-		<p class="mb-1 text-success">Total Discount<span class="float-right text-success">$1884</span></p>
-		<hr>
-		<h6 class="font-weight-bold mb-0">TO PAY <span class="float-right">$1329</span></h6>
+	<div class="clearfix" id="rincian-container">
+
 	</div>
 </div>
 <!-- continue -->
 <div class="fixed-bottom">
-	<a href="successful.html" class="btn btn-success btn-block">Place Order</a>
+	<a href="successful.html" class="btn btn-success btn-block">Proses Pembayaran</a>
 </div>
