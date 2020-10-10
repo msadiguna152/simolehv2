@@ -53,7 +53,7 @@
 			<img src="" width="16" height="16" id="place-icon">
 			<span id="place-name" class="title"></span><br>
 			<span id="place-address"></span><br>
-			<a href="<?php echo site_url('keranjang/checkout#alamatModal') ?>" class="btn btn-sm btn-success">Pilih</a>
+			<a href="<?php echo site_url('keranjang/alamat#alamatModal') ?>" class="btn btn-sm btn-success">Pilih</a>
 		</div>
 	</div>
 </div>

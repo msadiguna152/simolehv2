@@ -9,9 +9,15 @@ class Malamat extends CI_Model
 		return $query;
 	}
 
+	public function get_alamat_by_id($id)
+	{
+		$query = $this->db->query("SELECT * FROM `tb_alamat` WHERE tb_alamat.id_alamat = '$id' ORDER BY `tb_alamat`.`id_alamat` DESC");
+		return $query;
+	}
+
 	public function get_alamat_pembeli($id)
 	{
-		$query = $this->db->query("SELECT * FROM `tb_alamat` JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli WHERE tb_pembeli.id_pembeli = '$id' ORDER BY `tb_alamat`.`id_alamat` DESC");
+		$query = $this->db->query("SELECT * FROM `tb_alamat` LEFT JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli WHERE tb_pembeli.id_pembeli = '$id' ORDER BY `tb_alamat`.`id_alamat` DESC");
 		return $query;
 	}
 
@@ -30,8 +36,8 @@ class Malamat extends CI_Model
 		$lat = $this->input->post('lat');
 		$long = $this->input->post('long');
 
-		$query = $this->db->query("INSERT INTO `tb_alamat` (`id_alamat`, `id_pembeli`, `alamat_lengkap`, `rincian_alamat`, `lat`, `long`) VALUES (NULL, '$id_pembeli', '$alamat_lengkap', '$rincian_alamat', '$lat', '$long');");
-		return $query;
+		$this->db->query("INSERT INTO `tb_alamat` (`id_alamat`, `id_pembeli`, `alamat_lengkap`, `rincian_alamat`, `lat`, `long`) VALUES (NULL, '$id_pembeli', '$alamat_lengkap', '$rincian_alamat', '$lat', '$long');");
+		return $this->db->insert_id();
 	}
 
 	public function update_alamat()

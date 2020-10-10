@@ -80,7 +80,7 @@
 		<?php break; ?>
 	<?php case 'keranjang': ?>
 		<?php $this->load->view('keranjang-js') ?>
-		<?php if ($this->uri->segment(2) === 'checkout'): ?>
+		<?php if ($this->uri->segment(2) === 'alamat'): ?>
 			<?php $this->load->view('alamat_pemesanan-js') ?>
 		<?php elseif ($this->uri->segment(2) === 'alamatpeta'): ?>
 			<?php $this->load->view('alamat_peta-js') ?>

@@ -33,12 +33,40 @@ class Keranjang extends CI_Controller
 		}
 	}
 
+	private function MyShuffle(&$arr)
+	{
+		for ($i = 0; $i < sizeof($arr); ++$i) {
+			$r = rand(0, $i);
+			$tmp = $arr[$i];
+			$arr[$i] = $arr[$r];
+			$arr[$r] = $tmp;
+		}
+	}
+
 	public function checkout()
 	{
-		$data['alamat'] = $this->malamat->get_alamat_pembeli(3);//@TODO;masih statis. ambil dari session;
+		if ($this->input->post('alamat')) {
+			$this->session->set_userdata('alamat', $this->input->post('alamat'));
+		}
+		var_dump($this->session->userdata());
+		$data['alamat'] = $this->malamat->get_alamat_by_id($this->session->userdata('alamat'));//@TODO;masih statis. ambil dari session;
+		$this->load->view('tema/head');
+		$this->load->view('konfirmasi_pembelian', $data);
+//		$this->load->view('/menu');
+		$this->load->view('tema/footer');
+	}
+
+	public function alamat()
+	{
+		if (!$this->session->userdata('id_pengguna')) {
+			$id_alamat = $this->session->userdata('alamat');
+			$data['alamat'] = $this->malamat->get_alamat_by_id($id_alamat);
+		} else {
+			$data['alamat'] = $this->malamat->get_alamat_pembeli($this->session->userdata('id_pengguna'));//@TODO;masih statis. ambil dari session;
+		}
 		$this->load->view('tema/head');
 		$this->load->view('alamat_pemesanan', $data);
-		$this->load->view('tema/menu');
+//		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
 	}
 
@@ -53,9 +81,27 @@ class Keranjang extends CI_Controller
 	public function savealamat()
 	{
 		if ($this->input->post('alamat_lengkap') && $this->input->post('lat') && $this->input->post('long')) {
-			if($this->malamat->insert_alamat()){
-				redirect('keranjang/checkout');
+			$last_insert_id = $this->malamat->insert_alamat();
+			if ($last_insert_id) {
+				$this->session->set_userdata('alamat', $last_insert_id);
+				redirect('keranjang/alamat');
 			}
 		}
+	}
+
+	public function pembayaran()
+	{
+		$this->load->view('tema/head');
+		$this->load->view('pembayaran');
+		$this->load->view('tema/menu');
+		$this->load->view('tema/footer');
+	}
+
+	public function konfirmasi_pembelian()
+	{
+		$this->load->view('tema/head');
+		$this->load->view('konfirmasi_pembelian');
+		$this->load->view('tema/menu');
+		$this->load->view('tema/footer');
 	}
 }

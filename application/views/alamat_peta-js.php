@@ -113,7 +113,8 @@
 						position: latlng,
 						map: map
 					});
-					infowindow.setContent(results[0].formatted_address);
+					infowindow.setContent(`${results[0].formatted_address}<br><a href="<?php echo site_url('keranjang/alamat#alamatModal') ?>" class="btn btn-sm btn-success">Pilih</a>`);
+					localStorage.setItem('alamat', JSON.stringify(results[0]));
 					infowindow.open(map, marker);
 				} else {
 					window.alert('No results found');
