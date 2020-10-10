@@ -44,6 +44,16 @@
 					</label>
 				</div>
 			<?php endforeach; ?>
+			<?php if (!$this->session->userdata('id_pengguna')): ?>
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<strong>Informasi</strong><br>Silahkan <a href="<?php echo site_url('login') ?>">login</a> atau
+					<a href="<?php echo site_url('signup') ?>">daftar</a> untuk bisa menambahkan alamat lebih dari
+					satu.
+				</div>
+			<?php endif; ?>
 		</div>
 	</div>
 	<!-- continue -->

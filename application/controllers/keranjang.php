@@ -48,7 +48,29 @@ class Keranjang extends CI_Controller
 		if ($this->input->post('alamat')) {
 			$this->session->set_userdata('alamat', $this->input->post('alamat'));
 		}
-		var_dump($this->session->userdata());
+		if ($this->input->post('ewallet')) {
+			if (!$this->input->post('nomorhp')) {
+				$this->session->set_flashdata('message', 'Nomor HP tidak boleh kosong jika menggunakan metode pembayaran E-Wallet.');
+				redirect('keranjang/pembayaran');
+			}
+			$this->session->set_userdata('ewallet', $this->input->post('ewallet'));
+			$this->session->set_userdata('nohp', $this->input->post('nomorhp'));
+			$this->session->unset_userdata('bank');
+			$this->session->unset_userdata('cod');
+		}
+		if ($this->input->post('bank')) {
+			$this->session->set_userdata('bank', $this->input->post('bank'));
+			$this->session->unset_userdata('ewallet');
+			$this->session->unset_userdata('nohp');
+			$this->session->unset_userdata('cod');
+		}
+		if ($this->input->post('cod')) {
+			$this->session->set_userdata('cod', $this->input->post('cod'));
+			$this->session->unset_userdata('ewallet');
+			$this->session->unset_userdata('nohp');
+			$this->session->unset_userdata('bank');
+		}
+//		var_dump($this->input->post());
 		$data['alamat'] = $this->malamat->get_alamat_by_id($this->session->userdata('alamat'));//@TODO;masih statis. ambil dari session;
 		$this->load->view('tema/head');
 		$this->load->view('konfirmasi_pembelian', $data);
@@ -93,7 +115,7 @@ class Keranjang extends CI_Controller
 	{
 		$data['fabanks'] = get_vabanks();
 		$this->load->view('tema/head');
-		$this->load->view('pembayaran',$data);
+		$this->load->view('pembayaran', $data);
 //		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
 	}

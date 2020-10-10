@@ -38,7 +38,7 @@
 			})
 			rincianPembelian.push(`<p class="mb-1 text-muted font-weight-bold">Item Total <span class="float-right text-dark">Rp. ${$.number(total, 0, ',', '.')}</span></p>`)
 			rincianPembelian.push(`<p class="mb-1 text-muted">Ongkos Kirim<span class="text-info ml-1"><i class="icofont-info-circle"></i></span><span class="float-right text-dark">Rp. 0</span></p>`)
-			rincianPembelian.push(`<hr><h6 class="font-weight-bold mb-0">Total yang harus di bayar <span class="float-right">${$.number(total, 0, ',', '.')}</span></h6>`)
+			rincianPembelian.push(`<hr><h6 class="font-weight-bold mb-0">Total yang harus di bayar <span class="float-right">Rp. ${$.number(total, 0, ',', '.')}</span></h6>`)
 			rincianContainer.html(rincianPembelian.join(''));
 		}
 	}

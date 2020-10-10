@@ -98,15 +98,16 @@
 			right: 0;
 			bottom: 0;
 			top: 0;
-			border-radius: .25rem!important;
+			border-radius: .25rem !important;
 			background: transparent !important;
 			box-shadow: none !important;
 		}
 
-		.border-custom-radio .custom-control-input:checked~.custom-control-label::before {
+		.border-custom-radio .custom-control-input:checked ~ .custom-control-label::before {
 			border-color: #28a744;
 			border: 2px solid #28a744;
 		}
+
 		.my-custom-control-label::before {
 			right: 1.5rem;
 			position: absolute;
@@ -169,7 +170,7 @@
 </head>
 <body class="fixed-bottom-padding">
 <div class="theme-switch-wrapper"
-	 style="display: <?php echo $this->uri->segment(2) === 'alamatpeta' ? 'none' : 'block' ?>">
+	 style="display: <?php echo ($this->uri->segment(2) === 'alamatpeta' || $this->uri->segment(2) === 'checkout') ? 'none' : 'block' ?>">
 	<label class="theme-switch" for="checkbox">
 		<input type="checkbox" id="checkbox"/>
 		<div class="slider round"></div>

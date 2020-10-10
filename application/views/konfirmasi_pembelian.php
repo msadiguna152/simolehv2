@@ -26,10 +26,45 @@
 <div class="address p-3 bg-white">
 	<h6 class="m-0 text-dark">Metode Pembayaran</h6>
 </div>
+<?php if ($this->session->userdata('ewallet')): ?>
+	<div class="p-3 bg-white">
+		<a href="<?= site_url('keranjang/pembayaran') ?>" class="text-success mb-1 text-decoration-none w-100">
+			<div class="d-flex align-items-center">
+				<span class="ml-3 text-muted font-weight-bold"><?php echo $this->session->userdata('ewallet') ?></span>
+				<span class="ml-5 text-muted font-weight-bold"><?php echo $this->session->userdata('nohp') ?></span>
+			</div>
+		</a>
+	</div>
+<?php endif; ?>
+<?php if ($this->session->userdata('cod')): ?>
+	<div class="p-3 bg-white">
+		<a href="<?= site_url('keranjang/pembayaran') ?>" class="text-success mb-1 text-decoration-none w-100">
+			<div class="d-flex align-items-center">
+				<span class="ml-3 text-muted font-weight-bold">COD (Bayar di tempat)</span>
+			</div>
+		</a>
+	</div>
+<?php endif; ?>
+<?php if ($this->session->userdata('bank')): ?>
+	<div class="p-3 bg-white">
+		<a href="<?= site_url('keranjang/pembayaran') ?>" class="text-success mb-1 text-decoration-none w-100">
+			<div class="d-flex align-items-center">
+				<span class="ml-3 text-muted font-weight-bold h6">Bank <?php echo $this->session->userdata('bank') ?> Virtual Akun</span>
+			</div>
+			<small style="font-size: 10px" class="text-muted">Anda akan memperoleh nomor rekening virtual setelah
+				mengeklik tombol Proses Pembayaran</small>
+		</a>
+	</div>
+<?php endif; ?>
 <div class="p-3">
 	<a href="<?= site_url('keranjang/pembayaran') ?>" class="text-success text-decoration-none w-100">
 		<div class="d-flex align-items-center">
-			<i class="icofont-credit-card"></i> <span class="ml-3">Tambah Metode Pembayaran</span>
+			<i class="icofont-credit-card"></i>
+			<?php if ($this->session->userdata('bank') || $this->session->userdata('cod') || $this->session->userdata('ewallet')): ?>
+				<span class="ml-3">Ganti Metode Pembayaran</span>
+			<?php else: ?>
+				<span class="ml-3">Tambah Metode Pembayaran</span>
+			<?php endif; ?>
 			<i class="icofont-rounded-right ml-auto"></i>
 		</div>
 	</a>
