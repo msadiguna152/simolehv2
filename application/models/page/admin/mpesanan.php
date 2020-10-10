@@ -55,5 +55,15 @@ class Mpesanan extends CI_Model
 	{
 		return $this->db->insert_batch('tb_rincian_pesanan', $data);
 	}
+
+	function get_pesanan_by_external_id($id)
+	{
+		return $this->db->where('kode_pembayaran', $id)->get('tb_pesanan')->row();
+	}
+
+	function update_status_pesanan($status, $id)
+	{
+		return $this->db->set(['status' => $status])->where('kode_pembayaran', $id)->update('tb_pesanan');
+	}
 }
 
