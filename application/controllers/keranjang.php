@@ -47,7 +47,7 @@ class Keranjang extends CI_Controller
 				redirect('keranjang/pembayaran');
 			}
 			$this->session->set_userdata('ewallet', $this->input->post('ewallet'));
-			$this->session->set_userdata('nohp', $this->input->post('nomorhp'));
+			$this->session->set_userdata('nohpwallet', $this->input->post('nomorhp'));
 			$this->session->unset_userdata('bank');
 			$this->session->unset_userdata('cod');
 		}

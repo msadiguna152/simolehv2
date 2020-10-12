@@ -9,6 +9,7 @@ class Pesanan extends CI_Controller
 		$this->load->model('mberanda');
 		$this->load->model('page/admin/mproduk', 'mproduk');
 		$this->load->model('page/admin/mpesanan', 'mpesanan');
+		$this->load->model('page/admin/mpembeli', 'mpembeli');
 		$this->session->set_userdata('menu', 'pesanan');
 	}
 
@@ -22,10 +23,24 @@ class Pesanan extends CI_Controller
 		$this->load->view('tema/footer');
 	}
 
+	public function save_user()
+	{
+		if ($this->mpembeli->insert_pembeli()) {
+			$this->session->set_userdata('namalengkap', $this->input->post('nama'));
+			$this->session->set_userdata('nohp', $this->input->post('nohp'));
+			return response(['status' => 'success'], 'json');
+		}
+		return response(['status' => 'error'], 'json');
+	}
+
 	public function proses()
 	{
 		if (!$this->session->userdata('qty')) {
 			$this->session->set_flashdata('message', 'Ulangi beberapa saat lagi');
+			redirect('/keranjang/checkout');
+		}
+		if (!$this->session->userdata('namalengkap') || !$this->session->userdata('nohp')) {
+			$this->session->set_flashdata('message', 'Nama dan nomor hp tidak boleh kosong');
 			redirect('/keranjang/checkout');
 		}
 		$qty = $this->session->userdata('qty');
@@ -39,7 +54,7 @@ class Pesanan extends CI_Controller
 		}
 		//@TODO:Belum termasuk ongkos kirim;
 		if ($this->session->userdata('ewallet')) {
-			$nohp = $this->session->userdata('nohp');
+			$nohp = $this->session->userdata('nohpwallet');
 			$status = $this->pembayaran_ewallet($total, str_replace('-', '', $nohp));//@TODO:linkaja punya callback, buat langsung update status di database;
 			if ($status) {
 				$this->session->set_flashdata('message', 'Pemesanan berhasil');
@@ -73,6 +88,9 @@ class Pesanan extends CI_Controller
 			if ($success) {
 				return $this->simpan_rincian_pesanan($success);
 			}
+		}
+		if ($tipe_ewallet === 'LINKAJA') {
+
 		}
 	}
 

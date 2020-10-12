@@ -1,16 +1,28 @@
 <script>
 	const rincianContainer = $('#rincian-container');
-	$(document).ready(function () {
-		var keranjang = localStorage.getItem('keranjang');
-		if (keranjang !== null) {
-			var decodedKeranjang = JSON.parse(keranjang);
-			var ids = Object.keys(decodedKeranjang);
-			checkoutHelper.getRincian(ids, decodedKeranjang);
-		}
-		$(document).on('click', '#button-minus', keranjangHelper.kurangiJumlah)
-		$(document).on('click', '#button-plus', keranjangHelper.tambahJumlah)
-	})
+	const progressTag = $('#saveProgress');
 	const checkoutHelper = {
+		saveUser() {
+			var nohp = $('#nohp').val();
+			var nama = $('#namalengkap').val();
+			if (nohp !== '' && nama !== '') {
+				progressTag.text('Sedang menyimpan data...').removeClass('text-success').removeClass('text-danger');
+				$.ajax({
+					url: '<?php echo site_url('pesanan/save_user') ?>',
+					dataType: 'json',
+					data: {
+						nohp, nama
+					},
+					method: 'POST',
+					success(res) {
+						progressTag.text('Berhasil disimpan').removeClass('text-muted').addClass('text-success');
+					},
+					error(error) {
+						progressTag.text('Gagal disimpan').removeClass('text-muted').addClass('text-danger');
+					}
+				})
+			}
+		},
 		getRincian(ids, qty) {
 			rincianContainer.html('<p class="mb-1 text-muted" id="loading-rincian">Sedang Mengambil rincian <span class="float-right text-dark">.....</span></p>')
 			$.ajax({
@@ -42,4 +54,14 @@
 			rincianContainer.html(rincianPembelian.join(''));
 		}
 	}
+	$(document).ready(function () {
+		var keranjang = localStorage.getItem('keranjang');
+		if (keranjang !== null) {
+			var decodedKeranjang = JSON.parse(keranjang);
+			var ids = Object.keys(decodedKeranjang);
+			checkoutHelper.getRincian(ids, decodedKeranjang);
+		}
+		$("input#nohp").on('blur', checkoutHelper.saveUser)
+		$("input#namalengkap").on('blur', checkoutHelper.saveUser)
+	})
 </script>

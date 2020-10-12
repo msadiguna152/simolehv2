@@ -10,6 +10,7 @@
 </div>
 <div class="pembeli p-3 bg-white">
 	<h6 class="m-0 text-dark d-flex align-items-center">Identitas Pembeli <span class="small ml-auto">
+			</span>
 	</h6>
 </div>
 <div class="px-3">
@@ -18,8 +19,8 @@
 	</div>
 	<div class="form-group">
 		<input type="text"
-			   class="form-control" name="namalengkap" id="name" aria-describedby="helpId"
-			   placeholder="Contoh. Hendra Kumbara">
+			   class="form-control" name="namalengkap" id="namalengkap" aria-describedby="helpId"
+			   placeholder="Contoh. Hendra Kumbara" value="<?php echo $this->session->userdata('namalengkap') ?? '' ?>">
 	</div>
 </div>
 <div class="px-3">
@@ -29,7 +30,8 @@
 	<div class="form-group">
 		<input type="text"
 			   class="form-control" name="nohp" data-mask="0000-0000-0000" id="nohp" aria-describedby="helpId"
-			   placeholder="0000-0000-0000">
+			   placeholder="0000-0000-0000" value="<?php echo $this->session->userdata('nohp') ?? '' ?>">
+		<small id="saveProgress" class="form-text text-muted"></small>
 	</div>
 </div>
 <?php if (!$this->session->userdata('id_pengguna')): ?>
@@ -77,7 +79,7 @@
 		<a href="<?= site_url('keranjang/pembayaran') ?>" class="text-success mb-1 text-decoration-none w-100">
 			<div class="d-flex align-items-center">
 				<span class="ml-3 text-muted font-weight-bold"><?php echo $this->session->userdata('ewallet') ?></span>
-				<span class="ml-5 text-muted font-weight-bold"><?php echo $this->session->userdata('nohp') ?></span>
+				<span class="ml-5 text-muted font-weight-bold"><?php echo $this->session->userdata('nohpwallet') ?></span>
 			</div>
 		</a>
 	</div>
