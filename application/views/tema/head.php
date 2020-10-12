@@ -79,13 +79,13 @@
 		}
 
 		#pac-input:focus {
-			border-color: #4d90fe;
+			border-color: #28a745;
 		}
 
 		#title {
 			border-radius: 6px 6px 0 0;
 			color: #fff;
-			background-color: #4d90fe;
+			background-color: #28a745;
 			font-size: 12px;
 			font-weight: 500;
 			padding: 6px 12px;

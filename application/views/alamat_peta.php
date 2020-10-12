@@ -3,9 +3,9 @@
 		<div class="d-flex align-items-center">
 			<a class="font-weight-bold text-success text-decoration-none" href="<?php echo site_url('keranjang') ?>">
 				<i class="icofont-rounded-left back-page"></i></a>
-			<h5 class="font-weight-bold m-0 ml-3">Select Address</h5>
+			<h5 class="font-weight-bold m-0 ml-3">Pilih Alamat</h5>
 			<button type="button" class="btn btn-outline-success btn-sm ml-auto" data-toggle="modal"
-					data-target="#alamatModal">Add
+					data-target="#alamatModal">Tambah
 			</button>
 			<a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a>
 		</div>
@@ -15,8 +15,6 @@
 			<div>
 				<div id="title" class="d-flex justify-content-between">
 					<span>Pilih Lokasi Pengantaran</span>
-					<!--					<a href="#" id="btn-min" class="btn btn-warning"><i-->
-					<!--							class="icofont-minus-square"></i></a>-->
 				</div>
 				<div id="type-selector" class="pac-controls">
 					<div class="custom-control custom-checkbox">

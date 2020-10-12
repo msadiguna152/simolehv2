@@ -8,21 +8,67 @@
 		</div>
 	</div>
 </div>
+<div class="pembeli p-3 bg-white">
+	<h6 class="m-0 text-dark d-flex align-items-center">Identitas Pembeli <span class="small ml-auto">
+	</h6>
+</div>
+<div class="px-3">
+	<div class="d-flex align-items-center">
+		<p class="mb-2 font-weight-bold">Nama Lengkap</p>
+	</div>
+	<div class="form-group">
+		<input type="text"
+			   class="form-control" name="namalengkap" id="name" aria-describedby="helpId"
+			   placeholder="Contoh. Hendra Kumbara">
+	</div>
+</div>
+<div class="px-3">
+	<div class="d-flex align-items-center">
+		<p class="mb-2 font-weight-bold">Nomor Hp</p>
+	</div>
+	<div class="form-group">
+		<input type="text"
+			   class="form-control" name="nohp" data-mask="0000-0000-0000" id="nohp" aria-describedby="helpId"
+			   placeholder="0000-0000-0000">
+	</div>
+</div>
+<?php if (!$this->session->userdata('id_pengguna')): ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<strong class="mb-2">Informasi</strong><br>Silahkan <a href="<?php echo site_url('login') ?>">login</a> atau
+		<a href="<?php echo site_url('signup') ?>">daftar</a> untuk menerima kemudahan pada transaksi selanjutnya.
+	</div>
+<?php endif; ?>
+<?php $alamat_dipilih = $alamat->row() ?? null ?>
 <div class="address p-3 bg-white">
 	<h6 class="m-0 text-dark d-flex align-items-center">Alamat <span class="small ml-auto">
 			<a href="<?php echo site_url('keranjang/alamat') ?>"
 			   class="font-weight-bold text-decoration-none text-success">
-				<i class="icofont-location-arrow"></i> Ganti</a></span></h6>
+				<i class="icofont-location-arrow"></i> <?php echo $alamat_dipilih ? 'Ganti' : 'Tambah' ?></a></span>
+	</h6>
 </div>
-<?php $alamat_dipilih = $alamat->row() ?? [] ?>
-<div class="p-3">
-	<div class="d-flex align-items-center">
-		<p class="mb-2 font-weight-bold">Alamat</p>
-		<p class="mb-2 badge badge-success ml-auto">Dipilih</p>
+<?php if ($alamat_dipilih): ?>
+	<div class="p-3">
+		<div class="d-flex align-items-center">
+			<p class="mb-2 font-weight-bold">Alamat</p>
+			<p class="mb-2 badge badge-success ml-auto">Dipilih</p>
+		</div>
+		<p class="small text-muted m-0"><?= $alamat_dipilih->alamat_lengkap ?></p>
+		<p class="small text-muted m-0"><?= $alamat_dipilih->rincian_alamat ?></p>
 	</div>
-	<p class="small text-muted m-0"><?= $alamat_dipilih->alamat_lengkap ?></p>
-	<p class="small text-muted m-0"><?= $alamat_dipilih->rincian_alamat ?></p>
-</div>
+<?php else: ?>
+	<div class="p-3">
+		<a href="<?= site_url('keranjang/alamat') ?>" class="text-success text-decoration-none w-100">
+			<div class="d-flex align-items-center">
+				<i class="icofont-credit-card"></i>
+				<span class="ml-3">Tambah Alamat Pengiriman</span>
+				<i class="icofont-rounded-right ml-auto"></i>
+			</div>
+		</a>
+	</div>
+<?php endif; ?>
 <div class="address p-3 bg-white">
 	<h6 class="m-0 text-dark">Metode Pembayaran</h6>
 </div>

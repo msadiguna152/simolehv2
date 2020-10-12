@@ -16,7 +16,8 @@
 				$('#cart-item-count').text(jumlahIsi.length);
 				localStorage.setItem('keranjang', JSON.stringify(decodeKeranjang));
 			} else {
-				var itemBaru = {id: {count: 1}};
+				var itemBaru = {};
+				itemBaru[id] = {count: 1};
 				localStorage.setItem('keranjang', JSON.stringify(itemBaru));
 			}
 			berandaHelper.showToast({message: 'Berhasil masuk dalam keranjang'})

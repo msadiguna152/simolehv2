@@ -64,6 +64,11 @@
 			var updateQty = parseInt(currentQty) - 1;
 			if (updateQty < 1) {
 				$(this).parents('.cart-items').remove();
+				var banyakItem = $('#item-keranjang').find('.cart-items').length;
+				if (banyakItem === 0) {
+					keranjangItemElemen.html('<h5 class="text-center text-muted mt-4">Keranjang Kosong</h5>');
+					$('#detail-checkout-href').hide();
+				}
 			}
 			$(this).parent('div').siblings('input').val(updateQty);
 			keranjangHelper.tampilkanRincianCekout();
@@ -98,6 +103,8 @@
 			var decodedKeranjang = JSON.parse(keranjang);
 			var ids = Object.keys(decodedKeranjang);
 			keranjangHelper.getItems(ids, decodedKeranjang);
+		} else {
+			keranjangItemElemen.html('<h5 class="text-center text-muted mt-4">Keranjang Kosong</h5>');
 		}
 		$(document).on('click', '#button-minus', keranjangHelper.kurangiJumlah)
 		$(document).on('click', '#button-plus', keranjangHelper.tambahJumlah)

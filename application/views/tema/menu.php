@@ -15,7 +15,9 @@
 		   } ?>">
 			<p class="h5 m-0"><i class="icofont-cart"></i></p>
 			Keranjang
-			<div style="position: absolute;top:10px;right: 15px" class="badge badge-danger p-1 ml-1 small" id="cart-item-count">3</div>
+			<div style="position: absolute;top:10px;right: 15px" class="badge badge-danger p-1 ml-1 small"
+				 id="cart-item-count">0
+			</div>
 		</a>
 		<a href="<?= base_url() ?>pesanan"
 		   class="text-muted col small text-decoration-none p-2 <?php if ($this->session->userdata('menu') == 'pesanan') {
