@@ -29,18 +29,21 @@
             <!-- categories -->
             <div class="p-3 osahan-categories">
                <h6 class="mb-2">Kategori</h6>
-               <div class="row m-0">
-                  <?php foreach ($data_kategori->result() as $data): ?>
-                  <div class="col pl-0 pr-1 py-1">
-                     <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
-                        <a href="<?= base_url('')?>beranda/kategori/<?= strtolower($data->nama_kategori); ?>">
-                           <img src="<?php echo base_url()?>file/<?php echo $data->icon; ?>" class="img-fluid px-2">
-                           <p class="m-0 pt-2 text-muted text-center"><?= $data->nama_kategori; ?></p>
-                        </a>
-                     </div>
-                  </div>
-                  <?php endforeach;?>
-               </div>
+	           <?php $chunks = array_chunk($data_kategori->result(), 4); ?>
+	              <?php foreach ($chunks as $data_chunk): ?>
+		              <div class="row m-0">
+	              		<?php foreach ($data_chunk as $key => $data): ?>
+		                  <div class="col pl-0 pr-1 py-1">
+		                     <div class="bg-white shadow-sm rounded text-center  px-2 py-3 c-it">
+		                        <a href="<?= base_url('')?>beranda/kategori/<?= strtolower($data->nama_kategori); ?>">
+		                           <img src="<?php echo base_url()?>file/<?php echo $data->icon; ?>" class="img-fluid px-2">
+		                           <p class="m-0 pt-2 text-muted text-center"><?= $data->nama_kategori; ?></p>
+		                        </a>
+		                     </div>
+		                  </div>
+		              	<?php endforeach;?>
+	                </div>
+	              <?php endforeach;?>
             </div>
 
             <!-- Promos -->
