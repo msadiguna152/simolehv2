@@ -97,9 +97,7 @@
 			</div>
 		</div>
 	<?php endif; ?>
-
-	<!-- total price -->
-	<!-- Destination -->
+	<?php if (!$this->session->userdata('ewallet')): ?>
 	<div class="p-3 border-bottom bg-white">
 		<div class="d-flex align-items-center mb-2">
 			<h6 class="font-weight-bold mb-1">Total yang harus dibayar</h6>
@@ -107,4 +105,5 @@
 		</div>
 		<p class="m-0 small text-muted">You can check your order detail here,<br>Thank you for order.</p>
 	</div>
+	<?php endif; ?>
 </div>
