@@ -113,13 +113,30 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="<?php echo site_url('page/admin/pesanan')?>" class="nav-link <?php if($this->session->userdata('menu') == 'pesanan'){echo "active"; }?>">
+          <li class="nav-item has-treeview <?php if($this->session->userdata('menu2') == 'pesanan'){echo "menu-open"; }?>">
+            <a href="#" class="nav-link <?php if($this->session->userdata('menu2') == 'pesanan'){echo "active"; }?>">
               <i class="nav-icon fas fa-list"></i>
               <p>
                 Pesanan
+              <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="<?php echo site_url('page/admin/pesanan')?>" class="nav-link <?php if($this->session->userdata('menu') == 'pesanan'){echo "active"; }?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pesanan</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="<?php echo site_url('page/admin/pembayaran')?>" class="nav-link <?php if($this->session->userdata('menu') == 'pembayaran'){echo "active"; }?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pembayaran</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
           <li class="nav-item has-treeview <?php if($this->session->userdata('menu2') == 'produk'){echo "menu-open"; }?>">
