@@ -1,7 +1,7 @@
 
       <div class="osahan-order">
          <div class="order-menu">
-            <h5 class="font-weight-bold p-3 d-flex align-items-center">Pesanan <a class="toggle ml-auto" href="#"><i class="icofont-navigation-menu"></i></a></h5>
+            <h5 class="font-weight-bold p-3 d-flex align-items-center">Pesanan</h5>
          </div>
          <div class="order-body px-3 pt-3">
             <div class="pb-3">

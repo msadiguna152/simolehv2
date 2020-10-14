@@ -13,7 +13,6 @@
                   <span class="badge badge-danger p-1 ml-1 small">2</span>
                   </a>
                </p>
-               <a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a>
             </div>
             <a href="<?= site_url()?>pencarian" class="text-decoration-none">
                <div class="input-group mt-3 rounded shadow-sm overflow-hidden bg-white">
@@ -29,7 +28,7 @@
             <!-- categories -->
             <div class="p-3 osahan-categories">
                <h6 class="mb-2">Kategori</h6>
-	           <?php $chunks = array_chunk($data_kategori->result(), 4); ?>
+	           <?php $chunks = array_chunk($data_kategori->result(), 3); ?>
 	              <?php foreach ($chunks as $data_chunk): ?>
 		              <div class="row m-0">
 	              		<?php foreach ($data_chunk as $key => $data): ?>
@@ -69,7 +68,9 @@
             <!-- pick today -->
 
             <div class="pick_today px-3">
-               <?php $a=1; foreach ($data_kategori->result() as $data): ?>
+               <?php 
+               $a=1; 
+               foreach ($data_kategori->result() as $data): ?>
                <div class="row <?php if ($a>=2) { echo "pt-3"; }?>">
                   <?php
                   $id_kategori = $data->id_kategori;
@@ -90,28 +91,32 @@
                                  <p><?= $data_p->deskripsi; ?></p>
                                  <div class="d-flex align-items-center">
                                     <h6 class="price m-0 text-success"><?= "Rp" . number_format($data_p->harga,0,',','.'); ?></h6>
-                           <a class="ml-auto" href="cart.html">
-                           <div class="input-group input-spinner ml-auto cart-items-number">
-                           <div class="input-group-prepend">
-                           <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
-                           </div>
-                           <input type="text" class="form-control" value="1">
-                           <div class="input-group-append">
-                           <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
-                           </div>
-                           </div>
-                           </a>
-                           </div>
-                           </div>
+                                    <a class="ml-auto" href="cart.html">
+                                    <div class="input-group input-spinner ml-auto cart-items-number">
+                                       <div class="input-group-prepend">
+                                          <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
+                                       </div>
+                                       <input type="text" class="form-control" value="1">
+                                       <div class="input-group-append">
+                                          <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
+                                       </div>
+                                    </div>
+                                    </a>
+                                 </div>
+                              </div>
                            </a>
                         </div>
                      </div>
                   </div>
+
                   <?php endforeach;?>
                </div>
                <?php $a++; endforeach;?>
             </div>
 
+            <!-- Most sales -->
+            <div class="title d-flex align-items-center p-3">
+            </div>
             <!-- Most sales -->
             <div class="title d-flex align-items-center p-3">
             </div>

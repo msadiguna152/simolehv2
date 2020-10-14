@@ -20,7 +20,7 @@
 								<h6><?= $data->nama_produk; ?></h6>
 								<p><?= $data->deskripsi; ?></p>
 								<div class="d-flex align-items-center">
-									<h6 class="price m-0 text-success"><?= "Rp " . number_format($data->harga, 2, ',', '.'); ?></h6>
+									<h6 class="price m-0 text-success"><?= "Rp " . number_format($data->harga, 0, ',', '.'); ?></h6>
 									<a href="javascript:void(0)" data-id="<?= $data->id_produk ?>"
 									   id="btn-add-cart"
 									   class="btn btn-success btn-sm ml-auto">+

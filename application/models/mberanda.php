@@ -4,7 +4,7 @@ class Mberanda extends CI_Model {
 
 public function get_kategori()
 	{
-		$query = $this->db->query("SELECT * FROM `tb_kategori` ORDER BY `tb_kategori`.`id_kategori` DESC");
+		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori GROUP BY tb_produk.id_kategori ORDER BY `tb_kategori`.`id_kategori` DESC");
 		return $query;
 	}
 
