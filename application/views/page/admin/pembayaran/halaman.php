@@ -55,6 +55,7 @@
                   <thead>
                   <tr>
                     <th>No</th>
+                    <th>Kode Pembayaran</th>
                     <th>Nama Pembeli</th>
                     <th>Tanggal Pesanan</th>
                     <th>Tanggal Pembayaran</th>
@@ -67,6 +68,7 @@
                     <?php $no=1; foreach ($data_pembayaran->result() as $data): ?>
                     <tr>
                       <td><?php echo $no ?></td>
+                      <td><?php echo htmlspecialchars($data->kode_pembayaran); ?></td>
                       <td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
                       <td><?php echo htmlspecialchars($data->tanggal_pesanan); ?></td>
                       <td><?php echo htmlspecialchars($data->tanggal_pembayaran); ?></td>

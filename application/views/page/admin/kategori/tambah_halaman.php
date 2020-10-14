@@ -23,7 +23,7 @@
         <!-- Main row -->
         <div class="row">
 
-          <div class="col-md-12 connectedSortable">
+          <div class="col-md-6 connectedSortable">
 
             <!-- PRODUCT LIST -->
             <div class="card">
@@ -43,16 +43,11 @@
               <div class="card-body">
                 <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/kategori/insert')?>" method="post" id="quickForm">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
 
                         <div class="form-group">
                           <label for="nama_kategori">Nama Kategori</label>
-                          <input type="text" class="form-control" id="" name="nama_kategori" required="" placeholder="Masukan Nama Kategori...">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="slug">Slug</label>
-                          <input type="text" class="form-control" id="" name="slug" required="" placeholder="Masukan Slug Kategori...">
+                          <input type="text" class="form-control" onkeypress="slug()" id="nama_kategori" name="nama_kategori" required="" placeholder="Masukan Nama Kategori...">
                         </div>
 
                         <div class="form-group">
@@ -122,6 +117,6 @@
           return false;
         }
     
-    }
+    };
   </script>
 

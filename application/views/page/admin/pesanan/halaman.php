@@ -57,9 +57,10 @@
                     <th>No</th>
                     <th>Tanggal Pesanan</th>
                     <th>Nama Pembeli</th>
-                    <th>Status</th>
-                    <th>Cara Pembayaran</th>
+                    <th>Status Pesanan</th>
+                    <th>Jenis Pembayaran</th>
                     <th>Total Pembayaran</th>
+                    <th>Status Pembayaran</th>
                     <th>Rincian Pesanan</th>
                     <th>Pilihan</th>
                   </tr>
@@ -70,9 +71,32 @@
                       <td><?php echo $no ?></td>
                       <td><?php echo htmlspecialchars($data->tanggal_pesanan); ?></td>
                       <td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
-                      <td><?php echo htmlspecialchars($data->status); ?></td>
-                      <td><?php echo htmlspecialchars($data->cara_pembayaran); ?></td>
+                      <td>
+                        <?php
+                          $status = htmlspecialchars($data->status); 
+                          if ($status==1) {
+                            echo '<span class="badge badge-primary">Baru</span>';
+                          } elseif ($status==2) {
+                            echo '<span class="badge badge-warning">Diproses</span>';
+                          } elseif ($status==3) {
+                            echo '<span class="badge badge-info">Dikirim</span>';
+                          } elseif ($status==4) {
+                            echo '<span class="badge badge-success">Selesai</span>';
+                          } elseif ($status==5) {
+                            echo '<span class="badge badge-danger">Batal</span>';
+                          }
+                        ?>
+                      <td><?php echo htmlspecialchars($data->jenis_pembayaran); ?></td>
                       <td><?php echo "Rp " . number_format(htmlspecialchars($data->total_pembayaran),0,',','.'); ?></td>
+                      <td>
+                        <?php
+                          $status = htmlspecialchars($data->status_pembayaran); 
+                          if ($status=="Lunas") {
+                            echo '<span class="badge badge-success">Lunas</span>';
+                          }
+                        ?>  
+                      </td>
+
                       <td>
                         <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Rincian Pesanan" href="<?php echo base_url()?>page/admin/pesanan/lihat?id=<?php echo $data->id_pesanan ?>&token=<?php echo md5($data->id_pesanan) ?>">
                             <i class="fas fa-eye"></i>

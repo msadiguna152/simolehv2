@@ -70,7 +70,6 @@
                     <th>Nama Pembeli</th>
                     <th>Nomor Telpon</th>
                     <th>Email</th>
-                    <th>Password</th>
                     <th>Pilihan</th>
                   </tr>
                   </thead>
@@ -81,7 +80,6 @@
                       <td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
                       <td><?php echo htmlspecialchars($data->no_telpon); ?></td>
                       <td><?php echo htmlspecialchars($data->email); ?></td>
-                      <td><?php echo htmlspecialchars($data->password); ?></td>
                       <td align="center">
                         <!-- Tombol Edit -->
                         <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Data Pembeli : <?php echo $data->nama_pembeli ?>" href="<?php echo base_url()?>page/admin/pembeli/lihat?id=<?php echo $data->id_pembeli ?>&token=<?php echo md5($data->id_pembeli)?>">

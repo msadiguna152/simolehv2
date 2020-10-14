@@ -9,7 +9,6 @@
     $nama_pembeli = $data->nama_pembeli;
     $no_telpon = $data->no_telpon;
     $email = $data->email;
-    $password = $data->password;
     endforeach;
   } else {
       echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
@@ -77,11 +76,6 @@
                         <div class="form-group">
                           <label for="email">Email</label>
                           <input type="text" class="form-control" id="" name="email" required="" value="<?= $email; ?>">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="text" class="form-control" id="" name="password" required="" value="<?= $password; ?>">
                         </div>
 
                   </div>

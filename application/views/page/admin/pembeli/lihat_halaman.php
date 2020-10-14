@@ -9,7 +9,6 @@
     $nama_pembeli = $data->nama_pembeli;
     $no_telpon = $data->no_telpon;
     $email = $data->email;
-    $password = $data->password;
     endforeach;
   } else {
       echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';

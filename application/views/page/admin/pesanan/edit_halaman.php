@@ -9,10 +9,12 @@
     $id_pembeli = $data->id_pembeli;
     $nama_pembeli = $data->nama_pembeli;
     $tanggal_pesanan = $data->tanggal_pesanan;
-    $cara_pembayaran = $data->cara_pembayaran;
+    $jenis_pembayaran = $data->jenis_pembayaran;
     $total_pembayaran = $data->total_pembayaran;
     $voucher = $data->voucher;
     $ongkir = $data->ongkir;
+    $status = $data->status;
+
     endforeach;
   } else {
       echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
@@ -78,8 +80,8 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="cara_pembayaran">Cara Pembayaran</label>
-                          <input type="text" class="form-control" id="" readonly="" value="<?= $cara_pembayaran; ?>">
+                          <label for="jenis_pembayaran">Cara Pembayaran</label>
+                          <input type="text" class="form-control" id="" readonly="" value="<?= $jenis_pembayaran; ?>">
                         </div>
 
                         <div class="form-group">
@@ -95,6 +97,17 @@
                         <div class="form-group">
                           <label for="ongkir">Ongkos Kirim</label>
                           <input type="text" class="form-control" id="" name="ongkir" value="<?= $ongkir; ?>">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="status">Status Pesanan</label>
+                          <select class="form-control" id="" name="status">
+                            <option <?php if ($status==1) { echo "selected";} ?> value="1">Baru</option>
+                            <option <?php if ($status==2) { echo "selected";} ?> value="2">Diproses</option>
+                            <option <?php if ($status==3) { echo "selected";} ?> value="3">Dikirim</option>
+                            <option <?php if ($status==4) { echo "selected";} ?> value="4">Selesai</option>
+                            <option <?php if ($status==5) { echo "selected";} ?> value="5">Batal</option>
+                          </select>
                         </div>
 
                   </div>

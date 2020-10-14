@@ -9,7 +9,8 @@
     $no_telpon = $data->no_telpon;
     $alamat_lengkap = $data->alamat_lengkap;
     $status = $data->status;
-    $cara_pembayaran = $data->cara_pembayaran;
+    $jenis_pembayaran = $data->jenis_pembayaran;
+    $status_pembayaran = $data->status_pembayaran;
     $voucher = $data->voucher;
     $ongkir = $data->ongkir;
     $tanggal_pesanan = $data->tanggal_pesanan;
@@ -57,6 +58,10 @@
                 <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pembeli/update')?>" method="post" id="quickForm">
                 <div class="row">
                   <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="tanggal_pesanan">Tanggal Pesanan</label>
+                          <p class="text-justify"><?= $tanggal_pesanan; ?></p>
+                        </div>
 
                         <div class="form-group">
                           <label for="nama_pembeli">Nama Pembeli</label>
@@ -75,20 +80,34 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="status">Status</label>
-                          <p class="text-justify"><?= $status; ?></p>
+                          <label for="status">Status Pesanan</label>
+                          <p class="text-justify">
+                            <?php
+                              $status = htmlspecialchars($data->status); 
+                              if ($status==1) {
+                                echo '<span class="badge badge-primary">Baru</span>';
+                              } elseif ($status==2) {
+                                echo '<span class="badge badge-warning">Diproses</span>';
+                              } elseif ($status==3) {
+                                echo '<span class="badge badge-info">Dikirim</span>';
+                              } elseif ($status==4) {
+                                echo '<span class="badge badge-success">Selesai</span>';
+                              } elseif ($status==5) {
+                                echo '<span class="badge badge-danger">Batal</span>';
+                              }
+                            ?>
+                          </p>
                         </div>
 
                         <div class="form-group">
-                          <label for="cara_pembayaran">Cara Pembayaran</label>
-                          <p class="text-justify"><?= $cara_pembayaran; ?></p>
+                          <label for="jenis_pembayaran">Cara Pembayaran</label>
+                          <p class="text-justify"><?= $jenis_pembayaran; ?></p>
                         </div>
 
                         <div class="form-group">
-                          <label for="tanggal_pesanan">Tanggal Pesanan</label>
-                          <p class="text-justify"><?= $tanggal_pesanan; ?></p>
+                          <label for="status_pembayaran">Status Pembayaran</label>
+                          <p class="text-justify"><?= $status_pembayaran; ?></p>
                         </div>
-
                   </div>
                 </div>
 

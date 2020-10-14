@@ -16,8 +16,8 @@ public function get_edit_kategori($id_kategori)
 
 public function insert_kategori()
 	{
-		$nama_kategori = $this->input->post('nama_kategori');
-		$slug = $this->input->post('slug');
+		$nama_kategori = ucwords($this->input->post('nama_kategori'));
+		$slug = str_replace(" ", "-",strtolower($nama_kategori));
 
 		$icon = $_FILES['icon']['name'];
 		$config['upload_path'] = './file/';
@@ -34,8 +34,8 @@ public function insert_kategori()
 public function update_kategori()
 	{
 		$id_kategori = $this->input->post('id_kategori');
-		$nama_kategori = $this->input->post('nama_kategori');
-		$slug = $this->input->post('slug');
+		$nama_kategori = ucwords($this->input->post('nama_kategori'));
+		$slug = str_replace(" ", "-",strtolower($nama_kategori));
 
 		$icon2 = $_FILES['icon']['name'];
 
