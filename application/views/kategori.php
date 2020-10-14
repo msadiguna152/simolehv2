@@ -3,7 +3,7 @@
 		<div class="d-flex align-items-center">
 			<a class="font-weight-bold text-success text-decoration-none" href="<?= site_url() ?>beranda"><i
 						class="icofont-rounded-left back-page"></i></a><span
-					class="font-weight-bold ml-3 h6 mb-0"><?= ucfirst($nama_kategori); ?></span>
+					class="font-weight-bold ml-3 h6 mb-0"><?= ucwords(str_replace("-", " ", $nama_kategori)); ?></span>
 		</div>
 	</div>
 	<div class="osahan-listing px-3 bg-white">

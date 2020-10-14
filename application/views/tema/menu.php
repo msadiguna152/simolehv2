@@ -1,3 +1,4 @@
+<br>
 <div class="osahan-menu-fotter fixed-bottom bg-white text-center border-top">
 	<div class="row m-0">
 		<a href="<?= base_url() ?>beranda"
