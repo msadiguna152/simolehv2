@@ -100,7 +100,7 @@
                       </td>
 
                       <td>
-                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Rincian Pesanan" href="<?php echo base_url()?>page/admin/pesanan/lihat?id=<?php echo $data->id_pesanan ?>&token=<?php echo md5($data->id_pesanan) ?>">
+                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Rincian Pesanan" href="<?php echo base_url()?>page/kurir/pesanan/lihat?id=<?php echo $data->id_pesanan ?>&token=<?php echo md5($data->id_pesanan) ?>">
                             <i class="fas fa-eye"></i>
                         </a>
                       </td>
@@ -112,12 +112,8 @@
                         </a>
 
                         <!-- Tombol Edit -->
-                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Edit Data Pesanan" href="<?php echo base_url()?>page/admin/pesanan/edit?id=<?php echo $data->id_pesanan ?>&token=<?php echo md5($data->id_pesanan)?>">
+                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Edit Data Pesanan" href="<?php echo base_url()?>page/kurir/pesanan/edit?id=<?php echo $data->id_pesanan ?>&token=<?php echo md5($data->id_pesanan)?>">
                             <i class="fas fa-edit"></i>
-                        </a>
-                        <!-- Tombol Delete -->
-                        <a class="btn btn-danger btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Hapus Data Pesanan" href="<?php echo base_url()?>page/admin/pesanan/delete?id_pesanan=<?php echo $data->id_pesanan ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data Pesanan?')">
-                            <i class="fas fa-trash"></i>
                         </a>
                       </td>
                     </tr>

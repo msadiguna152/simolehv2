@@ -5,29 +5,26 @@ class Mpesanan extends CI_Model
 
 	public function get_pesanan()
 	{
+		$id_pengguna = $this->session->userdata('id_pengguna');
 		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
 			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
 			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli
 			JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
-			JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna
+			JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna 
+			WHERE tb_pengguna.id_pengguna = '$id_pengguna'
 			ORDER BY `tb_pesanan`.`id_pesanan` DESC");
-		return $query;
-	}
-
-	public function get_kurir()
-	{
-		$query = $this->db->query("SELECT * FROM `tb_pengguna` WHERE level='Kurir'");
 		return $query;
 	}
 
 	public function get_detail_pesanan($id_pesanan)
 	{
+		$id_pengguna = $this->session->userdata('id_pengguna');
 		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
 			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
 			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli
 			JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
 			JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna
-			WHERE `tb_pesanan`.`id_pesanan` = '$id_pesanan'");
+			WHERE `tb_pesanan`.`id_pesanan` = '$id_pesanan' AND tb_pengguna.id_pengguna = '$id_pengguna'");
 		return $query;
 	}
 
@@ -51,42 +48,10 @@ class Mpesanan extends CI_Model
 	public function update_pesanan()
 	{
 		$id_pesanan = $this->input->post('id_pesanan');
-		$total_pembayaran = $this->input->post('total_pembayaran');
-		$id_pengguna = $this->input->post('id_pengguna');
-		$ongkir = $this->input->post('ongkir');
-		$voucher = $this->input->post('voucher');
 		$status = $this->input->post('status');
-		$catatan = $this->input->post('catatan');
 
-		$query = $this->db->query("UPDATE `tb_pesanan` SET `total_pembayaran` = '$total_pembayaran', `ongkir` = '$ongkir', `status` = '$status', `voucher` = '$voucher', `catatan` = '$catatan', `id_pengguna` = '$id_pengguna' WHERE `tb_pesanan`.`id_pesanan` = '$id_pesanan';");
+		$query = $this->db->query("UPDATE `tb_pesanan` SET `status` = '$status' WHERE `tb_pesanan`.`id_pesanan` = '$id_pesanan';");
 		return $query;
-	}
-
-	function delete_pesanan($id_pesanan)
-	{
-		$query = $this->db->query("DELETE FROM `tb_pesanan` WHERE `tb_pesanan`.`id_pesanan` = '$id_pesanan'");
-		return $query;
-	}
-
-	function insert_pesanan($data)
-	{
-		$this->db->insert('tb_pesanan', $data);
-		return $this->db->insert_id();
-	}
-
-	function insert_rincian_pesanan($data)
-	{
-		return $this->db->insert_batch('tb_rincian_pesanan', $data);
-	}
-
-	function get_pesanan_by_external_id($id)
-	{
-		return $this->db->where('kode_pembayaran', $id)->get('tb_pesanan')->row();
-	}
-
-	function update_status_pesanan($status, $id)
-	{
-		return $this->db->set(['status' => $status])->where('kode_pembayaran', $id)->update('tb_pesanan');
 	}
 }
 

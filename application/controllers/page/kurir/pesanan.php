@@ -5,12 +5,12 @@ class Pesanan extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		if($this->session->userdata('level') != "Admin"){
+		if($this->session->userdata('level') != "Kurir"){
 			$this->session->sess_destroy();
 			echo '<script language="javascript">alert("Akses Di Tolak!");';
 			echo 'document.location="'.site_url('auth').'";</script>';
 		}		
-		$this->load->model('page/admin/mpesanan');
+		$this->load->model('page/kurir/mpesanan');
 		$this->session->set_userdata('menu', 'pesanan');
 		$this->session->set_userdata('menu2', 'pesanan');
 
@@ -22,10 +22,10 @@ class Pesanan extends CI_Controller {
 		$data['level'] = $this->session->userdata('level');
 		$data['data_pesanan'] = $this->mpesanan->get_pesanan();
 
-		$this->load->view('page/admin/tema/head',$data);
-		$this->load->view('page/admin/tema/menu');
-		$this->load->view('page/admin/pesanan/halaman');
-		$this->load->view('page/admin/tema/footer');
+		$this->load->view('page/kurir/tema/head',$data);
+		$this->load->view('page/kurir/tema/menu');
+		$this->load->view('page/kurir/pesanan/halaman');
+		$this->load->view('page/kurir/tema/footer');
 	}
 
 
@@ -33,16 +33,15 @@ class Pesanan extends CI_Controller {
 	{
 		$id_pesanan = $this->input->get('id');
 		$this->session->set_userdata('aksi', 'edit');
-		$data['data_kurir'] = $this->mpesanan->get_kurir();
 
 		$data['data_pesanan'] = $this->mpesanan->get_edit_pesanan($id_pesanan);
 		$this->session->set_flashdata('token', $this->input->get('token'));
 		$data['get_token2'] = $this->input->get('id');
 		$data['level'] = $this->session->userdata('level');
-		$this->load->view('page/admin/tema/head',$data);
-		$this->load->view('page/admin/tema/menu');
-		$this->load->view('page/admin/pesanan/edit_halaman');
-		$this->load->view('page/admin/tema/footer');
+		$this->load->view('page/kurir/tema/head',$data);
+		$this->load->view('page/kurir/tema/menu');
+		$this->load->view('page/kurir/pesanan/edit_halaman');
+		$this->load->view('page/kurir/tema/footer');
 	}
 
 	//fungsi memperbaharui data
@@ -52,25 +51,10 @@ class Pesanan extends CI_Controller {
 		
 		if ($query==true) {
 			$this->session->set_flashdata('hasil', 'swalberhasilubah');
-			echo '<script language="javascript">document.location="'.site_url('page/admin/pesanan').'";</script>';
+			echo '<script language="javascript">document.location="'.site_url('page/kurir/pesanan').'";</script>';
 		} elseif ($query==false) {
 			$this->session->set_flashdata('hasil', 'swalgagalubah');
-			echo '<script language="javascript">document.location="'.site_url('page/admin/pesanan').'";</script>';
-		}
-	}
-
-	//fungsi hapus data
-	public function delete()
-	{
-		$id_pesanan = $this->input->get('id_pesanan');
-		$query = $this->mpesanan->delete_pesanan($id_pesanan);
-
-		if ($query==true) {
-			$this->session->set_flashdata('hasil', 'swalberhasilhapus');
-			echo '<script language="javascript">document.location="'.site_url('page/admin/pesanan').'";</script>';
-		} elseif ($query==false) {
-			$this->session->set_flashdata('hasil', 'swalgagalhapus');
-			echo '<script language="javascript">document.location="'.site_url('page/admin/pesanan').'";</script>';
+			echo '<script language="javascript">document.location="'.site_url('page/kurir/pesanan').'";</script>';
 		}
 	}
 
@@ -86,10 +70,10 @@ class Pesanan extends CI_Controller {
 		$data['get_token2'] = $this->input->get('id');
 		$data['level'] = $this->session->userdata('level');
 
-		$this->load->view('page/admin/tema/head',$data);
-		$this->load->view('page/admin/tema/menu');
-		$this->load->view('page/admin/pesanan/lihat_halaman');
-		$this->load->view('page/admin/tema/footer');
+		$this->load->view('page/kurir/tema/head',$data);
+		$this->load->view('page/kurir/tema/menu');
+		$this->load->view('page/kurir/pesanan/lihat_halaman');
+		$this->load->view('page/kurir/tema/footer');
 	}
 
 }

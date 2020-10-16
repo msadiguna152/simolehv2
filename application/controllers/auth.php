@@ -11,10 +11,7 @@ class auth extends CI_Controller {
 	//index atau halaman login
 	public function index()
 	{
-		$this->load->view('tema/head');
-		$this->load->view('login');
-		$this->load->view('tema/menu');
-		$this->load->view('tema/footer');
+		$this->load->view('loginv2');
 	}
 
 	//memeriksa hasil inputan di halaman login
@@ -46,10 +43,10 @@ class auth extends CI_Controller {
 				$this->session->set_flashdata('hasil', 'berhasillogin');
 				echo '<script language="javascript">document.location="'.site_url('page/admin/dashboard').'";</script>';
 			}
-			if($this->session->userdata('level') == 'Pengantar')
+			if($this->session->userdata('level') == 'Kurir')
 			{
 				$this->session->set_flashdata('hasil', 'berhasillogin');
-				echo '<script language="javascript">document.location="'.site_url('page/pengantar/dashboard').'";</script>';
+				echo '<script language="javascript">document.location="'.site_url('page/kurir/pesanan').'";</script>';
 			}
 			else {
 				echo '<script language="javascript">alert("Username dan Password Tidak Valid!");';
@@ -62,7 +59,6 @@ class auth extends CI_Controller {
 			echo '<script language="javascript">alert("Username dan Password Tidak Valid!");';
 			echo 'document.location="'.site_url('auth').'";</script>';
 		}
-
 	}
 
  	//fungsi logout dan unsession login

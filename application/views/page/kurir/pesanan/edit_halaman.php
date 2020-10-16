@@ -18,7 +18,7 @@
     $catatan = $data->catatan;
     endforeach;
   } else {
-      echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
+      echo '<script language="javascript">document.location="'.site_url('page/kurir/pembeli').'";</script>';
   }
 ?>
 
@@ -65,7 +65,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pesanan/update')?>" method="post" id="quickForm">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/kurir/pesanan/update')?>" method="post" id="quickForm">
                 <div class="row">
                   <div class="col-md-12">
                         <div class="form-group">
@@ -87,44 +87,33 @@
 
                         <div class="form-group">
                           <label for="total_pembayaran">Total Pembayaran</label>
-                          <input type="text" class="form-control" id="" name="total_pembayaran" value="<?= $total_pembayaran; ?>">
+                          <input type="text" class="form-control" readonly="" id="" name="total_pembayaran" value="<?= $total_pembayaran; ?>">
                         </div>
 
                         <div class="form-group">
                           <label for="voucher">Voucher</label>
-                          <input type="text" class="form-control" id="" name="voucher" value="<?= $voucher; ?>">
+                          <input type="text" class="form-control" readonly="" id="" name="voucher" value="<?= $voucher; ?>">
                         </div>
 
                         <div class="form-group">
                           <label for="ongkir">Ongkos Kirim</label>
-                          <input type="text" class="form-control" id="" name="ongkir" value="<?= $ongkir; ?>">
+                          <input type="text" class="form-control" readonly="" id="" name="ongkir" value="<?= $ongkir; ?>">
                         </div>
 
                         <div class="form-group">
                           <label for="status">Status Pesanan</label>
-                          <select class="form-control" id="" name="status">
-                            <option <?php if ($status==1) { echo "selected";} ?> value="1">Baru</option>
-                            <option <?php if ($status==2) { echo "selected";} ?> value="2">Diproses</option>
+                          <select class="form-control" id="" name="status" required="">
+                            <option value="">--Pilih Status Pesanan--</option>
                             <option <?php if ($status==3) { echo "selected";} ?> value="3">Dikirim</option>
                             <option <?php if ($status==4) { echo "selected";} ?> value="4">Selesai</option>
-                            <option <?php if ($status==5) { echo "selected";} ?> value="5">Batal</option>
                           </select>
                         </div>
 
                         <div class="form-group">
                           <label for="catatan">Catatan</label>
-                          <textarea class="form-control" id="" name="catatan"><?= $catatan; ?></textarea>
+                          <textarea class="form-control" id="" readonly="" name="catatan"><?= $catatan; ?></textarea>
                         </div>
 
-                        <div class="form-group">
-                          <label for="id_pengguna">Pengantar</label>
-                          <select type="text" id="id_pengguna" name="id_pengguna" class="form-control select2bs4" data-live-search="true" data-live-search-placeholder="Cari Pengantar..." required="">
-                            <option value="" hidden="">---Pilih Pengantar---</option>
-                            <?php foreach ($data_kurir->result() as $key): ?>
-                              <option <?php if (htmlspecialchars($id_pengguna)==$key->id_pengguna) { echo "selected"; }?> value="<?php echo $key->id_pengguna?>"><?php echo $key->nama_pengguna;?></option>
-                              <?php endforeach;?>
-                          </select>
-                        </div>
                   </div>
                 </div>
                 <div class="row">
@@ -151,38 +140,4 @@
     </section>
     <!-- /.content -->
   </div>
-
-  <script type="text/javascript">
-    function validasiFile(){
-        var inputFile = document.getElementById('customFile');
-        var pathFile = inputFile.value;
-        var file_size = inputFile.files[0].size;
-        if (file_size>1000000) {
-          alert("File Tidak Boleh Lebih Dari 1 MB!")
-          inputFile.value = '';
-          return false;
-        }
-        if (inputFile.files && inputFile.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('pratinjauGambar').innerHTML = '<img src="'+e.target.result+'" class="img-thumbnail" style="height: 200px;">';
-          };
-          reader.readAsDataURL(inputFile.files[0]);
-      }
-    }
-  </script>
-
-  <script type="text/javascript">
-    function validasiFile2(){
-        var inputFile = document.getElementById('customFile2');
-        var pathFile = inputFile.value;
-        var file_size = inputFile.files[0].size;
-        if (file_size>2000000) {
-          alert("File Tidak Boleh Lebih Dari 2 MB!")
-          inputFile.value = '';
-          return false;
-        }
-    
-    }
-  </script>
 

@@ -1,27 +1,3 @@
-<?php
-
-  $token2 = md5($get_token2);
-  $token = $this->session->flashdata('token');
-
-  if (!empty($token) AND $token==$token2) {
-    foreach ($data_pesanan->result() as $data):
-    $id_pesanan = $data->id_pesanan;
-    $id_pembeli = $data->id_pembeli;
-    $id_pengguna = $data->id_pengguna;
-    $nama_pembeli = $data->nama_pembeli;
-    $tanggal_pesanan = $data->tanggal_pesanan;
-    $jenis_pembayaran = $data->jenis_pembayaran;
-    $total_pembayaran = $data->total_pembayaran;
-    $voucher = $data->voucher;
-    $ongkir = $data->ongkir;
-    $status = $data->status;
-    $catatan = $data->catatan;
-    endforeach;
-  } else {
-      echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
-  }
-?>
-
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -65,66 +41,63 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pesanan/update')?>" method="post" id="quickForm">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/produk/insert')?>" method="post" id="quickForm">
                 <div class="row">
                   <div class="col-md-12">
+
                         <div class="form-group">
-                          <label for="tanggal_pesanan">Tanggal Pesanan</label>
-                          <input type="text" class="form-control" id="" readonly="" value="<?= $tanggal_pesanan; ?>">
+                          <label for="nama_produk">Nama Produk</label>
+                          <input type="text" class="form-control" id="" name="nama_produk" required="" placeholder="Masukan Nama Produk...">
                         </div>
 
                         <div class="form-group">
-                          <label for="nama_pembeli">Nama Pembeli</label>
-                          <input type="text" class="form-control" id="" name="nama_pembeli" readonly="" value="<?= $nama_pembeli; ?>">
-                          <input type="text" hidden="" name="id_pembeli" required="" value="<?= $id_pembeli; ?>">
-                          <input type="text" hidden="" name="id_pesanan" required="" value="<?= $id_pesanan; ?>">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="jenis_pembayaran">Cara Pembayaran</label>
-                          <input type="text" class="form-control" id="" readonly="" value="<?= $jenis_pembayaran; ?>">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="total_pembayaran">Total Pembayaran</label>
-                          <input type="text" class="form-control" id="" name="total_pembayaran" value="<?= $total_pembayaran; ?>">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="voucher">Voucher</label>
-                          <input type="text" class="form-control" id="" name="voucher" value="<?= $voucher; ?>">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="ongkir">Ongkos Kirim</label>
-                          <input type="text" class="form-control" id="" name="ongkir" value="<?= $ongkir; ?>">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="status">Status Pesanan</label>
-                          <select class="form-control" id="" name="status">
-                            <option <?php if ($status==1) { echo "selected";} ?> value="1">Baru</option>
-                            <option <?php if ($status==2) { echo "selected";} ?> value="2">Diproses</option>
-                            <option <?php if ($status==3) { echo "selected";} ?> value="3">Dikirim</option>
-                            <option <?php if ($status==4) { echo "selected";} ?> value="4">Selesai</option>
-                            <option <?php if ($status==5) { echo "selected";} ?> value="5">Batal</option>
-                          </select>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="catatan">Catatan</label>
-                          <textarea class="form-control" id="" name="catatan"><?= $catatan; ?></textarea>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="id_pengguna">Pengantar</label>
-                          <select type="text" id="id_pengguna" name="id_pengguna" class="form-control select2bs4" data-live-search="true" data-live-search-placeholder="Cari Pengantar..." required="">
-                            <option value="" hidden="">---Pilih Pengantar---</option>
-                            <?php foreach ($data_kurir->result() as $key): ?>
-                              <option <?php if (htmlspecialchars($id_pengguna)==$key->id_pengguna) { echo "selected"; }?> value="<?php echo $key->id_pengguna?>"><?php echo $key->nama_pengguna;?></option>
+                          <label for="id_kategori">Kategori</label>
+                          <select type="text" id="id_kategori" name="id_kategori" class="form-control select2bs4" data-live-search="true" data-live-search-placeholder="Cari Kategori..." required="">
+                            <option value="" hidden="">---Pilih Kategori---</option>
+                            <?php foreach ($data_kategori->result() as $key): ?>
+                              <option value="<?php echo $key->id_kategori?>"><?php echo $key->nama_kategori;?></option>
                               <?php endforeach;?>
                           </select>
                         </div>
+
+                        <div class="form-group">
+                          <label for="harga">Harga</label>
+                          <input type="number" min="1" maxlength="12" class="form-control" id="" name="harga" placeholder="Masukan Harga Produk..." required="">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="harga_promosi">Harga Promosi</label>
+                          <input type="number" min="-1" maxlength="12" class="form-control" id="" name="harga_promosi" placeholder="Masukan Harga Promosi Produk..." required="">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="deskripsi">Deskripsi</label>
+                          <textarea class="form-control" id="" name="deskripsi" placeholder="Masukan Deskripsi Produk..." required=""></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="gambar">Gambar Produk</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="gambar" accept="image/*" required="" onchange="return validasiFile()">
+                            <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
+                          </div>
+                          <div id="pratinjauGambar"></div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" name="promosi" value="1" class="custom-control-input" id="promosi">
+                            <label class="custom-control-label" for="promosi">Promosi</label>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" name="terlaris" value="1" class="custom-control-input" id="terlaris">
+                            <label class="custom-control-label" for="terlaris">Terlaris</label>
+                          </div>
+                        </div>
+
                   </div>
                 </div>
                 <div class="row">

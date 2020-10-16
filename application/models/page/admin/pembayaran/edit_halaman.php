@@ -4,21 +4,17 @@
   $token = $this->session->flashdata('token');
 
   if (!empty($token) AND $token==$token2) {
-    foreach ($data_pesanan->result() as $data):
+    foreach ($data_pembayaran->result() as $data):
+    $id_pembayaran = $data->id_pembayaran;
     $id_pesanan = $data->id_pesanan;
-    $id_pembeli = $data->id_pembeli;
-    $id_pengguna = $data->id_pengguna;
     $nama_pembeli = $data->nama_pembeli;
     $tanggal_pesanan = $data->tanggal_pesanan;
+    $tanggal_pembayaran = $data->tanggal_pembayaran;
+    $status_pembayaran = $data->status_pembayaran;
     $jenis_pembayaran = $data->jenis_pembayaran;
-    $total_pembayaran = $data->total_pembayaran;
-    $voucher = $data->voucher;
-    $ongkir = $data->ongkir;
-    $status = $data->status;
-    $catatan = $data->catatan;
     endforeach;
   } else {
-      echo '<script language="javascript">document.location="'.site_url('page/admin/pembeli').'";</script>';
+      echo '<script language="javascript">document.location="'.site_url('page/admin/pembayaran').'";</script>';
   }
 ?>
 
@@ -65,7 +61,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pesanan/update')?>" method="post" id="quickForm">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pembayaran/update')?>" method="post" id="quickForm">
                 <div class="row">
                   <div class="col-md-12">
                         <div class="form-group">
@@ -74,57 +70,27 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="nama_pembeli">Nama Pembeli</label>
-                          <input type="text" class="form-control" id="" name="nama_pembeli" readonly="" value="<?= $nama_pembeli; ?>">
-                          <input type="text" hidden="" name="id_pembeli" required="" value="<?= $id_pembeli; ?>">
+                          <label for="tanggal_pembayaran">Tanggal Pembayaran</label>
+                          <input type="text" class="form-control" id="" readonly="" value="<?= $tanggal_pembayaran; ?>">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="nama_pesanan">Nama Pembeli</label>
+                          <input type="text" class="form-control" id="" name="nama_pesanan" readonly="" value="<?= $nama_pembeli; ?>">
                           <input type="text" hidden="" name="id_pesanan" required="" value="<?= $id_pesanan; ?>">
+                          <input type="text" hidden="" name="id_pembayaran" required="" value="<?= $id_pembayaran; ?>">
                         </div>
 
                         <div class="form-group">
-                          <label for="jenis_pembayaran">Cara Pembayaran</label>
-                          <input type="text" class="form-control" id="" readonly="" value="<?= $jenis_pembayaran; ?>">
+                          <label for="jenis_pembayaran">Jenis Pembayaran</label>
+                          <input type="text" class="form-control" id="" name="jenis_pembayaran" value="<?= $jenis_pembayaran; ?>">
                         </div>
 
                         <div class="form-group">
-                          <label for="total_pembayaran">Total Pembayaran</label>
-                          <input type="text" class="form-control" id="" name="total_pembayaran" value="<?= $total_pembayaran; ?>">
+                          <label for="status_pembayaran">Status Pembayaran</label>
+                          <input type="text" class="form-control" name="status_pembayaran" id="" value="<?= $status_pembayaran; ?>">
                         </div>
 
-                        <div class="form-group">
-                          <label for="voucher">Voucher</label>
-                          <input type="text" class="form-control" id="" name="voucher" value="<?= $voucher; ?>">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="ongkir">Ongkos Kirim</label>
-                          <input type="text" class="form-control" id="" name="ongkir" value="<?= $ongkir; ?>">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="status">Status Pesanan</label>
-                          <select class="form-control" id="" name="status">
-                            <option <?php if ($status==1) { echo "selected";} ?> value="1">Baru</option>
-                            <option <?php if ($status==2) { echo "selected";} ?> value="2">Diproses</option>
-                            <option <?php if ($status==3) { echo "selected";} ?> value="3">Dikirim</option>
-                            <option <?php if ($status==4) { echo "selected";} ?> value="4">Selesai</option>
-                            <option <?php if ($status==5) { echo "selected";} ?> value="5">Batal</option>
-                          </select>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="catatan">Catatan</label>
-                          <textarea class="form-control" id="" name="catatan"><?= $catatan; ?></textarea>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="id_pengguna">Pengantar</label>
-                          <select type="text" id="id_pengguna" name="id_pengguna" class="form-control select2bs4" data-live-search="true" data-live-search-placeholder="Cari Pengantar..." required="">
-                            <option value="" hidden="">---Pilih Pengantar---</option>
-                            <?php foreach ($data_kurir->result() as $key): ?>
-                              <option <?php if (htmlspecialchars($id_pengguna)==$key->id_pengguna) { echo "selected"; }?> value="<?php echo $key->id_pengguna?>"><?php echo $key->nama_pengguna;?></option>
-                              <?php endforeach;?>
-                          </select>
-                        </div>
                   </div>
                 </div>
                 <div class="row">
