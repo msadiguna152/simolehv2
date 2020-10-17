@@ -67,7 +67,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <!-- <img src="<?php echo base_url()?>profile/<?php echo $this->session->userdata('foto_pengguna');?>" class="img-circle elevation-2" alt=""> -->
+        <img src="<?php echo base_url()?>file/<?php echo $this->session->userdata('foto_pengguna');?>" class="img-circle elevation-2" alt="">
         </div>
         <div class="info">
           <a href="<?php echo base_url()?>page/admin/Admin/edit" class="d-block"><?php echo substr($this->session->userdata('nama_pengguna'), 0,18);?> <i class="fa fa-circle fa-sm text-success" data-toggle="tooltip" data-placement="right" title="Online"></i></a>
@@ -115,7 +115,7 @@
 
           <li class="nav-item has-treeview <?php if($this->session->userdata('menu2') == 'pesanan'){echo "menu-open"; }?>">
             <a href="#" class="nav-link <?php if($this->session->userdata('menu2') == 'pesanan'){echo "active"; }?>">
-              <i class="nav-icon fas fa-list"></i>
+              <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Pesanan
               <i class="fas fa-angle-left right"></i>
@@ -166,7 +166,16 @@
           </li>
 
           <li class="nav-item">
-            <a href="<?php echo base_url()?>page/admin/Admin/edit" class="nav-link <?php if($this->session->userdata('menu') == 'profil'){echo "active"; }?>">
+            <a href="<?php echo base_url()?>page/admin/pengguna" class="nav-link <?php if($this->session->userdata('menu') == 'pengguna'){echo "active"; }?>">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Pengguna
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url()?>page/admin/dashboard/profil" class="nav-link <?php if($this->session->userdata('menu') == 'profil'){echo "active"; }?>">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Profil

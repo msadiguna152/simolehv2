@@ -23,7 +23,7 @@
         <!-- Main row -->
         <div class="row">
 
-          <div class="col-md-12 connectedSortable">
+          <div class="col-md-6 connectedSortable">
 
             <!-- PRODUCT LIST -->
             <div class="card">
@@ -41,13 +41,52 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/kategori/insert')?>" method="post" id="quickForm">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pengguna/insert')?>" method="post" id="quickForm">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
 
                         <div class="form-group">
-                          <label for="nama_kategori">Nama Kategori</label>
-                          <input type="text" class="form-control" id="" name="nama_kategori" required="" placeholder="Masukan Nama Kategori...">
+                          <label for="nama_pengguna">Nama Pengguna</label>
+                          <input type="text" class="form-control" id="" name="nama_pengguna" required="" placeholder="Masukan Nama Pengguna...">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="no_telpon">No. Telpon</label>
+                          <input type="text" class="form-control" id="" name="no_telpon" required="" placeholder="Masukan No. Telpon...">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="email">Email</label>
+                          <input type="text" class="form-control" id="" name="email" required="" placeholder="Masukan Email...">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="username">Username</label>
+                          <input type="text" class="form-control" id="" name="username" required="" placeholder="Masukan Username...">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="text" class="form-control" id="" name="password" required="" placeholder="Masukan Password...">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="level">Level</label>
+                          <select type="text" id="level" name="level" class="form-control select2bs4" data-live-search="true" data-live-search-placeholder="Cari Level..." required="">
+                            <option value="" hidden="">---Pilih Level---</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Kurir">Kurir</option>
+                            <option value="Pembeli">Pembeli</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="foto_pengguna">Foto Pengguna</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="foto_pengguna" accept="image/*" required="" onchange="return validasiFile()">
+                            <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
+                          </div>
+                          <div id="pratinjauGambar"></div>
                         </div>
 
                   </div>

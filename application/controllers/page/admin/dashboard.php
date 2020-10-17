@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller {
 			echo '<script language="javascript">alert("Akses Di Tolak!");';
 			echo 'document.location="'.site_url('Auth').'";</script>';
 		}		
-		//$this->load->model('page/admin/Madmin');
+		$this->load->model('page/admin/mdashboard');
 		$this->session->set_userdata('menu', 'dashboard');
 		$this->session->set_userdata('menu2', 'dashboard');
 
@@ -26,22 +26,20 @@ class Dashboard extends CI_Controller {
 		$this->load->view('page/admin/tema/footer');
 	}
 
-	public function edit()
+	public function profil()
 	{
 		$this->session->set_userdata('menu', 'profil');
-		$data['data_pengguna'] = $this->Madmin->get_pengguna();
-		$data['data_sosmed'] = $this->Madmin->get_sosmed();
-		$data['data_pendaftar'] = $this->Madmin->get_pendaftar();
+		$data['data_pengguna'] = $this->mdashboard->get_pengguna();
 
 		$this->load->view('page/admin/tema/head',$data);
 		$this->load->view('page/admin/tema/menu');
-		$this->load->view('page/admin/ubah_halaman');
+		$this->load->view('page/admin/dashboard/edit_halaman');
 		$this->load->view('page/admin/tema/footer');
 	}
 
 	public function update()
 	{
-		$query = $this->Madmin->update_pengguna();
+		$query = $this->mdashboard->update_pengguna();
 		if ($query==true) {
 			$this->session->set_flashdata('hasil', 'swalberhasilubah');
 			echo '<script language="javascript">document.location="'.site_url('page/admin/Admin/edit').'";</script>';

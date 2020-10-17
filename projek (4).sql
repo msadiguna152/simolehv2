@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2020 at 05:07 PM
+-- Generation Time: Oct 17, 2020 at 05:04 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -65,7 +65,9 @@ INSERT INTO `tb_kategori` (`id_kategori`, `nama_kategori`, `slug`, `icon`) VALUE
 (1, 'Makanan', 'makanan', '8.svg'),
 (2, 'Minuman', 'minuman', '5.svg'),
 (3, 'Pakaian', 'pakaian', '7.svg'),
-(4, 'Seafood', '/seafood', '4.svg');
+(4, 'Seafood', 'Seafood', '4.svg'),
+(6, 'Minuman Es', 'minuman-es', '1.svg'),
+(7, 'Minuman Dingin', 'minuman-dingin', '1.svg');
 
 -- --------------------------------------------------------
 
@@ -160,7 +162,10 @@ CREATE TABLE `tb_pengguna` (
 --
 
 INSERT INTO `tb_pengguna` (`id_pengguna`, `nama_pengguna`, `foto_pengguna`, `username`, `password`, `email`, `no_telpon`, `level`) VALUES
-(1, 'Adiguna', NULL, '1', '1', 'msadiguna152@gmail.com', '085245462842', 'Admin');
+(1, 'Adiguna', 'logo_d.png', '1', '1', 'msadiguna152@gmail.com', '085245462842', 'Admin'),
+(2, 'Adiguna Kurir', NULL, '2', '2', 'msadiguna152@gmail.com', '1234', 'Kurir'),
+(3, 'Adiguna Kurir v2', NULL, '3', '3', 'msadiguna152@gmail.com', '1234', 'Kurir'),
+(5, 'Adiguna', 'aa5E5Cyybn.jpg', '2', '11', 'gomarket.id@gopedia.id', '1123', 'Kurir');
 
 -- --------------------------------------------------------
 
@@ -171,19 +176,21 @@ INSERT INTO `tb_pengguna` (`id_pengguna`, `nama_pengguna`, `foto_pengguna`, `use
 CREATE TABLE `tb_pesanan` (
   `id_pesanan` int(11) NOT NULL,
   `id_alamat` int(11) NOT NULL,
+  `id_pengguna` int(11) DEFAULT NULL,
   `total_pembayaran` varchar(50) NOT NULL,
   `tanggal_pesanan` datetime NOT NULL,
   `status` varchar(50) NOT NULL,
   `ongkir` int(20) NOT NULL,
-  `voucher` varchar(20) NOT NULL
+  `voucher` varchar(20) NOT NULL,
+  `catatan` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_pesanan`
 --
 
-INSERT INTO `tb_pesanan` (`id_pesanan`, `id_alamat`, `total_pembayaran`, `tanggal_pesanan`, `status`, `ongkir`, `voucher`) VALUES
-(1, 1, '20000', '2020-10-02 00:00:00', '1', 20000, '20000');
+INSERT INTO `tb_pesanan` (`id_pesanan`, `id_alamat`, `id_pengguna`, `total_pembayaran`, `tanggal_pesanan`, `status`, `ongkir`, `voucher`, `catatan`) VALUES
+(1, 1, 3, '20000', '2020-10-02 00:00:00', '3', 20000, '20000', 'testing  catatan\r\nBy adiguna');
 
 -- --------------------------------------------------------
 
@@ -326,7 +333,7 @@ ALTER TABLE `tb_alamat`
 -- AUTO_INCREMENT for table `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tb_pembayaran`
 --
@@ -341,7 +348,7 @@ ALTER TABLE `tb_pembeli`
 -- AUTO_INCREMENT for table `tb_pengguna`
 --
 ALTER TABLE `tb_pengguna`
-  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tb_pesanan`
 --

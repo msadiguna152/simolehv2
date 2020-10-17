@@ -4,17 +4,19 @@
   $token = $this->session->flashdata('token');
 
   if (!empty($token) AND $token==$token2) {
-    foreach ($data_pembayaran->result() as $data):
-    $id_pembayaran = $data->id_pembayaran;
-    $id_pesanan = $data->id_pesanan;
-    $nama_pembeli = $data->nama_pembeli;
-    $tanggal_pesanan = $data->tanggal_pesanan;
-    $tanggal_pembayaran = $data->tanggal_pembayaran;
-    $status_pembayaran = $data->status_pembayaran;
-    $jenis_pembayaran = $data->jenis_pembayaran;
+    foreach ($data_pengguna->result() as $data):
+    $id_pengguna = $data->id_pengguna;
+    $nama_pengguna = $data->nama_pengguna;
+    $username = $data->username;
+    $password = $data->password;
+    $email = $data->email;
+    $no_telpon = $data->no_telpon;
+    $level = $data->level;
+    $foto_pengguna = $data->foto_pengguna;
+
     endforeach;
   } else {
-      echo '<script language="javascript">document.location="'.site_url('page/admin/pembayaran').'";</script>';
+      echo '<script language="javascript">document.location="'.site_url('page/admin/pengguna').'";</script>';
   }
 ?>
 
@@ -61,34 +63,54 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pembayaran/update')?>" method="post" id="quickForm">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/pengguna/update')?>" method="post" id="quickForm">
                 <div class="row">
                   <div class="col-md-12">
+
                         <div class="form-group">
-                          <label for="tanggal_pesanan">Tanggal Pesanan</label>
-                          <input type="text" class="form-control" id="" readonly="" value="<?= $tanggal_pesanan; ?>">
+                          <label for="nama_pengguna">Nama Pengguna</label>
+                          <input type="text" class="form-control" id="" name="nama_pengguna" required="" value="<?= $nama_pengguna; ?>" placeholder="Masukan Nama Pengguna...">
+                          <input type="text" hidden="" name="id_pengguna" value="<?= $id_pengguna; ?>">
+
                         </div>
 
                         <div class="form-group">
-                          <label for="tanggal_pembayaran">Tanggal Pembayaran</label>
-                          <input type="text" class="form-control" id="" readonly="" value="<?= $tanggal_pembayaran; ?>">
+                          <label for="no_telpon">No. Telpon</label>
+                          <input type="text" class="form-control" id="" name="no_telpon" required="" value="<?= $no_telpon; ?>" placeholder="Masukan No. Telpon...">
                         </div>
 
                         <div class="form-group">
-                          <label for="nama_pesanan">Nama Pembeli</label>
-                          <input type="text" class="form-control" id="" name="nama_pesanan" readonly="" value="<?= $nama_pembeli; ?>">
-                          <input type="text" hidden="" name="id_pesanan" required="" value="<?= $id_pesanan; ?>">
-                          <input type="text" hidden="" name="id_pembayaran" required="" value="<?= $id_pembayaran; ?>">
+                          <label for="email">Email</label>
+                          <input type="text" class="form-control" id="" name="email" required="" value="<?= $email; ?>" placeholder="Masukan Email...">
                         </div>
 
                         <div class="form-group">
-                          <label for="jenis_pembayaran">Jenis Pembayaran</label>
-                          <input type="text" class="form-control" id="" name="jenis_pembayaran" value="<?= $jenis_pembayaran; ?>">
+                          <label for="username">Username</label>
+                          <input type="text" class="form-control" id="" name="username" required="" value="<?= $username; ?>" placeholder="Masukan Username...">
                         </div>
 
                         <div class="form-group">
-                          <label for="status_pembayaran">Status Pembayaran</label>
-                          <input type="text" class="form-control" name="status_pembayaran" id="" value="<?= $status_pembayaran; ?>">
+                          <label for="password">Password</label>
+                          <input type="text" class="form-control" id="" name="password" value="<?= $password; ?>" required="" placeholder="Masukan Password...">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="level">Level</label>
+                          <select type="text" id="level" name="level" class="form-control select2bs4" data-live-search="true" data-live-search-placeholder="Cari Level..." required="">
+                            <option value="" hidden="">---Pilih Level---</option>
+                            <option <?php if (htmlspecialchars($level)=="Admin") { echo "selected"; }?> value="Admin">Admin</option>
+                            <option <?php if (htmlspecialchars($level)=="Kurir") { echo "selected"; }?> value="Kurir">Kurir</option>
+                            <option <?php if (htmlspecialchars($level)=="Pembeli") { echo "selected"; }?> value="Pembeli">Pembeli</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="foto_pengguna">Foto Pengguna</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="foto_pengguna" accept="image/*" onchange="return validasiFile()">
+                            <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
+                          </div>
+                          <div id="pratinjauGambar"><img src="<?php echo base_url()?>file/<?php echo $foto_pengguna; ?>" class="img-thumbnail" style="height: 100px; width: 100px;"></div>
                         </div>
 
                   </div>
@@ -134,21 +156,7 @@
             document.getElementById('pratinjauGambar').innerHTML = '<img src="'+e.target.result+'" class="img-thumbnail" style="height: 200px;">';
           };
           reader.readAsDataURL(inputFile.files[0]);
-      }
-    }
-  </script>
-
-  <script type="text/javascript">
-    function validasiFile2(){
-        var inputFile = document.getElementById('customFile2');
-        var pathFile = inputFile.value;
-        var file_size = inputFile.files[0].size;
-        if (file_size>2000000) {
-          alert("File Tidak Boleh Lebih Dari 2 MB!")
-          inputFile.value = '';
-          return false;
         }
-    
     }
   </script>
 

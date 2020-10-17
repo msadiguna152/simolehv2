@@ -27,7 +27,7 @@
 
             <div class="card">
               <div class="card-header">
-                <a href="<?php echo site_url('page/admin/pembeli/tambah')?>" data-toggle="tooltip" data-placement="right" title="Tambah Data Kategori"><button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah</button></a>
+                <a href="<?php echo site_url('page/admin/pengguna/tambah')?>" data-toggle="tooltip" data-placement="right" title="Tambah Data Produk"><button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah</button></a>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
                   </button>
@@ -67,31 +67,39 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Pembeli</th>
-                    <th>Nomor Telpon</th>
+                    <th>Nama Pengguna</th>
+                    <th>No. Telpon</th>
                     <th>Email</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Foto</th>
+                    <th>Level</th>
                     <th>Pilihan</th>
                   </tr>
                   </thead>
+
                   <tbody>
-                    <?php $no=1; foreach ($data_pembeli->result() as $data): ?>
+                    <?php $no=1; foreach ($data_pengguna->result() as $data): ?>
                     <tr>
                       <td><?php echo $no ?></td>
-                      <td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
-                      <td><?php echo htmlspecialchars($data->no_telpon); ?></td>
-                      <td><?php echo htmlspecialchars($data->email); ?></td>
+                      <td><?php echo $data->nama_pengguna; ?></td>
+                      <td><?php echo $data->no_telpon; ?></td>
+                      <td><?php echo $data->email; ?></td>
+                      <td><?php echo $data->username; ?></td>
+                      <td><?php echo $data->password; ?></td>
+                      <td><img class="img-thumbnail" style="width: 100px; height: 100px;" src="<?php echo base_url()?>file/<?php echo $data->foto_pengguna; ?>">
+                      </td>
+                      <td><?php echo $data->level; ?></td>
+
+
                       <td align="center">
                         <!-- Tombol Edit -->
-                        <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Data Pembeli : <?php echo $data->nama_pembeli ?>" href="<?php echo base_url()?>page/admin/pembeli/lihat?id=<?php echo $data->id_pembeli ?>&token=<?php echo md5($data->id_pembeli)?>">
-                            <i class="fas fa-eye"></i>
-                        </a>
-
-                        <!-- Tombol Edit -->
-                        <a class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit Data Pembeli : <?php echo $data->nama_pembeli ?>" href="<?php echo base_url()?>page/admin/pembeli/edit?id=<?php echo $data->id_pembeli ?>&token=<?php echo md5($data->id_pembeli)?>">
+                        <a class="btn btn-success btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Edit Data Barang : <?php echo $data->nama_pengguna ?>" href="<?php echo base_url()?>page/admin/pengguna/edit?id=<?php echo $data->id_pengguna ?>&token=<?php echo md5($data->id_pengguna) ?>">
                             <i class="fas fa-edit"></i>
                         </a>
+
                         <!-- Tombol Delete -->
-                        <a class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Data Pembeli <?php echo $data->nama_pembeli ?>" href="<?php echo base_url()?>page/admin/pembeli/delete?id_pembeli=<?php echo $data->id_pembeli ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->nama_pembeli ?>?')">
+                        <a class="btn btn-danger btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Hapus Data <?php echo $data->nama_pengguna ?>" href="<?php echo base_url()?>page/admin/pengguna/delete?id_pengguna=<?php echo $data->id_pengguna ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->nama_pengguna ?>?')">
                             <i class="fas fa-trash"></i>
                         </a>
                       </td>
@@ -100,11 +108,6 @@
                   </tbody>
                 </table>
               </div>
-              <!-- /.card-body -->
-              <div class="card-footer text-center">
-                <a href="javascript:void(0)" class="uppercase">View All Products</a>
-              </div>
-              <!-- /.card-footer -->
             </div>
             <!-- /.card -->
           </div>
