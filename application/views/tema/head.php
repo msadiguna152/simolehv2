@@ -7,7 +7,7 @@
 	<meta name="author" content="">
 	<link rel="icon" type="image/png" href="img/logo.svg">
 	<style>
-		html, body, #map_canvas {
+		#map_canvas {
 			width: 100%;
 			height: 100%;
 			margin: 0;

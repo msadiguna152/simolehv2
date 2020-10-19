@@ -30,4 +30,15 @@ class Beranda extends CI_Controller {
 		$this->load->view('tema/footer');
 
 	}
+
+	public function detail_produk()
+	{
+		$data['nama_produk'] = $this->uri->segment(3);
+		$data['data_produk'] = $this->mberanda->get_perproduk($id=$this->uri->segment(3));
+		$this->load->view('tema/head');
+		$this->load->view('detail_produk',$data);
+		$this->load->view('tema/menu');
+		$this->load->view('tema/footer');
+
+	}
 }

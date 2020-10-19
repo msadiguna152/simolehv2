@@ -19,19 +19,19 @@
 				 id="cart-item-count">0
 			</div>
 		</a>
-		<a href="<?= base_url() ?>pesanan"
-		   class="text-muted col small text-decoration-none p-2 <?php if ($this->session->userdata('menu') == 'pesanan') {
-			   echo "selected";
-		   } ?>">
-			<p class="h5 m-0"><i class="icofont-bag"></i></p>
-			Pesanan
-		</a>
+		
 		<a href="<?= base_url() ?>akun"
 		   class="text-muted col small text-decoration-none p-2 <?php if ($this->session->userdata('menu') == 'akun') {
 			   echo "selected";
 		   } ?>">
 			<p class="h5 m-0"><i class="icofont-user"></i></p>
 			Akun
+		</a>
+
+		<a target="_BALNK" href="https://wa.me/6285245462842"
+		   class="text-muted col small text-decoration-none p-2">
+			<p class="h5 m-0"><i class="icofont-chat"></i></p>
+			Bantuan
 		</a>
 	</div>
 </div>

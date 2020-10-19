@@ -27,7 +27,7 @@
          <div class="osahan-body">
             <!-- categories -->
             <div class="p-3 osahan-categories">
-               <h6 class="mb-2">Kategori</h6>
+               <h6 class="mb-2">KATEGORI</h6>
 	           <?php $chunks = array_chunk($data_kategori->result(), 3); ?>
 	              <?php foreach ($chunks as $data_chunk): ?>
 		              <div class="row m-0">
@@ -75,12 +75,13 @@
                   <?php
                   $id_kategori = $data->id_kategori;
                   $data_produk = $this->db->query("SELECT * FROM `tb_produk` JOIN tb_kategori ON tb_produk.id_kategori=tb_kategori.id_kategori WHERE tb_produk.id_kategori='$id_kategori' LIMIT 2"); 
-                  foreach ($data_produk->result() as $data_p): ?>
-
+                  foreach ($data_produk->result() as $data_p): 
+                     $nama_produk = strtolower(str_replace(" ", "-", "$data_p->nama_produk"));
+                  ?>
                   <div class="col-6">
                      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                         <div class="list-card-image">
-                           <a href="product_details.html" class="text-dark">
+                           <a href="<?= base_url()?>beranda/detail_produk/<?= $nama_produk; ?>" class="text-dark">
                               <div class="member-plan position-absolute">
                                  <span class="badge mt-3 mb-3 ml-3 badge-success"><?= $data_p->nama_kategori; ?></span>
                                  <span class="badge badge-warning">5%</span>
@@ -114,9 +115,6 @@
                <?php $a++; endforeach;?>
             </div>
 
-            <!-- Most sales -->
-            <div class="title d-flex align-items-center p-3">
-            </div>
             <!-- Most sales -->
             <div class="title d-flex align-items-center p-3">
             </div>
