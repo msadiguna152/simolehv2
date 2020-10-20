@@ -48,7 +48,7 @@
             <!-- Promos -->
             <div class="py-3 bg-white osahan-promos shadow-sm">
                <div class="d-flex align-items-center px-3 mb-2">
-                  <h6 class="m-0">Promosi Untuk Kamu</h6>
+                  <h6 class="m-0"></h6>
                   <a href="promos.html" class="ml-auto text-success">Lihat Semua</a>
                </div>
                <div class="promo-slider">
