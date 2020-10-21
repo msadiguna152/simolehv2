@@ -12,8 +12,10 @@
          <div class="pt-0">
             <h2 class="font-weight-bold"><?= htmlspecialchars($data_p->nama_produk); ?></h2>
             <p class="font-weight-light text-dark m-0 d-flex align-items-center">
-               <b class="h6 text-dark m-0">Harga Produk : <?= "Rp" . number_format(htmlspecialchars($data_p->harga),0,',','.'); ?></b>
-               <span class="badge badge-danger ml-2">50% OFF</span>
+               <b class="h6 text-dark m-0">Harga Produk : <?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp'. number_format($data_p->harga,0,',','.').'</del>'.' Rp'. number_format($data_p->harga_promosi,0,',','.') : 'Rp'. number_format($data_p->harga,0,',','.');?></b>
+               <span class="badge ml-2 badge-danger"><?= $data_p->nama_kategori; ?></span>
+               <?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>';?>
+               <?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>';?>
             </p>
          </div>
       </div>

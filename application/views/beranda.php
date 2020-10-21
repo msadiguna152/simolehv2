@@ -3,8 +3,7 @@
       <div class="osahan-home-page">
          <div class="border-bottom p-3">
             <div class="title d-flex align-items-center">
-               <a href="home.html" class="text-decoration-none text-dark d-flex align-items-center">
-                  <img class="osahan-logo mr-2" src="img/logo.svg">
+               <a href="" class="text-decoration-none text-dark d-flex align-items-center">
                   <h4 class="font-weight-bold text-success m-0">SIMOLEH</h4>
                </a>
             </div>
@@ -57,7 +56,7 @@
             <!-- Grid 1 -->
             <div class="title d-flex align-items-center mb-3 mt-3 px-3">
                <h6 class="m-0">UNTUKMU HARI INI</h6>
-               <a class="ml-auto text-success" href="picks_today.html">Lihat Semua</a>
+               <a class="ml-auto text-success" href="<?= base_url()?>beranda/produk/untumu-hari-ini">Lihat Semua</a>
             </div>
             <div class="pick_today px-3">
                <?php $a=1; $chunks = array_chunk($data_grid1->result(), 2); ?>
@@ -105,7 +104,7 @@
             <!-- Grid 2 -->
             <div class="title d-flex align-items-center mb-3 mt-3 px-3">
                <h6 class="m-0">PROMO HARI INI</h6>
-               <a class="ml-auto text-success" href="picks_today.html">Lihat Semua</a>
+               <a class="ml-auto text-success" href="<?= base_url()?>beranda/produk/promo-hari-ini">Lihat Semua</a>
             </div>
 
             <div class="pick_today px-3">
@@ -153,8 +152,8 @@
 
             <!-- Grid 3 -->
             <div class="title d-flex align-items-center mb-3 mt-3 px-3">
-               <h6 class="m-0">PROMO HARI INI</h6>
-               <a class="ml-auto text-success" href="picks_today.html">Lihat Semua</a>
+               <h6 class="m-0"><i>BEST SELLER</i></h6>
+               <a class="ml-auto text-success" href="<?= base_url()?>beranda/produk/best-seller">Lihat Semua</a>
             </div>
 
             <div class="pick_today px-3">
