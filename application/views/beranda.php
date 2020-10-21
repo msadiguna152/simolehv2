@@ -7,12 +7,6 @@
                   <img class="osahan-logo mr-2" src="img/logo.svg">
                   <h4 class="font-weight-bold text-success m-0">SIMOLEH</h4>
                </a>
-               <p class="ml-auto m-0">
-                  <a href="notification.html" class="text-decoration-none bg-white p-1 rounded shadow-sm d-flex align-items-center">
-                  <i class="text-dark icofont-notification"></i>
-                  <span class="badge badge-danger p-1 ml-1 small">2</span>
-                  </a>
-               </p>
             </div>
             <a href="<?= site_url()?>pencarian" class="text-decoration-none">
                <div class="input-group mt-3 rounded shadow-sm overflow-hidden bg-white">
@@ -28,7 +22,7 @@
             <!-- categories -->
             <div class="p-3 osahan-categories">
                <h6 class="mb-2">KATEGORI</h6>
-	           <?php $chunks = array_chunk($data_kategori->result(), 3); ?>
+	           <?php $chunks = array_chunk($data_kategori->result(), 4); ?>
 	              <?php foreach ($chunks as $data_chunk): ?>
 		              <div class="row m-0">
 	              		<?php foreach ($data_chunk as $key => $data): ?>
@@ -60,22 +54,16 @@
                </div>
             </div>
 
-            <!-- Pick's Today -->
+            <!-- Grid 1 -->
             <div class="title d-flex align-items-center mb-3 mt-3 px-3">
-               <h6 class="m-0">Pilih Hari Ini</h6>
+               <h6 class="m-0">UNTUKMU HARI INI</h6>
                <a class="ml-auto text-success" href="picks_today.html">Lihat Semua</a>
             </div>
-            <!-- pick today -->
-
             <div class="pick_today px-3">
-               <?php 
-               $a=1; 
-               foreach ($data_kategori->result() as $data): ?>
-               <div class="row <?php if ($a>=2) { echo "pt-3"; }?>">
-                  <?php
-                  $id_kategori = $data->id_kategori;
-                  $data_produk = $this->db->query("SELECT * FROM `tb_produk` JOIN tb_kategori ON tb_produk.id_kategori=tb_kategori.id_kategori WHERE tb_produk.id_kategori='$id_kategori' LIMIT 2"); 
-                  foreach ($data_produk->result() as $data_p): 
+               <?php $a=1; $chunks = array_chunk($data_grid1->result(), 2); ?>
+               <?php foreach ($chunks as $data_chunk): ?>
+                  <div class="row <?= $a < 2 ? '' : 'pt-3';?>">
+                  <?php foreach ($data_chunk as $key => $data_p): 
                      $nama_produk = strtolower(str_replace(" ", "-", "$data_p->nama_produk"));
                   ?>
                   <div class="col-6">
@@ -83,40 +71,137 @@
                         <div class="list-card-image">
                            <a href="<?= base_url()?>beranda/detail_produk/<?= $nama_produk; ?>" class="text-dark">
                               <div class="member-plan position-absolute">
-                                 <span class="badge mt-3 mb-3 ml-3 badge-success"><?= $data_p->nama_kategori; ?></span>
-                                 <span class="badge badge-warning">5%</span>
+                                 <span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
+                                 <?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>';?>
+                                 <?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>';?>
+
                               </div>
                               <div class="p-3">
                                  <img src="<?= base_url()?>file/<?= $data_p->gambar;?>" class="img-fluid item-img w-100 mb-3">
                                  <h6><?= $data_p->nama_produk; ?></h6>
-                                 <p><?= $data_p->deskripsi; ?></p>
+                                 <p class="m-auto">
+                                    <?php
+                                       $jml = strlen($data_p->deskripsi);
+                                       echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0,100)." (Lihat Selengkapnya)";
+                                    ?>    
+                                 </p>
                                  <div class="d-flex align-items-center">
-                                    <h6 class="price m-0 text-success"><?= "Rp" . number_format($data_p->harga,0,',','.'); ?></h6>
-                                    <a class="ml-auto" href="cart.html">
-                                    <div class="input-group input-spinner ml-auto cart-items-number">
-                                       <div class="input-group-prepend">
-                                          <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
-                                       </div>
-                                       <input type="text" class="form-control" value="1">
-                                       <div class="input-group-append">
-                                          <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
-                                       </div>
-                                    </div>
-                                    </a>
+                                    <h6 class="price m-0 text-success">
+                                       <?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp'. number_format($data_p->harga,0,',','.').'</del>'.' Rp'. number_format($data_p->harga_promosi,0,',','.') : 'Rp'. number_format($data_p->harga,0,',','.');?>
+                                        
+                                    </h6>
+                                    <a href="" class="btn btn-success btn-sm ml-auto">+</a>
                                  </div>
                               </div>
                            </a>
                         </div>
                      </div>
                   </div>
-
                   <?php endforeach;?>
-               </div>
+                  </div>
+               <?php $a++; endforeach;?>
+            </div>
+
+            <!-- Grid 2 -->
+            <div class="title d-flex align-items-center mb-3 mt-3 px-3">
+               <h6 class="m-0">PROMO HARI INI</h6>
+               <a class="ml-auto text-success" href="picks_today.html">Lihat Semua</a>
+            </div>
+
+            <div class="pick_today px-3">
+               <?php $a=1; $chunks = array_chunk($data_grid2->result(), 2); ?>
+               <?php foreach ($chunks as $data_chunk): ?>
+                  <div class="row <?= $a < 2 ? '' : 'pt-3';?>">
+                  <?php foreach ($data_chunk as $key => $data_p): 
+                     $nama_produk = strtolower(str_replace(" ", "-", "$data_p->nama_produk"));
+                  ?>
+                  <div class="col-6">
+                     <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                        <div class="list-card-image">
+                           <a href="<?= base_url()?>beranda/detail_produk/<?= $nama_produk; ?>" class="text-dark">
+                              <div class="member-plan position-absolute">
+                                 <span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
+                                 <?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>';?>
+                                 <?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>';?>
+
+                              </div>
+                              <div class="p-3">
+                                 <img src="<?= base_url()?>file/<?= $data_p->gambar;?>" class="img-fluid item-img w-100 mb-3">
+                                 <h6><?= $data_p->nama_produk; ?></h6>
+                                 <p class="m-auto">
+                                    <?php
+                                       $jml = strlen($data_p->deskripsi);
+                                       echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0,100)." (Lihat Selengkapnya)";
+                                    ?>    
+                                 </p>
+                                 <div class="d-flex align-items-center">
+                                    <h6 class="price m-0 text-success">
+                                       <?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp'. number_format($data_p->harga,0,',','.').'</del>'.' Rp'. number_format($data_p->harga_promosi,0,',','.') : 'Rp'. number_format($data_p->harga,0,',','.');?>
+                                        
+                                    </h6>
+                                    <a href="" class="btn btn-success btn-sm ml-auto">+</a>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+                  <?php endforeach;?>
+                  </div>
+               <?php $a++; endforeach;?>
+            </div>
+
+            <!-- Grid 3 -->
+            <div class="title d-flex align-items-center mb-3 mt-3 px-3">
+               <h6 class="m-0">PROMO HARI INI</h6>
+               <a class="ml-auto text-success" href="picks_today.html">Lihat Semua</a>
+            </div>
+
+            <div class="pick_today px-3">
+               <?php $a=1; $chunks = array_chunk($data_grid3->result(), 2); ?>
+               <?php foreach ($chunks as $data_chunk): ?>
+                  <div class="row <?= $a < 2 ? '' : 'pt-3';?>">
+                  <?php foreach ($data_chunk as $key => $data_p): 
+                     $nama_produk = strtolower(str_replace(" ", "-", "$data_p->nama_produk"));
+                  ?>
+                  <div class="col-6">
+                     <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                        <div class="list-card-image">
+                           <a href="<?= base_url()?>beranda/detail_produk/<?= $nama_produk; ?>" class="text-dark">
+                              <div class="member-plan position-absolute">
+                                 <span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
+                                 <?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>';?>
+                                 <?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>';?>
+
+                              </div>
+                              <div class="p-3">
+                                 <img src="<?= base_url()?>file/<?= $data_p->gambar;?>" class="img-fluid item-img w-100 mb-3">
+                                 <h6><?= $data_p->nama_produk; ?></h6>
+                                 <p class="m-auto">
+                                    <?php
+                                       $jml = strlen($data_p->deskripsi);
+                                       echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0,100)." (Lihat Selengkapnya)";
+                                    ?>    
+                                 </p>
+                                 <div class="d-flex align-items-center">
+                                    <h6 class="price m-0 text-success">
+                                       <?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp'. number_format($data_p->harga,0,',','.').'</del>'.' Rp'. number_format($data_p->harga_promosi,0,',','.') : 'Rp'. number_format($data_p->harga,0,',','.');?>
+                                        
+                                    </h6>
+                                    <a href="" class="btn btn-success btn-sm ml-auto">+</a>
+                                 </div>
+                              </div>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+                  <?php endforeach;?>
+                  </div>
                <?php $a++; endforeach;?>
             </div>
 
             <!-- Most sales -->
-            <div class="title d-flex align-items-center p-3">
+            <div class="title d-flex align-items-center p-2">
             </div>
 
          </div>

@@ -8,6 +8,24 @@ public function get_kategori()
 		return $query;
 	}
 
+public function get_grid1() //Untukmu hari ini
+	{
+		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori ORDER BY `tb_produk`.`id_produk` DESC LIMIT 8");
+		return $query;
+	}
+
+public function get_grid2() //Promosi hari ini
+	{
+		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori WHERE tb_produk.promosi='1' ORDER BY `tb_produk`.`id_produk` DESC LIMIT 4");
+		return $query;
+	}
+
+public function get_grid3() //Best Seller
+	{
+		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori WHERE tb_produk.terlaris='1' ORDER BY `tb_produk`.`id_produk` DESC LIMIT 4");
+		return $query;
+	}
+
 public function get_perproduk($id)
 	{
 		$nama_produk = ucwords(str_replace("-", " ", "$id"));
