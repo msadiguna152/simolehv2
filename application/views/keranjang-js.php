@@ -57,7 +57,7 @@
 				var hargaInt = parseInt(hargaString.replace('.', ''));
 				subTotal = subTotal + (qty * hargaInt);
 			})
-			$('#subtotal').text('Subtotal Rp. ' + $.number(subTotal, 0, ',', '.'));
+			$('#subtotal').text('Jumlah Belanja Rp. ' + $.number(subTotal, 0, ',', '.'));
 		},
 		kurangiJumlah(e) {
 			var currentQty = $(this).parent('div').siblings('input').val();

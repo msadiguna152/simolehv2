@@ -11,7 +11,7 @@
 			<a href="<?php echo site_url('/keranjang/checkout') ?>" class="text-decoration-none">
 				<div class="rounded shadow bg-success d-flex align-items-center p-3 text-white">
 					<div class="more">
-						<h6 class="m-0" id="subtotal">Subtotal Rp.</h6>
+						<h6 class="m-0" id="subtotal">Jumlah Belanja Rp.</h6>
 						<p class="small m-0">Lanjutkan untuk proses Checkout</p>
 					</div>
 					<div class="ml-auto"><i class="icofont-simple-right"></i></div>
