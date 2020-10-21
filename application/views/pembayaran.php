@@ -25,28 +25,26 @@
 					</div>
 					<div id="collapseOne" class="collapse tab-content filter bg-white" data-parent="#accordionExample">
 						<div class="tab-pane fade show active" id="mon" role="tabpanel" aria-labelledby="mon-tab">
-							<form>
-								<?php
-								$bank_assets = [
-										'MANDIRI' => base_url('assets2/img/bank/Mandiri.svg'),
-										'BNI' => base_url('assets2/img/bank/BNI.svg'),
-										'BRI' => base_url('assets2/img/bank/BRI.svg'),
-										'PERMATA' => base_url('assets2/img/bank/Permata.svg'),
-										'BCA' => base_url('assets2/img/bank/BCA.svg')
-								]
-								?>
-								<?php foreach ($fabanks ?? [] as $key => $bank): ?>
-									<div class="custom-control border-bottom px-0 custom-radio">
-										<input class="custom-control-input" type="radio" name="bank"
-											   id="<?= $key + 1 ?>"
-											   value="<?= $bank['code'] ?>">
-										<label class="custom-control-label py-3 w-100 px-3" for="<?= $key + 1 ?>">
-											<img class="mr-2" src="<?= $bank_assets[$bank['code']] ?? NULL ?>"
-												 alt=""> <?= $bank['name'] ?>
-										</label>
-									</div>
-								<?php endforeach; ?>
-							</form>
+							<?php
+							$bank_assets = [
+									'MANDIRI' => base_url('assets2/img/bank/Mandiri.svg'),
+									'BNI' => base_url('assets2/img/bank/BNI.svg'),
+									'BRI' => base_url('assets2/img/bank/BRI.svg'),
+									'PERMATA' => base_url('assets2/img/bank/Permata.svg'),
+									'BCA' => base_url('assets2/img/bank/BCA.svg')
+							]
+							?>
+							<?php foreach ($fabanks ?? [] as $key => $bank): ?>
+								<div class="custom-control border-bottom px-0 custom-radio">
+									<input class="custom-control-input" type="radio" name="bank"
+										   id="<?= $key + 1 ?>"
+										   value="<?= $bank['code'] ?>">
+									<label class="custom-control-label py-3 w-100 px-3" for="<?= $key + 1 ?>">
+										<img class="mr-2" src="<?= $bank_assets[$bank['code']] ?? NULL ?>"
+											 alt=""> <?= $bank['name'] ?>
+									</label>
+								</div>
+							<?php endforeach; ?>
 						</div>
 					</div>
 				</div>

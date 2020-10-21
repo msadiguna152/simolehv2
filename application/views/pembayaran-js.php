@@ -21,7 +21,21 @@
 			metodePembayaran.data('metode', 'transfer');
 		});
 		$('#btn-submit-pembayaran').on('click', function () {
-			$('#form-pembayaran').submit();
+			var pembayaranBank = $('#form-pembayaran').find('input[name="bank"]:checked').val();
+			var pembayaranCod = $('#form-pembayaran').find('input[name="cod"]:checked').val();
+			var pembayaranEWallet = $('#form-pembayaran').find('input[name="ewallet"]:checked').val();
+			var nohp = $('#form-pembayaran').find('input[name="nomorhp"]').val();
+
+			if (typeof pembayaranBank === "undefined" && typeof pembayaranCod === "undefined" && typeof pembayaranEWallet === "undefined") {
+				return Snackbar.show({text: 'Metode Pembayaran tidak boleh kosong.'})
+			}
+			if (typeof pembayaranEWallet !== "undefined") {
+				if (nohp === '') {
+					return Snackbar.show({text: 'Nomor Handphone tidak boleh kosong.'})
+				}
+			}
+
+			// $('#form-pembayaran').submit();
 		})
 	})
 </script>
