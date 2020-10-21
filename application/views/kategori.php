@@ -26,14 +26,15 @@
 								<img src="<?= base_url() ?>file/<?= $data->gambar; ?>"
 									 class="img-fluid item-img w-100 mb-3">
 								<h6><?= htmlspecialchars($data->nama_produk); ?></h6>
-								<p><?= htmlspecialchars($data->deskripsi); ?></p>
+								<p style="height: 60px"><?= htmlspecialchars($data->deskripsi); ?></p>
 								<div class="" id="container-button">
 									<h6 class="price m-0 text-success"><?= "Rp " . number_format(htmlspecialchars($data->harga), 0, ',', '.'); ?></h6>
 									<button data-id="<?= $data->id_produk ?>"
 											id="btn-add-cart"
 											class="btn btn-success btn-block ml-auto mt-2">Tambah
 									</button>
-									<div id="container-qty-btn" class="input-group input-spinner cart-items-number mx-auto mt-2"
+									<div id="container-qty-btn"
+										 class="input-group input-spinner cart-items-number mx-auto mt-2"
 										 style="display: none">
 										<div class="input-group-prepend">
 											<button data-id="<?= $data->id_produk ?>" class="btn btn-success btn-sm"
