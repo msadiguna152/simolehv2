@@ -144,6 +144,16 @@
 	</div>
 </div>
 <div class="address p-3 bg-white">
+	<h6 class="text-dark m-0">Catatan Tambahan</h6>
+</div>
+<div class="p-3">
+	<div class="form-group">
+		<textarea type="text"
+				  class="form-control" name="catatan" rows="4" id="catatan_tambahan" placeholder="Contoh. Ukuran Baju, Jenis Rasa"></textarea>
+		<small id="saveProgress" class="form-text text-muted"></small>
+	</div>
+</div>
+<div class="address p-3 bg-white">
 	<h6 class="text-dark m-0">Total</h6>
 </div>
 <div class="p-3">
