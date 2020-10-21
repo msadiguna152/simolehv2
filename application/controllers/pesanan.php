@@ -98,13 +98,14 @@ class Pesanan extends CI_Controller
 	{
 		$dataForm = [
 			'id_alamat' => $this->session->userdata('alamat'),
-			'cara_pembayaran' => $success['ewallet_type'],
+//			'cara_pembayaran' => $success['ewallet_type'],
 			'total_pembayaran' => $success['amount'],
 			'tanggal_pesanan' => date('Y-m-d H:i:s', strtotime($success['created'])),
 			'status' => $success['status'],
 			'ongkir' => 0,//@TODO:ongkir
 			'voucher' => 0,//@TODO:voucher,
-			'kode_pembayaran' => $success['external_id']
+			'catatan' => $this->input->post('catatan'),
+//			'kode_pembayaran' => $success['external_id']
 		];
 		$inserted_id = $this->mpesanan->insert_pesanan($dataForm);
 		$qty = $this->session->userdata('qty');
