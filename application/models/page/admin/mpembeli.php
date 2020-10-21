@@ -27,7 +27,7 @@ public function insert_pembeli()
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
-		$query = $this->db->query("INSERT INTO `tb_pembeli` (`id_pembeli`, `nama_pembeli`, `no_telpon`, `email`, `password`) VALUES (NULL, '$nama_pembeli', '$no_telpon', '$email', '$password');");
+		$query = $this->db->query("INSERT INTO `tb_pembeli` (`id_pembeli`, `nama_pembeli`, `no_telpon`, `email`) VALUES (NULL, '$nama_pembeli', '$no_telpon', '$email');");
 		return $query;
 	}
 
