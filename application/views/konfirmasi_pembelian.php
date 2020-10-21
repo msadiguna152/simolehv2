@@ -3,13 +3,13 @@
 		<div class="d-flex align-items-center">
 			<a class="font-weight-bold text-success text-decoration-none" href="<?php echo site_url('keranjang') ?>">
 				<i class="icofont-rounded-left back-page"></i></a>
-			<h6 class="font-weight-bold m-0 ml-3">Konfirmasi Pembelian</h6>
+			<h6 class="font-weight-bold m-0 ml-3">Checkout Pesanan</h6>
 			<a class="toggle ml-auto" href="#"><i class="icofont-navigation-menu"></i></a>
 		</div>
 	</div>
 </div>
 <div class="pembeli p-3 bg-white">
-	<h6 class="m-0 text-dark d-flex align-items-center">Identitas Pembeli <span class="small ml-auto">
+	<h6 class="m-0 text-dark d-flex align-items-center">Identitas Pemesan <span class="small ml-auto">
 			</span>
 	</h6>
 </div>
@@ -45,7 +45,7 @@
 <?php endif; ?>
 <?php $alamat_dipilih = $alamat->row() ?? null ?>
 <div class="address p-3 bg-white">
-	<h6 class="m-0 text-dark d-flex align-items-center">Alamat <span class="small ml-auto">
+	<h6 class="m-0 text-dark d-flex align-items-center">Alamat Pengantaran <span class="small ml-auto">
 			<a href="<?php echo site_url('keranjang/alamat') ?>"
 			   class="font-weight-bold text-decoration-none text-success">
 				<i class="icofont-location-arrow"></i> <?php echo $alamat_dipilih ? 'Ganti' : 'Tambah' ?></a></span>
@@ -54,7 +54,7 @@
 <?php if ($alamat_dipilih): ?>
 	<div class="p-3">
 		<div class="d-flex align-items-center">
-			<p class="mb-2 font-weight-bold">Alamat</p>
+			<p class="mb-2 font-weight-bold">Alamat Pengantaran</p>
 			<p class="mb-2 badge badge-success ml-auto">Dipilih</p>
 		</div>
 		<p class="small text-muted m-0"><?= $alamat_dipilih->alamat_lengkap ?></p>
@@ -118,14 +118,14 @@
 	</a>
 </div>
 <div class="address p-3 bg-white">
-	<h6 class="text-dark m-0">Promo Code</h6>
+	<h6 class="text-dark m-0">Kode Promo</h6>
 </div>
 <div>
 	<div class="accordion" id="accordionExample">
 		<div class="d-flex align-items-center" id="headingThree">
 			<a class="p-3 d-flex align-items-center text-decoration-none text-success w-100" type="button"
 			   data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-				<i class="icofont-badge mr-3"></i> Add Promo Code
+				<i class="icofont-badge mr-3"></i> Tambahkan Kode Promo
 				<i class="icofont-rounded-down ml-auto"></i>
 			</a>
 		</div>
