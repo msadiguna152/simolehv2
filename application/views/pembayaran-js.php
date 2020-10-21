@@ -11,7 +11,7 @@
 			metodePembayaran.data('metode', 'cod');
 		})
 		$('#collapseTwo').on('show.bs.collapse', function () {
-			$(this).find('input[name="nomorhp"]').val('');
+			$(this).find('input[name="nomorhp"]').val('').prop('disabled', true);
 			$(this).find('input[name="ewallet"]').prop('checked', false);
 			$(this).find('label.btn.btn-outline-secondary').removeClass('active');
 			metodePembayaran.data('metode', 'ewallet');
@@ -27,15 +27,17 @@
 			var nohp = $('#form-pembayaran').find('input[name="nomorhp"]').val();
 
 			if (typeof pembayaranBank === "undefined" && typeof pembayaranCod === "undefined" && typeof pembayaranEWallet === "undefined") {
-				return Snackbar.show({text: 'Metode Pembayaran tidak boleh kosong.'})
+				return pembayaranHelper.showSnackbar('Metode Pembayaran tidak boleh kosong.');
 			}
 			if (typeof pembayaranEWallet !== "undefined") {
 				if (nohp === '') {
-					return Snackbar.show({text: 'Nomor Handphone tidak boleh kosong.'})
+					return pembayaranHelper.showSnackbar('Nomor Handphone tidak boleh kosong.');
 				}
 			}
-
-			// $('#form-pembayaran').submit();
+			$('#form-pembayaran').submit();
+		})
+		$('input[name="ewallet"]').on('click', function () {
+			$('input[name="nomorhp"]').prop('disabled', false);
 		})
 	})
 </script>
