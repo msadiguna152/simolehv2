@@ -12,7 +12,23 @@ class Akun extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('tema/head');
-		$this->load->view('login');
+		if($this->session->userdata('id_pengguna') == NULL){
+			$this->load->view('login');
+		}else{
+			$this->load->view('berhasil_login');
+		}
+		$this->load->view('tema/menu');
+		$this->load->view('tema/footer');
+	}
+
+	public function edit()
+	{
+		$this->load->view('tema/head');
+		if($this->session->userdata('id_pengguna') == NULL){
+			$this->load->view('login');
+		}else{
+			$this->load->view('edit_profil');
+		}
 		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
 	}
@@ -41,11 +57,11 @@ class Akun extends CI_Controller {
 		$username = htmlspecialchars($this->input->post('username'));
 		$password = htmlspecialchars($this->input->post('password'));
 
-		$cek = $this->mauth->cek($username, $password);
+		$cek = $this->makun->cek($username, $password);
 
 		if($cek->num_rows() == 1)
 		{
-			$get_pengguna = $this->mauth->cek($username, $password);
+			$get_pengguna = $this->makun->cek($username, $password);
 			foreach($get_pengguna->result() as $data){
 				$sess_data['username'] = $data->username;
 				$sess_data['password'] = $data->password;
@@ -58,10 +74,10 @@ class Akun extends CI_Controller {
 				$this->session->set_userdata($sess_data);
 			}
 
-			if($this->session->userdata('level') == '-')
+			if($this->session->userdata('level') == 'Pembeli')
 			{
 				$this->session->set_flashdata('hasil', 'berhasillogin');
-				echo '<script language="javascript">document.location="'.site_url('akun/login_berhasil').'";</script>';
+				echo '<script language="javascript">document.location="'.site_url('akun').'";</script>';
 			}
 			else {
 				echo '<script language="javascript">alert("Username dan Password Tidak Valid!");';

@@ -42,15 +42,13 @@
 
 		<!-- Promos -->
 		<div class="py-3 bg-white osahan-promos shadow-sm">
-			<div class="d-flex align-items-center px-3 mb-2">
-				<h6 class="m-0"></h6>
-				<a href="promos.html" class="ml-auto text-success">Lihat Semua</a>
-			</div>
 			<div class="promo-slider">
 				<?php foreach ($data_promosi->result() as $data): ?>
 					<div class="osahan-slider-item m-2">
-						<a href=""><img src="<?= base_url() ?>file/<?php echo $data->gambar; ?>"
-										class="img-fluid mx-auto rounded" alt="<?= $data->nama_produk; ?>"></a>
+						<a href="">
+							<img src="<?= base_url() ?>file/<?php echo $data->gambar; ?>"
+										class="img-fluid mx-auto rounded" alt="<?= $data->nama_produk; ?>">
+						</a>
 					</div>
 				<?php endforeach; ?>
 			</div>
@@ -73,9 +71,8 @@
 							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 									<div class="member-plan position-absolute">
-										<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
-										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
-										<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
+										<?= ($data_p->promosi == 0) ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
+										<?= ($data_p->terlaris == 0) ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
 									</div>
 									<div class="p-3">
@@ -146,7 +143,6 @@
 							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 									<div class="member-plan position-absolute">
-										<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
 										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
 										<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
@@ -220,7 +216,6 @@
 								<div class="list-card-image">
 
 									<div class="member-plan position-absolute">
-										<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
 										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
 										<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
