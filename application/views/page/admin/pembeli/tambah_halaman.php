@@ -60,11 +60,6 @@
                           <input type="text" class="form-control" id="" name="email" required="" placeholder="Masukan email pembeli...">
                         </div>
 
-                        <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="text" class="form-control" id="" name="password" required="" placeholder="Masukan password pembeli...">
-                        </div>
-
                   </div>
                 </div>
                 <div class="row">

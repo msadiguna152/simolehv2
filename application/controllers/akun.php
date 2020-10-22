@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Akun extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('mauth');		
+		$this->load->model('makun');		
 		$this->load->model('mberanda');
 		$this->session->set_userdata('menu', 'akun');
 	}
@@ -15,6 +15,24 @@ class Akun extends CI_Controller {
 		$this->load->view('login');
 		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
+	}
+
+	public function registrasi()
+	{
+		$this->load->view('tema/head');
+		$this->load->view('regis');
+		$this->load->view('tema/menu');
+		$this->load->view('tema/footer');
+	}
+
+	public function insert()
+	{
+		$query = $this->makun->regis();
+		if ($query==true) {
+			echo '<script language="javascript">document.location="'.site_url('akun').'";</script>';
+		} elseif ($query==false) {
+			echo '<script language="javascript">document.location="'.site_url('akun/registrasi').'";</script>';
+		}
 	}
 
 		//memeriksa hasil inputan di halaman login
