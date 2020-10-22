@@ -13,7 +13,7 @@ class Mproduk extends CI_Model
 	{
 		$query = $this->db->select("*")->where_in('id_produk', $ids)->get('tb_produk');
 		return $query;
-}
+	}
 
 	public function get_detail_produk($id_produk)
 	{
@@ -106,5 +106,17 @@ class Mproduk extends CI_Model
 	{
 		$query = $this->db->query("DELETE FROM `tb_produk` WHERE `tb_produk`.`id_produk` = '$id_produk'");
 		return $query;
+	}
+
+	function find($query)
+	{
+		if ($query) {
+			return $this->db->select(['nama_produk', 'harga', 'gambar', 'deskripsi'])
+				->like('nama_produk', $query)
+				->or_like('harga', $query)
+				->or_like('deskripsi', $query)
+				->get('tb_produk')->result();
+		}
+		return [];
 	}
 }
