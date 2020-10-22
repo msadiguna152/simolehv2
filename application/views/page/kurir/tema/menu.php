@@ -21,30 +21,30 @@
       </div>
     </form> -->
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+<ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
+        <?php
+          $id_pengguna = $this->session->userdata('id_pengguna');
+          $jnotif = $this->db->query("SELECT id_pesanan AS notif FROM `tb_pesanan` WHERE status='1' AND id_pengguna='$id_pengguna'");
+          $jnotif2 = $jnotif->num_rows();
+        ?>
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-warning navbar-badge"><?= $jnotif2; ?></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Pemberitahuan</span>
+          <span class="dropdown-item dropdown-header"><?= $jnotif2; ?> Pemberitahuan</span>
+          <?php
+            $id_pengguna = $this->session->userdata('id_pengguna');
+            $notif = $this->db->query("SELECT * FROM `tb_pesanan` WHERE status='1' AND id_pengguna='$id_pengguna' ORDER BY id_pesanan DESC");
+            foreach ($notif->result() as $data):
+          ?>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+            <i class="fas fa-cart mr-2"></i> 
+            <span class="float-left text-muted text-sm"><?= $data->tanggal_pesanan;?></span>
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
+          <?php endforeach;?>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">Lihat Semua</a>
         </div>
@@ -67,7 +67,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <!-- <img src="<?php echo base_url()?>profile/<?php echo $this->session->userdata('foto_pengguna');?>" class="img-circle elevation-2" alt=""> -->
+          <img src="<?php echo base_url()?>file/<?php echo $this->session->userdata('foto_pengguna');?>" class="img-circle elevation-2" alt="">
         </div>
         <div class="info">
           <a href="<?php echo base_url()?>page/kurir/Admin/edit" class="d-block"><?php echo substr($this->session->userdata('nama_pengguna'), 0,18);?> <i class="fa fa-circle fa-sm text-success" data-toggle="tooltip" data-placement="right" title="Online"></i></a>
@@ -88,7 +88,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="<?php echo base_url()?>page/kurir/Admin/edit" class="nav-link <?php if($this->session->userdata('menu') == 'profil'){echo "active"; }?>">
+            <a href="<?php echo base_url()?>page/kurir/dashboard/profil" class="nav-link <?php if($this->session->userdata('menu') == 'profil'){echo "active"; }?>">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Profil

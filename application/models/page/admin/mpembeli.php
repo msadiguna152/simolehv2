@@ -25,9 +25,13 @@ public function insert_pembeli()
 		$nama_pembeli = $this->input->post('nama_pembeli');
 		$no_telpon = $this->input->post('no_telpon');
 		$email = $this->input->post('email');
-		$password = $this->input->post('password');
 
-		$query = $this->db->query("INSERT INTO `tb_pembeli` (`id_pembeli`, `nama_pembeli`, `no_telpon`, `email`) VALUES (NULL, '$nama_pembeli', '$no_telpon', '$email');");
+		$query = $this->db->query("INSERT INTO `tb_pengguna` (`id_pengguna`, `nama_pengguna`, `foto_pengguna`, `username`, `password`, `email`, `no_telpon`, `level`) VALUES (NULL, '$nama_pembeli', 'user.png', '$email', '$no_telpon', '$email', '$no_telpon', 'Pembeli');");
+
+		$lastid = $this->db->insert_id();
+
+		$query2 = $this->db->query("INSERT INTO `tb_pembeli` (`id_pembeli`, `id_pengguna`, `nama_pembeli`, `no_telpon`, `email`) VALUES (NULL, '$lastid', '$nama_pembeli', '$no_telpon', '$email');");
+		
 		return $query;
 	}
 
@@ -37,9 +41,8 @@ public function update_pembeli()
 		$nama_pembeli = $this->input->post('nama_pembeli');
 		$no_telpon = $this->input->post('no_telpon');
 		$email = $this->input->post('email');
-		$password = $this->input->post('password');
 
-		$query = $this->db->query("UPDATE `tb_pembeli` SET `nama_pembeli` = '$nama_pembeli', `no_telpon` = '$no_telpon', `email` = '$email', `password` = '$password' WHERE `tb_pembeli`.`id_pembeli` = '$id_pembeli';");
+		$query = $this->db->query("UPDATE `tb_pembeli` SET `nama_pembeli` = '$nama_pembeli', `no_telpon` = '$no_telpon', `email` = '$email' WHERE `tb_pembeli`.`id_pembeli` = '$id_pembeli';");
 		return $query;
 
 	}

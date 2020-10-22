@@ -24,27 +24,26 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
+        <?php
+          $jnotif = $this->db->query("SELECT id_pesanan AS notif FROM `tb_pesanan` WHERE status='1'");
+          $jnotif2 = $jnotif->num_rows();
+        ?>
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-warning navbar-badge"><?= $jnotif2; ?></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Pemberitahuan</span>
+          <span class="dropdown-item dropdown-header"><?= $jnotif2; ?> Pemberitahuan</span>
+          <?php
+            $notif = $this->db->query("SELECT * FROM `tb_pesanan` WHERE status='1' ORDER BY id_pesanan DESC");
+            foreach ($notif->result() as $data):
+          ?>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+            <i class="fas fa-cart mr-2"></i> 
+            <span class="float-left text-muted text-sm"><?= $data->tanggal_pesanan;?></span>
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
+          <?php endforeach;?>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">Lihat Semua</a>
         </div>
