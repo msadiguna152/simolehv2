@@ -30,9 +30,16 @@ if (!function_exists('init_xendit')) {
 		return $createOvo;
 	}
 
-	function pembayaran_linkaja()
+	function generate_pembayaran_linkaja($linkAjaParams)
 	{
-
+		init_xendit();
+		$createLinkAja = null;
+		try {
+			$createLinkAja = \Xendit\EWallets::create($linkAjaParams);
+		} catch (\Xendit\Exceptions\ApiException $e) {
+			print_r($e);
+		}
+		return $createLinkAja;
 	}
 
 	function get_status_pembayaran()

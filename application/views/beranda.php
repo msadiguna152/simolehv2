@@ -237,7 +237,6 @@
 											<div class="" id="container-button">
 												<h6 class="price m-0 text-success">
 													<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
-
 												</h6>
 												<button data-id="<?= $data_p->id_produk ?>"
 														id="btn-add-cart"

@@ -26,5 +26,15 @@ class Callback extends CI_Controller
 			}
 		}
 	}
+	public function linkaja(){
+		$data = json_decode(file_get_contents('php://input'), 1);
+		if (isset($data['external_id'])) {
+			if ($this->mpesanan->update_status_pesanan($data['status'], $data['external_id'])) {
+				echo json_encode(['status' => $data['status']]);
+			} else {
+				echo json_encode(['status' => 'Error in local server']);
+			}
+		}
+	}
 
 }

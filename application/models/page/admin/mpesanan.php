@@ -74,6 +74,17 @@ class Mpesanan extends CI_Model
 		return $this->db->insert_id();
 	}
 
+	function insert_pembayaran($data)
+	{
+		$this->db->insert('tb_pembayaran', $data);
+		return $this->db->insert_id();
+	}
+
+	function get_pembayaran($id)
+	{
+		return $this->db->select('*')->where('id_pembayaran', $id)->get('tb_pembayaran')->row();
+	}
+
 	function insert_rincian_pesanan($data)
 	{
 		return $this->db->insert_batch('tb_rincian_pesanan', $data);
@@ -86,7 +97,7 @@ class Mpesanan extends CI_Model
 
 	function update_status_pesanan($status, $id)
 	{
-		return $this->db->set(['status' => $status])->where('kode_pembayaran', $id)->update('tb_pesanan');
+		return $this->db->set(['status_pembayaran' => $status])->where('kode_pembayaran', $id)->update('tb_pembayaran');
 	}
 }
 

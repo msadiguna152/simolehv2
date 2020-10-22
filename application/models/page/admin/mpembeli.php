@@ -1,37 +1,36 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Mpembeli extends CI_Model {
+class Mpembeli extends CI_Model
+{
 
-public function get_pembeli()
+	public function get_pembeli()
 	{
 		$query = $this->db->query("SELECT * FROM `tb_pembeli` ORDER BY `tb_pembeli`.`id_pembeli` DESC");
 		return $query;
 	}
 
-public function get_edit_pembeli($id_pembeli)
+	public function get_edit_pembeli($id_pembeli)
 	{
 		$query = $this->db->query("SELECT * FROM `tb_pembeli` WHERE `tb_pembeli`.`id_pembeli` = '$id_pembeli'");
 		return $query;
 	}
 
-public function get_detail_pembeli($id_pembeli)
+	public function get_detail_pembeli($id_pembeli)
 	{
 		$query = $this->db->query("SELECT * FROM `tb_pembeli` JOIN tb_alamat ON tb_pembeli.id_pembeli=tb_alamat.id_pembeli WHERE `tb_pembeli`.`id_pembeli` = '$id_pembeli'");
 		return $query;
 	}
 
-public function insert_pembeli()
+	public function insert_pembeli()
 	{
 		$nama_pembeli = $this->input->post('nama_pembeli');
 		$no_telpon = $this->input->post('no_telpon');
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
-
-		$query = $this->db->query("INSERT INTO `tb_pembeli` (`id_pembeli`, `nama_pembeli`, `no_telpon`, `email`) VALUES (NULL, '$nama_pembeli', '$no_telpon', '$email');");
+		$query = $this->db->query("INSERT INTO `tb_pembeli` ( `nama_pembeli`, `no_telpon`) VALUES ('$nama_pembeli', '$no_telpon');");
+		$this->session->set_userdata('id_pembeli', $this->db->insert_id());
 		return $query;
 	}
 
-public function update_pembeli()
+	public function update_pembeli()
 	{
 		$id_pembeli = $this->input->post('id_pembeli');
 		$nama_pembeli = $this->input->post('nama_pembeli');
@@ -44,7 +43,7 @@ public function update_pembeli()
 
 	}
 
-public function delete_pembeli($id_pembeli)
+	public function delete_pembeli($id_pembeli)
 	{
 		$query = $this->db->query("DELETE FROM `tb_pembeli` WHERE `tb_pembeli`.`id_pembeli` = '$id_pembeli'");
 		return $query;
