@@ -6,12 +6,11 @@ class Mpesanan extends CI_Model
 	public function get_pesanan()
 	{
 		$id_pengguna = $this->session->userdata('id_pengguna');
-		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
-			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
-			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli
-			JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
-			JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna 
-			WHERE tb_pengguna.id_pengguna = '$id_pengguna'
+		$query = $this->db->query("SELECT *
+			FROM `tb_pesanan`
+				 JOIN tb_pembeli ON tb_pesanan.id_pembeli = tb_pembeli.id_pembeli
+				 JOIN tb_pembayaran ON tb_pesanan.id_pesanan = tb_pembayaran.id_pesanan
+				JOIN tb_alamat ta on tb_pesanan.id_alamat = ta.id_alamat
 			ORDER BY `tb_pesanan`.`id_pesanan` DESC");
 		return $query;
 	}
