@@ -2,6 +2,26 @@
 <script type="text/javascript" src="<?php echo base_url() ?>assets2/vendor/gmaps/gmaps.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets2/vendor/gmaps/gmaps-advanced-route.js"></script>
 <script>
+	var lat = 0;
+	var long = 0;
+
+	function showError(error) {
+		switch (error.code) {
+			case error.PERMISSION_DENIED:
+				Snackbar.show({text: "User denied the request for Geolocation."});
+				break;
+			case error.POSITION_UNAVAILABLE:
+				Snackbar.show({text: "Location information is unavailable."});
+				break;
+			case error.TIMEOUT:
+				Snackbar.show({text: "The request to get user location timed out."});
+				break;
+			case error.UNKNOWN_ERROR:
+				Snackbar.show({text: "An unknown error occurred."});
+				break;
+		}
+	}
+
 	let marker;
 	let opts = {
 		zoom: 4,
@@ -22,6 +42,23 @@
 	let myLatlng = {lat: -25.363, lng: 131.044};
 	var geocoder = new google.maps.Geocoder;
 	var infowindow = new google.maps.InfoWindow;
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (position) {
+			const pos = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
+			infowindow.setPosition(pos);
+			infowindow.setContent("Lokasi Anda.");
+			infowindow.open(maps);
+			maps.setCenter(pos);
+			maps.setZoom(16);
+		}, showError);
+	} else {
+		console.log("Geolocation is not supported by this browser.");
+	}
+
+
 	//=======================SAAT PETA DI KLIK======================================================
 	maps.addListener('click', function (mapsMouseEvent) {
 		let latLng = mapsMouseEvent.latLng.toString();
@@ -85,6 +122,7 @@
 		localStorage.setItem('alamat', JSON.stringify(place));
 		infowindow.open(map, marker);
 	});
+
 
 	function setupClickListener(id, types) {
 		var radioButton = document.getElementById(id);
