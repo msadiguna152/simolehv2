@@ -29,18 +29,24 @@ class Keranjang extends CI_Controller
 			$this->session->set_userdata('qty', $this->input->post('qty'));
 		}
 		if ($this->input->post('ids')) {
+			$response = [];
 			$ids = $this->input->post('ids');
 			$produk = $this->mproduk->get_produk_where_id($ids);
 			$data_ongkir = $this->mpengaturan->getOngkir();
 			//tipe flat === 1
+
 			if ($data_ongkir->tipe_ongkir == 1) {
 				$ongkir = $data_ongkir->harga_ongkir_flat;
 			} //tipe perkm === 2
 			else {
 				$ongkir = $data_ongkir->harga_ongkir_perkm;
 				$koordinat = $this->mpengaturan->getLokasi();
+				$response['lokasi_toko'] = $koordinat;
 			}
-			return response(['status' => 'success', 'data' => $produk->result(), 'lokasi_toko' => $koordinat, 'ongkir' => $ongkir], 'json');
+			$response['ongkir'] = $ongkir;
+			$response['status'] = 'success';
+			$response['data'] = $produk->result();
+			return response($response, 'json');
 		} else {
 			return response(['status' => 'error', 'message' => 'Id tidak tersedia', 'data' => []], 'json');
 		}
