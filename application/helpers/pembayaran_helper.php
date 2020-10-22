@@ -42,6 +42,19 @@ if (!function_exists('init_xendit')) {
 		return $createLinkAja;
 	}
 
+	function generate_pembayaran_banks($bankParams)
+	{
+		init_xendit();
+		$createVA = null;
+		try {
+			$createVA = \Xendit\VirtualAccounts::create($bankParams);
+		} catch (\Xendit\Exceptions\ApiException $e) {
+			print_r($e);
+		}
+		return $createVA;
+
+	}
+
 	function get_status_pembayaran()
 	{
 

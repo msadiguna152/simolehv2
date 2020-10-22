@@ -84,20 +84,35 @@ class Pesanan extends CI_Controller
 			if ($status) {
 				$data['pembayaran'] = $this->mpesanan->get_pembayaran($this->session->userdata('id_pembayaran'));
 				$this->session->set_flashdata('message', 'Pemesanan berhasil');
+				$this->clear_session('ewallet');
 			} else {
 				$this->session->set_flashdata('message', 'Pemesanan gagal di laksanakan');
+			}
+		}
+		if ($this->session->userdata('bank')) {
+			$status = $this->pembayaran_bank($total); //@TODO:return kode pembayaran untuk transfer.
+			if ($status) {
+				$data['pembayaran'] = $this->mpesanan->get_pembayaran($this->session->userdata('id_pembayaran'));
+				$this->session->set_flashdata('message', 'Pemesanan berhasil');
+				$this->clear_session('bank');
 			}
 		}
 		if ($this->session->userdata('cod')) {
 			$this->pembayaran_cod();//@TODO:manual. konfirmasi dari kurir pembeli
 		}
-		if ($this->session->userdata('bank')) {
-			$this->pembayaran_bank(); //@TODO:return kode pembayaran untuk transfer.
-		}
 		$this->load->view('tema/head');
-		$this->load->view('pembayaran_detail',$data);
+		$this->load->view('pembayaran_detail', $data);
 //		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
+	}
+
+	private function clear_session($payment)
+	{
+		if ($payment == 'ewallet') {
+			$this->session->unset_userdata('ewallet');
+			$this->session->unset_userdata('nohpwallet');
+//			TODO: Perlu di tambahi lagi apa yang di unset
+		}
 	}
 
 	private function pembayaran_ewallet($total, $nohp, $items = [])
@@ -133,6 +148,26 @@ class Pesanan extends CI_Controller
 		}
 	}
 
+	private function pembayaran_bank($total)
+	{
+		$kode_bank = $this->session->userdata('bank');
+		$paramsVA = [
+			"external_id" => "$kode_bank-bank" . time() . '-' . mt_rand(),
+			"bank_code" => $kode_bank,
+			"name" => $this->session->userdata('namalengkap'),
+			"is_closed" => true,
+			"expected_amount" => $total,
+			"is_single_use" => true
+//			"expiration_date"=>//seting 24 jam
+		];
+		$success = generate_pembayaran_banks($paramsVA);
+		if ($success) {
+			$success['amount'] = $total;
+			return $this->simpan_rincian_pesanan($success);
+		}
+		return false;
+	}
+
 	public function simpan_rincian_pesanan($success)
 	{
 		//mulai transaksi
@@ -148,14 +183,28 @@ class Pesanan extends CI_Controller
 			'id_pembeli' => $this->session->userdata('id_pembeli')
 		];
 		$inserted_id = $this->mpesanan->insert_pesanan($dataFormPesanan);
-		$dataFormPembayaran = [
-			'jenis_pembayaran' => $success['ewallet_type'],
-			'kode_pembayaran' => $success['external_id'],
-			'status_pembayaran' => $success['status'] ?? 'PENDING',
-			'id_pesanan' => $inserted_id,
-			'tanggal_pembayaran' => date('Y-m-d H:i:s'),
-			'checkout_url' => $success['checkout_url'] ?? 'NULL'
-		];
+		//jika pembayaran ewallet
+		if (isset($success['ewallet_type'])) {
+			$dataFormPembayaran = [
+				'jenis_pembayaran' => $success['ewallet_type'],
+				'kode_pembayaran' => $success['external_id'],
+				'status_pembayaran' => $success['status'] ?? 'PENDING',
+				'id_pesanan' => $inserted_id,
+				'tanggal_pembayaran' => date('Y-m-d H:i:s'),
+				'checkout_url' => $success['checkout_url'] ?? 'NULL'
+			];
+		}
+		if (isset($success['bank_code'])) {
+			$dataFormPembayaran = [
+				'jenis_pembayaran' => $success['bank_code'],
+				'kode_pembayaran' => $success['external_id'],
+				'status_pembayaran' => $success['status'] ?? 'PENDING',
+				'id_pesanan' => $inserted_id,
+				'tanggal_pembayaran' => date('Y-m-d H:i:s'),
+				'account_number' => $success['account_number'] ?? 'NULL',
+				'expired_pembayaran' => $success['expiration_date'] ?? 'NULL'
+			];
+		}
 		$status_insert_pembayaran = $this->mpesanan->insert_pembayaran($dataFormPembayaran);
 		$qty = $this->session->userdata('qty');
 		$ids = array_keys($qty);
@@ -187,11 +236,6 @@ class Pesanan extends CI_Controller
 			$this->session->set_userdata('id_pembayaran', $status_insert_pembayaran);
 			return true;
 		}
-	}
-
-	private function pembayaran_bank()
-	{
-
 	}
 
 	private function pembayaran_cod()

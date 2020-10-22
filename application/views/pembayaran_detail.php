@@ -12,6 +12,7 @@
 		<p class="small m-0"><i class="icofont-ui-calendar"></i> <?php echo $pembayaran->tanggal_pembayaran ?? 'NULL' ?>
 		</p>
 	</div>
+	<!--	TODO: ganti jadi $pembayaran variable-->
 	<?php if ($this->session->userdata('ewallet')): ?>
 		<?php if ($this->session->flashdata('message')): ?>
 			<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -39,6 +40,7 @@
 							Disini</a>
 						<small class="mt-2">Silahkan klik tombol di atas untuk mengarahkan anda ke aplikasi Link
 							Aja</small>
+						<small>Batas waktu pembayaran adalah 5 Menit</small>
 					<?php else: ?>
 						<small>Transaksi gagal dilakukan, silahkan coba beberapa saat lagi.</small>
 					<?php endif; ?>
@@ -49,6 +51,7 @@
 	<?php if ($this->session->userdata('bank')): ?>
 		<div class="p-3 border-bottom">
 			<h6 class="font-weight-bold text-center">KODE PEMBAYARAN ANDA</h6>
+			<p class="font-weight-bold text-center bg-white py-2 h4 rounded"><?php echo $pembayaran->account_number ?? 'NULL' ?></p>
 			<div class="tracking-wrap">
 				<div class="my-1 step active">
 					<span class="icon text-success"><i class="icofont-check-circled"></i></span>
