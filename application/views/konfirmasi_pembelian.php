@@ -149,7 +149,9 @@
 <div class="p-3">
 	<div class="form-group">
 		<textarea type="text"
-				  class="form-control" name="catatan" rows="4" id="catatan_tambahan" placeholder="Contoh. Ukuran Baju, Jenis Rasa"></textarea>
+				  class="form-control" name="catatan" rows="4" id="catatan_tambahan" placeholder="Contoh. Ukuran Baju, Jenis Rasa">
+			<?php echo $this->session->userdata('catatan') ?? '' ?>
+		</textarea>
 		<small id="saveProgress" class="form-text text-muted"></small>
 	</div>
 </div>

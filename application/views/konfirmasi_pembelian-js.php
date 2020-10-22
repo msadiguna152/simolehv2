@@ -4,15 +4,15 @@
 	const progressTag = $('#saveProgress');
 	const checkoutHelper = {
 		saveUser() {
-			var nohp = $('#nohp').val();
-			var nama = $('#namalengkap').val();
-			if (nohp !== '' && nama !== '') {
+			var no_telpon = $('#nohp').val();
+			var nama_pembeli = $('#namalengkap').val();
+			if (no_telpon !== '' && nama_pembeli !== '') {
 				progressTag.text('Sedang menyimpan data...').removeClass('text-success').removeClass('text-danger');
 				$.ajax({
 					url: '<?php echo site_url('pesanan/save_user') ?>',
 					dataType: 'json',
 					data: {
-						nohp, nama
+						no_telpon, nama_pembeli
 					},
 					method: 'POST',
 					success(res) {
@@ -21,6 +21,20 @@
 					error(error) {
 						progressTag.text('Gagal disimpan').removeClass('text-muted').addClass('text-danger');
 					}
+				})
+			}
+		},
+		saveCatatan() {
+			var catatan = $('#catatan_tambahan').val();
+			if (catatan !== '') {
+				progressTag.text('Sedang menyimpan data...').removeClass('text-success').removeClass('text-danger');
+				$.ajax({
+					url: '<?php echo site_url('pesanan/save_catatan') ?>',
+					dataType: 'json',
+					data: {
+						catatan
+					},
+					method: 'POST'
 				})
 			}
 		},
@@ -62,6 +76,20 @@
 			}
 			return 0;
 		},
+		sendOngkir(ongkir) {
+			$.ajax({
+				url: "<?php echo site_url('pesanan/ongkir') ?>",
+				data: {ongkir},
+				method: 'POST',
+				dataType: 'json',
+				success(response) {
+					console.log(response);
+				},
+				error(e) {
+					console.log(e);
+				}
+			})
+		},
 		tampilkanRincian(data, qty, distance, ongkir) {
 			var total = 0;
 			const rincianPembelian = data.map(function (item) {
@@ -77,6 +105,7 @@
 			} else {
 				totalOngkir = ongkir
 			}
+			checkoutHelper.sendOngkir(totalOngkir)
 			rincianPembelian.push(`<p class="mb-1 text-muted">Ongkos Kirim<span class="text-info ml-1"><i class="icofont-info-circle"></i></span><span class="float-right text-dark">Rp. ${$.number(totalOngkir, 0, ',', '.')}</span></p>`)
 			rincianPembelian.push(`<hr><h6 class="font-weight-bold mb-0">Jumlah Pembayaran <span class="float-right">Rp. ${$.number((total + parseFloat(totalOngkir)), 0, ',', '.')}</span></h6>`)
 			rincianContainer.html(rincianPembelian.join(''));
@@ -92,5 +121,6 @@
 		}
 		$("input#nohp").on('blur', checkoutHelper.saveUser)
 		$("input#namalengkap").on('blur', checkoutHelper.saveUser)
+		$('textarea#catatan_tambahan').on('blur', checkoutHelper.saveCatatan)
 	})
 </script>

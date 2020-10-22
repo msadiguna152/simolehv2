@@ -3,14 +3,16 @@
 		<div class="d-flex align-items-center">
 			<a class="font-weight-bold text-success text-decoration-none" href="<?php echo site_url('pesanan') ?>">
 				<i class="icofont-rounded-left back-page"></i></a>
-			<span class="font-weight-bold ml-3 h6 mb-0">ID #321PDRS</span>
+			<span class="font-weight-bold ml-3 h6 mb-0">ID #<?php echo $pembayaran->id_pembayaran ?? 'NULL' ?></span>
 			<a class="toggle ml-auto" href="#"><i class="icofont-navigation-menu"></i></a>
 		</div>
 	</div>
 	<!-- status complete -->
 	<div class="p-3 status-order border-bottom bg-white">
-		<p class="small m-0"><i class="icofont-ui-calendar"></i> 16 June, 11:30AM</p>
+		<p class="small m-0"><i class="icofont-ui-calendar"></i> <?php echo $pembayaran->tanggal_pembayaran ?? 'NULL' ?>
+		</p>
 	</div>
+	<!--	TODO: ganti jadi $pembayaran variable-->
 	<?php if ($this->session->userdata('ewallet')): ?>
 		<?php if ($this->session->flashdata('message')): ?>
 			<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -32,8 +34,16 @@
 			<?php else: ?>
 				<div class="alert alert-primary" role="alert">
 					<h5 class="alert-heading">Sedang memproses pembayaran</h5>
-					<p>Link Aja</p>
-					<p class="mb-0"></p>
+					<h6>Link Aja</h6>
+					<?php if (isset($pembayaran)): ?>
+						<a href="<?php echo $pembayaran->checkout_url ?? '' ?>" class="btn btn-primary btn-block">Klik
+							Disini</a>
+						<small class="mt-2">Silahkan klik tombol di atas untuk mengarahkan anda ke aplikasi Link
+							Aja</small>
+						<small>Batas waktu pembayaran adalah 5 Menit</small>
+					<?php else: ?>
+						<small>Transaksi gagal dilakukan, silahkan coba beberapa saat lagi.</small>
+					<?php endif; ?>
 				</div>
 			<?php endif; ?>
 		</div>
@@ -41,6 +51,7 @@
 	<?php if ($this->session->userdata('bank')): ?>
 		<div class="p-3 border-bottom">
 			<h6 class="font-weight-bold text-center">KODE PEMBAYARAN ANDA</h6>
+			<p class="font-weight-bold text-center bg-white py-2 h4 rounded"><?php echo $pembayaran->account_number ?? 'NULL' ?></p>
 			<div class="tracking-wrap">
 				<div class="my-1 step active">
 					<span class="icon text-success"><i class="icofont-check-circled"></i></span>
@@ -98,12 +109,12 @@
 		</div>
 	<?php endif; ?>
 	<?php if (!$this->session->userdata('ewallet')): ?>
-	<div class="p-3 border-bottom bg-white">
-		<div class="d-flex align-items-center mb-2">
-			<h6 class="font-weight-bold mb-1">Total yang harus dibayar</h6>
-			<h6 class="font-weight-bold ml-auto mb-1">$8.52</h6>
+		<div class="p-3 border-bottom bg-white">
+			<div class="d-flex align-items-center mb-2">
+				<h6 class="font-weight-bold mb-1">Total yang harus dibayar</h6>
+				<h6 class="font-weight-bold ml-auto mb-1">$8.52</h6>
+			</div>
+			<p class="m-0 small text-muted">You can check your order detail here,<br>Thank you for order.</p>
 		</div>
-		<p class="m-0 small text-muted">You can check your order detail here,<br>Thank you for order.</p>
-	</div>
 	<?php endif; ?>
 </div>
