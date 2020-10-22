@@ -72,53 +72,54 @@
 						<div class="col-6">
 							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
-									<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>"
-									   class="text-dark">
-										<div class="member-plan position-absolute">
-											<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
-											<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
-											<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
+									<div class="member-plan position-absolute">
+										<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
+										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
+										<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
-										</div>
-										<div class="p-3">
+									</div>
+									<div class="p-3">
+										<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>"
+										   class="text-dark">
+
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
 												 class="img-fluid item-img w-100 mb-3">
 											<h6><?= $data_p->nama_produk; ?></h6>
-											<p class="" style="height: 60px">
-												<?php
-												$jml = strlen($data_p->deskripsi);
-												echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " (Lihat Selengkapnya)";
-												?>
-											</p>
-											<div class="" id="container-button">
-												<h6 class="price m-0 text-success">
-													<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
+										</a>
+										<p class="" style="height: 60px">
+											<?php
+											$jml = strlen($data_p->deskripsi);
+											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " (Lihat Selengkapnya)";
+											?>
+										</p>
+										<div class="" id="container-button">
+											<h6 class="price m-0 text-success">
+												<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
 
-												</h6>
-												<button data-id="<?= $data_p->id_produk ?>"
-														id="btn-add-cart"
-														class="btn btn-success btn-block ml-auto mt-2">Tambah
-												</button>
-												<div id="container-qty-btn"
-													 class="input-group input-spinner cart-items-number mx-auto mt-2"
-													 style="display: none">
-													<div class="input-group-prepend">
-														<button data-id="<?= $data_p->id_produk ?>"
-																class="btn btn-success btn-sm"
-																type="button" id="button-main-plus"> +
-														</button>
-													</div>
-													<input type="text" class="form-control" value="1">
-													<div class="input-group-append">
-														<button data-id="<?= $data_p->id_produk ?>"
-																class="btn btn-success btn-sm"
-																type="button" id="button-main-minus"> −
-														</button>
-													</div>
+											</h6>
+											<button data-id="<?= $data_p->id_produk ?>"
+													id="btn-add-cart"
+													class="btn btn-success btn-block ml-auto mt-2">Tambah
+											</button>
+											<div id="container-qty-btn"
+												 class="input-group input-spinner cart-items-number mx-auto mt-2"
+												 style="display: none">
+												<div class="input-group-prepend">
+													<button data-id="<?= $data_p->id_produk ?>"
+															class="btn btn-success btn-sm"
+															type="button" id="button-main-plus"> +
+													</button>
+												</div>
+												<input type="text" class="form-control" value="1">
+												<div class="input-group-append">
+													<button data-id="<?= $data_p->id_produk ?>"
+															class="btn btn-success btn-sm"
+															type="button" id="button-main-minus"> −
+													</button>
 												</div>
 											</div>
 										</div>
-									</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -144,53 +145,54 @@
 						<div class="col-6">
 							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
-									<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>"
-									   class="text-dark">
-										<div class="member-plan position-absolute">
-											<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
-											<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
-											<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
+									<div class="member-plan position-absolute">
+										<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
+										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
+										<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
-										</div>
-										<div class="p-3">
+									</div>
+									<div class="p-3">
+										<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>"
+										   class="text-dark">
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
 												 class="img-fluid item-img w-100 mb-3">
 											<h6><?= $data_p->nama_produk; ?></h6>
-											<p style="height: 60px">
-												<?php
-												$jml = strlen($data_p->deskripsi);
-												echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " (Lihat Selengkapnya)";
-												?>
-											</p>
-											<div class="" id="container-button">
-												<h6 class="price m-0 text-success">
-													<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
+										</a>
 
-												</h6>
-												<button data-id="<?= $data_p->id_produk ?>"
-														id="btn-add-cart"
-														class="btn btn-success btn-block ml-auto mt-2">Tambah
-												</button>
-												<div id="container-qty-btn"
-													 class="input-group input-spinner cart-items-number mx-auto mt-2"
-													 style="display: none">
-													<div class="input-group-prepend">
-														<button data-id="<?= $data_p->id_produk ?>"
-																class="btn btn-success btn-sm"
-																type="button" id="button-main-plus"> +
-														</button>
-													</div>
-													<input type="text" class="form-control" value="1">
-													<div class="input-group-append">
-														<button data-id="<?= $data_p->id_produk ?>"
-																class="btn btn-success btn-sm"
-																type="button" id="button-main-minus"> −
-														</button>
-													</div>
+										<p style="height: 60px">
+											<?php
+											$jml = strlen($data_p->deskripsi);
+											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " (Lihat Selengkapnya)";
+											?>
+										</p>
+										<div class="" id="container-button">
+											<h6 class="price m-0 text-success">
+												<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
+
+											</h6>
+											<button data-id="<?= $data_p->id_produk ?>"
+													id="btn-add-cart"
+													class="btn btn-success btn-block ml-auto mt-2">Tambah
+											</button>
+											<div id="container-qty-btn"
+												 class="input-group input-spinner cart-items-number mx-auto mt-2"
+												 style="display: none">
+												<div class="input-group-prepend">
+													<button data-id="<?= $data_p->id_produk ?>"
+															class="btn btn-success btn-sm"
+															type="button" id="button-main-plus"> +
+													</button>
+												</div>
+												<input type="text" class="form-control" value="1">
+												<div class="input-group-append">
+													<button data-id="<?= $data_p->id_produk ?>"
+															class="btn btn-success btn-sm"
+															type="button" id="button-main-minus"> −
+													</button>
 												</div>
 											</div>
 										</div>
-									</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -216,52 +218,53 @@
 						<div class="col-6">
 							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
-									<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>"
-									   class="text-dark">
-										<div class="member-plan position-absolute">
-											<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
-											<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
-											<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
-										</div>
-										<div class="p-3">
+									<div class="member-plan position-absolute">
+										<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data_p->nama_kategori; ?></span>
+										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
+										<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
+
+									</div>
+									<div class="p-3">
+										<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>"
+										   class="text-dark">
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
 												 class="img-fluid item-img w-100 mb-3">
 											<h6><?= $data_p->nama_produk; ?></h6>
-											<p style="height: 60px">
-												<?php
-												$jml = strlen($data_p->deskripsi);
-												echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " (Lihat Selengkapnya)";
-												?>
-											</p>
-											<div class="" id="container-button">
-												<h6 class="price m-0 text-success">
-													<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
-												</h6>
-												<button data-id="<?= $data_p->id_produk ?>"
-														id="btn-add-cart"
-														class="btn btn-success btn-block ml-auto mt-2">Tambah
-												</button>
-												<div id="container-qty-btn"
-													 class="input-group input-spinner cart-items-number mx-auto mt-2"
-													 style="display: none">
-													<div class="input-group-prepend">
-														<button data-id="<?= $data_p->id_produk ?>"
-																class="btn btn-success btn-sm"
-																type="button" id="button-main-plus"> +
-														</button>
-													</div>
-													<input type="text" class="form-control" value="1">
-													<div class="input-group-append">
-														<button data-id="<?= $data_p->id_produk ?>"
-																class="btn btn-success btn-sm"
-																type="button" id="button-main-minus"> −
-														</button>
-													</div>
+										</a>
+										<p style="height: 60px">
+											<?php
+											$jml = strlen($data_p->deskripsi);
+											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " (Lihat Selengkapnya)";
+											?>
+										</p>
+										<div class="" id="container-button">
+											<h6 class="price m-0 text-success">
+												<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
+											</h6>
+											<button data-id="<?= $data_p->id_produk ?>"
+													id="btn-add-cart"
+													class="btn btn-success btn-block ml-auto mt-2">Tambah
+											</button>
+											<div id="container-qty-btn"
+												 class="input-group input-spinner cart-items-number mx-auto mt-2"
+												 style="display: none">
+												<div class="input-group-prepend">
+													<button data-id="<?= $data_p->id_produk ?>"
+															class="btn btn-success btn-sm"
+															type="button" id="button-main-plus"> +
+													</button>
+												</div>
+												<input type="text" class="form-control" value="1">
+												<div class="input-group-append">
+													<button data-id="<?= $data_p->id_produk ?>"
+															class="btn btn-success btn-sm"
+															type="button" id="button-main-minus"> −
+													</button>
 												</div>
 											</div>
 										</div>
-									</a>
+									</div>
 								</div>
 							</div>
 						</div>

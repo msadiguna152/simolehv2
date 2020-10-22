@@ -19,38 +19,39 @@
 				?>
 				<div class="col-6 p-0 border-right border-bottom border-top">
 					<div class="list-card-image">
-						<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>" class="text-dark">
-							<div class="member-plan position-absolute"><span class="badge m-3 badge-danger">10%</span>
-							</div>
-							<div class="p-3">
+						<div class="member-plan position-absolute"><span class="badge m-3 badge-danger">10%</span>
+						</div>
+						<div class="p-3">
+							<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>" class="text-dark">
+
 								<img src="<?= base_url() ?>file/<?= $data->gambar; ?>"
 									 class="img-fluid item-img w-100 mb-3">
 								<h6><?= htmlspecialchars($data->nama_produk); ?></h6>
-								<p style="height: 60px"><?= htmlspecialchars($data->deskripsi); ?></p>
-								<div class="" id="container-button">
-									<h6 class="price m-0 text-success"><?= "Rp " . number_format(htmlspecialchars($data->harga), 0, ',', '.'); ?></h6>
-									<button data-id="<?= $data->id_produk ?>"
-											id="btn-add-cart"
-											class="btn btn-success btn-block ml-auto mt-2">Tambah
-									</button>
-									<div id="container-qty-btn"
-										 class="input-group input-spinner cart-items-number mx-auto mt-2"
-										 style="display: none">
-										<div class="input-group-prepend">
-											<button data-id="<?= $data->id_produk ?>" class="btn btn-success btn-sm"
-													type="button" id="button-main-plus"> +
-											</button>
-										</div>
-										<input type="text" class="form-control" value="1">
-										<div class="input-group-append">
-											<button data-id="<?= $data->id_produk ?>" class="btn btn-success btn-sm"
-													type="button" id="button-main-minus"> −
-											</button>
-										</div>
+							</a>
+							<p style="height: 60px"><?= htmlspecialchars($data->deskripsi); ?></p>
+							<div class="" id="container-button">
+								<h6 class="price m-0 text-success"><?= "Rp " . number_format(htmlspecialchars($data->harga), 0, ',', '.'); ?></h6>
+								<button data-id="<?= $data->id_produk ?>"
+										id="btn-add-cart"
+										class="btn btn-success btn-block ml-auto mt-2">Tambah
+								</button>
+								<div id="container-qty-btn"
+									 class="input-group input-spinner cart-items-number mx-auto mt-2"
+									 style="display: none">
+									<div class="input-group-prepend">
+										<button data-id="<?= $data->id_produk ?>" class="btn btn-success btn-sm"
+												type="button" id="button-main-plus"> +
+										</button>
+									</div>
+									<input type="text" class="form-control" value="1">
+									<div class="input-group-append">
+										<button data-id="<?= $data->id_produk ?>" class="btn btn-success btn-sm"
+												type="button" id="button-main-minus"> −
+										</button>
 									</div>
 								</div>
 							</div>
-						</a>
+						</div>
 					</div>
 				</div>
 			<?php endforeach; ?>
