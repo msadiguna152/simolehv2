@@ -38,5 +38,13 @@ class Pengaturan extends CI_Controller {
 			echo '<script language="javascript">document.location="'.site_url('page/admin/pengaturan').'";</script>';
 		}
 	}
+
+	public function pinmap(){
+		$this->session->set_userdata('menu', 'pengaturan');
+		$this->load->view('page/admin/tema/head');
+		$this->load->view('page/admin/tema/menu');
+		$this->load->view('page/admin/pengaturan/pinmap');
+		$this->load->view('page/admin/tema/footer');
+	}
 	
 }

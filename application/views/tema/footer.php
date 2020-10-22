@@ -30,7 +30,7 @@
 <script>
 	var keranjang = localStorage.getItem('keranjang');
 	var decodeKeranjang = {};
-	var jumlahIsi;
+	var jumlahIsi = [];
 	if (keranjang !== null) {
 		decodeKeranjang = JSON.parse(keranjang);
 		jumlahIsi = Object.keys(decodeKeranjang);
