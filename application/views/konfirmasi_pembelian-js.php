@@ -1,3 +1,4 @@
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>
 <script>
 	const rincianContainer = $('#rincian-container');
 	const progressTag = $('#saveProgress');
@@ -33,7 +34,11 @@
 				method: 'POST',
 				dataType: 'json',
 				success(response) {
-					checkoutHelper.tampilkanRincian(response.data, qty);
+					var distance = '';
+					if (typeof response.lokasi_toko !== "undefined") {
+						distance = checkoutHelper.getDistance(response.lokasi_toko);
+					}
+					checkoutHelper.tampilkanRincian(response.data, qty, distance, response.ongkir);
 					$('#loading-rincian').remove();
 				},
 				error(e) {
@@ -41,7 +46,23 @@
 				}
 			})
 		},
-		tampilkanRincian(data, qty) {
+		getDistance(lokasi_toko) {
+			const lat = localStorage.getItem('lat');
+			const lng = localStorage.getItem('lng');
+			if (lat !== null && lng !== null) {
+				const userLokasi = new google.maps.LatLng({lat: parseFloat(lat), lng: parseFloat(lng)});
+				const tokoLokasi = new google.maps.LatLng({
+					lat: parseFloat(lokasi_toko.lat),
+					lng: parseFloat(lokasi_toko.lng)
+				})
+				const resultsDistance = google.maps.geometry.spherical.computeDistanceBetween(userLokasi, tokoLokasi);
+				const distance = resultsDistance / 1000;
+				console.log(distance.toFixed(1) + ' Km')
+				return distance;
+			}
+			return 0;
+		},
+		tampilkanRincian(data, qty, distance, ongkir) {
 			var total = 0;
 			const rincianPembelian = data.map(function (item) {
 				var subTotal = qty[item.id_produk].count * (item.harga_promosi !== "0" ? parseInt(item.harga_promosi) : parseInt(item.harga));
@@ -49,9 +70,15 @@
 				return `<p class="mb-1 text-muted">${item.nama_produk} X ${qty[item.id_produk].count} <span class="float-right text-dark">Rp. ${$.number(subTotal, 0, ',', '.')}</span></p>`;
 			})
 			rincianPembelian.push(`<p class="mb-1 text-muted font-weight-bold">Jumlah Belanja <span class="float-right text-dark">Rp. ${$.number(total, 0, ',', '.')}</span></p>`)
-			rincianPembelian.push(`<p class="mb-1 text-muted font-weight-bold">Diskon Voucher <span class="float-right text-dark">Rp. ${$.number(total, 0, ',', '.')}</span></p>`)
-			rincianPembelian.push(`<p class="mb-1 text-muted">Ongkos Kirim<span class="text-info ml-1"><i class="icofont-info-circle"></i></span><span class="float-right text-dark">Rp. 0</span></p>`)
-			rincianPembelian.push(`<hr><h6 class="font-weight-bold mb-0">Jumlah Pembayaran <span class="float-right">Rp. ${$.number(total, 0, ',', '.')}</span></h6>`)
+			rincianPembelian.push(`<p class="mb-1 text-muted font-weight-bold">Diskon Voucher <span class="float-right text-dark">Rp. ${$.number(0, 0, ',', '.')}</span></p>`)
+			var totalOngkir = 0;
+			if (distance !== '') {
+				totalOngkir = ongkir * distance;
+			} else {
+				totalOngkir = ongkir
+			}
+			rincianPembelian.push(`<p class="mb-1 text-muted">Ongkos Kirim<span class="text-info ml-1"><i class="icofont-info-circle"></i></span><span class="float-right text-dark">Rp. ${$.number(totalOngkir, 0, ',', '.')}</span></p>`)
+			rincianPembelian.push(`<hr><h6 class="font-weight-bold mb-0">Jumlah Pembayaran <span class="float-right">Rp. ${$.number((total + totalOngkir), 0, ',', '.')}</span></h6>`)
 			rincianContainer.html(rincianPembelian.join(''));
 		}
 	}
@@ -60,6 +87,7 @@
 		if (keranjang !== null) {
 			var decodedKeranjang = JSON.parse(keranjang);
 			var ids = Object.keys(decodedKeranjang);
+
 			checkoutHelper.getRincian(ids, decodedKeranjang);
 		}
 		$("input#nohp").on('blur', checkoutHelper.saveUser)

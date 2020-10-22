@@ -9,6 +9,7 @@ class Keranjang extends CI_Controller
 		$this->load->model('mberanda');
 		$this->load->model('page/admin/malamat', 'malamat');
 		$this->load->model('page/admin/mproduk', 'mproduk');
+		$this->load->model('page/admin/mpengaturan', 'mpengaturan');
 		$this->session->set_userdata('menu', 'keranjang');
 	}
 
@@ -30,7 +31,16 @@ class Keranjang extends CI_Controller
 		if ($this->input->post('ids')) {
 			$ids = $this->input->post('ids');
 			$produk = $this->mproduk->get_produk_where_id($ids);
-			return response(['status' => 'success', 'data' => $produk->result()], 'json');
+			$data_ongkir = $this->mpengaturan->getOngkir();
+			//tipe flat === 1
+			if ($data_ongkir->tipe_ongkir == 1) {
+				$ongkir = $data_ongkir->harga_ongkir_flat;
+			} //tipe perkm === 2
+			else {
+				$ongkir = $data_ongkir->harga_ongkir_perkm;
+				$koordinat = $this->mpengaturan->getLokasi();
+			}
+			return response(['status' => 'success', 'data' => $produk->result(), 'lokasi_toko' => $koordinat, 'ongkir' => $ongkir], 'json');
 		} else {
 			return response(['status' => 'error', 'message' => 'Id tidak tersedia', 'data' => []], 'json');
 		}

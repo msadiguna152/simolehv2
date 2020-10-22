@@ -1,14 +1,15 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Mpengaturan extends CI_Model {
+class Mpengaturan extends CI_Model
+{
 
-public function get_pengaturan()
+	public function get_pengaturan()
 	{
 		$query = $this->db->query("SELECT * FROM `tb_pengaturan`");
 		return $query;
 	}
 
-public function update_pengaturan()
+	public function update_pengaturan()
 	{
 		$nama_bisnis = $this->input->post('nama_bisnis');
 		$no_wa = $this->input->post('no_wa');
@@ -27,4 +28,14 @@ public function update_pengaturan()
 
 	}
 
+	public function getLokasi()
+	{
+		return $this->db->query("SELECT latitude as lat,longitude as lng FROM `tb_pengaturan`")->row();
+	}
+
+	public function getOngkir()
+	{
+		return $this->db->query("SELECT tipe_ongkir,harga_ongkir_flat,harga_ongkir_perkm FROM `tb_pengaturan`")->row();
+
+	}
 }
