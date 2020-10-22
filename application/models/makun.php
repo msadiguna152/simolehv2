@@ -6,8 +6,9 @@ class Makun extends CI_Model{
 		$nama_pembeli = $this->input->post('nama_pembeli');
 		$email = $this->input->post('email');
 		$no_telpon = $this->input->post('no_telpon');
+		$password = $this->input->post('password');
 
-		$query = $this->db->query("INSERT INTO `tb_pengguna` (`id_pengguna`, `nama_pengguna`, `foto_pengguna`, `username`, `password`, `email`, `no_telpon`, `level`) VALUES (NULL, '$nama_pembeli', 'user.png', '$email', '$no_telpon', '$email', '$no_telpon', 'Pembeli');");
+		$query = $this->db->query("INSERT INTO `tb_pengguna` (`id_pengguna`, `nama_pengguna`, `foto_pengguna`, `username`, `password`, `email`, `no_telpon`, `level`) VALUES (NULL, '$nama_pembeli', 'user.png', '$email', '$password', '$email', '$no_telpon', 'Pembeli');");
 
 		$lastid = $this->db->insert_id();
 
