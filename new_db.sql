@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2020 at 02:30 PM
+-- Generation Time: Oct 23, 2020 at 02:32 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -196,9 +196,9 @@ CREATE TABLE `tb_pengguna` (
   `id_pengguna` int(11) NOT NULL,
   `nama_pengguna` varchar(50) NOT NULL,
   `foto_pengguna` varchar(100) DEFAULT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `no_telpon` varchar(20) NOT NULL,
   `level` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
