@@ -69,7 +69,7 @@ class Akun extends CI_Controller {
 	public function proses_login(){
 
 		$username = htmlspecialchars($this->input->post('username'));
-		$password = htmlspecialchars($this->input->post('password'));
+		$password = htmlspecialchars(md5($this->input->post('password')));
 
 		$cek = $this->makun->cek($username, $password);
 
