@@ -120,7 +120,7 @@ class Mproduk extends CI_Model
 	function find($query)
 	{
 		if ($query) {
-			return $this->db->select(['nama_produk', 'harga', 'gambar', 'deskripsi'])
+			return $this->db->select(['nama_produk', 'harga', 'gambar', 'deskripsi','slug_p'])
 				->like('nama_produk', $query)
 				->or_like('harga', $query)
 				->or_like('deskripsi', $query)

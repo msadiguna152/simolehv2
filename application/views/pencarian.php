@@ -85,7 +85,7 @@
 				success: function (res) {
 					if (res.data.length !== 0) {
 						var resultHtml = res.data.map(function (result) {
-							return `<a href="<?php echo site_url('beranda/detail_produk/') ?>${result.nama_produk.toLowerCase().replace(' ', '-')}" class="text-dark"><div class="d-flex align-items-center border-bottom p-3"><img height="48px" width="48px" src="<?php echo base_url('file/') ?>${result.gambar}" class="img-fluid rounded shadow-sm mr-3"><span class="font-weight-bold">${result.nama_produk}<p class="small text-muted m-0">${result.deskripsi}</p></span></div></a>`;
+							return `<a href="<?php echo site_url('beranda/detail_produk/') ?>${result.slug_p}" class="text-dark"><div class="d-flex align-items-center border-bottom p-3"><img height="48px" width="48px" src="<?php echo base_url('file/') ?>${result.gambar}" class="img-fluid rounded shadow-sm mr-3"><span class="font-weight-bold">${result.nama_produk}<p class="small text-muted m-0">${result.deskripsi}</p></span></div></a>`;
 						})
 						$('#results').html(resultHtml).prop('style', '');
 					} else {
