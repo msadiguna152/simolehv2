@@ -1,4 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
 // update
 class Mpembeli extends CI_Model
 {
@@ -28,6 +29,12 @@ class Mpembeli extends CI_Model
 		$query = $this->db->query("INSERT INTO `tb_pembeli` ( `nama_pembeli`, `no_telpon`) VALUES ('$nama_pembeli', '$no_telpon');");
 		$this->session->set_userdata('id_pembeli', $this->db->insert_id());
 		return $query;
+	}
+
+	public function set_pembeli()
+	{
+		$query = $this->db->query("SELECT id_pembeli FROM tb_pembeli where id_pengguna = '" . $this->session->userdata('id_pengguna') . "' LIMIT 1")->row();
+		$this->session->set_userdata('id_pembeli', $query->id_pembeli);
 	}
 
 	public function update_pembeli()

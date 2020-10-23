@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 // update
 class Pesanan extends CI_Controller
 {
@@ -25,6 +26,13 @@ class Pesanan extends CI_Controller
 
 	public function save_user()
 	{
+		if ($this->session->userdata('username')) {
+			$this->mpembeli->set_pembeli();
+			return response(['status' => 'success', 'message' => 'Buyer is Member'], 'json');
+		}
+		if ($this->session->userdata('id_pembeli')) {
+			return response(['status' => 'success', 'message' => 'Buyer already registered'], 'json');
+		}
 		if ($this->mpembeli->insert_pembeli()) {
 			$this->session->set_userdata('namalengkap', $this->input->post('nama_pembeli'));
 			$this->session->set_userdata('nohp', $this->input->post('no_telpon'));

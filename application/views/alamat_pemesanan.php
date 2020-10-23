@@ -82,7 +82,7 @@
 								<input type="hidden" name="lat">
 								<input type="hidden" name="long">
 								<input type="hidden" name="id_pembeli"
-									   value="<?= $this->session->userdata('id_pengguna') ?? '-1' ?>">
+									   value="<?= $this->session->userdata('id_pembeli') ?? '-1' ?>">
 								<div class="input-group-append">
 									<a href="<?= site_url('keranjang/alamatpeta') ?>" id="button-addon2" type="button"
 									   class="btn btn-outline-secondary"><i

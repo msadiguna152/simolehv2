@@ -13,27 +13,54 @@
 			</span>
 	</h6>
 </div>
-<div class="px-3">
-	<div class="d-flex align-items-center">
-		<p class="mb-2 font-weight-bold">Nama Lengkap</p>
+<?php var_dump($this->session->userdata()); ?>
+<?php if (!$this->session->userdata('username')): ?>
+	<div class="px-3">
+		<div class="d-flex align-items-center">
+			<p class="mb-2 font-weight-bold">Nama Lengkap</p>
+		</div>
+		<div class="form-group">
+			<input type="text"
+				   class="form-control" name="namalengkap" id="namalengkap" aria-describedby="helpId"
+				   placeholder="Contoh. Hendra Kumbara"
+				   value="<?php echo $this->session->userdata('namalengkap') ?? '' ?>">
+		</div>
 	</div>
-	<div class="form-group">
-		<input type="text"
-			   class="form-control" name="namalengkap" id="namalengkap" aria-describedby="helpId"
-			   placeholder="Contoh. Hendra Kumbara" value="<?php echo $this->session->userdata('namalengkap') ?? '' ?>">
+	<div class="px-3">
+		<div class="d-flex align-items-center">
+			<p class="mb-2 font-weight-bold">Nomor Hp</p>
+		</div>
+		<div class="form-group">
+			<input type="text"
+				   class="form-control" name="nohp" data-mask="0000-0000-0000" id="nohp" aria-describedby="helpId"
+				   placeholder="0000-0000-0000" value="<?php echo $this->session->userdata('nohp') ?? '' ?>">
+			<small id="saveProgress" class="form-text text-muted"></small>
+		</div>
 	</div>
-</div>
-<div class="px-3">
-	<div class="d-flex align-items-center">
-		<p class="mb-2 font-weight-bold">Nomor Hp</p>
+<?php else: ?>
+	<div class="px-3">
+		<div class="d-flex align-items-center">
+			<p class="mb-2 font-weight-bold">Nama Lengkap</p>
+		</div>
+		<div class="form-group">
+			<input type="text"
+				   class="form-control" name="namalengkap" id="namalengkap" aria-describedby="helpId"
+				   placeholder="Contoh. Hendra Kumbara"
+				   value="<?php echo $this->session->userdata('nama_pengguna') ?? '' ?>">
+		</div>
 	</div>
-	<div class="form-group">
-		<input type="text"
-			   class="form-control" name="nohp" data-mask="0000-0000-0000" id="nohp" aria-describedby="helpId"
-			   placeholder="0000-0000-0000" value="<?php echo $this->session->userdata('nohp') ?? '' ?>">
-		<small id="saveProgress" class="form-text text-muted"></small>
+	<div class="px-3">
+		<div class="d-flex align-items-center">
+			<p class="mb-2 font-weight-bold">Nomor Hp</p>
+		</div>
+		<div class="form-group">
+			<input type="text"
+				   class="form-control" name="nohp" data-mask="0000-0000-0000" id="nohp" aria-describedby="helpId"
+				   placeholder="0000-0000-0000" value="<?php echo $this->session->userdata('no_telpon') ?? '' ?>">
+			<small id="saveProgress" class="form-text text-muted"></small>
+		</div>
 	</div>
-</div>
+<?php endif ?>
 <?php if (!$this->session->userdata('id_pengguna')): ?>
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -149,7 +176,8 @@
 <div class="p-3">
 	<div class="form-group">
 		<textarea type="text"
-				  class="form-control" name="catatan" rows="4" id="catatan_tambahan" placeholder="Contoh. Ukuran Baju, Jenis Rasa">
+				  class="form-control" name="catatan" rows="4" id="catatan_tambahan"
+				  placeholder="Contoh. Ukuran Baju, Jenis Rasa">
 			<?php echo $this->session->userdata('catatan') ?? '' ?>
 		</textarea>
 		<small id="saveProgress" class="form-text text-muted"></small>

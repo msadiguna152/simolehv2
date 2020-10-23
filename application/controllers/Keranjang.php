@@ -89,11 +89,11 @@ class Keranjang extends CI_Controller
 
 	public function alamat()
 	{
-		if (!$this->session->userdata('id_pengguna')) {
+		if (!$this->session->userdata('id_pembeli')) {
 			$id_alamat = $this->session->userdata('alamat');
 			$data['alamat'] = $this->malamat->get_alamat_by_id($id_alamat);
 		} else {
-			$data['alamat'] = $this->malamat->get_alamat_pembeli($this->session->userdata('id_pengguna'));//@TODO;masih statis. ambil dari session;
+			$data['alamat'] = $this->malamat->get_alamat_pembeli($this->session->userdata('id_pembeli'));//@TODO;masih statis. ambil dari session;
 		}
 		$this->load->view('tema/head');
 		$this->load->view('alamat_pemesanan', $data);
