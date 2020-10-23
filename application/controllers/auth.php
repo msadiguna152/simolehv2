@@ -8,13 +8,11 @@ class auth extends CI_Controller {
 		$this->load->model('mauth');
 	}
 
-	//index atau halaman login
 	public function index()
 	{
 		$this->load->view('loginv2');
 	}
 
-	//memeriksa hasil inputan di halaman login
 	public function proses_login(){
 
 		$username = htmlspecialchars($this->input->post('username'));
@@ -22,7 +20,6 @@ class auth extends CI_Controller {
 
 		$cek = $this->mauth->cek($username, $password);
 
-		//jika username dan password ada didalam database maka proses pengecekan level akan dijalankan
 		if($cek->num_rows() == 1)
 		{
 			$get_pengguna = $this->mauth->cek($username, $password);
@@ -52,8 +49,7 @@ class auth extends CI_Controller {
 				echo '<script language="javascript">alert("Username dan Password Tidak Valid!");';
 				echo 'document.location="'.site_url('auth').'";</script>';
 			}
-		}
-		//jika username dan password tidak terdapat didalam database
+		} 
 		else
 		{
 			echo '<script language="javascript">alert("Username dan Password Tidak Valid!");';
@@ -61,7 +57,6 @@ class auth extends CI_Controller {
 		}
 	}
 
- 	//fungsi logout dan unsession login
 	public function logout(){
 		$this->session->sess_destroy();
 		echo '<script language="javascript">alert("Anda Berhasil Logout!");';

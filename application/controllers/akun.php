@@ -90,7 +90,6 @@ class Akun extends CI_Controller {
 		}
 	}
 
- 	//fungsi logout dan unsession login
 	public function logout(){
 		$this->session->sess_destroy();
 		echo '<script language="javascript">alert("Anda Berhasil Logout!");';

@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-
+// update
 class Mpesanan extends CI_Model
 {
 

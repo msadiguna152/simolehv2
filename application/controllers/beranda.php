@@ -20,7 +20,6 @@ class Beranda extends CI_Controller {
 		$this->load->view('beranda',$data);
 		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
-
 	}
 
 	public function kategori()
@@ -31,7 +30,6 @@ class Beranda extends CI_Controller {
 		$this->load->view('kategori',$data);
 		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
-
 	}
 
 	public function detail_produk()
@@ -42,7 +40,6 @@ class Beranda extends CI_Controller {
 		$this->load->view('detail_produk',$data);
 		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
-
 	}
 
 	public function produk()
@@ -62,6 +59,5 @@ class Beranda extends CI_Controller {
 		$this->load->view('produk',$data);
 		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
-
 	}
 }

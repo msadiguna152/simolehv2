@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+// update
 class Alamat extends CI_Controller {
 
 	function __construct(){
