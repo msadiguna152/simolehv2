@@ -1,4 +1,4 @@
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyBakEvFkjYe1zd73WhPmyA_rxkkVigCZXU&libraries=places&amp;"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyBakEvFkjYe1zd73WhPmyA_rxkkVigCZXU&libraries=places&amp;"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets2/vendor/gmaps/gmaps.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets2/vendor/gmaps/gmaps-advanced-route.js"></script>
 <script>

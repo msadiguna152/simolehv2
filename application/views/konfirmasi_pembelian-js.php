@@ -1,4 +1,4 @@
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>
 <script>
 	const rincianContainer = $('#rincian-container');
 	const progressTag = $('#saveProgress');
