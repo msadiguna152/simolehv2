@@ -47,7 +47,7 @@
 </div>
 <div id="results" style="">
 	<?php foreach ($results ?? [] as $item): ?>
-		<a href="<?php echo site_url('beranda/detail_produk/' . str_replace(' ', '-', strtolower($item->nama_produk))) ?>"
+		<a href="<?php echo site_url('beranda/detail_produk/' . $item->slug_p) ?>"
 		   class="text-dark">
 			<div class="d-flex align-items-center border-bottom p-3">
 				<img height="48px" width="48px" src="<?php echo base_url('file/' . $item->gambar) ?>"
