@@ -1,3 +1,9 @@
+<?php
+  $pengaturan = $query = $this->db->get('tb_pengaturan');
+  foreach ($pengaturan->result() as $data){
+    $nama_bisnis = $data->nama_bisnis;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +12,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <script language='javaScript'>
-      var txt="E-Commerce Simpel Oleh Oleh (SIMOLEH)       ";
+      var txt = "<?= $nama_bisnis; ?> .:.      ";
       var speed=300;
       var refresh=null;
       function action() { document.title=txt;

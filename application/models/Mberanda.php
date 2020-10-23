@@ -8,6 +8,12 @@ public function get_kategori()
 		return $query;
 	}
 
+public function get_sliders()
+	{
+		$query = $this->db->query("SELECT * FROM `tb_sliders` ORDER BY `tb_sliders`.`id_sliders` DESC");
+		return $query;
+	}
+
 public function get_grid1() //Untukmu hari ini
 	{
 		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori ORDER BY `tb_produk`.`id_produk` DESC LIMIT 8");
