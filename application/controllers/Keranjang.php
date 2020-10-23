@@ -70,13 +70,13 @@ class Keranjang extends CI_Controller
 		if ($this->input->post('bank')) {
 			$this->session->set_userdata('bank', $this->input->post('bank'));
 			$this->session->unset_userdata('ewallet');
-			$this->session->unset_userdata('nohp');
+			$this->session->unset_userdata('nohpwallet');
 			$this->session->unset_userdata('cod');
 		}
 		if ($this->input->post('cod')) {
 			$this->session->set_userdata('cod', $this->input->post('cod'));
 			$this->session->unset_userdata('ewallet');
-			$this->session->unset_userdata('nohp');
+			$this->session->unset_userdata('nohpwallet');
 			$this->session->unset_userdata('bank');
 		}
 //		var_dump($this->input->post());
