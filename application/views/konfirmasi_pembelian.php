@@ -13,7 +13,6 @@
 			</span>
 	</h6>
 </div>
-<?php var_dump($this->session->userdata()); ?>
 <?php if (!$this->session->userdata('username')): ?>
 	<div class="px-3">
 		<div class="d-flex align-items-center">
@@ -175,11 +174,8 @@
 </div>
 <div class="p-3">
 	<div class="form-group">
-		<textarea type="text"
-				  class="form-control" name="catatan" rows="4" id="catatan_tambahan"
-				  placeholder="Contoh. Ukuran Baju, Jenis Rasa">
-			<?php echo $this->session->userdata('catatan') ?? '' ?>
-		</textarea>
+		<textarea class="form-control" name="catatan" rows="4" id="catatan_tambahan"
+				  placeholder="Contoh. Ukuran Baju, Jenis Rasa"><?php echo $this->session->userdata('catatan') ?? '' ?></textarea>
 		<small id="saveProgress" class="form-text text-muted"></small>
 	</div>
 </div>
@@ -193,5 +189,14 @@
 </div>
 <!-- continue -->
 <div class="fixed-bottom">
-	<a href="<?php echo site_url('pesanan/proses') ?>" class="btn btn-success btn-block">Proses Pembayaran</a>
+	<?php if ($this->session->userdata('bank') || $this->session->userdata('cod') || $this->session->userdata('ewallet')): ?>
+		<a href="<?php echo site_url('pesanan/proses') ?>" class="btn btn-success btn-block">Proses Pembayaran</a>
+	<?php else: ?>
+		<a href="javascript:validate()" class="btn btn-success btn-block">Proses Pembayaran</a>
+		<script>
+			function validate() {
+				Snackbar.show({text: "Silahkan pilih metode pembayaran terlebih dahulu"})
+			}
+		</script>
+	<?php endif; ?>
 </div>
