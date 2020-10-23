@@ -130,7 +130,7 @@
                         </a>
 
                         <!-- Tombol Delete -->
-                        <a class="btn btn-danger btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Hapus Data <?php echo $data->nama_produk ?>" href="<?php echo base_url()?>page/admin/produk/delete?id_produk=<?php echo $data->id_produk ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->nama_produk ?> ?')">
+                        <a class="btn btn-danger btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Hapus Data <?php echo $data->nama_produk ?>" href="<?php echo base_url()?>page/admin/produk/delete?id_produk=<?php echo $data->id_produk ?>" onclick="return confirm('Apa Anda Yakin Akan Menghapus Data <?php echo $data->nama_produk ?>?')">
                             <i class="fas fa-trash"></i>
                         </a>
                       </td>
