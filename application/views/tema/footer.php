@@ -26,6 +26,8 @@
 			<?php $this->load->view('alamat_peta-js') ?>
 		<?php endif ?>
 		<?php break; ?>
+	<?php default: ?>
+		<?php $this->load->view('beranda-js') ?>
 	<?php endswitch; ?>
 <script>
 	var keranjang = localStorage.getItem('keranjang');
