@@ -11,6 +11,9 @@ foreach ($data_pengaturan->result() as $data):
 	$tipe_ongkir = $data->tipe_ongkir;
 	$harga_ongkir_flat = $data->harga_ongkir_flat;
 	$harga_ongkir_perkm = $data->harga_ongkir_perkm;
+	$google_api_key = $data->google_api_key;
+	$icon = $data->icon;
+
 endforeach;
 ?>
 
@@ -77,6 +80,15 @@ endforeach;
 											<input type="text" class="form-control" id="" name="provinsi"
 												   value="<?= $provinsi; ?>">
 										</div>
+										<div class="form-group">
+				                          <label for="icon">Icon</label>
+				                          <div class="custom-file">
+				                            <input type="file" class="custom-file-input" id="customFile" name="icon" accept="image/*" onchange="return validasiFile()">
+				                            <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
+				                          </div>
+				                          <div id="pratinjauGambar"><img src="<?php echo base_url()?>file/<?php echo $icon ?>" class="img-thumbnail" style="height: 100px; width: 100px;"></div>
+				                        </div>
+
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
@@ -109,6 +121,12 @@ endforeach;
 											<label for="harga_ongkir_perkm">Harga Ongkir Perkm</label>
 											<input type="number" min="-1" maxlength="12" class="form-control" id=""
 												   name="harga_ongkir_perkm" value="<?= $harga_ongkir_perkm; ?>">
+										</div>
+
+										<div class="form-group">
+											<label for="google_api_key">Google Api Key</label>
+											<input type="text" class="form-control" id=""
+												   name="google_api_key" value="<?= $google_api_key; ?>">
 										</div>
 
 										<div class="form-group">

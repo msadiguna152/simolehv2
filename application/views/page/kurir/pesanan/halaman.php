@@ -78,7 +78,7 @@
 									<tr>
 										<td><?php echo $no ?></td>
 										<td><?php echo htmlspecialchars($data->tanggal_pesanan); ?></td>
-										<td><?php echo htmlspecialchars($data->nama_pengguna ?? 'Belum di tentukan'); ?></td>
+										<td><?php echo htmlspecialchars($data->nama_pengguna); ?></td>
 										<td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
 										<td>
 											<?php

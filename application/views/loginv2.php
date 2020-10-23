@@ -1,3 +1,11 @@
+<?php
+  $pengaturan = $query = $this->db->get('tb_pengaturan');
+  foreach ($pengaturan->result() as $data){
+    $nama_bisnis = $data->nama_bisnis;
+    $no_wa = $data->no_wa;
+    $icon = $data->icon;
+  }
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -10,7 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <script language='javaScript'>
-      var txt="www.lusiapw.com       ";
+      var txt="<?= $nama_bisnis; ?> .:.       ";
       var speed=300;
       var refresh=null;
       function action() { document.title=txt;
@@ -88,9 +96,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <nav class="main-header navbar navbar-expand-md navbar-primary navbar-dark">
     <div class="container">
       <a href="<?php echo site_url()?>Lusiapw" class="navbar-brand">
-        <img src="<?php echo base_url()?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+        <img src="<?php echo base_url()?>pengaturan/<?= $icon; ?>" alt="<?= $nama_bisnis; ?>" class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light"><b style="color: white;">SIMOLEH</b></span>
+        <span class="brand-text font-weight-light"><b style="color: white;"><?= $nama_bisnis; ?></b></span>
       </a>
     </div>
   </nav>
@@ -158,8 +166,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.content-wrapper -->
 
   <footer class="main-footer text-sm">
-    <strong>Copyright &copy; 2020 <a href="www.lusiapw.com">www.lusiapw.com</a>.</strong>
-      All rights reserved. <b>Version</b> 1.0.0
+    <strong>Copyright &copy; 2020 <a href=""><?= $nama_bisnis; ?></a></strong>
     
     <div class="float-right d-none d-sm-inline-block">
       

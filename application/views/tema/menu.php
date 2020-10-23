@@ -1,3 +1,10 @@
+<?php
+	$pengaturan = $query = $this->db->get('tb_pengaturan');
+	foreach ($pengaturan->result() as $data){
+		$nama_bisnis = $data->nama_bisnis;
+		$no_wa = $data->no_wa;
+	}
+?>
 <div class="osahan-menu-fotter fixed-bottom bg-white text-center border-top">
 	<div class="row m-0">
 		<a href="<?= base_url() ?>beranda"
@@ -28,7 +35,7 @@
 			Akun
 		</a>
 
-		<a target="_BALNK" href="https://wa.me/6285245462842"
+		<a target="_BALNK" href="https://wa.me/<?= $no_wa; ?>"
 		   class="text-muted col small text-decoration-none p-2">
 			<p class="h5 m-0"><i class="icofont-chat"></i></p>
 			Bantuan

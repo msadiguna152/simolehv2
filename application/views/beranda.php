@@ -1,9 +1,16 @@
+<?php
+	$pengaturan = $query = $this->db->get('tb_pengaturan');
+	foreach ($pengaturan->result() as $data){
+		$nama_bisnis = $data->nama_bisnis;
+	}
+?>
+
 <!-- home page -->
 <div class="osahan-home-page">
 	<div class="border-bottom p-3">
 		<div class="title d-flex align-items-center">
 			<a href="" class="text-decoration-none text-dark d-flex align-items-center">
-				<h4 class="font-weight-bold text-success m-0">SIMOLEH</h4>
+				<h4 class="font-weight-bold text-success m-0"><?= $nama_bisnis; ?></h4>
 			</a>
 		</div>
 		<a href="<?= site_url() ?>pencarian" class="text-decoration-none">
@@ -43,12 +50,10 @@
 		<!-- Promos -->
 		<div class="py-3 bg-white osahan-promos shadow-sm">
 			<div class="promo-slider">
-				<?php foreach ($data_promosi->result() as $data): ?>
+				<?php foreach ($data_sliders->result() as $data): ?>
 					<div class="osahan-slider-item m-2">
-						<a href="">
-							<img src="<?= base_url() ?>file/<?php echo $data->gambar; ?>"
-										class="img-fluid mx-auto rounded" alt="<?= $data->nama_produk; ?>">
-						</a>
+							<img src="<?= base_url() ?>sliders/<?php echo $data->gambar_sliders; ?>"
+										class="img-fluid mx-auto rounded" alt="<?= $data->keterangan_sliders; ?>">
 					</div>
 				<?php endforeach; ?>
 			</div>
