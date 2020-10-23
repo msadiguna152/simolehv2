@@ -30,10 +30,14 @@ class Mproduk extends CI_Model
 	public function insert_produk()
 	{
 		$id_kategori = $this->input->post('id_kategori');
-		$nama_produk = $this->input->post('nama_produk');
+		$nama_produk = ucwords($this->input->post('nama_produk'));
 		$harga = $this->input->post('harga');
 		$harga_promosi = $this->input->post('harga_promosi');
 		$deskripsi = $this->input->post('deskripsi');
+		$karakter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';
+		$shuffle  = substr(str_shuffle($karakter), 0, 5);
+
+		$slug = str_replace(" ", "-",strtolower($nama_produk)).'-'.$shuffle;
 
 		if ($this->input->post('promosi') == 1) {
 			$promosi = 1;
@@ -46,17 +50,17 @@ class Mproduk extends CI_Model
 			$terlaris = 0;
 		}
 
-		$gambar = $_FILES['gambar']['name'];
+		$get_gambar = $_FILES['gambar']['name'];
+		$gambar = str_replace(" ", "_", "$get_gambar");
+
 		$config['upload_path'] = './file/';
 		$config['allowed_types'] = '*';
-		//$config['file_name'] = $gambar;
-		//$config['max_size'] = 2048; // 1MB
 		$config['overwrite'] = true;
 		$this->load->library('upload', $config);
 		$this->upload->do_upload('gambar');
 		$this->upload->data();
 
-		$query = $this->db->query("INSERT INTO `tb_produk` (`id_produk`, `id_kategori`, `nama_produk`, `harga`, `harga_promosi`, `deskripsi`, `gambar`, `promosi`, `terlaris`) VALUES (NULL, '$id_kategori', '$nama_produk', '$harga', '$harga_promosi', '$deskripsi', '$gambar', '$promosi', '$terlaris');");
+		$query = $this->db->query("INSERT INTO `tb_produk` (`id_produk`, `id_kategori`, `nama_produk`, `harga`, `harga_promosi`, `deskripsi`, `gambar`, `promosi`, `terlaris`, `slug_p`) VALUES (NULL, '$id_kategori', '$nama_produk', '$harga', '$harga_promosi', '$deskripsi', '$gambar', '$promosi', '$terlaris', '$slug');");
 		return $query;
 	}
 
@@ -69,6 +73,11 @@ class Mproduk extends CI_Model
 		$harga_promosi = $this->input->post('harga_promosi');
 		$deskripsi = $this->input->post('deskripsi');
 		$gambar = $_FILES['gambar']['name'];
+
+		$karakter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';
+		$shuffle  = substr(str_shuffle($karakter), 0, 5);
+
+		$slug = str_replace(" ", "-",strtolower($nama_produk)).'-'.$shuffle;
 
 		if ($this->input->post('promosi') == 1) {
 			$promosi = 1;
@@ -91,15 +100,15 @@ class Mproduk extends CI_Model
 		if (!empty($gambar)) {
 			$this->upload->do_upload('gambar');
 			$this->upload->data();
-			$gambar2 = $_FILES['gambar']['name'];
+			$get_gambar = $_FILES['gambar']['name'];
+			$gambar2 = str_replace(" ", "_", "$get_gambar");
 
-			$query = $this->db->query("UPDATE `tb_produk` SET `id_kategori` = '$id_kategori', `nama_produk` = '$nama_produk', `harga` = '$harga', `harga_promosi` = '$harga', `deskripsi` = '$deskripsi', `gambar` = '$gambar2', `promosi` = '$promosi', `terlaris` = '$terlaris' WHERE `tb_produk`.`id_produk` = '$id_produk';");
+			$query = $this->db->query("UPDATE `tb_produk` SET `id_kategori` = '$id_kategori', `nama_produk` = '$nama_produk', `harga` = '$harga', `harga_promosi` = '$harga', `deskripsi` = '$deskripsi', `gambar` = '$gambar2', `promosi` = '$promosi', `terlaris` = '$terlaris', `slug_p` = '$slug' WHERE `tb_produk`.`id_produk` = '$id_produk';");
 		} else {
-			$query = $this->db->query("UPDATE `tb_produk` SET `id_kategori` = '$id_kategori', `nama_produk` = '$nama_produk', `harga` = '$harga', `harga_promosi` = '$harga', `deskripsi` = '$deskripsi', `promosi` = '$promosi', `terlaris` = '$terlaris' WHERE `tb_produk`.`id_produk` = '$id_produk';");
+			$query = $this->db->query("UPDATE `tb_produk` SET `id_kategori` = '$id_kategori', `nama_produk` = '$nama_produk', `harga` = '$harga', `harga_promosi` = '$harga', `deskripsi` = '$deskripsi', `promosi` = '$promosi', `terlaris` = '$terlaris', `slug_p` = '$slug' WHERE `tb_produk`.`id_produk` = '$id_produk';");
 		};
 
 		return $query;
-
 	}
 
 	function delete_produk($id_produk)

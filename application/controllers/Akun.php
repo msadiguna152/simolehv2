@@ -45,9 +45,23 @@ class Akun extends CI_Controller {
 	{
 		$query = $this->makun->regis();
 		if ($query==true) {
-			echo '<script language="javascript">document.location="'.site_url('akun').'";</script>';
+			echo '<script language="javascript">alert("Silahakan Login!");';
+			echo 'document.location="'.site_url('akun').'";</script>';
 		} elseif ($query==false) {
-			echo '<script language="javascript">document.location="'.site_url('akun/registrasi').'";</script>';
+			echo '<script language="javascript">alert("Gagal Mendaftar Akun!");';
+			echo 'document.location="'.site_url('akun/registrasi').'";</script>';
+		}
+	}
+
+	public function update()
+	{
+		$query = $this->makun->update_regis();
+		if ($query==true) {
+			echo '<script language="javascript">alert("Silahakan Logout, Lalu Login Kembali!");';
+			echo 'document.location="'.site_url('akun').'";</script>';
+		} elseif ($query==false) {
+			echo '<script language="javascript">alert("Silahakan Logout, Lalu Login Kembali!");';
+			echo 'document.location="'.site_url('akun').'";</script>';
 		}
 	}
 

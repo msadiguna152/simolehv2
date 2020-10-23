@@ -12,7 +12,7 @@
     $gambar = $data->gambar;
     $promosi = $data->promosi;
     $terlaris = $data->terlaris;
-
+    $slug = $data->slug_p;
     endforeach;
   } else {
       echo '<script language="javascript">document.location="'.site_url('page/admin/produk').'";</script>';
@@ -114,6 +114,10 @@
                                 echo '<i style="color: red;" class="fas fa-times"></i>';
                               }
                             ?>
+                        </div>
+                        <div class="form-group">
+                          <label for="slug_p">Slug Produk</label>
+                          <p class="text-justify"><?= htmlspecialchars($slug); ?></p>
                         </div>
 
                   </div>

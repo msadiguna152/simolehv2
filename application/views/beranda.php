@@ -64,9 +64,7 @@
 			$chunks = array_chunk($data_grid1->result(), 2); ?>
 			<?php foreach ($chunks as $data_chunk): ?>
 				<div class="row <?= $a < 2 ? '' : 'pt-3'; ?>">
-					<?php foreach ($data_chunk as $key => $data_p):
-						$nama_produk = strtolower(str_replace(" ", "-", "$data_p->nama_produk"));
-						?>
+					<?php foreach ($data_chunk as $key => $data_p): ?>
 						<div class="col-6">
 							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
@@ -76,7 +74,7 @@
 
 									</div>
 									<div class="p-3">
-										<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>"
+										<a href="<?= base_url() ?>beranda/detail_produk/<?= $data_p->slug_p; ?>"
 										   class="text-dark">
 
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
@@ -136,9 +134,7 @@
 			$chunks = array_chunk($data_grid2->result(), 2); ?>
 			<?php foreach ($chunks as $data_chunk): ?>
 				<div class="row <?= $a < 2 ? '' : 'pt-3'; ?>">
-					<?php foreach ($data_chunk as $key => $data_p):
-						$nama_produk = strtolower(str_replace(" ", "-", "$data_p->nama_produk"));
-						?>
+					<?php foreach ($data_chunk as $key => $data_p): ?>
 						<div class="col-6">
 							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
@@ -148,7 +144,7 @@
 
 									</div>
 									<div class="p-3">
-										<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>"
+										<a href="<?= base_url() ?>beranda/detail_produk/<?= $data_p->slug_p; ?>"
 										   class="text-dark">
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
 												 class="img-fluid item-img w-100 mb-3">
@@ -221,7 +217,7 @@
 
 									</div>
 									<div class="p-3">
-										<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>"
+										<a href="<?= base_url() ?>beranda/detail_produk/<?= $data_p->slug_p; ?>"
 										   class="text-dark">
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
 												 class="img-fluid item-img w-100 mb-3">
@@ -230,7 +226,7 @@
 										<p style="height: 60px">
 											<?php
 											$jml = strlen($data_p->deskripsi);
-											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " (Lihat Selengkapnya)";
+											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " . . . (Lihat Selengkapnya)";
 											?>
 										</p>
 										<div class="" id="container-button">

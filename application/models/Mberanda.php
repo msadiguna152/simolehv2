@@ -45,8 +45,7 @@ public function get_produk3() //Best Seller
 
 public function get_perproduk($id)
 	{
-		$nama_produk = ucwords(str_replace("-", " ", "$id"));
-		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori WHERE tb_produk.nama_produk='$nama_produk'");
+		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori WHERE tb_produk.slug_p='$id'");
 		return $query;
 	}
 
