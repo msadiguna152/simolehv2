@@ -11,6 +11,7 @@ class Pesanan extends CI_Controller {
 			echo 'document.location="'.site_url('auth').'";</script>';
 		}		
 		$this->load->model('page/kurir/mpesanan');
+		$this->load->model('page/admin/mpengaturan','mpengaturan');
 		$this->session->set_userdata('menu', 'pesanan');
 		$this->session->set_userdata('menu2', 'pesanan');
 
@@ -65,6 +66,7 @@ class Pesanan extends CI_Controller {
 		
 		$data['data_pembeli'] = $this->mpesanan->get_detail_pesanan($id_pesanan);
 		$data['data_produk'] = $this->mpesanan->get_detail_produk($id_pesanan);
+		$data['pengaturan'] = $this->mpengaturan->get_pengaturan()->row();
 
 		$this->session->set_flashdata('token', $this->input->get('token'));
 		$data['get_token2'] = $this->input->get('id');
@@ -75,5 +77,19 @@ class Pesanan extends CI_Controller {
 		$this->load->view('page/kurir/pesanan/lihat_halaman');
 		$this->load->view('page/kurir/tema/footer');
 	}
+	public function peta(){
+		$id_pesanan = $this->input->get('id');
+		$this->session->set_userdata('aksi', 'lihat');
 
+		$data['data_pembeli'] = $this->mpesanan->get_detail_pesanan($id_pesanan)->row();
+		$data['pengaturan'] = $this->mpengaturan->get_pengaturan()->row();
+		$this->session->set_flashdata('token', $this->input->get('token'));
+		$data['get_token2'] = $this->input->get('id');
+		$data['level'] = $this->session->userdata('level');
+
+		$this->load->view('page/kurir/tema/head',$data);
+		$this->load->view('page/kurir/tema/menu');
+		$this->load->view('page/kurir/pesanan/lihat_peta');
+		$this->load->view('page/kurir/tema/footer');
+	}
 }
