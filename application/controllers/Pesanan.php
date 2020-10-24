@@ -162,8 +162,8 @@ class Pesanan extends CI_Controller
 				'amount' => $total,
 				'phone' => $nohp,
 				'items' => $items,
-				'callback_url' => 'https://6161b770f269.ngrok.io/callback/linkaja',
-				'redirect_url' => 'https://6161b770f269.ngrok.io/pesanan',
+				'callback_url' => 'https://simoleh.diocreation.com/callback/linkaja',
+				'redirect_url' => 'https://simoleh.diocreation.com/pesanan',
 				'ewallet_type' => 'LINKAJA'
 			];
 			/*@TODO: Ganti callback redirect*/
