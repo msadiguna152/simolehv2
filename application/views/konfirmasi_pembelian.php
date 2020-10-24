@@ -66,7 +66,8 @@
 			<span aria-hidden="true">&times;</span>
 		</button>
 		<strong class="mb-2">Informasi</strong><br>Silahkan <a href="<?php echo site_url('akun') ?>">login</a> atau
-		<a href="<?php echo site_url('akun/registrasi') ?>">daftar</a> untuk menerima kemudahan pada transaksi selanjutnya.
+		<a href="<?php echo site_url('akun/registrasi') ?>">daftar</a> untuk menerima kemudahan pada transaksi
+		selanjutnya.
 	</div>
 <?php endif; ?>
 <?php $alamat_dipilih = $alamat->row() ?? null ?>
@@ -80,7 +81,8 @@
 <?php if ($alamat_dipilih): ?>
 	<div class="p-3">
 		<div class="d-flex align-items-center">
-			<p class="mb-2 font-weight-bold">Alamat Pengantaran</p>
+			<p class="mb-2 font-weight-bold" id="lokasi-pengantaran" data-lat="<?php echo $alamat_dipilih->lat ?>"
+			   data-lng="<?php echo $alamat_dipilih->long ?>">Alamat Pengantaran</p>
 			<p class="mb-2 badge badge-success ml-auto">Dipilih</p>
 		</div>
 		<p class="small text-muted m-0"><?= $alamat_dipilih->alamat_lengkap ?></p>
@@ -114,7 +116,7 @@
 	<div class="p-3 bg-white">
 		<a href="<?= site_url('keranjang/pembayaran') ?>" class="text-success mb-1 text-decoration-none w-100">
 			<div class="d-flex align-items-center">
-				<span class="ml-3 text-muted font-weight-bold">COD (Bayar di tempat)</span>
+				<span class="ml-3 text-muted font-weight-bold">COD (Bayar ditempat)</span>
 			</div>
 		</a>
 	</div>
@@ -189,13 +191,22 @@
 </div>
 <!-- continue -->
 <div class="fixed-bottom">
-	<?php if ($this->session->userdata('bank') || $this->session->userdata('cod') || $this->session->userdata('ewallet')): ?>
+	<?php if ($alamat_dipilih): ?>
+		<?php if ($this->session->userdata('bank') || $this->session->userdata('cod') || $this->session->userdata('ewallet')): ?>
 		<a href="<?php echo site_url('pesanan/proses') ?>" class="btn btn-success btn-block">Proses Pembayaran</a>
 	<?php else: ?>
 		<a href="javascript:validate()" class="btn btn-success btn-block">Proses Pembayaran</a>
 		<script>
 			function validate() {
 				Snackbar.show({text: "Silahkan pilih metode pembayaran terlebih dahulu"})
+			}
+		</script>
+	<?php endif; ?>
+	<?php else: ?>
+		<a href="javascript:validate()" class="btn btn-success btn-block">Proses Pembayaran</a>
+		<script>
+			function validate() {
+				Snackbar.show({text: "Silahkan tentukan Alamat Pengiriman terlebih dahulu"})
 			}
 		</script>
 	<?php endif; ?>

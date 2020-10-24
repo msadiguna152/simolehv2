@@ -26,6 +26,11 @@
 			<?php $this->load->view('alamat_peta-js') ?>
 		<?php endif ?>
 		<?php break; ?>
+	<?php case 'pesanan': ?>
+		<?php if ($this->uri->segment(2) === 'proses'): ?>
+		<?php $this->load->view('pesanan-js') ?>
+		<?php endif; ?>
+		<?php break ?>
 	<?php default: ?>
 		<?php $this->load->view('beranda-js') ?>
 	<?php endswitch; ?>

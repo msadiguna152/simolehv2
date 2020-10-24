@@ -107,6 +107,12 @@ class Keranjang extends CI_Controller
 		$this->load->view('tema/footer');
 	}
 
+	public function hapus_alamat($id)
+	{
+		$this->malamat->delete_alamat($id);
+		redirect('keranjang/alamat');
+	}
+
 	public function alamatpeta()
 	{
 		$this->load->view('tema/head');

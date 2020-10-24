@@ -109,10 +109,10 @@ class Pesanan extends CI_Controller
 			}
 		}
 		if ($this->session->userdata('cod')) {
-			$status = $this->pembayaran_cod();
+			$status = $this->pembayaran_cod($total);
 			if ($status) {
-				$data['pembayaran'] = $this->mpesanan->get_pembayaran($this->session->userdata('id_pembayaran'));
 				$this->session->set_userdata('metode_pembayaran', 'cod');
+				$data['pembayaran'] = $this->mpesanan->get_pembayaran($this->session->userdata('id_pembayaran'));
 			}
 			$this->clear_session('cod');
 		}
@@ -137,6 +137,8 @@ class Pesanan extends CI_Controller
 		} else {
 			$this->session->unset_userdata('cod');
 		}
+		$this->session->unset_userdata('catatan');
+		$this->session->unset_userdata('alamat');
 	}
 
 	private function pembayaran_ewallet($total, $nohp, $items = [])
@@ -192,6 +194,13 @@ class Pesanan extends CI_Controller
 		return false;
 	}
 
+	private function pembayaran_cod($total)
+	{
+		$data['amount'] = $total;
+		$data['cod'] = true;
+		return $this->simpan_rincian_pesanan($data);
+	}
+
 	public function simpan_rincian_pesanan($success)
 	{
 		//mulai transaksi
@@ -222,6 +231,17 @@ class Pesanan extends CI_Controller
 				'jenis_pembayaran' => $success['bank_code'],
 				'kode_pembayaran' => $success['external_id'],
 				'status_pembayaran' => $success['status'] ?? 'PENDING',
+				'id_pesanan' => $inserted_id,
+				'tanggal_pembayaran' => date('Y-m-d H:i:s'),
+				'account_number' => $success['account_number'] ?? 'NULL',
+				'expired_pembayaran' => $success['expiration_date'] ?? 'NULL'
+			];
+		}
+		if (isset($success['cod'])) {
+			$dataFormPembayaran = [
+				'jenis_pembayaran' => 'COD',
+				'kode_pembayaran' => 'COD-' . time() . '-' . mt_rand(),
+				'status_pembayaran' => 'PENDING',
 				'id_pesanan' => $inserted_id,
 				'tanggal_pembayaran' => date('Y-m-d H:i:s'),
 				'account_number' => $success['account_number'] ?? 'NULL',
@@ -259,11 +279,6 @@ class Pesanan extends CI_Controller
 			$this->session->set_userdata('id_pembayaran', $status_insert_pembayaran);
 			return true;
 		}
-	}
-
-	private function pembayaran_cod()
-	{
-
 	}
 
 	public function success()

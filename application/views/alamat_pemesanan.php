@@ -35,9 +35,9 @@
 								</div>
 								<p class="small text-muted m-0"><?= $item->alamat_lengkap ?></p>
 								<p class="small text-muted m-0"><?= $item->rincian_alamat ?></p>
-								<p class="pt-2 m-0 text-right"><span class="small"><a href="#" data-toggle="modal"
-																					  data-target="#exampleModal"
-																					  class="text-decoration-none text-dark">Edit</a></span>
+								<p class="pt-2 m-0 text-right"><span class="small"><a
+												href="<?php echo site_url('keranjang/hapus_alamat/' . $item->id_alamat) ?>"
+												class="text-decoration-none text-dark">Hapus</a></span>
 								</p>
 							</div>
 						</div>

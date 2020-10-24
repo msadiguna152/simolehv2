@@ -561,28 +561,14 @@
 	<?php endif; ?>
 	<?php if ($this->session->userdata('metode_pembayaran') === 'cod'): ?>
 		<div class="p-3 border-bottom">
-			<h6 class="font-weight-bold text-center">KODE PEMBAYARAN ANDA</h6>
-			<div class="tracking-wrap">
-				<div class="my-1 step active">
-					<span class="icon text-success"><i class="icofont-check-circled"></i></span>
-					<span class="text small">Menunggu Pembayaran</span>
-				</div>
-				<!-- step.// -->
-				<div class="my-1 step active">
-					<span class="icon text-danger"><i class="icofont-close-circled"></i></span>
-					<span class="text small">Pesanan di konfirmasi</span>
-				</div>
-				<!-- step.// -->
-				<div class="my-1 step">
-					<span class="icon text-danger"><i class="icofont-close-circled"></i></span>
-					<span class="text small">Dalam perjalanan</span>
-				</div>
-				<!-- step.// -->
-				<div class="my-1 step">
-					<span class="icon text-danger"><i class="icofont-close-circled"></i></span>
-					<span class="text small">Pesanan Selesai</span>
-				</div>
-				<!-- step.// -->
+			<div class="p-3 border-bottom">
+				<h6 class="font-weight-bold text-center text-uppercase">COD (Bayar ditempat)</h6>
+				<p class="font-weight-bold text-center bg-white py-2 h4 rounded">Pesanan anda akan segera di proses.
+					Mohon menunggu.
+					<br><small>Mohon berikan uang pas untuk kurir demi kemudahan dalam proses pengantaran.
+						Terimakasih.</small>
+				</p>
+
 			</div>
 		</div>
 	<?php endif; ?>

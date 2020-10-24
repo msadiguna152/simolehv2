@@ -116,8 +116,9 @@
 		if (keranjang !== null) {
 			var decodedKeranjang = JSON.parse(keranjang);
 			var ids = Object.keys(decodedKeranjang);
-
 			checkoutHelper.getRincian(ids, decodedKeranjang);
+			localStorage.setItem('lat', $('#lokasi-pengantaran').data('lat'));
+			localStorage.setItem('lng', $('#lokasi-pengantaran').data('lng'));
 		}
 		$("input#nohp").on('blur', checkoutHelper.saveUser)
 		$("input#namalengkap").on('blur', checkoutHelper.saveUser)
