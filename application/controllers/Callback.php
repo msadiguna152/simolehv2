@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 // update
 class Callback extends CI_Controller
 {
@@ -45,7 +46,7 @@ class Callback extends CI_Controller
 		if (isset($data['external_id'])) {
 			if (isset($data['payment_id'])) {
 				if ($this->mpesanan->update_status_pesanan('COMPLETED', $data['external_id'])) {
-					echo json_encode(['status' => $data['status']]);
+					echo json_encode(['status' => 'success']);
 				} else {
 					echo json_encode(['status' => 'Error in local server']);
 				}
