@@ -91,12 +91,7 @@
                       <td><?php echo htmlspecialchars($data->jenis_pembayaran); ?></td>
                       <td><?php echo "Rp " . number_format(htmlspecialchars($data->total_pembayaran),0,',','.'); ?></td>
                       <td>
-                        <?php
-                          $status = htmlspecialchars($data->status_pembayaran); 
-                          if ($status=="Lunas") {
-                            echo '<span class="badge badge-success">Lunas</span>';
-                          }
-                        ?>  
+                        <?= htmlspecialchars($data->status_pembayaran); ?>  
                       </td>
 
                       <td>

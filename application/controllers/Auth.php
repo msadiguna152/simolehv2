@@ -25,7 +25,6 @@ class auth extends CI_Controller {
 			$get_pengguna = $this->mauth->cek($username, $password);
 			foreach($get_pengguna->result() as $data){
 				$sess_data['username'] = $data->username;
-				$sess_data['password'] = $data->password;
 				$sess_data['level'] = $data->level;
 				$sess_data['nama_pengguna'] = $data->nama_pengguna;
 				$sess_data['foto_pengguna'] = $data->foto_pengguna;
