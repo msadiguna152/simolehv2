@@ -10,7 +10,7 @@ class Mpengguna extends CI_Model
 		$password = md5($this->input->post('password_baru'));
 		$email = $this->input->post('email');
 		$no_telpon = $this->input->post('no_telpon');
-		$level = $this->input->post('level');
+		$level = "Kurir";
 		$foto_pengguna = $_FILES['foto_pengguna']['name'];
 
 		$config['upload_path'] = './file/';

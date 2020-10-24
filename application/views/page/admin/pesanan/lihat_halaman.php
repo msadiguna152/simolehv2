@@ -6,7 +6,10 @@
     foreach ($data_pembeli->result() as $data):
     $id_pembeli = $data->id_pembeli;
     $nama_pembeli = $data->nama_pembeli;
-    $no_telpon = $data->no_telpon;
+    $getNoHp = str_replace("-", "", $data->no_pembeli);
+    $getNoHp2 = str_replace("0", "62", substr($getNoHp, 0,4));
+    $getNoHp3 = substr($getNoHp, 4,10);
+    $no_telpon = htmlspecialchars($getNoHp2.$getNoHp3);
     $alamat_lengkap = $data->alamat_lengkap;
     $status = $data->status;
     $jenis_pembayaran = $data->jenis_pembayaran;

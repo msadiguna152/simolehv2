@@ -18,7 +18,7 @@
     $catatan = $data->catatan;
     endforeach;
   } else {
-      echo '<script language="javascript">document.location="'.site_url('page/kurir/pembeli').'";</script>';
+      echo '<script language="javascript">document.location="'.site_url('page/kurir/pesanan').'";</script>';
   }
 ?>
 
@@ -82,7 +82,7 @@
 
                         <div class="form-group">
                           <label for="jenis_pembayaran">Cara Pembayaran</label>
-                          <input type="text" class="form-control" id="" readonly="" value="<?= $jenis_pembayaran; ?>">
+                          <input type="text" name="jenis_pembayaran" class="form-control" id="" readonly="" value="<?= $jenis_pembayaran; ?>">
                         </div>
 
                         <div class="form-group">

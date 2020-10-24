@@ -22,6 +22,8 @@ class Mpengaturan extends CI_Model
 		$harga_ongkir_flat = $this->input->post('harga_ongkir_flat');
 		$harga_ongkir_perkm = $this->input->post('harga_ongkir_perkm');
 		$google_api_key = $this->input->post('google_api_key');
+		$xendit_api = $this->input->post('xendit_api');
+
 		$icon = $_FILES['icon']['name'];
 
 		$config['upload_path'] = './pengaturan/';
@@ -35,9 +37,9 @@ class Mpengaturan extends CI_Model
 			$get_icon = $_FILES['icon']['name'];
 			$icon2 = str_replace(" ", "_", "$get_icon");
 
-			$query = $this->db->query("UPDATE `tb_pengaturan` SET `nama_bisnis` = '$nama_bisnis', `no_wa` = '$no_wa', `alamat_toko` = '$alamat_toko', `kota` = '$kota', `provinsi` = '$provinsi', `latitude` = '$latitude', `longitude` = '$longitude', `tipe_ongkir` = '$tipe_ongkir', `harga_ongkir_flat` = '$harga_ongkir_flat', `harga_ongkir_perkm` = '$harga_ongkir_perkm', `google_api_key` = '$google_api_key', `icon` = '$icon2' WHERE `tb_pengaturan`.`id_pengaturan` = '1';");
+			$query = $this->db->query("UPDATE `tb_pengaturan` SET `nama_bisnis` = '$nama_bisnis', `no_wa` = '$no_wa', `alamat_toko` = '$alamat_toko', `kota` = '$kota', `provinsi` = '$provinsi', `latitude` = '$latitude', `longitude` = '$longitude', `tipe_ongkir` = '$tipe_ongkir', `harga_ongkir_flat` = '$harga_ongkir_flat', `harga_ongkir_perkm` = '$harga_ongkir_perkm', `google_api_key` = '$google_api_key', `xendit_api` = '$xendit_api', `icon` = '$icon2' WHERE `tb_pengaturan`.`id_pengaturan` = '1';");
 		} else {
-			$query = $this->db->query("UPDATE `tb_pengaturan` SET `nama_bisnis` = '$nama_bisnis', `no_wa` = '$no_wa', `alamat_toko` = '$alamat_toko', `kota` = '$kota', `provinsi` = '$provinsi', `latitude` = '$latitude', `longitude` = '$longitude', `tipe_ongkir` = '$tipe_ongkir', `harga_ongkir_flat` = '$harga_ongkir_flat', `harga_ongkir_perkm` = '$harga_ongkir_perkm', `google_api_key` = '$google_api_key' WHERE `tb_pengaturan`.`id_pengaturan` = '1';");
+			$query = $this->db->query("UPDATE `tb_pengaturan` SET `nama_bisnis` = '$nama_bisnis', `no_wa` = '$no_wa', `alamat_toko` = '$alamat_toko', `kota` = '$kota', `provinsi` = '$provinsi', `latitude` = '$latitude', `longitude` = '$longitude', `tipe_ongkir` = '$tipe_ongkir', `harga_ongkir_flat` = '$harga_ongkir_flat', `harga_ongkir_perkm` = '$harga_ongkir_perkm', `google_api_key` = '$google_api_key', `xendit_api` = '$xendit_api' WHERE `tb_pengaturan`.`id_pengaturan` = '1';");
 		}
 
 		return $query;

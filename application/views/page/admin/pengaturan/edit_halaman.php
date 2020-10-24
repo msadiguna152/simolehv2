@@ -12,8 +12,8 @@ foreach ($data_pengaturan->result() as $data):
 	$harga_ongkir_flat = $data->harga_ongkir_flat;
 	$harga_ongkir_perkm = $data->harga_ongkir_perkm;
 	$google_api_key = $data->google_api_key;
+	$xendit_api = $data->xendit_api;
 	$icon = $data->icon;
-
 endforeach;
 ?>
 
@@ -122,7 +122,11 @@ endforeach;
 											<input type="number" min="-1" maxlength="12" class="form-control" id=""
 												   name="harga_ongkir_perkm" value="<?= $harga_ongkir_perkm; ?>">
 										</div>
-
+										<div class="form-group">
+											<label for="xendit_api">Xendit Api</label>
+											<input type="text" class="form-control" id=""
+												   name="xendit_api" value="<?= $xendit_api; ?>">
+										</div>
 										<div class="form-group">
 											<label for="google_api_key">Google Api Key</label>
 											<input type="text" class="form-control" id=""

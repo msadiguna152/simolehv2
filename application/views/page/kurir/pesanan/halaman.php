@@ -74,7 +74,12 @@
 								</thead>
 								<tbody>
 								<?php $no = 1;
-								foreach ($data_pesanan->result() as $data): ?>
+								foreach ($data_pesanan->result() as $data): 
+									$getNoHp = str_replace("-", "", $data->no_pembeli);
+			                        $getNoHp2 = str_replace("0", "62", substr($getNoHp, 0,4));
+			                        $getNoHp3 = substr($getNoHp, 4,10);
+			                        $no_pembeli = htmlspecialchars($getNoHp2.$getNoHp3);
+								?>
 									<tr>
 										<td><?php echo $no ?></td>
 										<td><?php echo htmlspecialchars($data->tanggal_pesanan); ?></td>
@@ -112,8 +117,8 @@
 
 											<!-- Tombol Edit -->
 											<a class="btn btn-info btn-sm btn-block" target="_BLANK"
-											   data-toggle="tooltip" data-placement="bottom" title="Kirim Pesan"
-											   href="https://api.whatsapp.com/send?phone=<?php echo $data->no_telpon; ?>">
+											   data-toggle="tooltip" data-placement="bottom" title="Kirim Pesan ke <?=$no_pembeli;?>"
+											   href="https://api.whatsapp.com/send?phone=<?= $no_pembeli; ?>">
 												<i class="fas fa-envelope"></i>
 											</a>
 
