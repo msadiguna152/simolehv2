@@ -82,12 +82,12 @@
 
                         <div class="form-group">
                           <label for="password_baru">Password Baru</label>
-                          <input type="password" class="form-control" id="password_baru" name="password_baru" placeholder="Masukan Password Baru...">
+                          <input type="password" class="form-control" id="password_baru" name="password_baru" placeholder="Masukan Password Baru..." required="">
                         </div>
 
                         <div class="form-group">
                           <label for="kon_password_baru">Konfirmasi Password Baru</label>
-                          <input type="password" class="form-control" id="kon_password_baru" name="kon_password_baru" placeholder="Masukan Konfirmasi Password Baru...">
+                          <input type="password" class="form-control" id="kon_password_baru" name="kon_password_baru" placeholder="Masukan Konfirmasi Password Baru..." required="">
                         </div>
 
                         <div class="form-group">

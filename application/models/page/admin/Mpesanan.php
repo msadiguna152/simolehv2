@@ -9,8 +9,8 @@ class Mpesanan extends CI_Model
 		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
 			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
 			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli 
-			JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan 
-			JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna 
+			LEFT JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan 
+			LEFT JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna 
 			ORDER BY `tb_pesanan`.`id_pesanan` DESC");
 		return $query;
 	}
@@ -44,8 +44,8 @@ class Mpesanan extends CI_Model
 		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
 			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
 			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli
-			JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
-			JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna
+			LEFT JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
+			LEFT JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna
 			WHERE `tb_pesanan`.`id_pesanan` = '$id_pesanan'");
 		return $query;
 	}
@@ -73,8 +73,8 @@ class Mpesanan extends CI_Model
 		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
 			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
 			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli
-			JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
-			JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna
+			LEFT JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
+			LEFT JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna
 			WHERE `tb_pesanan`.`id_pesanan` = '$id_pesanan'");
 		return $query;
 	}

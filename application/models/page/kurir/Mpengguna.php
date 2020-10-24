@@ -2,14 +2,12 @@
 // update
 class Mpengguna extends CI_Model
 {
-
-
 	public function update_pengguna()
 	{
 		$id_pengguna = $this->input->post('id_pengguna');
 		$nama_pengguna = $this->input->post('nama_pengguna');
 		$username = $this->input->post('username');
-		$password = $this->input->post('password_baru');
+		$password = md5($this->input->post('password_baru'));
 		$email = $this->input->post('email');
 		$no_telpon = $this->input->post('no_telpon');
 		$level = $this->input->post('level');
