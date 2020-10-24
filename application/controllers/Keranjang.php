@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 // update
 class Keranjang extends CI_Controller
 {
@@ -10,6 +11,7 @@ class Keranjang extends CI_Controller
 		$this->load->model('page/admin/malamat', 'malamat');
 		$this->load->model('page/admin/mproduk', 'mproduk');
 		$this->load->model('page/admin/mpengaturan', 'mpengaturan');
+		$this->load->model('page/admin/mpembeli', 'mpembeli');
 		$this->session->set_userdata('menu', 'keranjang');
 	}
 
@@ -54,9 +56,16 @@ class Keranjang extends CI_Controller
 
 	public function checkout()
 	{
+		var_dump($this->session->userdata());
+//		Jika pengguna login
+		if ($this->session->userdata('id_pengguna')) {
+			$this->mpembeli->set_pembeli();
+		}
+
 		if ($this->input->post('alamat')) {
 			$this->session->set_userdata('alamat', $this->input->post('alamat'));
 		}
+
 		if ($this->input->post('ewallet')) {
 			if (!$this->input->post('nomorhp')) {
 				$this->session->set_flashdata('message', 'Nomor HP tidak boleh kosong jika menggunakan metode pembayaran E-Wallet.');
@@ -79,11 +88,9 @@ class Keranjang extends CI_Controller
 			$this->session->unset_userdata('nohpwallet');
 			$this->session->unset_userdata('bank');
 		}
-//		var_dump($this->input->post());
 		$data['alamat'] = $this->malamat->get_alamat_by_id($this->session->userdata('alamat'));//@TODO;masih statis. ambil dari session;
 		$this->load->view('tema/head');
 		$this->load->view('konfirmasi_pembelian', $data);
-//		$this->load->view('/menu');
 		$this->load->view('tema/footer');
 	}
 

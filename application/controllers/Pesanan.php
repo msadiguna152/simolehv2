@@ -84,13 +84,13 @@ class Pesanan extends CI_Controller
 			$total = $total + ($harga * $qty[$produk->id_produk]['count']);
 		}
 		$total = $total + (int)$this->session->userdata('ongkir');
-		//@TODO:Belum termasuk ongkos kirim;
 		$data['pembayaran'] = [];
 		if ($this->session->userdata('ewallet')) {
 			$nohp = $this->session->userdata('nohpwallet');
-			$status = $this->pembayaran_ewallet($total, str_replace('-', '', $nohp), $items);//@TODO:linkaja punya callback, buat langsung update status di database;
+			$status = $this->pembayaran_ewallet($total, str_replace('-', '', $nohp), $items);
 			if ($status) {
 				$data['pembayaran'] = $this->mpesanan->get_pembayaran($this->session->userdata('id_pembayaran'));
+				$this->session->set_userdata('metode_pembayaran', 'ewallet');
 				$this->session->set_flashdata('message', 'Pemesanan berhasil');
 				$this->clear_session('ewallet');
 			} else {
@@ -98,15 +98,25 @@ class Pesanan extends CI_Controller
 			}
 		}
 		if ($this->session->userdata('bank')) {
-			$status = $this->pembayaran_bank($total); //@TODO:return kode pembayaran untuk transfer.
+			$status = $this->pembayaran_bank($total);
 			if ($status) {
 				$data['pembayaran'] = $this->mpesanan->get_pembayaran($this->session->userdata('id_pembayaran'));
+				$this->session->set_userdata('metode_pembayaran', 'bank');
 				$this->session->set_flashdata('message', 'Pemesanan berhasil');
 				$this->clear_session('bank');
 			}
 		}
 		if ($this->session->userdata('cod')) {
-			$this->pembayaran_cod();//@TODO:manual. konfirmasi dari kurir pembeli
+			$status = $this->pembayaran_cod();
+			if ($status) {
+				$data['pembayaran'] = $this->mpesanan->get_pembayaran($this->session->userdata('id_pembayaran'));
+				$this->session->set_userdata('metode_pembayaran', 'cod');
+			}
+			$this->clear_session('cod');
+		}
+		//jika user sudah melakukan pembayaran
+		if ($this->session->userdata('id_pembayaran')) {
+			$data['pembayaran'] = $this->mpesanan->get_pembayaran($this->session->userdata('id_pembayaran'));
 		}
 		$this->load->view('tema/head');
 		$this->load->view('pembayaran_detail', $data);
@@ -120,6 +130,10 @@ class Pesanan extends CI_Controller
 			$this->session->unset_userdata('ewallet');
 			$this->session->unset_userdata('nohpwallet');
 //			TODO: Perlu di tambahi lagi apa yang di unset
+		} elseif ($payment == 'bank') {
+			$this->session->unset_userdata('bank');
+		} else {
+			$this->session->unset_userdata('cod');
 		}
 	}
 
@@ -184,11 +198,10 @@ class Pesanan extends CI_Controller
 			'id_alamat' => $this->session->userdata('alamat'),
 			'total_pembayaran' => $success['amount'],
 			'tanggal_pesanan' => date('Y-m-d H:i:s'),
-			'status' => 'Pemesanan',
+			'status' => 1,
 			'ongkir' => $this->session->userdata('ongkir'),//@TODO:ongkir
 			'voucher' => 0,//@TODO:voucher,
 			'catatan' => $this->session->userdata('catatan'),
-			'id_pembeli' => $this->session->userdata('id_pembeli')
 		];
 		$inserted_id = $this->mpesanan->insert_pesanan($dataFormPesanan);
 		//jika pembayaran ewallet

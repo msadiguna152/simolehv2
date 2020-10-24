@@ -1,4 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
 // update
 class Mpesanan extends CI_Model
 {
@@ -82,7 +83,7 @@ class Mpesanan extends CI_Model
 
 	function get_pembayaran($id)
 	{
-		return $this->db->select('*')->where('id_pembayaran', $id)->get('tb_pembayaran')->row();
+		return $this->db->select('tb_pembayaran.*,tb_pesanan.total_pembayaran')->join('tb_pesanan', 'tb_pesanan.id_pesanan = tb_pembayaran.id_pesanan', 'INNER')->where('id_pembayaran', $id)->get('tb_pembayaran')->row();
 	}
 
 	function insert_rincian_pesanan($data)
