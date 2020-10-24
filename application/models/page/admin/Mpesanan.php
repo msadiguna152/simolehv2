@@ -6,7 +6,7 @@ class Mpesanan extends CI_Model
 
 	public function get_pesanan()
 	{
-		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
+		$query = $this->db->query("SELECT *,tb_pembeli.no_telpon AS no_pembeli FROM `tb_pesanan` 
 			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
 			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli 
 			LEFT JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan 
@@ -41,7 +41,7 @@ class Mpesanan extends CI_Model
 
 	public function get_detail_pesanan($id_pesanan)
 	{
-		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
+		$query = $this->db->query("SELECT *,tb_pembeli.no_telpon AS no_pembeli FROM `tb_pesanan` 
 			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
 			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli
 			LEFT JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
@@ -52,7 +52,7 @@ class Mpesanan extends CI_Model
 
 	public function get_detail_transaksi($id_pesanan)
 	{
-		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
+		$query = $this->db->query("SELECT *,tb_pembeli.no_telpon AS no_pembeli FROM `tb_pesanan` 
 			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
 			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli
 			JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
@@ -70,7 +70,7 @@ class Mpesanan extends CI_Model
 
 	public function get_edit_pesanan($id_pesanan)
 	{
-		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
+		$query = $this->db->query("SELECT *,tb_pembeli.no_telpon AS no_pembeli FROM `tb_pesanan` 
 			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
 			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli
 			LEFT JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan

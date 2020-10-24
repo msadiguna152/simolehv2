@@ -78,7 +78,15 @@
                     <tr>
                       <td><?php echo $no ?></td>
                       <td><?php echo htmlspecialchars($data->nama_pembeli); ?></td>
-                      <td><?php echo htmlspecialchars($data->no_telpon); ?></td>
+                      <td>
+                        <?php
+                        $getNoHp = str_replace("-", "", $data->no_telpon);
+                        $getNoHp2 = str_replace("0", "62", substr($getNoHp, 0,4));
+                        $getNoHp3 = substr($getNoHp, 4,10);
+                        echo htmlspecialchars($getNoHp2.$getNoHp3);
+
+                        ?>
+                      </td>
                       <td><?php echo htmlspecialchars($data->email); ?></td>
                       <td align="center">
                         <!-- Tombol Edit -->

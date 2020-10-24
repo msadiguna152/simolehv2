@@ -8,7 +8,7 @@
     $id_pengguna = $data->id_pengguna;
     $nama_pengguna = $data->nama_pengguna;
     $username = $data->username;
-    $password = $data->password;
+    //$password = $data->password;
     $email = $data->email;
     $no_telpon = $data->no_telpon;
     $level = $data->level;
@@ -90,8 +90,8 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="text" class="form-control" id="" name="password" value="<?= $password; ?>" required="" placeholder="Masukan Password...">
+                          <label for="password">Password Baru</label>
+                          <input type="text" class="form-control" id="" name="password" value="" required="" placeholder="Masukan Password Baru..." required="">
                         </div>
 
                         <div class="form-group">
