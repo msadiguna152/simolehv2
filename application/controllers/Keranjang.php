@@ -56,7 +56,6 @@ class Keranjang extends CI_Controller
 
 	public function checkout()
 	{
-		var_dump($this->session->userdata());
 //		Jika pengguna login
 		if ($this->session->userdata('id_pengguna')) {
 			$this->mpembeli->set_pembeli();

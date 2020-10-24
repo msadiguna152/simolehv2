@@ -15,6 +15,24 @@ class Mpesanan extends CI_Model
 		return $query;
 	}
 
+	public function get_pesanan_customer($id_pembeli)
+	{
+		$alamats = $this->db->select('id_alamat')->where('id_pembeli', $id_pembeli)->get('tb_alamat')->result();
+		$data_alamat = array_map(function ($item) {
+			return $item->id_alamat;
+		}, $alamats);
+		$query = [];
+		if (count($alamats) > 0) {
+			$query = $this->db->query("SELECT * FROM `tb_pesanan` 
+			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
+			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli 
+			JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan 
+			WHERE tb_alamat.id_alamat IN(" . implode(',', $data_alamat) . ")
+			ORDER BY `tb_pesanan`.`id_pesanan` DESC")->result();
+		}
+		return $query;
+	}
+
 	public function get_kurir()
 	{
 		$query = $this->db->query("SELECT * FROM `tb_pengguna` WHERE level='Kurir'");
@@ -29,6 +47,18 @@ class Mpesanan extends CI_Model
 			JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
 			JOIN tb_pengguna ON tb_pesanan.id_pengguna=tb_pengguna.id_pengguna
 			WHERE `tb_pesanan`.`id_pesanan` = '$id_pesanan'");
+		return $query;
+	}
+
+	public function get_detail_transaksi($id_pesanan)
+	{
+		$query = $this->db->query("SELECT * FROM `tb_pesanan` 
+			JOIN tb_alamat on tb_alamat.id_alamat=tb_pesanan.id_alamat 
+			JOIN tb_pembeli ON tb_alamat.id_pembeli=tb_pembeli.id_pembeli
+			JOIN tb_pembayaran ON tb_pesanan.id_pesanan=tb_pembayaran.id_pesanan
+			JOIN tb_rincian_pesanan ON tb_rincian_pesanan.id_pesanan = tb_pesanan.id_pesanan
+			JOIN tb_produk ON tb_produk.id_produk = tb_rincian_pesanan.id_produk
+			WHERE `tb_pesanan`.`id_pesanan` = '$id_pesanan'")->result();
 		return $query;
 	}
 

@@ -54,24 +54,7 @@
 			<p class="font-weight-bold text-center bg-white py-2 h4 rounded"><?php echo $pembayaran->account_number ?? 'NULL' ?>
 				<br><small><?php echo $pembayaran->jenis_pembayaran ?? 'NULL' ?> Virtual Account</small>
 			</p>
-			<!--			<div class="tracking-wrap">-->
-			<!--				<div class="my-1 step active">-->
-			<!--					<span class="icon text-success"><i class="icofont-check-circled"></i></span>-->
-			<!--					<span class="text small">Menunggu Pembayaran</span>-->
-			<!--				</div>-->
-			<!--				<div class="my-1 step active">-->
-			<!--					<span class="icon text-danger"><i class="icofont-close-circled"></i></span>-->
-			<!--					<span class="text small">Pesanan di konfirmasi</span>-->
-			<!--				</div>-->
-			<!--				<div class="my-1 step">-->
-			<!--					<span class="icon text-danger"><i class="icofont-close-circled"></i></span>-->
-			<!--					<span class="text small">Dalam perjalanan</span>-->
-			<!--				</div>-->
-			<!--				<div class="my-1 step">-->
-			<!--					<span class="icon text-danger"><i class="icofont-close-circled"></i></span>-->
-			<!--					<span class="text small">Pesanan Selesai</span>-->
-			<!--				</div>-->
-			<!--			</div>-->
+
 		</div>
 		<!-- Destination -->
 		<div class="address p-3 bg-white">

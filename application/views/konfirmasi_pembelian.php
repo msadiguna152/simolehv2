@@ -65,8 +65,8 @@
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		</button>
-		<strong class="mb-2">Informasi</strong><br>Silahkan <a href="<?php echo site_url('login') ?>">login</a> atau
-		<a href="<?php echo site_url('signup') ?>">daftar</a> untuk menerima kemudahan pada transaksi selanjutnya.
+		<strong class="mb-2">Informasi</strong><br>Silahkan <a href="<?php echo site_url('akun') ?>">login</a> atau
+		<a href="<?php echo site_url('akun/registrasi') ?>">daftar</a> untuk menerima kemudahan pada transaksi selanjutnya.
 	</div>
 <?php endif; ?>
 <?php $alamat_dipilih = $alamat->row() ?? null ?>

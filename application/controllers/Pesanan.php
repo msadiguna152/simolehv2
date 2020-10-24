@@ -16,8 +16,10 @@ class Pesanan extends CI_Controller
 
 	public function index()
 	{
-		$data['data_kategori'] = $this->mberanda->get_kategori();
-		$data['data_promosi'] = $this->mberanda->get_promosi();
+		$data = [];
+		if ($this->session->userdata('id_pembeli')) {
+			$data['pesanan'] = $this->mpesanan->get_pesanan_customer($this->session->userdata('id_pembeli'));
+		}
 		$this->load->view('tema/head');
 		$this->load->view('pesanan', $data);
 		$this->load->view('tema/menu');
@@ -271,17 +273,15 @@ class Pesanan extends CI_Controller
 //		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
 	}
-//	public function status()
-//	{
-//		$this->load->view('tema/head');
-//		$this->load->view('pembayaran_detail');
-//		$this->load->view('tema/menu');
-//		$this->load->view('tema/footer');
-//	}
-	public function detail()
+
+	public function detail($id)
 	{
+		$data = [];
+		if ($id != '') {
+			$data['transaksi'] = $this->mpesanan->get_detail_transaksi($id);
+		}
 		$this->load->view('tema/head');
-		$this->load->view('pembayaran_detail');
+		$this->load->view('pemesanan_detail', $data);
 		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
 	}
