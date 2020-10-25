@@ -5,7 +5,7 @@
       </div>
       <div class="osahan-account">
          <div class="p-4 profile text-center border-bottom">
-            <img style="height: 100px; width: 100px;" src="<?= base_url()?>assets2/img/<?= $this->session->userdata('foto_pengguna'); ?>" class="img-fluid rounded-pill">
+            <img style="height: 100px; width: 100px;" src="<?= base_url()?>pengaturan/<?= $this->session->userdata('foto_pengguna'); ?>" class="img-fluid rounded-pill">
             <h6 class="font-weight-bold m-0 mt-2"><?= htmlspecialchars($this->session->userdata('nama_pengguna')); ?></h6>
             <p class="small text-muted">Email : <?= $this->session->userdata('email'); ?> | No. Telepon : <?= $this->session->userdata('no_telpon'); ?></p>
          </div>
@@ -26,11 +26,11 @@
                </div>
                <div class="form-group">
                   <label for="password">Password Baru</label>
-                  <input type="password" name="password" id="password" class="form-control" placeholder="Masukan Password...">
+                  <input type="password" name="password" id="password" class="form-control" placeholder="Masukan Password Baru...">
                </div>
                <div class="form-group">
-                  <label for="password2">Konfirmasi Password</label>
-                  <input type="password" name="password2" id="password2" class="form-control" placeholder="Masukan Konfirmasi Password...">
+                  <label for="password2">Konfirmasi Password Baru</label>
+                  <input type="password" name="password2" id="password2" class="form-control" placeholder="Masukan Konfirmasi Password Baru...">
                </div>
                <div class="form-group">
                   <label for="foto_pengguna">Foto Profil</label>

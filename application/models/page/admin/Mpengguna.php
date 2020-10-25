@@ -27,7 +27,7 @@ class Mpengguna extends CI_Model
 
 		$get_foto_pengguna = $_FILES['foto_pengguna']['name'];
 		$foto_pengguna = str_replace(" ", "_", "$get_foto_pengguna");
-		$config['upload_path'] = './file/';
+		$config['upload_path'] = './pengaturan/';
 		$config['allowed_types'] = '*';
 		$config['overwrite'] = true;
 		$this->load->library('upload', $config);
@@ -43,13 +43,13 @@ class Mpengguna extends CI_Model
 		$id_pengguna = $this->input->post('id_pengguna');
 		$nama_pengguna = $this->input->post('nama_pengguna');
 		$username = $this->input->post('username');
-		$password = md5($this->input->post('password_baru'));
+		$password = md5($this->input->post('password'));
 		$email = $this->input->post('email');
 		$no_telpon = $this->input->post('no_telpon');
 		$level = $this->input->post('level');
 		$foto_pengguna = $_FILES['foto_pengguna']['name'];
 
-		$config['upload_path'] = './file/';
+		$config['upload_path'] = './pengaturan/';
 		$config['allowed_types'] = '*';
 		$config['overwrite'] = true;
 		$this->load->library('upload', $config);

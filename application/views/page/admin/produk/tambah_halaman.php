@@ -41,7 +41,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/produk/insert')?>" method="post" id="quickForm">
+                <form enctype="multipart/form-data" action="<?php echo site_url('page/admin/produk/insert')?>" method="post" onsubmit="return formValidasi()">
                 <div class="row">
                   <div class="col-md-12">
 
@@ -62,12 +62,12 @@
 
                         <div class="form-group">
                           <label for="harga">Harga</label>
-                          <input type="number" min="1" maxlength="12" class="form-control" id="" name="harga" placeholder="Masukan Harga Produk..." required="">
+                          <input type="number" min="1" maxlength="12" class="form-control" id="harga1" name="harga" placeholder="Masukan Harga Produk..." required="">
                         </div>
 
                         <div class="form-group">
                           <label for="harga_promosi">Harga Promosi</label>
-                          <input type="number" min="-1" maxlength="12" class="form-control" id="" name="harga_promosi" placeholder="Masukan Harga Promosi Produk..." required="">
+                          <input type="number" min="-1" maxlength="12" class="form-control" id="harga_promosi1" name="harga_promosi" placeholder="Masukan Harga Promosi Produk..." value="0">
                         </div>
 
                         <div class="form-group">
@@ -86,7 +86,7 @@
 
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="promosi" value="1" class="custom-control-input" id="promosi">
+                            <input type="checkbox" name="promosi" id="promosi" value="1" class="custom-control-input" id="promosi">
                             <label class="custom-control-label" for="promosi">Promosi</label>
                           </div>
                         </div>
@@ -141,21 +141,25 @@
             document.getElementById('pratinjauGambar').innerHTML = '<img src="'+e.target.result+'" class="img-thumbnail" style="height: 200px;">';
           };
           reader.readAsDataURL(inputFile.files[0]);
-      }
+        }
     }
   </script>
 
   <script type="text/javascript">
-    function validasiFile2(){
-        var inputFile = document.getElementById('customFile2');
-        var pathFile = inputFile.value;
-        var file_size = inputFile.files[0].size;
-        if (file_size>2000000) {
-          alert("File Tidak Boleh Lebih Dari 2 MB!")
-          inputFile.value = '';
-          return false;
-        }
-    
+    function formValidasi() {
+      var get_harga = document.getElementById('harga1').value;
+      var get_harga_promosi = document.getElementById('harga_promosi1').value;
+      if (parseInt(get_harga_promosi)>parseInt(get_harga)) {
+        alert('Harga Promosi Tidak Boleh Melebihi Harga Jual!');
+        return false;
+      }
     }
   </script>
 
+  <!-- <script type="text/javascript">
+    document.getElementById('promosi').onchange = function() {
+        document.getElementById('harga_promosi1').readonly = !this.checked;
+        document.getElementById('harga_promosi1').value = 0;
+
+    };
+  </script> -->

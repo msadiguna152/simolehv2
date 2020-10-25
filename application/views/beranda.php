@@ -74,7 +74,7 @@
 							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 									<div class="member-plan position-absolute">
-										<?= ($data_p->promosi == 0) ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
+										<?= ($data_p->promosi == 0) ? '' : '<span class="badge badge-success">Promo</span>'; ?>
 										<?= ($data_p->terlaris == 0) ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
 									</div>
@@ -89,7 +89,7 @@
 										<p class="" style="height: 60px">
 											<?php
 											$jml = strlen($data_p->deskripsi);
-											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " (Lihat Selengkapnya)";
+											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " more...";
 											?>
 										</p>
 										<div class="" id="container-button">
@@ -144,7 +144,7 @@
 							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 									<div class="member-plan position-absolute">
-										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
+										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promo</span>'; ?>
 										<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
 									</div>
@@ -159,7 +159,7 @@
 										<p style="height: 60px">
 											<?php
 											$jml = strlen($data_p->deskripsi);
-											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " (Lihat Selengkapnya)";
+											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " more...";
 											?>
 										</p>
 										<div class="" id="container-button">
@@ -217,7 +217,7 @@
 								<div class="list-card-image">
 
 									<div class="member-plan position-absolute">
-										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
+										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promo</span>'; ?>
 										<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
 									</div>
@@ -231,7 +231,7 @@
 										<p style="height: 60px">
 											<?php
 											$jml = strlen($data_p->deskripsi);
-											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " . . . (Lihat Selengkapnya)";
+											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " more...";
 											?>
 										</p>
 										<div class="" id="container-button">

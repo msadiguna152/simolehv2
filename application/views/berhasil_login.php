@@ -6,7 +6,7 @@
 	</div>
 	<div class="p-4 profile text-center border-bottom">
 		<img style="height: 100px; width: 100px;"
-			 src="<?= base_url() ?>assets2/img/<?= $this->session->userdata('foto_pengguna'); ?>"
+			 src="<?= base_url() ?>pengaturan/<?= $this->session->userdata('foto_pengguna'); ?>"
 			 class="img-fluid rounded-pill">
 		<h6 class="font-weight-bold m-0 mt-2"><?= $this->session->userdata('nama_pengguna'); ?></h6>
 		<p class="small text-muted">Email : <?= $this->session->userdata('email'); ?> | No. Telepon

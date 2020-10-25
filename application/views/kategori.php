@@ -17,7 +17,7 @@
 				<div class="col-6 p-0 border-right border-bottom border-top">
 					<div class="list-card-image">
 						<div class="member-plan position-absolute">
-							<?= $data->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
+							<?= $data->promosi == 0 ? '' : '<span class="badge badge-success">Promo</span>'; ?>
 							<?= $data->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 						</div>
 						<div class="p-3">
@@ -30,7 +30,7 @@
 							<p style="height: 60px">
 								<?php
 								$jml = strlen($data->deskripsi);
-								echo $jml <= 100 ? $data->deskripsi : substr($data->deskripsi, 0, 100) . " . . . (Lihat Selengkapnya)";
+								echo $jml <= 100 ? $data->deskripsi : substr($data->deskripsi, 0, 100) . " more...";
 								?>
 							</p>
 							<div class="" id="container-button">

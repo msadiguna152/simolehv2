@@ -22,11 +22,11 @@ class Makun extends CI_Model{
 		$nama_pengguna = $this->input->post('nama_pengguna');
 		$email = $this->input->post('email');
 		$no_telpon = $this->input->post('no_telpon');
-		$password = md5($this->input->post('password'));
+		$password = $this->input->post('password');
 
 		$foto = $_FILES['foto_pengguna']['name'];
 
-		$config['upload_path'] = './assets2/img/';
+		$config['upload_path'] = './pengaturan';
 		$config['allowed_types'] = '*';
 		$config['overwrite'] = true;
 		$this->load->library('upload', $config);
@@ -40,15 +40,17 @@ class Makun extends CI_Model{
 			if (empty($password)) {
 				$query = $this->db->query("UPDATE `tb_pengguna` SET `nama_pengguna` = '$nama_pengguna', `foto_pengguna` = '$foto_pengguna', `username` = '$email', `email` = '$email', `no_telpon` = '$no_telpon' WHERE `tb_pengguna`.`id_pengguna` = '$id_pengguna';");
 			} else {
-				$query = $this->db->query("UPDATE `tb_pengguna` SET `nama_pengguna` = '$nama_pengguna', `foto_pengguna` = '$foto_pengguna', `username` = '$email', `password` = '$password', `email` = '$email', `no_telpon` = '$no_telpon' WHERE `tb_pengguna`.`id_pengguna` = '$id_pengguna';");
-			}
+				$password2 = md5($this->input->post('password'));
+				$query = $this->db->query("UPDATE `tb_pengguna` SET `nama_pengguna` = '$nama_pengguna', `foto_pengguna` = '$foto_pengguna', `username` = '$email', `password` = '$password2', `email` = '$email', `no_telpon` = '$no_telpon' WHERE `tb_pengguna`.`id_pengguna` = '$id_pengguna';");
+			};
 			
 			$queryPembeli = $this->db->query("UPDATE `tb_pembeli` SET `nama_pembeli` = '$nama_pengguna', `no_telpon` = '$no_telpon', `email` = '$email' WHERE `tb_pembeli`.`id_pengguna` = '$id_pengguna';");
 		} else {
 			if (empty($password)) {
 				$query = $this->db->query("UPDATE `tb_pengguna` SET `nama_pengguna` = '$nama_pengguna', `username` = '$email', `email` = '$email', `no_telpon` = '$no_telpon' WHERE `tb_pengguna`.`id_pengguna` = '$id_pengguna';");
 			} else {
-				$query = $this->db->query("UPDATE `tb_pengguna` SET `nama_pengguna` = '$nama_pengguna', `username` = '$email', `password` = '$password', `email` = '$email', `no_telpon` = '$no_telpon' WHERE `tb_pengguna`.`id_pengguna` = '$id_pengguna';");
+				$password2 = md5($this->input->post('password'));
+				$query = $this->db->query("UPDATE `tb_pengguna` SET `nama_pengguna` = '$nama_pengguna', `username` = '$email', `password` = '$password2', `email` = '$email', `no_telpon` = '$no_telpon' WHERE `tb_pengguna`.`id_pengguna` = '$id_pengguna';");
 			}
 
 			$queryPembeli = $this->db->query("UPDATE `tb_pembeli` SET `nama_pembeli` = '$nama_pengguna', `no_telpon` = '$no_telpon', `email` = '$email' WHERE `tb_pembeli`.`id_pengguna` = '$id_pengguna';");

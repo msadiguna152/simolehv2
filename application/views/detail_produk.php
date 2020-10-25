@@ -17,7 +17,7 @@
          </div>
          <div class="pt-2">
             <span class="badge badge-danger"><?= $data_p->nama_kategori; ?></span>
-               <?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>';?>
+               <?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promo</span>';?>
                <?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>';?>
          </div>
       </div>

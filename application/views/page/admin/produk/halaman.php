@@ -96,8 +96,8 @@
                       <td><?php echo $no ?></td>
                       <td><?php echo $data->nama_produk; ?></td>
                       <td><?php echo $data->nama_kategori ?></td>
-                      <td><?php echo "Rp " . number_format($data->harga,2,',','.'); ?> </td>
-                      <td><?php echo "Rp " . number_format($data->harga_promosi,2,',','.'); ?> </td>
+                      <td><?php echo "Rp " . number_format($data->harga,0,',','.'); ?> </td>
+                      <td><?php echo "Rp " . number_format($data->harga_promosi,0,',','.'); ?> </td>
                       <td><img class="img-thumbnail" style="width: 150px; height: 100px;" src="<?php echo base_url()?>file/<?php echo $data->gambar ?>"></td>
                       <td style="text-align: center;vertical-align: middle;">
                         <?php
