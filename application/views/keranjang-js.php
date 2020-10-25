@@ -26,8 +26,8 @@
 			const items = data.map(function (item) {
 				return `<div class="cart-items bg-white position-relative border-bottom">
 							<div class="d-flex  align-items-center p-3">
-							   <a href="product_details.html"><img src="<?php echo base_url('/file/') ?>${item.gambar}" class="img-fluid"></a>
-							   <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
+							   <a href="<?php echo site_url('beranda/detail_produk/') ?>${item.slug_p}"><img src="<?php echo base_url('/file/') ?>${item.gambar}" class="img-fluid"></a>
+							   <a href="<?php echo site_url('beranda/detail_produk/') ?>${item.slug_p}" class="ml-3 text-dark text-decoration-none w-100">
 								  <h5 class="mb-1">${item.nama_produk}</h5>
 								  <div class="d-flex align-items-center">
 									 <p class="total_price font-weight-bold m-0">${item.harga_promosi !== "0" ? '<del class="text-success mr-1">Rp. ' + item.harga + '</del>' : ''} Rp. <span>${item.harga_promosi !== "0" ? $.number(item.harga_promosi, 0, ',', '.') : $.number(item.harga, 0, ',', '.')}</span></p>
