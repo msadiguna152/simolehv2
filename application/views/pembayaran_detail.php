@@ -3,13 +3,13 @@
 		<div class="d-flex align-items-center">
 			<a class="font-weight-bold text-success text-decoration-none" href="<?php echo site_url('pesanan') ?>">
 				<i class="icofont-rounded-left back-page"></i> List Pesanan</a>
-			<span class="font-weight-bold ml-3 h6 mb-0">ID #<?php echo $pembayaran->id_pembayaran ?? 'NULL' ?></span>
+			<span class="font-weight-bold ml-3 h6 mb-0"><?php echo isset($pembayaran->id_pembayaran) ? "ID #" . $pembayaran->id_pembayaran : null ?></span>
 			<a class="toggle ml-auto" href="#"><i class="icofont-navigation-menu"></i></a>
 		</div>
 	</div>
 	<!-- status complete -->
 	<div class="p-3 status-order border-bottom bg-white">
-		<p class="small m-0"><i class="icofont-ui-calendar"></i> <?php echo $pembayaran->tanggal_pembayaran ?? 'NULL' ?>
+		<p class="small m-0"><?php echo isset($pembayaran->tanggal_pembayaran) ? '<i class="icofont-ui-calendar"></i>' . $pembayaran->tanggal_pembayaran : null ?>
 		</p>
 	</div>
 	<!--	TODO: ganti jadi $pembayaran variable-->
@@ -19,7 +19,8 @@
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<strong><?php echo $this->session->flashdata('message') ?></strong>
+				<strong><?php echo $this->session->flashdata('message') ?></strong><br>
+				<small><?php echo $this->session->flashdata('addtional_info') ?></small>
 			</div>
 		<?php endif; ?>
 		<div class="p-3 border-bottom">
@@ -31,19 +32,34 @@
 					<p class="mb-0">Klik <a href="<?php echo site_url('pesanan') ?>">disini</a> untuk mengecek
 						status transaksi</p>
 				</div>
+			<?php elseif (isset($pembayaran->jenis_pembayaran) && $pembayaran->jenis_pembayaran === 'LINKAJA'): ?>
+				<?php if ($this->session->flashdata('status_pemesanan') != 'gagal'): ?>
+					<div class="alert alert-primary" role="alert">
+						<h5 class="alert-heading">Sedang memproses pembayaran</h5>
+						<h6>Link Aja</h6>
+						<?php if (isset($pembayaran)): ?>
+							<a href="<?php echo $pembayaran->checkout_url ?? '' ?>" class="btn btn-primary btn-block">Klik
+								Disini</a>
+							<small class="mt-2">Silahkan klik tombol di atas untuk mengarahkan anda ke aplikasi Link
+								Aja</small>
+							<small>Batas waktu pembayaran adalah 5 Menit</small>
+							<p class="mb-0">Klik <a href="<?php echo site_url('pesanan') ?>">disini</a> untuk mengecek
+								status transaksi</p>
+						<?php else: ?>
+							<small>Transaksi gagal dilakukan, silahkan coba beberapa saat lagi.</small>
+						<?php endif; ?>
+					</div>
+				<?php else: ?>
+					<div class="alert alert-danger" role="alert">
+						<h5 class="alert-heading">Gagal melakukan transaksi</h5>
+						<small>Silahkan ulangi beberapa saat lagi. Pastikan nomor anda terdaftar pada aplikasi
+							LinkAja</small>
+					</div>
+				<?php endif; ?>
 			<?php else: ?>
-				<div class="alert alert-primary" role="alert">
-					<h5 class="alert-heading">Sedang memproses pembayaran</h5>
-					<h6>Link Aja</h6>
-					<?php if (isset($pembayaran)): ?>
-						<a href="<?php echo $pembayaran->checkout_url ?? '' ?>" class="btn btn-primary btn-block">Klik
-							Disini</a>
-						<small class="mt-2">Silahkan klik tombol di atas untuk mengarahkan anda ke aplikasi Link
-							Aja</small>
-						<small>Batas waktu pembayaran adalah 5 Menit</small>
-					<?php else: ?>
-						<small>Transaksi gagal dilakukan, silahkan coba beberapa saat lagi.</small>
-					<?php endif; ?>
+				<div class="alert alert-danger" role="alert">
+					<h5 class="alert-heading">Gagal melakukan transaksi</h5>
+					<small>Metode pembayaran tidak tersedia. Silahkan ulangi lagi.</small>
 				</div>
 			<?php endif; ?>
 		</div>
@@ -572,7 +588,7 @@
 			</div>
 		</div>
 	<?php endif; ?>
-	<?php if (!$this->session->userdata('ewallet')): ?>
+	<?php if (!$this->session->userdata('ewallet') && isset($pembayaran->id_pembayaran)): ?>
 		<div class="p-3 border-bottom bg-white">
 			<div class="d-flex align-items-center mb-2">
 				<h6 class="font-weight-bold mb-1">Total yang harus dibayar</h6>

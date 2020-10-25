@@ -87,6 +87,7 @@ class Pesanan extends CI_Controller
 		}
 		$total = $total + (int)$this->session->userdata('ongkir');
 		$data['pembayaran'] = [];
+		$this->session->unset_userdata('id_pembayaran');
 		if ($this->session->userdata('ewallet')) {
 			$nohp = $this->session->userdata('nohpwallet');
 			$status = $this->pembayaran_ewallet($total, str_replace('-', '', $nohp), $items);
@@ -94,10 +95,11 @@ class Pesanan extends CI_Controller
 				$data['pembayaran'] = $this->mpesanan->get_pembayaran($this->session->userdata('id_pembayaran'));
 				$this->session->set_userdata('metode_pembayaran', 'ewallet');
 				$this->session->set_flashdata('message', 'Pemesanan berhasil');
-				$this->clear_session('ewallet');
 			} else {
-				$this->session->set_flashdata('message', 'Pemesanan gagal di laksanakan');
+				$this->session->set_flashdata('message', 'Pemesanan gagal di laksanakan.');
+				$this->session->set_flashdata('addtional_info', 'Nomor yang anda input tidak valid atau tidak terdaftar di Link Aja');
 			}
+			$this->clear_session('ewallet');
 		}
 		if ($this->session->userdata('bank')) {
 			$status = $this->pembayaran_bank($total);
@@ -105,8 +107,8 @@ class Pesanan extends CI_Controller
 				$data['pembayaran'] = $this->mpesanan->get_pembayaran($this->session->userdata('id_pembayaran'));
 				$this->session->set_userdata('metode_pembayaran', 'bank');
 				$this->session->set_flashdata('message', 'Pemesanan berhasil');
-				$this->clear_session('bank');
 			}
+			$this->clear_session('bank');
 		}
 		if ($this->session->userdata('cod')) {
 			$status = $this->pembayaran_cod($total);
@@ -203,6 +205,11 @@ class Pesanan extends CI_Controller
 	public function simpan_rincian_pesanan($success)
 	{
 		//mulai transaksi
+		if (!isset($success['amount'])) {
+			$this->session->set_flashdata('status_pemesanan', 'gagal');
+			$this->session->set_flashdata('message', 'Nomor yang anda input tidak valid atau tidak terdaftar di Link Aja');
+			return false;
+		}
 		$this->db->trans_start();
 		$dataFormPesanan = [
 			'id_alamat' => $this->session->userdata('alamat'),
