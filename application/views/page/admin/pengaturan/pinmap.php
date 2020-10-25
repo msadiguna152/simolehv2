@@ -141,6 +141,7 @@
 							position: pos,
 							map: maps
 						});
+						saveCoordinateToLocStorage(results[0].geometry.location.toString());
 						infowindow.setContent(`${results[0].formatted_address}<br><a href="<?php echo site_url('page/admin/pengaturan') ?>" class="btn btn-sm btn-success">Pilih</a>`);
 						localStorage.setItem('alamat', JSON.stringify(results[0]));
 						infowindow.open(maps, marker);

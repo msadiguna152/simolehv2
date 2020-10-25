@@ -12,7 +12,7 @@ foreach ($data_pengaturan->result() as $data):
 	$harga_ongkir_flat = $data->harga_ongkir_flat;
 	$harga_ongkir_perkm = $data->harga_ongkir_perkm;
 	$google_api_key = $data->google_api_key;
-	$xendit_api = $data->xendit_api;
+	$xendit_api = $data->xendit_api ?? '';
 	$icon = $data->icon;
 endforeach;
 ?>
@@ -81,13 +81,18 @@ endforeach;
 												   value="<?= $provinsi; ?>">
 										</div>
 										<div class="form-group">
-				                          <label for="icon">Icon</label>
-				                          <div class="custom-file">
-				                            <input type="file" class="custom-file-input" id="customFile" name="icon" accept="image/*" onchange="return validasiFile()">
-				                            <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
-				                          </div>
-				                          <div id="pratinjauGambar"><img src="<?php echo base_url()?>file/<?php echo $icon ?>" class="img-thumbnail" style="height: 100px; width: 100px;"></div>
-				                        </div>
+											<label for="icon">Icon</label>
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="customFile" name="icon"
+													   accept="image/*" onchange="return validasiFile()">
+												<label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1
+													MB)</label>
+											</div>
+											<div id="pratinjauGambar"><img
+														src="<?php echo base_url() ?>file/<?php echo $icon ?>"
+														class="img-thumbnail" style="height: 100px; width: 100px;">
+											</div>
+										</div>
 
 									</div>
 									<div class="col-md-6">
@@ -125,25 +130,25 @@ endforeach;
 										<div class="form-group">
 											<label for="xendit_api">Xendit Api</label>
 											<input type="text" class="form-control" id=""
-												   name="xendit_api" value="<?= $xendit_api; ?>">
+												   name="xendit_api" value="<?= $xendit_api ?? ''; ?>">
 										</div>
 										<div class="form-group">
 											<label for="google_api_key">Google Api Key</label>
 											<input type="text" class="form-control" id=""
-												   name="google_api_key" value="<?= $google_api_key; ?>">
+												   name="google_api_key" value="<?= $google_api_key ?? ''; ?>">
 										</div>
 
 										<div class="form-group">
 											<label for="latitude">Latitude</label>
 											<input type="text" class="form-control" id="" name="latitude"
-												   value="<?= $latitude; ?>">
+												   value="<?= $latitude ?? ''; ?>">
 
 										</div>
 
 										<div class="form-group">
 											<label for="longitude">Longitude</label>
 											<input type="text" class="form-control" id="" name="longitude"
-												   value="<?= $longitude; ?>">
+												   value="<?= $longitude ?? ''; ?>">
 										</div>
 										<a href="<?= site_url('page/admin/pengaturan/pinmap') ?>"
 										   class="btn btn-primary btn-icon text-white"><i class="fa fa-map-pin"></i>
