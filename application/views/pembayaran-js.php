@@ -6,20 +6,25 @@
 			},
 		}
 		var metodePembayaran = $('input[name="pembayaran"]');
-		$('#collapseThree').on('show.bs.collapse', function () {
-			$(this).find('input[name="cod"]').prop('checked', false);
-			metodePembayaran.data('metode', 'cod');
-		})
+		$('#collapseOne').on('show.bs.collapse', function () {
+			$('#form-pembayaran').find('input[name="ewallet"]:checked').prop('checked', false);
+			$('#form-pembayaran').find('input[name="cod"]:checked').prop('checked', false);
+			metodePembayaran.data('metode', 'transfer');
+		});
 		$('#collapseTwo').on('show.bs.collapse', function () {
+			$('#form-pembayaran').find('input[name="bank"]:checked').prop('checked', false);
+			$('#form-pembayaran').find('input[name="cod"]:checked').prop('checked', false);
 			$(this).find('input[name="nomorhp"]').val('').prop('disabled', true);
 			$(this).find('input[name="ewallet"]').prop('checked', false);
 			$(this).find('label.btn.btn-outline-secondary').removeClass('active');
 			metodePembayaran.data('metode', 'ewallet');
 		})
-		$('#collapseOne').on('show.bs.collapse', function () {
-			$(this).find('input[name="bank"]').prop('checked', false);
-			metodePembayaran.data('metode', 'transfer');
-		});
+		$('#collapseThree').on('show.bs.collapse', function () {
+			$('#form-pembayaran').find('input[name="bank"]:checked').prop('checked', false);
+			$('#form-pembayaran').find('input[name="ewallet"]:checked').prop('checked', false);
+			$(this).find('input[name="cod"]').prop('checked', false);
+			metodePembayaran.data('metode', 'cod');
+		})
 		$('#btn-submit-pembayaran').on('click', function () {
 			var pembayaranBank = $('#form-pembayaran').find('input[name="bank"]:checked').val();
 			var pembayaranCod = $('#form-pembayaran').find('input[name="cod"]:checked').val();
@@ -34,6 +39,9 @@
 					return pembayaranHelper.showSnackbar('Nomor Handphone tidak boleh kosong.');
 				}
 			}
+			console.log(pembayaranBank);
+			console.log(pembayaranCod);
+			console.log(pembayaranEWallet);
 			$('#form-pembayaran').submit();
 		})
 		$('input[name="ewallet"]').on('click', function () {

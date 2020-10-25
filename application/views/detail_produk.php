@@ -32,19 +32,29 @@
             </div>
             <div class="details">
                <div class="p-3 bg-white">
-                  <div class="d-flex align-items-center">
-                    
-                     <a class="ml-auto" href="">
-                        <div class="input-group input-spinner ml-auto cart-items-number">
-                           <div class="input-group-prepend">
-                              <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
-                           </div>
-                           <input type="text" class="form-control" value="1">
-                           <div class="input-group-append">
-                              <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
-                           </div>
-                        </div>
-                     </a>
+                  <div class="" id="container-button">
+					  <button data-id="<?= $data_p->id_produk ?>"
+							  id="btn-add-cart"
+							  class="btn btn-success btn-block ml-auto mt-2">Tambah
+					  </button>
+					  <div id="container-qty-btn"
+						   class="input-group input-spinner cart-items-number mx-auto mt-2"
+						   style="display: none">
+						  <div class="input-group-prepend">
+							  <button data-id="<?= $data_p->id_produk ?>"
+									  class="btn btn-success btn-sm"
+									  type="button" id="button-main-plus"> +
+							  </button>
+						  </div>
+						  <input type="text" class="form-control" value="1">
+						  <div class="input-group-append">
+							  <button data-id="<?= $data_p->id_produk ?>"
+									  class="btn btn-success btn-sm"
+									  type="button" id="button-main-minus"> −
+							  </button>
+						  </div>
+					  </div>
+				  </div>
                   </div>
                </div>
                <div class="p-3">
