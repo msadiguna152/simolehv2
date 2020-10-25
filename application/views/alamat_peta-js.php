@@ -123,7 +123,6 @@
 		infowindow.open(map, marker);
 	});
 
-
 	function setupClickListener(id, types) {
 		var radioButton = document.getElementById(id);
 		radioButton.addEventListener('click', function () {
@@ -136,6 +135,7 @@
 	setupClickListener('changetype-establishment', ['establishment']);
 
 	function geocodeLatLng(geocoder, map, infowindow, input) {
+		saveCoordinateToLocStorage(input);
 		var latlngStr = input.split(',', 2);
 		var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
 		geocoder.geocode({'location': latlng}, function (results, status) {

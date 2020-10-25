@@ -71,6 +71,9 @@
 				})
 				const resultsDistance = google.maps.geometry.spherical.computeDistanceBetween(userLokasi, tokoLokasi);
 				const distance = resultsDistance / 1000;
+				if (isNaN(distance.toFixed(1))) {
+					return Snackbar.show({text: 'Alamat diluar jangkauan / Belum menentukan alamat'})
+				}
 				console.log(distance.toFixed(1) + ' Km')
 				return distance;
 			}

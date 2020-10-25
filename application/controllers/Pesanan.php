@@ -166,7 +166,6 @@ class Pesanan extends CI_Controller
 				'redirect_url' => 'https://simoleh.diocreation.com/pesanan',
 				'ewallet_type' => 'LINKAJA'
 			];
-			/*@TODO: Ganti callback redirect*/
 			$success = generate_pembayaran_linkaja($linkajaParams);
 			if ($success) {
 				return $this->simpan_rincian_pesanan($success);
