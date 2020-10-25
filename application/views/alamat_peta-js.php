@@ -49,8 +49,8 @@
 				lng: position.coords.longitude
 			};
 			infowindow.setPosition(pos);
-			infowindow.setContent("Lokasi Anda.");
-			infowindow.open(maps);
+			var stringPosition = `${pos.lat},${pos.lng}`;
+			geocodeLatLng(geocoder, maps, infowindow, stringPosition);
 			maps.setCenter(pos);
 			maps.setZoom(16);
 		}, showError);
