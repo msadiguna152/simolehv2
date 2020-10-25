@@ -8,7 +8,6 @@
     $id_pengguna = $data->id_pengguna;
     $nama_pengguna = $data->nama_pengguna;
     $username = $data->username;
-    //$password = $data->password;
     $email = $data->email;
     $no_telpon = $data->no_telpon;
     $level = $data->level;
@@ -110,7 +109,7 @@
                             <input type="file" class="custom-file-input" id="customFile" name="foto_pengguna" accept="image/*" onchange="return validasiFile()">
                             <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
                           </div>
-                          <div id="pratinjauGambar"><img src="<?php echo base_url()?>file/<?php echo $foto_pengguna; ?>" class="img-thumbnail" style="height: 100px; width: 100px;"></div>
+                          <div id="pratinjauGambar"><img src="<?php echo base_url()?>pengaturan/<?= $foto_pengguna; ?>" class="img-thumbnail" style="height: 100px; width: 100px;"></div>
                         </div>
 
                   </div>

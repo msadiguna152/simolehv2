@@ -71,7 +71,6 @@
                     <th>No. Telpon</th>
                     <th>Email</th>
                     <th>Username</th>
-                    <th>Password</th>
                     <th>Foto</th>
                     <th>Level</th>
                     <th>Pilihan</th>
@@ -86,8 +85,7 @@
                       <td><?php echo $data->no_telpon; ?></td>
                       <td><?php echo $data->email; ?></td>
                       <td><?php echo $data->username; ?></td>
-                      <td><?php echo $data->password; ?></td>
-                      <td><img class="img-thumbnail" style="width: 100px; height: 100px;" src="<?php echo base_url()?>file/<?php echo $data->foto_pengguna; ?>">
+                      <td><img class="img-thumbnail" style="width: 100px; height: 100px;" src="<?php echo base_url()?>pengaturan/<?= $data->foto_pengguna; ?>">
                       </td>
                       <td><?php echo $data->level; ?></td>
 

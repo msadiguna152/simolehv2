@@ -45,7 +45,7 @@ class Akun extends CI_Controller {
 	{
 		$query = $this->makun->regis();
 		if ($query==true) {
-			echo '<script language="javascript">alert("Silahakan Login!");';
+			echo '<script language="javascript">alert("Pendaftaran Berhasil :) Silahkan Login!");';
 			echo 'document.location="'.site_url('akun').'";</script>';
 		} elseif ($query==false) {
 			echo '<script language="javascript">alert("Gagal Mendaftar Akun!");';
