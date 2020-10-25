@@ -155,7 +155,7 @@ class Pesanan extends CI_Controller
 			];
 			$success = generate_pembayaran_ovo($ovoParams);
 			if ($success) {
-				return $this->simpan_rincian_pesanan($success);
+				return $this->simpan_rincian_pesanan($success, 'ewallet');
 			}
 		}
 		if ($tipe_ewallet === 'LINKAJA') {
@@ -170,7 +170,7 @@ class Pesanan extends CI_Controller
 			];
 			$success = generate_pembayaran_linkaja($linkajaParams);
 			if ($success) {
-				return $this->simpan_rincian_pesanan($success);
+				return $this->simpan_rincian_pesanan($success, 'ewallet');
 			}
 		}
 	}
@@ -190,7 +190,7 @@ class Pesanan extends CI_Controller
 		$success = generate_pembayaran_banks($paramsVA);
 		if ($success) {
 			$success['amount'] = $total;
-			return $this->simpan_rincian_pesanan($success);
+			return $this->simpan_rincian_pesanan($success, 'bank');
 		}
 		return false;
 	}
@@ -199,17 +199,18 @@ class Pesanan extends CI_Controller
 	{
 		$data['amount'] = $total;
 		$data['cod'] = true;
-		return $this->simpan_rincian_pesanan($data);
+		return $this->simpan_rincian_pesanan($data, 'cod');
 	}
 
-	public function simpan_rincian_pesanan($success)
+	public function simpan_rincian_pesanan($success, $pembayaran)
 	{
-		//mulai transaksi
+		$this->session->set_userdata('metode_pembayaran', $pembayaran);
 		if (!isset($success['amount'])) {
 			$this->session->set_flashdata('status_pemesanan', 'gagal');
 			$this->session->set_flashdata('message', 'Nomor yang anda input tidak valid atau tidak terdaftar di Link Aja');
 			return false;
 		}
+		//mulai transaksi
 		$this->db->trans_start();
 		$dataFormPesanan = [
 			'id_alamat' => $this->session->userdata('alamat'),
