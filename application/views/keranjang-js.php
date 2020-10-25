@@ -84,7 +84,8 @@
 			return false;
 		},
 		updateKeranjang(qty, id) {
-			var decodeKeranjang = JSON.parse(keranjang);
+			var freshKeranjang = localStorage.getItem('keranjang')
+			var decodeKeranjang = JSON.parse(freshKeranjang);
 			var isExist = id in decodeKeranjang;
 			if (qty < 1) {
 				delete decodeKeranjang[id];
