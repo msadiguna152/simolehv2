@@ -78,7 +78,7 @@
 </section>
 <!-- /.content -->
 </div>
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyBakEvFkjYe1zd73WhPmyA_rxkkVigCZXU&libraries=places&amp;"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyBakEvFkjYe1zd73WhPmyA_rxkkVigCZXU&libraries=places&amp;"></script>
 
 <script type="text/javascript">
 	var lat = 0;
