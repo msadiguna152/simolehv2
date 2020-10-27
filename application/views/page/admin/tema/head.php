@@ -11,19 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-	<script language='javaScript'>
-		var txt = "<?= $nama_bisnis; ?> .:.      ";
-		var speed = 300;
-		var refresh = null;
-
-		function action() {
-			document.title = txt;
-			txt = txt.substring(1, txt.length) + txt.charAt(0);
-			refresh = setTimeout("action()", speed);
-		}
-
-		action();
-	</script>
+	<title><?= $nama_bisnis; ?></title>
 	<style>
 		#map_canvas {
 			width: 100%;

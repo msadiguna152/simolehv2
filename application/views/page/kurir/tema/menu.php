@@ -36,9 +36,9 @@
             foreach ($notif->result() as $data):
           ?>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="<?php echo base_url()?>page/kurir/pesanan/lihat?id=<?php echo $data->id_pesanan ?>&token=<?php echo md5($data->id_pesanan) ?>" class="dropdown-item">
             <i class="fas fa-cart mr-2"></i> 
-            <span class="float-left text-muted text-sm"><?= $data->tanggal_pesanan;?></span>
+            <span class="float-left text-sm">Pesanan Baru : <?= $data->tanggal_pesanan;?></span>
           </a>
           <?php endforeach;?>
           <div class="dropdown-divider"></div>
