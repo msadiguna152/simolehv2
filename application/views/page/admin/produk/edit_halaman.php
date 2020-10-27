@@ -87,12 +87,19 @@
 
                         <div class="form-group">
                           <label for="harga">Harga</label>
-                          <input type="number" min="1" maxlength="12" class="form-control" id="" name="harga" value="<?= htmlspecialchars($harga); ?>" required="">
+                          <input type="text" onkeypress="return hanyaAngka(event)" maxlength="12" class="form-control" id="harga1" name="harga" value="<?= htmlspecialchars($harga); ?>" required="">
+                        </div>
+
+                        <div class="form-group">
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" name="promosi" <?php if (htmlspecialchars($promosi)==1) { echo "checked"; }?> value="1" class="custom-control-input" id="promosi">
+                            <label class="custom-control-label" for="promosi">Promosi</label>
+                          </div>
                         </div>
 
                         <div class="form-group">
                           <label for="harga_promosi">Harga Promosi</label>
-                          <input type="number" min="-1" maxlength="12" class="form-control" id="" name="harga_promosi" value="<?= htmlspecialchars($harga_promosi); ?>" required="">
+                          <input type="text" onkeypress="return hanyaAngka(event)" maxlength="12" <?php if (htmlspecialchars($promosi)==0) { echo "disabled"; }?> class="form-control" id="harga_promosi1" name="harga_promosi" value="<?= htmlspecialchars($harga_promosi); ?>" required="">
                         </div>
 
                         <div class="form-group">
@@ -107,13 +114,6 @@
                             <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
                           </div>
                           <div id="pratinjauGambar"><img src="<?php echo base_url()?>file/<?php echo $gambar ?>" class="img-thumbnail" style="height: 200px;"></div>
-                        </div>
-
-                        <div class="form-group">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="promosi" <?php if (htmlspecialchars($promosi)==1) { echo "checked"; }?> value="1" class="custom-control-input" id="promosi">
-                            <label class="custom-control-label" for="promosi">Promosi</label>
-                          </div>
                         </div>
 
                         <div class="form-group">
@@ -171,16 +171,29 @@
   </script>
 
   <script type="text/javascript">
-    function validasiFile2(){
-        var inputFile = document.getElementById('customFile2');
-        var pathFile = inputFile.value;
-        var file_size = inputFile.files[0].size;
-        if (file_size>2000000) {
-          alert("File Tidak Boleh Lebih Dari 2 MB!")
-          inputFile.value = '';
-          return false;
-        }
-    
-    }
+    function formValidasi() {
+      var get_harga = document.getElementById('harga1').value;
+      var get_harga_promosi = document.getElementById('harga_promosi1').value;
+      if (parseInt(get_harga_promosi)>parseInt(get_harga)) {
+        alert('Harga Promosi Tidak Boleh Melebihi Harga Jual!');
+        return false;
+      }
+    };
+    function hanyaAngka(evt) {
+      var charCode = (evt.which) ? evt.which : event.keyCode
+      if (charCode > 31 && (charCode < 48 || charCode > 57)){
+        return false;
+      }else {
+        return true;
+      }
+    };
+  </script>
+
+  <script type="text/javascript">
+    document.getElementById('promosi').onchange = function() {
+        document.getElementById('harga_promosi1').disabled = !this.checked;
+        document.getElementById('harga_promosi1').value = 0;
+
+    };
   </script>
 

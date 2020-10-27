@@ -34,7 +34,8 @@
 							?>
 							</p>
 							<div class="" id="container-button">
-								<h6 class="price m-0 text-success">                                                <?= $data->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data->harga, 0, ',', '.'); ?>
+								<h6 class="price m-0s">                                                
+									<?= $data->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data->harga, 0, ',', '.'); ?>
 								</h6>
 								<button data-id="<?= $data->id_produk ?>"
 										id="btn-add-cart"

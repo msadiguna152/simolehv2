@@ -16,13 +16,13 @@ public function get_sliders()
 
 public function get_grid1() //Untukmu hari ini
 	{
-		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori ORDER BY `tb_produk`.`id_produk` DESC LIMIT 8");
+		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori ORDER BY `tb_produk`.`id_produk`, tb_produk.promosi DESC LIMIT 8");
 		return $query;
 	}
 
 public function get_produk1() //Untukmu hari ini
 	{
-		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori ORDER BY `tb_produk`.`id_produk` DESC");
+		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori ORDER BY `tb_produk`.`id_produk`, tb_produk.promosi DESC");
 		return $query;
 	}
 
@@ -57,7 +57,7 @@ public function get_perproduk($id)
 
 public function get_perkategori($id)
 	{
-		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori WHERE tb_kategori.slug='$id' ORDER BY `tb_kategori`.`id_kategori` DESC");
+		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori WHERE tb_kategori.slug='$id' ORDER BY `tb_kategori`.`id_kategori`, tb_produk.promosi DESC");
 		return $query;
 	}
 

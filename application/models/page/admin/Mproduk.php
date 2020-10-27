@@ -32,8 +32,8 @@ class Mproduk extends CI_Model
 		$id_kategori = $this->input->post('id_kategori');
 		$nama_produk = ucwords($this->input->post('nama_produk'));
 		$harga = $this->input->post('harga');
-		$harga_promosi = $this->input->post('harga_promosi');
 		$deskripsi = $this->input->post('deskripsi');
+
 		$karakter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';
 		$shuffle  = substr(str_shuffle($karakter), 0, 5);
 
@@ -41,8 +41,10 @@ class Mproduk extends CI_Model
 
 		if ($this->input->post('promosi') == 1) {
 			$promosi = 1;
+			$harga_promosi = $this->input->post('harga_promosi');
 		} else {
 			$promosi = 0;
+			$harga_promosi = 0;
 		}
 		if ($this->input->post('terlaris') == 1) {
 			$terlaris = 1;
@@ -70,7 +72,6 @@ class Mproduk extends CI_Model
 		$id_kategori = $this->input->post('id_kategori');
 		$nama_produk = $this->input->post('nama_produk');
 		$harga = $this->input->post('harga');
-		$harga_promosi = $this->input->post('harga_promosi');
 		$deskripsi = $this->input->post('deskripsi');
 		$gambar = $_FILES['gambar']['name'];
 
@@ -81,8 +82,10 @@ class Mproduk extends CI_Model
 
 		if ($this->input->post('promosi') == 1) {
 			$promosi = 1;
+			$harga_promosi = $this->input->post('harga_promosi');
 		} else {
 			$promosi = 0;
+			$harga_promosi = 0;
 		}
 		if ($this->input->post('terlaris') == 1) {
 			$terlaris = 1;

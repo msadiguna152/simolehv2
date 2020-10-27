@@ -62,12 +62,19 @@
 
                         <div class="form-group">
                           <label for="harga">Harga</label>
-                          <input type="number" min="1" maxlength="12" class="form-control" id="harga1" name="harga" placeholder="Masukan Harga Produk..." required="">
+                          <input type="text" onkeypress="return hanyaAngka(event)" maxlength="12" class="form-control" id="harga1" name="harga" placeholder="Masukan Harga Produk..." required="">
                         </div>
 
                         <div class="form-group">
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" name="promosi" id="promosi" value="1" class="custom-control-input" id="promosi">
+                            <label class="custom-control-label" for="promosi">Promosi</label>
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
                           <label for="harga_promosi">Harga Promosi</label>
-                          <input type="number" min="-1" maxlength="12" class="form-control" id="harga_promosi1" name="harga_promosi" placeholder="Masukan Harga Promosi Produk..." value="0">
+                          <input type="text" onkeypress="return hanyaAngka(event)" maxlength="12" class="form-control" id="harga_promosi1" name="harga_promosi" disabled="" placeholder="Masukan Harga Promosi Produk..." value="0">
                         </div>
 
                         <div class="form-group">
@@ -82,13 +89,6 @@
                             <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
                           </div>
                           <div id="pratinjauGambar"></div>
-                        </div>
-
-                        <div class="form-group">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="promosi" id="promosi" value="1" class="custom-control-input" id="promosi">
-                            <label class="custom-control-label" for="promosi">Promosi</label>
-                          </div>
                         </div>
 
                         <div class="form-group">
@@ -153,7 +153,15 @@
         alert('Harga Promosi Tidak Boleh Melebihi Harga Jual!');
         return false;
       }
-    }
+    };
+    function hanyaAngka(evt) {
+      var charCode = (evt.which) ? evt.which : event.keyCode
+      if (charCode > 31 && (charCode < 48 || charCode > 57)){
+        return false;
+      }else {
+        return true;
+      }
+    };
   </script>
 
   <script type="text/javascript">
