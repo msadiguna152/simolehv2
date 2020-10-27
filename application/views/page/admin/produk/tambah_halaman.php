@@ -156,10 +156,10 @@
     }
   </script>
 
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
     document.getElementById('promosi').onchange = function() {
-        document.getElementById('harga_promosi1').readonly = !this.checked;
+        document.getElementById('harga_promosi1').disabled = !this.checked;
         document.getElementById('harga_promosi1').value = 0;
 
     };
-  </script> -->
+  </script>
