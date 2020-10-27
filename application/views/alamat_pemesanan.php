@@ -84,7 +84,7 @@
 								<input type="hidden" name="id_pembeli"
 									   value="<?= $this->session->userdata('id_pembeli') ?? '-1' ?>">
 								<div class="input-group-append">
-									<a href="<?= site_url('keranjang/alamatpeta') ?>" id="button-addon2" type="button"
+									<a data-toggle="tooltip" data-placement="left" title="Klik untuk mengambil titik peta" href="<?= site_url('keranjang/alamatpeta') ?>" id="button-addon2" type="button"
 									   class="btn btn-outline-secondary"><i
 												class="icofont-pin"></i></a>
 								</div>
