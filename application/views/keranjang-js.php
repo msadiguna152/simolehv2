@@ -35,7 +35,7 @@
 										<div class="input-group-prepend">
 										   <button class="btn btn-success btn-sm" id="button-plus" data-id="${item.id_produk}"> + </button>
 										</div>
-										<input type="text" class="form-control qty-produk" value="${qty[item.id_produk].count ?? 1}">
+										<input type="text" class="form-control qty-produk" readonly value="${qty[item.id_produk].count ?? 1}">
 										<div class="input-group-append">
 										   <button class="btn btn-success btn-sm" id="button-minus" data-id="${item.id_produk}"> − </button>
 										</div>
