@@ -46,7 +46,7 @@
 									  type="button" id="button-main-plus"> +
 							  </button>
 						  </div>
-						  <input type="text" class="form-control" value="1">
+						  <input type="text" class="form-control" value="1" readonly>
 						  <div class="input-group-append">
 							  <button data-id="<?= $data_p->id_produk ?>"
 									  class="btn btn-success btn-sm"

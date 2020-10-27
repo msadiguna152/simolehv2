@@ -34,7 +34,8 @@
 								?>
 							</p>
 							<div class="" id="container-button">
-								<h6 class="price m-0 text-success"><?= "Rp " . number_format(htmlspecialchars($data->harga), 0, ',', '.'); ?></h6>
+								<h6 class="price m-0 text-success">												<?= $data->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data->harga, 0, ',', '.'); ?>
+								</h6>
 								<button data-id="<?= $data->id_produk ?>"
 										id="btn-add-cart"
 										class="btn btn-success btn-block ml-auto mt-2">Tambah
@@ -47,7 +48,7 @@
 												type="button" id="button-main-plus"> +
 										</button>
 									</div>
-									<input type="text" class="form-control" value="1">
+									<input type="text" class="form-control" value="1" readonly>
 									<div class="input-group-append">
 										<button data-id="<?= $data->id_produk ?>" class="btn btn-success btn-sm"
 												type="button" id="button-main-minus"> −

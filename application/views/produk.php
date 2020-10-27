@@ -52,7 +52,7 @@
 													id="button-main-plus"> +
 											</button>
 										</div>
-										<input type="text" class="form-control" value="1">
+										<input type="text" class="form-control" readonly value="1">
 										<div class="input-group-append">
 											<button data-id="<?= $data->id_produk ?>"
 													class="btn btn-success btn-sm"

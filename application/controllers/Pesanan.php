@@ -36,8 +36,8 @@ class Pesanan extends CI_Controller
 			return response(['status' => 'success', 'message' => 'Buyer already registered'], 'json');
 		}
 		if ($this->mpembeli->insert_pembeli()) {
-			$this->session->set_userdata('namalengkap', $this->input->post('nama_pembeli'));
-			$this->session->set_userdata('nohp', $this->input->post('no_telpon'));
+			$this->session->set_userdata('nama_pengguna', $this->input->post('nama_pembeli'));
+			$this->session->set_userdata('no_telpon', $this->input->post('no_telpon'));
 			return response(['status' => 'success'], 'json');
 		}
 		return response(['status' => 'error'], 'json');
@@ -63,7 +63,7 @@ class Pesanan extends CI_Controller
 			$this->session->set_flashdata('message', 'Ulangi beberapa saat lagi');
 			redirect('/keranjang/checkout');
 		}
-		if (!$this->session->userdata('namalengkap') || !$this->session->userdata('nohp')) {
+		if (!$this->session->userdata('nama_pengguna') || !$this->session->userdata('no_telpon')) {
 			$this->session->set_flashdata('message', 'Nama dan nomor hp tidak boleh kosong');
 			redirect('/keranjang/checkout');
 		}
@@ -181,7 +181,7 @@ class Pesanan extends CI_Controller
 		$paramsVA = [
 			"external_id" => "$kode_bank-bank" . time() . '-' . mt_rand(),
 			"bank_code" => $kode_bank,
-			"name" => $this->session->userdata('namalengkap'),
+			"name" => $this->session->userdata('nama_pengguna'),
 			"is_closed" => true,
 			"expected_amount" => $total,
 			"is_single_use" => true

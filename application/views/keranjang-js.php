@@ -26,8 +26,8 @@
 			const items = data.map(function (item) {
 				return `<div class="cart-items bg-white position-relative border-bottom">
 							<div class="d-flex  align-items-center p-3">
-							   <a href="product_details.html"><img src="<?php echo base_url('/file/') ?>${item.gambar}" class="img-fluid"></a>
-							   <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
+							   <a href="<?php echo site_url('beranda/detail_produk/') ?>${item.slug_p}"><img src="<?php echo base_url('/file/') ?>${item.gambar}" class="img-fluid"></a>
+							   <a href="<?php echo site_url('beranda/detail_produk/') ?>${item.slug_p}" class="ml-3 text-dark text-decoration-none w-100">
 								  <h5 class="mb-1">${item.nama_produk}</h5>
 								  <div class="d-flex align-items-center">
 									 <p class="total_price font-weight-bold m-0">${item.harga_promosi !== "0" ? '<del class="text-success mr-1">Rp. ' + item.harga + '</del>' : ''} Rp. <span>${item.harga_promosi !== "0" ? $.number(item.harga_promosi, 0, ',', '.') : $.number(item.harga, 0, ',', '.')}</span></p>
@@ -35,7 +35,7 @@
 										<div class="input-group-prepend">
 										   <button class="btn btn-success btn-sm" id="button-plus" data-id="${item.id_produk}"> + </button>
 										</div>
-										<input type="text" class="form-control qty-produk" value="${qty[item.id_produk].count ?? 1}">
+										<input type="text" class="form-control qty-produk" readonly value="${qty[item.id_produk].count ?? 1}">
 										<div class="input-group-append">
 										   <button class="btn btn-success btn-sm" id="button-minus" data-id="${item.id_produk}"> − </button>
 										</div>
@@ -84,7 +84,8 @@
 			return false;
 		},
 		updateKeranjang(qty, id) {
-			var decodeKeranjang = JSON.parse(keranjang);
+			var freshKeranjang = localStorage.getItem('keranjang')
+			var decodeKeranjang = JSON.parse(freshKeranjang);
 			var isExist = id in decodeKeranjang;
 			if (qty < 1) {
 				delete decodeKeranjang[id];

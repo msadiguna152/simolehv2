@@ -8,6 +8,14 @@
 		</div>
 	</div>
 </div>
+<?php if ($this->session->userdata('message')): ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<strong>Peringatan</strong> <?php echo $this->session->userdata('message') ?>
+	</div>
+<?php endif; ?>
 <div class="pembeli p-3 bg-white">
 	<h6 class="m-0 text-dark d-flex align-items-center">Identitas Pemesan <span class="small ml-auto">
 			</span>
