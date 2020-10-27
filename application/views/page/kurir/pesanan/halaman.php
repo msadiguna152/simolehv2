@@ -68,6 +68,7 @@
 									<th>Jenis Pembayaran</th>
 									<th>Total Pembayaran</th>
 									<th>Status Pembayaran</th>
+									<th>Map</th>
 									<th>Rincian Pesanan</th>
 									<th>Pilihan</th>
 								</tr>
@@ -105,6 +106,12 @@
 										<td>
 											<?= htmlspecialchars($data->status_pembayaran); ?>
 										</td>
+
+										<td>
+					                        <a target="_BLANK" class="btn btn-info btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Alamat Di Map" href="http://www.google.com/maps/place/<?php echo htmlspecialchars($data->lat); ?>,<?php echo htmlspecialchars($data->long); ?>">
+					                            <i class="fas fa-map"></i>
+					                        </a>
+					                    </td>
 
 										<td>
 											<a class="btn btn-success btn-sm btn-block" data-toggle="tooltip"

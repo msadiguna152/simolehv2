@@ -2,14 +2,20 @@
 	$pengaturan = $query = $this->db->get('tb_pengaturan');
 	foreach ($pengaturan->result() as $data){
 		$nama_bisnis = $data->nama_bisnis;
+		$icon = $data->icon;
+		$alamat = $data->alamat_toko;
+		$kota = $data->kota;
+		$provinsi = $data->provinsi;
+
 	}
 ?>
 
 <!-- home page -->
 <div class="osahan-home-page">
 	<div class="border-bottom p-3">
-		<div class="title d-flex align-items-center">
+		<div class="title d-flex align-items-center text-center">
 			<a href="" class="text-decoration-none text-dark d-flex align-items-center">
+				<img class="osahan-logo mr-2" src="<?= base_url()?>pengaturan/<?= $icon; ?>">
 				<h4 class="font-weight-bold text-success m-0"><?= $nama_bisnis; ?></h4>
 			</a>
 		</div>
@@ -270,7 +276,8 @@
 		</div>
 
 		<!-- Most sales -->
-		<div class="title d-flex align-items-center p-2">
+		<div class="title align-items-center p-4">
+			<center><?= $alamat; ?> Kabupaten <?= $kota; ?> Provensi <?= $provinsi; ?></center>
 		</div>
 
 	</div>
