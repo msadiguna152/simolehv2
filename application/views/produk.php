@@ -10,15 +10,12 @@
 			<h2 class="font-weight-bold"><?= ucwords(str_replace("-", " ", htmlspecialchars($produk))); ?></h2>
 		</div>
 	</div>
-	<div class="osahan-listing px-3 bg-white">
+	<div class="osahan-listing list-produk px-3 bg-white">
 		<div class="row">
 			<?php
-			foreach ($data_produk->result() as $data):
-				$nama_produk = strtolower(str_replace(" ", "-", "$data->nama_produk"));
-
-				?>
+			foreach ($data_produk->result() as $data): $nama_produk = strtolower(str_replace(" ", "-", "$data->nama_produk")); ?>
 				<div class="col-6 p-0 border-right border-bottom border-top">
-					<div class="list-card-image">
+					<div data-id="<?php echo $data->id_produk ?>" class="list-card-image">
 						<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>" class="text-dark">
 							<div class="member-plan position-absolute">
 								<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data->nama_kategori; ?></span>
@@ -52,7 +49,7 @@
 													id="button-main-plus"> +
 											</button>
 										</div>
-										<input type="text" class="form-control" readonly value="1">
+										<input type="text" class="form-control" readonly value="0">
 										<div class="input-group-append">
 											<button data-id="<?= $data->id_produk ?>"
 													class="btn btn-success btn-sm"

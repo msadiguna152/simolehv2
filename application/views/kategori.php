@@ -10,12 +10,12 @@
 			<h2 class="font-weight-bold"><?= ucwords(str_replace("-", " ", htmlspecialchars($nama_kategori))); ?></h2>
 		</div>
 	</div>
-	<div class="osahan-listing px-3 bg-white">
+	<div class="osahan-listing kategori-produk px-3 bg-white">
 		<div class="row">
 			<?php
 			foreach ($data_perkategori->result() as $data): ?>
 				<div class="col-6 p-0 border-right border-bottom border-top">
-					<div class="list-card-image">
+					<div data-id="<?php echo $data->id_produk ?>" class="list-card-image">
 						<div class="member-plan position-absolute">
 							<?= $data->promosi == 0 ? '' : '<span class="badge badge-success">Promo</span>'; ?>
 							<?= $data->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
@@ -34,7 +34,7 @@
 								?>
 							</p>
 							<div class="" id="container-button">
-								<h6 class="price m-0 text-success">												<?= $data->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data->harga, 0, ',', '.'); ?>
+								<h6 class="price m-0 text-success">                                                <?= $data->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data->harga, 0, ',', '.'); ?>
 								</h6>
 								<button data-id="<?= $data->id_produk ?>"
 										id="btn-add-cart"
@@ -48,7 +48,7 @@
 												type="button" id="button-main-plus"> +
 										</button>
 									</div>
-									<input type="text" class="form-control" value="1" readonly>
+									<input type="text" class="form-control" value="0" readonly>
 									<div class="input-group-append">
 										<button data-id="<?= $data->id_produk ?>" class="btn btn-success btn-sm"
 												type="button" id="button-main-minus"> −
