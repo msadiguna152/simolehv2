@@ -28,8 +28,6 @@ class Mpengguna extends CI_Model
 		} else {
 			$query = $this->db->query("UPDATE `tb_pengguna` SET `nama_pengguna` = '$nama_pengguna', `username` = '$username', `password` = '$password', `email` = '$email', `no_telpon` = '$no_telpon', `level` = '$level' WHERE `tb_pengguna`.`id_pengguna` = '$id_pengguna';");
 		};
-
 		return $query;
-
 	}
 }
