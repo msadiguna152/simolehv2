@@ -104,6 +104,7 @@
 			maps.setZoom(17);  // Why 17? Because it looks good.
 		}
 		saveCoordinateToLocStorage(place.geometry.location.toString());
+		geocodeLatLng(geocoder, maps, infowindow, `${place.geometry.location.lat()},${place.geometry.location.lng()}`);
 		marker.setPosition(place.geometry.location);
 		marker.setVisible(true);
 

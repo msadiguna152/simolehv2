@@ -71,7 +71,7 @@
 				<div class="row <?= $a < 2 ? '' : 'pt-3'; ?>">
 					<?php foreach ($data_chunk as $key => $data_p): ?>
 						<div class="col-6">
-							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+							<div data-id="<?php echo $data_p->id_produk ?>" class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 									<div class="member-plan position-absolute">
 										<?= ($data_p->promosi == 0) ? '' : '<span class="badge badge-success">Promo</span>'; ?>
@@ -110,7 +110,7 @@
 															type="button" id="button-main-plus"> +
 													</button>
 												</div>
-												<input type="text" class="form-control" value="1" readonly>
+												<input type="text" class="form-control" value="0" readonly>
 												<div class="input-group-append">
 													<button data-id="<?= $data_p->id_produk ?>"
 															class="btn btn-success btn-sm"
@@ -134,14 +134,14 @@
 			<a class="ml-auto text-success" href="<?= base_url() ?>beranda/produk/promo-hari-ini">Lihat Semua</a>
 		</div>
 
-		<div class="pick_today px-3">
+		<div class="promo_today px-3">
 			<?php $a = 1;
 			$chunks = array_chunk($data_grid2->result(), 2); ?>
 			<?php foreach ($chunks as $data_chunk): ?>
 				<div class="row <?= $a < 2 ? '' : 'pt-3'; ?>">
 					<?php foreach ($data_chunk as $key => $data_p): ?>
 						<div class="col-6">
-							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+							<div data-id="<?php echo $data_p->id_produk ?>" class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 									<div class="member-plan position-absolute">
 										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promo</span>'; ?>
@@ -180,7 +180,7 @@
 															type="button" id="button-main-plus"> +
 													</button>
 												</div>
-												<input type="text" class="form-control" value="1" readonly>
+												<input type="text" class="form-control" value="0" readonly>
 												<div class="input-group-append">
 													<button data-id="<?= $data_p->id_produk ?>"
 															class="btn btn-success btn-sm"
@@ -204,7 +204,7 @@
 			<a class="ml-auto text-success" href="<?= base_url() ?>beranda/produk/best-seller">Lihat Semua</a>
 		</div>
 
-		<div class="pick_today px-3">
+		<div class="best_seller px-3">
 			<?php $a = 1;
 			$chunks = array_chunk($data_grid3->result(), 2); ?>
 			<?php foreach ($chunks as $data_chunk): ?>
@@ -213,7 +213,7 @@
 						$nama_produk = strtolower(str_replace(" ", "-", "$data_p->nama_produk"));
 						?>
 						<div class="col-6">
-							<div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+							<div data-id="<?php echo $data_p->id_produk ?>" class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 
 									<div class="member-plan position-absolute">
@@ -251,7 +251,7 @@
 															type="button" id="button-main-plus"> +
 													</button>
 												</div>
-												<input type="text" class="form-control" value="1" readonly>
+												<input type="text" class="form-control" value="0" readonly>
 												<div class="input-group-append">
 													<button data-id="<?= $data_p->id_produk ?>"
 															class="btn btn-success btn-sm"

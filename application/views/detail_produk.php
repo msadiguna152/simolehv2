@@ -21,10 +21,8 @@
                <?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>';?>
          </div>
       </div>
-
       <div class="osahan-product">
-         
-         <div class="product-details">
+         <div class="product-details" data-id="<?= $data_p->id_produk ?>">
             <div class="recommend-slider py-1">
                <div class="osahan-slider-item m-2">
                   <img src="<?= base_url() ?>file/<?= $data_p->gambar;?>" class="img-fluid mx-auto shadow-sm rounded" alt="Responsive image">
@@ -46,7 +44,7 @@
 									  type="button" id="button-main-plus"> +
 							  </button>
 						  </div>
-						  <input type="text" class="form-control" value="1" readonly>
+						  <input type="text" class="form-control" value="0" readonly>
 						  <div class="input-group-append">
 							  <button data-id="<?= $data_p->id_produk ?>"
 									  class="btn btn-success btn-sm"
