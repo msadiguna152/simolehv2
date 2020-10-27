@@ -52,6 +52,8 @@
 					const keys = Object.keys(decodeCart);
 					if ($.inArray(id, keys)) {
 						if (typeof decodeCart[id] !== "undefined") {
+							$(item).find('#btn-add-cart').hide();
+							$(item).find('#container-qty-btn').show();
 							$(item).find('input').val(decodeCart[id].count);
 						}
 					}
@@ -65,6 +67,8 @@
 					const keys = Object.keys(decodeCart);
 					if ($.inArray(id, keys)) {
 						if (typeof decodeCart[id] !== "undefined") {
+							$(item).find('#btn-add-cart').hide();
+							$(item).find('#container-qty-btn').show();
 							$(item).find('input').val(decodeCart[id].count);
 						}
 					}
@@ -78,7 +82,12 @@
 					const keys = Object.keys(decodeCart);
 					if ($.inArray(id, keys)) {
 						if (typeof decodeCart[id] !== "undefined") {
+							$(item).find('#btn-add-cart').hide();
+							$(item).find('#container-qty-btn').show();
 							$(item).find('input').val(decodeCart[id].count);
+						}else{
+							$(item).find('#btn-add-cart').show();
+							$(item).find('#container-qty-btn').hide();
 						}
 					}
 				}
@@ -104,7 +113,6 @@
 			return false;
 		}).on('click', '#button-main-minus', function () {
 			var inputQty = $(this).parent('div').siblings('input');
-			berandaHelper.updateQtyProduk();
 			var currentVal = parseInt(inputQty.val());
 			if (currentVal > 1) {
 				inputQty.val(currentVal - 1);
@@ -116,6 +124,7 @@
 				berandaHelper.kurangQty($(this).data('id'));
 				inputQty.val(1);
 			}
+			berandaHelper.updateQtyProduk();
 			return false;
 		})
 	})
