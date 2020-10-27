@@ -65,14 +65,15 @@
 			</div>
 		</div>
 
-		<!-- Grid 1 -->
+				<!-- Grid 2 -->
 		<div class="title d-flex align-items-center mb-3 mt-3 px-3">
-			<h6 class="m-0">UNTUKMU HARI INI</h6>
-			<a class="ml-auto text-success" href="<?= base_url() ?>beranda/produk/untumu-hari-ini">Lihat Semua</a>
+			<h6 class="m-0">PROMO HARI INI</h6>
+			<a class="ml-auto text-success" href="<?= base_url() ?>beranda/produk/promo-hari-ini">Lihat Semua</a>
 		</div>
-		<div class="pick_today px-3">
+
+		<div class="promo_today px-3">
 			<?php $a = 1;
-			$chunks = array_chunk($data_grid1->result(), 2); ?>
+			$chunks = array_chunk($data_grid2->result(), 2); ?>
 			<?php foreach ($chunks as $data_chunk): ?>
 				<div class="row <?= $a < 2 ? '' : 'pt-3'; ?>">
 					<?php foreach ($data_chunk as $key => $data_p): ?>
@@ -80,26 +81,26 @@
 							<div data-id="<?php echo $data_p->id_produk ?>" class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 									<div class="member-plan position-absolute">
-										<?= ($data_p->promosi == 0) ? '' : '<span class="badge badge-success">Promo</span>'; ?>
-										<?= ($data_p->terlaris == 0) ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
+										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promo</span>'; ?>
+										<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
 									</div>
 									<div class="p-3">
 										<a href="<?= base_url() ?>beranda/detail_produk/<?= $data_p->slug_p; ?>"
 										   class="text-dark">
-
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
 												 class="img-fluid item-img w-100 mb-3">
 											<h6><?= $data_p->nama_produk; ?></h6>
 										</a>
-										<p class="" style="height: 60px">
-											<?php
+
+										<p style="height: 60px">
+										<?php
 											$jml = strlen($data_p->deskripsi);
-											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " more...";
-											?>
+											echo $jml <= 51 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 51).'<a href="'. base_url("beranda/detail_produk/$data_p->slug_p").'"> more...</a>';
+										?>
 										</p>
 										<div class="" id="container-button">
-											<h6 class="price m-0 text-success">
+											<h6 class="price m-0">
 												<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
 
 											</h6>
@@ -134,15 +135,14 @@
 				<?php $a++; endforeach; ?>
 		</div>
 
-		<!-- Grid 2 -->
+		<!-- Grid 1 -->
 		<div class="title d-flex align-items-center mb-3 mt-3 px-3">
-			<h6 class="m-0">PROMO HARI INI</h6>
-			<a class="ml-auto text-success" href="<?= base_url() ?>beranda/produk/promo-hari-ini">Lihat Semua</a>
+			<h6 class="m-0">UNTUKMU HARI INI</h6>
+			<a class="ml-auto text-success" href="<?= base_url() ?>beranda/produk/untumu-hari-ini">Lihat Semua</a>
 		</div>
-
-		<div class="promo_today px-3">
+		<div class="pick_today px-3">
 			<?php $a = 1;
-			$chunks = array_chunk($data_grid2->result(), 2); ?>
+			$chunks = array_chunk($data_grid1->result(), 2); ?>
 			<?php foreach ($chunks as $data_chunk): ?>
 				<div class="row <?= $a < 2 ? '' : 'pt-3'; ?>">
 					<?php foreach ($data_chunk as $key => $data_p): ?>
@@ -150,26 +150,26 @@
 							<div data-id="<?php echo $data_p->id_produk ?>" class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 									<div class="member-plan position-absolute">
-										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promo</span>'; ?>
-										<?= $data_p->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
+										<?= ($data_p->promosi == 0) ? '' : '<span class="badge badge-success">Promo</span>'; ?>
+										<?= ($data_p->terlaris == 0) ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 
 									</div>
 									<div class="p-3">
 										<a href="<?= base_url() ?>beranda/detail_produk/<?= $data_p->slug_p; ?>"
 										   class="text-dark">
+
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
 												 class="img-fluid item-img w-100 mb-3">
 											<h6><?= $data_p->nama_produk; ?></h6>
 										</a>
-
-										<p style="height: 60px">
-											<?php
+										<p class="" style="height: 60px">
+										<?php
 											$jml = strlen($data_p->deskripsi);
-											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " more...";
-											?>
+											echo $jml <= 51 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 51).'<a href="'. base_url("beranda/detail_produk/$data_p->slug_p").'"> more...</a>';
+										?>
 										</p>
 										<div class="" id="container-button">
-											<h6 class="price m-0 text-success">
+											<h6 class="price m-0">
 												<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
 
 											</h6>
@@ -235,13 +235,13 @@
 											<h6><?= $data_p->nama_produk; ?></h6>
 										</a>
 										<p style="height: 60px">
-											<?php
+										<?php
 											$jml = strlen($data_p->deskripsi);
-											echo $jml <= 100 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 100) . " more...";
-											?>
+											echo $jml <= 51 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 51).'<a href="'. base_url("beranda/detail_produk/$data_p->slug_p").'"> more...</a>';
+										?>
 										</p>
 										<div class="" id="container-button">
-											<h6 class="price m-0 text-success">
+											<h6 class="price m-0">
 												<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
 											</h6>
 											<button data-id="<?= $data_p->id_produk ?>"

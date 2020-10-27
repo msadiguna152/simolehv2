@@ -2,7 +2,11 @@
 	$pengaturan = $query = $this->db->get('tb_pengaturan');
 	foreach ($pengaturan->result() as $data){
 		$nama_bisnis = $data->nama_bisnis;
-		$no_wa = $data->no_wa;
+
+		$getNoHp = str_replace("-", "", $data->no_wa);
+       	$getNoHp2 = str_replace("0", "62", substr($getNoHp, 0,4));
+        $getNoHp3 = substr($getNoHp, 4,10);
+        $no_wa = htmlspecialchars($getNoHp2.$getNoHp3);
 	}
 ?>
 <div class="osahan-menu-fotter fixed-bottom bg-white text-center border-top">

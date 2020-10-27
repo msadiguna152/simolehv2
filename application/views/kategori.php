@@ -28,10 +28,10 @@
 								<h6><?= htmlspecialchars($data->nama_produk); ?></h6>
 							</a>
 							<p style="height: 60px">
-								<?php
+							<?php
 								$jml = strlen($data->deskripsi);
-								echo $jml <= 100 ? $data->deskripsi : substr($data->deskripsi, 0, 100) . " more...";
-								?>
+								echo $jml <= 51 ? $data->deskripsi : substr($data->deskripsi, 0, 51).'<a href="'. base_url("beranda/detail_produk/$data->slug_p").'"> more...</a>';
+							?>
 							</p>
 							<div class="" id="container-button">
 								<h6 class="price m-0 text-success">                                                <?= $data->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data->harga, 0, ',', '.'); ?>

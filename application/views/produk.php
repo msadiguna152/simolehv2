@@ -13,12 +13,11 @@
 	<div class="osahan-listing list-produk px-3 bg-white">
 		<div class="row">
 			<?php
-			foreach ($data_produk->result() as $data): $nama_produk = strtolower(str_replace(" ", "-", "$data->nama_produk")); ?>
+			foreach ($data_produk->result() as $data): ?>
 				<div class="col-6 p-0 border-right border-bottom border-top">
 					<div data-id="<?php echo $data->id_produk ?>" class="list-card-image">
-						<a href="<?= base_url() ?>beranda/detail_produk/<?= $nama_produk; ?>" class="text-dark">
+						<a href="<?= base_url() ?>beranda/detail_produk/<?= $data->slug_p; ?>" class="text-dark">
 							<div class="member-plan position-absolute">
-								<span class="badge mt-3 mb-3 ml-3 badge-danger"><?= $data->nama_kategori; ?></span>
 								<?= $data->promosi == 0 ? '' : '<span class="badge badge-success">Promosi</span>'; ?>
 								<?= $data->terlaris == 0 ? '' : '<span class="badge badge-primary"><i>Best Seller</i></span>'; ?>
 							</div>
@@ -27,10 +26,10 @@
 									 class="img-fluid item-img w-100 mb-3">
 								<h6><?= htmlspecialchars($data->nama_produk); ?></h6>
 								<p style="height: 60px">
-									<?php
+								<?php
 									$jml = strlen($data->deskripsi);
-									echo $jml <= 100 ? htmlspecialchars($data->deskripsi) : substr(htmlspecialchars($data->deskripsi), 0, 100) . " (Lihat Selengkapnya)";
-									?>
+									echo $jml <= 51 ? $data->deskripsi : substr($data->deskripsi, 0, 51).'<a href="'. base_url("beranda/detail_produk/$data->slug_p").'"> more...</a>';
+								?>
 								</p>
 								<div class="" id="container-button">
 									<h6 class="price m-0 text-success">

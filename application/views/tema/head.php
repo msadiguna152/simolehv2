@@ -1,11 +1,19 @@
+<?php
+	$pengaturan = $query = $this->db->get('tb_pengaturan');
+	foreach ($pengaturan->result() as $data){
+		$nama_bisnis = $data->nama_bisnis;
+		$no_wa = $data->no_wa;
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
+	<meta name="description" content="<?= $nama_bisnis; ?>">
 	<meta name="author" content="">
 	<!-- <link rel="icon" type="image/png" href="img/logo.svg"> -->
+	<title><?= $nama_bisnis; ?></title>
 	<style>
 		#map_canvas {
 			width: 100%;
@@ -142,19 +150,7 @@
 			background: no-repeat 50%/50% 50%;
 		}
 	</style>
-	<script language='javaScript'>
-		var txt = "E-Commerce Simpel Oleh Oleh (SIMOLEH)       ";
-		var speed = 300;
-		var refresh = null;
 
-		function action() {
-			document.title = txt;
-			txt = txt.substring(1, txt.length) + txt.charAt(0);
-			refresh = setTimeout("action()", speed);
-		}
-
-		action();
-	</script>
 	<!-- Slick Slider -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets2/vendor/slick/slick.min.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets2/vendor/slick/slick-theme.min.css"/>
