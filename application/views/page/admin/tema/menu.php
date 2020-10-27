@@ -185,10 +185,28 @@
           </li>
 
           <li class="nav-item">
+            <a href="<?php echo base_url()?>page/admin/medsos" class="nav-link <?php if($this->session->userdata('menu') == 'medsos'){echo "active"; }?>">
+              <i class="nav-icon fas fa-bookmark"></i>
+              <p>
+                Medsos
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="<?php echo base_url()?>page/admin/pengaturan" class="nav-link <?php if($this->session->userdata('menu') == 'pengaturan'){echo "active"; }?>">
               <i class="nav-icon fas fa-cog"></i>
               <p>
                 Pengaturan
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a target="_BLANK" href="<?php echo base_url()?>"  class="nav-link">
+              <i class="nav-icon fas fa-eye"></i>
+              <p>
+                Lihat Website
               </p>
             </a>
           </li>
