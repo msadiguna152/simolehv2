@@ -14,6 +14,12 @@ public function get_sliders()
 		return $query;
 	}
 
+public function get_medsos()
+	{
+		$query = $this->db->query("SELECT * FROM `tb_medsos` ORDER BY `tb_medsos`.`id_medsos` DESC");
+		return $query;
+	}
+
 public function get_grid1() //Untukmu hari ini
 	{
 		$query = $this->db->query("SELECT * FROM `tb_kategori` JOIN tb_produk ON tb_kategori.id_kategori=tb_produk.id_kategori ORDER BY `tb_produk`.`id_produk`, tb_produk.promosi DESC LIMIT 8");

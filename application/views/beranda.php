@@ -278,10 +278,23 @@
 		</div>
 
 		<!-- Most sales -->
-		<div class="title align-items-center p-4">
+		<div class="title align-items-center pl-4 pr-4 pt-4 pb-2">
 			<center><?= $alamat; ?> Kabupaten <?= $kota; ?> Provensi <?= $provinsi; ?></center>
 		</div>
-
+		<?php $chunks = array_chunk($data_medsos->result(), 3); ?>
+		<?php foreach ($chunks as $data_chunk): ?>
+		<div class="title align-items-center pl-4 pr-4 pt-2 pb-2">
+			<center>
+			<?php foreach ($data_chunk as $key => $data): ?>
+				<a class="text-dark ml-3" target="_BLANK" href="<?= $data->url; ?>">
+					<img style="width: 15px; height: 15px;" src="<?= base_url() ?>pengaturan/<?= $data->icon; ?>"
+										class="img-fluid mx-auto" alt="<?= $data->medsos; ?>">
+					<?= $data->medsos; ?>
+				</a>
+			<?php endforeach; ?>
+			</center>
+		</div>
+		<?php endforeach; ?>
 	</div>
 </div>
 <!-- Footer -->

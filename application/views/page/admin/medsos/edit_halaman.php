@@ -64,7 +64,7 @@
                         <div class="form-group">
                           <label for="medsos">Nama Media Sosial</label>
                           <input type="text" class="form-control" id="" name="medsos" value="<?= $medsos; ?>" required="">
-                          <input type="text" class="form-control" id="" name="id_medsos" value="<?= $id_medsos; ?>" required="">
+                          <input type="text" hidden="" name="id_medsos" value="<?= $id_medsos; ?>" required="">
 
                         </div>
 

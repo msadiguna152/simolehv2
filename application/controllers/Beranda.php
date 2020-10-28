@@ -13,6 +13,7 @@ class Beranda extends CI_Controller {
 		$data['data_kategori'] = $this->mberanda->get_kategori();
 		$data['data_promosi'] = $this->mberanda->get_promosi();
 		$data['data_sliders'] = $this->mberanda->get_sliders();
+		$data['data_medsos'] = $this->mberanda->get_medsos();
 		$data['data_grid1'] = $this->mberanda->get_grid1(); //Untukmu Hari Ini
 		$data['data_grid2'] = $this->mberanda->get_grid2(); //Promo Hari Ini
 		$data['data_grid3'] = $this->mberanda->get_grid3(); //Best Seller
