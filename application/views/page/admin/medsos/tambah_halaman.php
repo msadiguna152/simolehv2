@@ -41,23 +41,28 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/sliders/insert')?>" method="post" id="quickForm">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/medsos/insert')?>" method="post" id="quickForm">
                 <div class="row">
                   <div class="col-md-12">
+
                         <div class="form-group">
-                          <label for="gambar_sliders">Gambar Sliders</label>
+                          <label for="medsos">Nama Media Sosial</label>
+                          <input type="text" class="form-control" id="" name="medsos" placeholder="Masukan Nama Media Sosial..." required="">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="url">URL Akun Media Sosial</label>
+                          <textarea class="form-control" id="" name="url" required="" placeholder="Masukan URL Akun Media Sosial..." required=""></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="icon">Icon Media Sosial</label>
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile" name="gambar_sliders" accept="image/*" required="" onchange="return validasiFile()">
-                            <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
+                            <input type="file" class="custom-file-input" id="customFile" name="icon" accept=".svg" required="" onchange="return validasiFile()">
+                            <label class="custom-file-label" for="customFile">Pilih Icon Medsos (Maksimal 1 MB, Format SVG)</label>
                           </div>
                           <div id="pratinjauGambar"></div>
                         </div>
-
-                        <div class="form-group">
-                          <label for="keterangan_sliders">Keterangan Sliders</label>
-                          <textarea class="form-control" id="" name="keterangan_sliders" required="" placeholder="Masukan Keterangan Sliders..." required=""></textarea>
-                        </div>
-
                   </div>
                 </div>
                 <div class="row">

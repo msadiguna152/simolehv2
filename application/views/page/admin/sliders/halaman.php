@@ -67,7 +67,7 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>URL Slider</th>
+                    <th style="width: 30%;">URL Slider</th>
                     <th>Gambar</th>
                     <th>Keterangan</th>
                     <th>Pilihan</th>

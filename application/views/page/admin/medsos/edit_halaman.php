@@ -3,13 +3,14 @@
   $token2 = md5($get_token2);
   $token = $this->session->flashdata('token');
   if (!empty($token) AND $token==$token2) {
-    foreach ($data_sliders->result() as $data):
-    $id_sliders = $data->id_sliders;
-    $gambar_sliders = $data->gambar_sliders;
-    $keterangan_sliders = $data->keterangan_sliders;
+    foreach ($data_medsos->result() as $data):
+    $id_medsos = $data->id_medsos;
+    $icon = $data->icon;
+    $medsos = $data->medsos;
+    $url = $data->url;
     endforeach;
   } else {
-      echo '<script language="javascript">document.location="'.site_url('page/admin/sliders').'";</script>';
+      echo '<script language="javascript">document.location="'.site_url('page/admin/medsos').'";</script>';
   }
 ?>
 
@@ -56,23 +57,29 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/sliders/update')?>" method="post" id="quickForm">
+                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('page/admin/medsos/update')?>" method="post" id="quickForm">
                 <div class="row">
                   <div class="col-md-12">
 
                         <div class="form-group">
-                          <label for="gambar_sliders">Gambar Sliders</label>
-                          <div class="custom-file">
-                            <input type="text" hidden="" name="id_sliders" value="<?= $id_sliders; ?>">
-                            <input type="file" class="custom-file-input" id="customFile" name="gambar_sliders" accept="image/*" required="" onchange="return validasiFile()">
-                            <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
-                          </div>
-                          <div id="pratinjauGambar"><img src="<?php echo base_url()?>sliders/<?= $gambar_sliders ?>" class="img-thumbnail" style="height: 200px;"></div>
+                          <label for="medsos">Nama Media Sosial</label>
+                          <input type="text" class="form-control" id="" name="medsos" value="<?= $medsos; ?>" required="">
+                          <input type="text" class="form-control" id="" name="id_medsos" value="<?= $id_medsos; ?>" required="">
+
                         </div>
 
                         <div class="form-group">
-                          <label for="keterangan_sliders">Keterangan Sliders</label>
-                          <textarea class="form-control" id="" name="keterangan_sliders" required="" placeholder="Masukan Keterangan Sliders..." required=""><?= $keterangan_sliders ?></textarea>
+                          <label for="url">URL Akun Media Sosial</label>
+                          <textarea class="form-control" id="" name="url" required=""><?= $url; ?></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="icon">Icon Media Sosial</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="icon" accept=".svg" required="" onchange="return validasiFile()">
+                            <label class="custom-file-label" for="customFile">Pilih Icon Medsos (Maksimal 1 MB, Format SVG)</label>
+                          </div>
+                          <div id="pratinjauGambar"><img src="<?php echo base_url()?>pengaturan/<?= $icon ?>" class="img-thumbnail" style="height: 100px;"></div>
                         </div>
 
                   </div>
@@ -115,7 +122,7 @@
         if (inputFile.files && inputFile.files[0]) {
           var reader = new FileReader();
           reader.onload = function(e) {
-            document.getElementById('pratinjauGambar').innerHTML = '<img src="'+e.target.result+'" class="img-thumbnail" style="height: 200px;">';
+            document.getElementById('pratinjauGambar').innerHTML = '<img src="'+e.target.result+'" class="img-thumbnail" style="height: 100px;">';
           };
           reader.readAsDataURL(inputFile.files[0]);
       }

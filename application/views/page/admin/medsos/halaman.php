@@ -79,8 +79,8 @@
                     <tr>
                       <td><?= htmlspecialchars($no); ?></td>
                       <td><?= htmlspecialchars($data->medsos); ?></td>
-                      <td><?= htmlspecialchars($data->url_medsos); ?></td>
-                      <td><img class="img img-thumbnail" style="height: 100px;" src="<?= base_url()?>medsos/<?= $data->icon; ?>"></td>
+                      <td><a target="_BLANK" href="<?= htmlspecialchars($data->url); ?>"><?= htmlspecialchars($data->url); ?></a></td>
+                      <td><img class="img img-thumbnail" style="height: 100px;" src="<?= base_url()?>pengaturan/<?php echo $data->icon; ?>"></td>
 
                       <td align="center">
 
