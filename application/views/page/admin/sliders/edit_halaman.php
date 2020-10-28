@@ -5,6 +5,7 @@
   if (!empty($token) AND $token==$token2) {
     foreach ($data_sliders->result() as $data):
     $id_sliders = $data->id_sliders;
+    $url_sliders = $data->url_sliders;
     $gambar_sliders = $data->gambar_sliders;
     $keterangan_sliders = $data->keterangan_sliders;
     endforeach;
@@ -61,10 +62,15 @@
                   <div class="col-md-12">
 
                         <div class="form-group">
+                          <label for="url_sliders">URL Sliders</label>
+                          <input type="text" class="form-control" id="" name="url_sliders" value="<?= $url_sliders ?>" required="">
+                        </div>
+
+                        <div class="form-group">
                           <label for="gambar_sliders">Gambar Sliders</label>
                           <div class="custom-file">
                             <input type="text" hidden="" name="id_sliders" value="<?= $id_sliders; ?>">
-                            <input type="file" class="custom-file-input" id="customFile" name="gambar_sliders" accept="image/*" required="" onchange="return validasiFile()">
+                            <input type="file" class="custom-file-input" id="customFile" name="gambar_sliders" accept="image/*" onchange="return validasiFile()">
                             <label class="custom-file-label" for="customFile">Pilih Foto (Maksimal 1 MB)</label>
                           </div>
                           <div id="pratinjauGambar"><img src="<?php echo base_url()?>sliders/<?= $gambar_sliders ?>" class="img-thumbnail" style="height: 200px;"></div>

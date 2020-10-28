@@ -45,6 +45,11 @@
                 <div class="row">
                   <div class="col-md-12">
                         <div class="form-group">
+                          <label for="url_sliders">URL Sliders</label>
+                          <input type="text" class="form-control" id="" name="url_sliders" required="" placeholder="Masukan URL Sliders..." required="">
+                        </div>
+
+                        <div class="form-group">
                           <label for="gambar_sliders">Gambar Sliders</label>
                           <div class="custom-file">
                             <input type="file" class="custom-file-input" id="customFile" name="gambar_sliders" accept="image/*" required="" onchange="return validasiFile()">

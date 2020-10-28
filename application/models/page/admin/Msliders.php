@@ -17,6 +17,7 @@ class Msliders extends CI_Model
 	public function insert_sliders()
 	{
 		$keterangan_sliders = $this->input->post('keterangan_sliders');
+		$url_sliders = $this->input->post('url_sliders');
 
 		$get_gambar_sliders = $_FILES['gambar_sliders']['name'];
 		$gambar_sliders = str_replace(" ", "_", "$get_gambar_sliders");
@@ -28,7 +29,7 @@ class Msliders extends CI_Model
 		$this->upload->do_upload('gambar_sliders');
 		$this->upload->data();
 
-		$query = $this->db->query("INSERT INTO `tb_sliders` (`id_sliders`, `url_sliders`, `gambar_sliders`, `keterangan_sliders`) VALUES (NULL, NULL, '$gambar_sliders', '$keterangan_sliders');");
+		$query = $this->db->query("INSERT INTO `tb_sliders` (`id_sliders`, `url_sliders`, `gambar_sliders`, `keterangan_sliders`) VALUES (NULL, '$url_sliders', '$gambar_sliders', '$keterangan_sliders');");
 		return $query;
 	}
 
@@ -36,6 +37,7 @@ class Msliders extends CI_Model
 	{
 		$id_sliders = $this->input->post('id_sliders');
 		$keterangan_sliders = $this->input->post('keterangan_sliders');
+		$url_sliders = $this->input->post('url_sliders');
 		$get_gambar_sliders = $_FILES['gambar_sliders']['name'];
 
 		$config['upload_path'] = './sliders/';
@@ -49,9 +51,9 @@ class Msliders extends CI_Model
 			$get_gambar_sliders = $_FILES['gambar_sliders']['name'];
 			$gambar_sliders = str_replace(" ", "_", "$get_gambar_sliders");
 
-			$query = $this->db->query("UPDATE `tb_sliders` SET `gambar_sliders` = '$gambar_sliders', `keterangan_sliders` = '$keterangan_sliders' WHERE `tb_sliders`.`id_sliders` = '$id_sliders';");
+			$query = $this->db->query("UPDATE `tb_sliders` SET `gambar_sliders` = '$gambar_sliders', `url_sliders` = '$url_sliders',`keterangan_sliders` = '$keterangan_sliders' WHERE `tb_sliders`.`id_sliders` = '$id_sliders';");
 		} else {
-			$query = $this->db->query("UPDATE `tb_sliders` SET `keterangan_sliders` = '$keterangan_sliders' WHERE `tb_sliders`.`id_sliders` = '$id_sliders';");
+			$query = $this->db->query("UPDATE `tb_sliders` SET `url_sliders` = '$url_sliders', `keterangan_sliders` = '$keterangan_sliders' WHERE `tb_sliders`.`id_sliders` = '$id_sliders';");
 		};
 
 		return $query;

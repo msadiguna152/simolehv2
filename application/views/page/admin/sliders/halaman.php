@@ -67,6 +67,7 @@
                   <thead>
                   <tr>
                     <th>No</th>
+                    <th>URL Slider</th>
                     <th>Gambar</th>
                     <th>Keterangan</th>
                     <th>Pilihan</th>
@@ -77,6 +78,7 @@
                     <?php $no=1; foreach ($data_sliders->result() as $data): ?>
                     <tr>
                       <td><?php echo $no ?></td>
+                      <td style="width: 30%;"><?php echo $data->url_sliders; ?></td>
                       <td><img class="img img-thumbnail" style="height: 100px;" src="<?= base_url()?>sliders/<?= $data->gambar_sliders; ?>"></td>
                       <td><?php echo $data->keterangan_sliders; ?></td>
 

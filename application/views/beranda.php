@@ -58,8 +58,10 @@
 			<div class="promo-slider">
 				<?php foreach ($data_sliders->result() as $data): ?>
 					<div class="osahan-slider-item m-2">
-							<img src="<?= base_url() ?>sliders/<?php echo $data->gambar_sliders; ?>"
+						<a target="_BLANK" href="<?= $data->url_sliders; ?>">
+							<img src="<?= base_url() ?>sliders/<?= $data->gambar_sliders; ?>"
 										class="img-fluid mx-auto rounded" alt="<?= $data->keterangan_sliders; ?>">
+						</a>
 					</div>
 				<?php endforeach; ?>
 			</div>
