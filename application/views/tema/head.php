@@ -163,6 +163,7 @@
 	<link href="<?php echo base_url() ?>assets2/css/style.css" rel="stylesheet">
 	<!-- Sidebar CSS -->
 	<link href="<?php echo base_url() ?>assets2/vendor/sidebar/demo.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>assets2/vendor/hint/hint.min.css" rel="stylesheet">
 </head>
 <body class="fixed-bottom-padding">
 <div class="theme-switch-wrapper"

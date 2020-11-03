@@ -1,4 +1,5 @@
 <script>
+
 	$(document).ready(function () {
 		if (window.location.href.indexOf('#alamatModal') !== -1) {
 			var modalAlamat = $('#alamatModal');

@@ -78,20 +78,20 @@
 						<div class="col-md-12 form-group">
 							<label class="form-label">Pin Peta</label>
 							<div class="input-group">
-								<input placeholder="Pin Peta" type="text" name="location" class="form-control">
+								<input placeholder="Pin Peta" readonly type="text" name="location" class="form-control">
 								<input type="hidden" name="lat">
 								<input type="hidden" name="long">
 								<input type="hidden" name="id_pembeli"
 									   value="<?= $this->session->userdata('id_pembeli') ?? '-1' ?>">
 								<div class="input-group-append">
-									<a data-toggle="tooltip" data-placement="left" title="Klik untuk mengambil titik peta" href="<?= site_url('keranjang/alamatpeta') ?>" id="button-addon2" type="button"
-									   class="btn btn-outline-secondary"><i
+									<a title="Klik untuk mengambil titik peta" href="<?= site_url('keranjang/alamatpeta') ?>" id="btn-pin"
+									   class="btn btn-outline-secondary hint--left  hint--always" aria-label="Klik untuk mengambil titik peta"><i id="icon-pin"
 												class="icofont-pin"></i></a>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-12 form-group"><label class="form-label">Alamat Lengkap</label>
-							<textarea rows="5"
+							<textarea rows="5" readonly
 									  placeholder="Alamat Lengkap contoh. Nomor Rumah, Nama jalan, RT/RW" type="text"
 									  class="form-control" name="alamat_lengkap"></textarea></div>
 						<div class="col-md-12 form-group"><label class="form-label">Keterangan Alamat</label>
