@@ -30,7 +30,7 @@
 			<input type="text"
 				   class="form-control" name="namalengkap" id="namalengkap" aria-describedby="helpId"
 				   placeholder="Contoh. Hendra Kumbara"
-				   value="<?php echo $this->session->userdata('namalengkap') ?? '' ?>">
+				   value="<?php echo $this->session->userdata('nama_pengguna') ?? '' ?>">
 		</div>
 	</div>
 	<div class="px-3">
@@ -40,7 +40,7 @@
 		<div class="form-group">
 			<input type="text"
 				   class="form-control" name="nohp" data-mask="0000-0000-0000" id="nohp" aria-describedby="helpId"
-				   placeholder="0000-0000-0000" value="<?php echo $this->session->userdata('nohp') ?? '' ?>">
+				   placeholder="0000-0000-0000" value="<?php echo $this->session->userdata('no_telpon') ?? '' ?>">
 			<small id="saveProgress" class="form-text text-muted"></small>
 		</div>
 	</div>

@@ -33,6 +33,9 @@ class Pesanan extends CI_Controller
 			return response(['status' => 'success', 'message' => 'Buyer is Member'], 'json');
 		}
 		if ($this->session->userdata('id_pembeli')) {
+			$result = $this->mpembeli->get_detail_pembeli($this->session->userdata('id_pembeli'));
+			$this->session->set_userdata('nama_pengguna', $result->row()->nama_pembeli);
+			$this->session->set_userdata('no_telpon', $result->row()->no_telpon);
 			return response(['status' => 'success', 'message' => 'Buyer already registered'], 'json');
 		}
 		if ($this->mpembeli->insert_pembeli()) {
