@@ -130,5 +130,14 @@ class Mpesanan extends CI_Model
 	{
 		return $this->db->set(['status_pembayaran' => $status])->where('kode_pembayaran', $id)->update('tb_pembayaran');
 	}
+
+	function get_last_pesanan()
+	{
+		return $this->db->select('*')->order_by('timestamp_pesanan', 'DESC')->get('tb_pesanan')->row();
+	}
+	function total_pesanan($status){
+		$jnotif = $this->db->query("SELECT id_pesanan AS notif FROM `tb_pesanan` WHERE status='$status'");
+		return $jnotif->num_rows();
+	}
 }
 
