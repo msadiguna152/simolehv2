@@ -286,9 +286,26 @@ class Pesanan extends CI_Controller
 		} else {
 			//jika transaksi sukses, commit dan set id pembayaran;
 			$this->db->trans_commit();
+			$total_pesanan_baru = $this->mpesanan->total_pesanan(1);
+			$this->sendNotifikasiPesanan(['count' => $total_pesanan_baru, 'pesanan' => $inserted_id, 'token' => md5($inserted_id), 'tanggal' => $dataFormPesanan['tanggal_pesanan']]);
 			$this->session->set_userdata('id_pembayaran', $status_insert_pembayaran);
 			return true;
 		}
+	}
+
+	private function sendNotifikasiPesanan($data)
+	{
+		$options = array(
+			'cluster' => 'ap1',
+			'useTLS' => true
+		);
+		$pusher = new Pusher\Pusher(
+			'c5685f1ba6d49d72acdd',
+			'0a2a27c351b5eff6b502',
+			'1101276',
+			$options
+		);
+		$pusher->trigger('channel-pesanan', 'pesanan-masuk', $data);
 	}
 
 	public function success()
