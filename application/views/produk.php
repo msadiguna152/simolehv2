@@ -24,17 +24,20 @@
 							<div class="p-3">
 								<img src="<?= base_url() ?>file/<?= $data->gambar; ?>"
 									 class="img-fluid item-img w-100 mb-3">
-								<h6><?= htmlspecialchars($data->nama_produk); ?></h6>
-								<p style="height: 60px">
-								<?php
+								<p class="font-weight-bold text-lg mb-0"
+								   style="height: 30px"><?= strlen($data->nama_produk) <= 24 ? $data->nama_produk : substr($data->nama_produk, 0, 21) . '...'; ?></p>
+								<p class="text-muted <?php echo strlen($data->nama_produk) >= 24 ? 'mt-2' : '' ?>"
+								   style="height: 60px">
+									<?php
 									$jml = strlen($data->deskripsi);
-									echo $jml <= 51 ? $data->deskripsi : substr($data->deskripsi, 0, 51).'<a href="'. base_url("beranda/detail_produk/$data->slug_p").'"> more...</a>';
-								?>
+									echo $jml <= 51 ? $data->deskripsi : substr($data->deskripsi, 0, 51) . '<a href="' . base_url("beranda/detail_produk/$data->slug_p") . '"> more...</a>';
+									?>
 								</p>
 								<div class="" id="container-button">
-									<h6 class="price m-0 text-success">
-										<?= $data->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data->harga, 0, ',', '.'); ?>
-									</h6>
+									<div class="price h6 m-0 d-flex flex-column justify-content-between"
+										 style="height: 30px">
+										<?= $data->promosi == 1 ? 'Rp ' . number_format($data->harga_promosi, 0, ',', '.') . '<del class="text-success mr-1">Rp ' . number_format($data->harga, 0, ',', '.') . '</del>' : 'Rp' . number_format($data->harga, 0, ',', '.'); ?>
+									</div>
 									<button data-id="<?= $data->id_produk ?>"
 											id="btn-add-cart"
 											class="btn btn-success btn-block ml-auto mt-2">Tambah

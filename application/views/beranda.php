@@ -1,13 +1,13 @@
 <?php
-	$pengaturan = $query = $this->db->get('tb_pengaturan');
-	foreach ($pengaturan->result() as $data){
-		$nama_bisnis = $data->nama_bisnis;
-		$icon = $data->icon;
-		$alamat = $data->alamat_toko;
-		$kota = $data->kota;
-		$provinsi = $data->provinsi;
+$pengaturan = $query = $this->db->get('tb_pengaturan');
+foreach ($pengaturan->result() as $data) {
+	$nama_bisnis = $data->nama_bisnis;
+	$icon = $data->icon;
+	$alamat = $data->alamat_toko;
+	$kota = $data->kota;
+	$provinsi = $data->provinsi;
 
-	}
+}
 ?>
 
 <!-- home page -->
@@ -15,7 +15,7 @@
 	<div class="border-bottom p-3">
 		<div class="title d-flex align-items-center text-center">
 			<a href="" class="text-decoration-none text-dark d-flex align-items-center">
-				<img class="osahan-logo mr-2" src="<?= base_url()?>pengaturan/<?= $icon; ?>">
+				<img class="osahan-logo mr-2" src="<?= base_url() ?>pengaturan/<?= $icon; ?>">
 				<h4 class="font-weight-bold text-success m-0"><?= $nama_bisnis; ?></h4>
 			</a>
 		</div>
@@ -60,14 +60,14 @@
 					<div class="osahan-slider-item m-2">
 						<a target="_BLANK" href="<?= $data->url_sliders; ?>">
 							<img src="<?= base_url() ?>sliders/<?= $data->gambar_sliders; ?>"
-										class="img-fluid mx-auto rounded" alt="<?= $data->keterangan_sliders; ?>">
+								 class="img-fluid mx-auto rounded" alt="<?= $data->keterangan_sliders; ?>">
 						</a>
 					</div>
 				<?php endforeach; ?>
 			</div>
 		</div>
 
-				<!-- Grid 2 -->
+		<!-- Grid 2 -->
 		<div class="title d-flex align-items-center mb-3 mt-3 px-3">
 			<h6 class="m-0">PROMO HARI INI</h6>
 			<a class="ml-auto text-success" href="<?= base_url() ?>beranda/produk/promo-hari-ini">Lihat Semua</a>
@@ -80,7 +80,8 @@
 				<div class="row <?= $a < 2 ? '' : 'pt-3'; ?>">
 					<?php foreach ($data_chunk as $key => $data_p): ?>
 						<div class="col-6">
-							<div data-id="<?php echo $data_p->id_produk ?>" class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+							<div data-id="<?php echo $data_p->id_produk ?>"
+								 class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 									<div class="member-plan position-absolute">
 										<?= $data_p->promosi == 0 ? '' : '<span class="badge badge-success">Promo</span>'; ?>
@@ -92,20 +93,22 @@
 										   class="text-dark">
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
 												 class="img-fluid item-img w-100 mb-3">
-											<h6><?= $data_p->nama_produk; ?></h6>
+											<p class="font-weight-bold text-lg mb-0"
+											   style="height: 30px"><?= strlen($data_p->nama_produk) <= 24 ? $data_p->nama_produk : substr($data_p->nama_produk, 0, 21) . '...'; ?></p>
 										</a>
 
-										<p style="height: 60px">
-										<?php
+										<p class="text-muted <?php echo strlen($data_p->nama_produk) >= 24 ? 'mt-2' : '' ?>"
+										   style="height: 65px">
+											<?php
 											$jml = strlen($data_p->deskripsi);
-											echo $jml <= 51 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 51).'<a href="'. base_url("beranda/detail_produk/$data_p->slug_p").'"> more...</a>';
-										?>
+											echo $jml <= 51 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 44) . '<a href="' . base_url("beranda/detail_produk/$data_p->slug_p") . '"> more...</a>';
+											?>
 										</p>
 										<div class="" id="container-button">
-											<h6 class="price m-0">
-												<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
-
-											</h6>
+											<div class="price h6 mt-2 mb-3 d-flex flex-column justify-content-between"
+												 style="height: 30px">
+												<?= $data_p->promosi == 1 ? 'Rp ' . number_format($data_p->harga_promosi, 0, ',', '.') . '<del class="text-success mr-1">Rp ' . number_format($data_p->harga, 0, ',', '.') . '</del>' : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
+											</div>
 											<button data-id="<?= $data_p->id_produk ?>"
 													id="btn-add-cart"
 													class="btn btn-success btn-block ml-auto mt-2">Tambah
@@ -149,7 +152,8 @@
 				<div class="row <?= $a < 2 ? '' : 'pt-3'; ?>">
 					<?php foreach ($data_chunk as $key => $data_p): ?>
 						<div class="col-6">
-							<div data-id="<?php echo $data_p->id_produk ?>" class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+							<div data-id="<?php echo $data_p->id_produk ?>"
+								 class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 									<div class="member-plan position-absolute">
 										<?= ($data_p->promosi == 0) ? '' : '<span class="badge badge-success">Promo</span>'; ?>
@@ -159,22 +163,23 @@
 									<div class="p-3">
 										<a href="<?= base_url() ?>beranda/detail_produk/<?= $data_p->slug_p; ?>"
 										   class="text-dark">
-
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
 												 class="img-fluid item-img w-100 mb-3">
-											<h6><?= $data_p->nama_produk; ?></h6>
+											<p class="font-weight-bold text-lg mb-0"
+											   style="height: 30px"><?= strlen($data_p->nama_produk) <= 24 ? $data_p->nama_produk : substr($data_p->nama_produk, 0, 21) . '...'; ?></p>
 										</a>
-										<p class="" style="height: 60px">
-										<?php
+										<p class="text-muted <?php echo strlen($data_p->nama_produk) >= 24 ? 'mt-2' : '' ?>"
+										   style="height: 65px">
+											<?php
 											$jml = strlen($data_p->deskripsi);
-											echo $jml <= 51 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 51).'<a href="'. base_url("beranda/detail_produk/$data_p->slug_p").'"> more...</a>';
-										?>
+											echo $jml <= 51 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 44) . '<a href="' . base_url("beranda/detail_produk/$data_p->slug_p") . '"> more...</a>';
+											?>
 										</p>
-										<div class="" id="container-button">
-											<h6 class="price m-0">
-												<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
-
-											</h6>
+										<div class="mt-1" id="container-button">
+											<div class="price h6 mt-2 mb-3 d-flex flex-column justify-content-between"
+												 style="height: 30px">
+												<?= $data_p->promosi == 1 ? 'Rp ' . number_format($data_p->harga_promosi, 0, ',', '.') . '<del class="text-success mr-1">Rp ' . number_format($data_p->harga, 0, ',', '.') . '</del>' : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
+											</div>
 											<button data-id="<?= $data_p->id_produk ?>"
 													id="btn-add-cart"
 													class="btn btn-success btn-block ml-auto mt-2">Tambah
@@ -221,7 +226,8 @@
 						$nama_produk = strtolower(str_replace(" ", "-", "$data_p->nama_produk"));
 						?>
 						<div class="col-6">
-							<div data-id="<?php echo $data_p->id_produk ?>" class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+							<div data-id="<?php echo $data_p->id_produk ?>"
+								 class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
 								<div class="list-card-image">
 
 									<div class="member-plan position-absolute">
@@ -234,18 +240,21 @@
 										   class="text-dark">
 											<img src="<?= base_url() ?>file/<?= $data_p->gambar; ?>"
 												 class="img-fluid item-img w-100 mb-3">
-											<h6><?= $data_p->nama_produk; ?></h6>
+											<p class="font-weight-bold text-lg mb-0"
+											   style="height: 30px"><?= strlen($data_p->nama_produk ) <= 24 ? $data_p->nama_produk : substr($data_p->nama_produk , 0, 21) . '...'; ?></p>
 										</a>
-										<p style="height: 60px">
-										<?php
+										<p class="text-muted <?php echo strlen($data_p->nama_produk ) > 24 ? 'mt-2' : '' ?>"
+										   style="height: 65px">
+											<?php
 											$jml = strlen($data_p->deskripsi);
-											echo $jml <= 51 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 51).'<a href="'. base_url("beranda/detail_produk/$data_p->slug_p").'"> more...</a>';
-										?>
+											echo $jml <= 51 ? $data_p->deskripsi : substr($data_p->deskripsi, 0, 44) . '<a href="' . base_url("beranda/detail_produk/$data_p->slug_p") . '"> more...</a>';
+											?>
 										</p>
 										<div class="" id="container-button">
-											<h6 class="price m-0">
-												<?= $data_p->promosi == 1 ? '<del class="text-success mr-1">Rp' . number_format($data_p->harga, 0, ',', '.') . '</del>' . ' Rp' . number_format($data_p->harga_promosi, 0, ',', '.') : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
-											</h6>
+											<div class="price h6 mt-2 mb-3 d-flex flex-column justify-content-between"
+												 style="height: 30px">
+												<?= $data_p->promosi == 1 ? 'Rp ' . number_format($data_p->harga_promosi, 0, ',', '.') . '<del class="text-success mr-1">Rp ' . number_format($data_p->harga, 0, ',', '.') . '</del>' : 'Rp' . number_format($data_p->harga, 0, ',', '.'); ?>
+											</div>
 											<button data-id="<?= $data_p->id_produk ?>"
 													id="btn-add-cart"
 													class="btn btn-success btn-block ml-auto mt-2">Tambah
@@ -283,17 +292,18 @@
 		</div>
 		<?php $chunks = array_chunk($data_medsos->result(), 3); ?>
 		<?php foreach ($chunks as $data_chunk): ?>
-		<div class="title align-items-center pl-4 pr-4 pt-2 pb-2">
-			<center>
-			<?php foreach ($data_chunk as $key => $data): ?>
-				<a class="text-dark ml-3" target="_BLANK" href="<?= $data->url; ?>">
-					<img style="width: 15px; height: 15px;" src="<?= base_url() ?>pengaturan/<?= $data->icon; ?>"
-										class="img-fluid mx-auto" alt="<?= $data->medsos; ?>">
-					<?= $data->medsos; ?>
-				</a>
-			<?php endforeach; ?>
-			</center>
-		</div>
+			<div class="title align-items-center pl-4 pr-4 pt-2 pb-2">
+				<center>
+					<?php foreach ($data_chunk as $key => $data): ?>
+						<a class="text-dark ml-3" target="_BLANK" href="<?= $data->url; ?>">
+							<img style="width: 15px; height: 15px;"
+								 src="<?= base_url() ?>pengaturan/<?= $data->icon; ?>"
+								 class="img-fluid mx-auto" alt="<?= $data->medsos; ?>">
+							<?= $data->medsos; ?>
+						</a>
+					<?php endforeach; ?>
+				</center>
+			</div>
 		<?php endforeach; ?>
 	</div>
 </div>
