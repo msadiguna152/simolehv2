@@ -75,7 +75,9 @@
 		$(this).click();
 	});
 	$(document).ready(function () {
-		$('#input-pencarian').trigger('click');
+		setTimeout(function () {
+			$('#input-pencarian').trigger('click');
+		}, 1000)
 		$('#input-pencarian').on('input', function () {
 			var query = $(this).val();
 			var newurl = encodeURI('<?php echo site_url("pencarian?query=") ?>' + query);
