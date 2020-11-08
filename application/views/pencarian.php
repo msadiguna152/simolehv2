@@ -38,7 +38,6 @@
 					<button class="border-0 btn btn-outline-secondary text-success bg-white"><i
 								class="icofont-search"></i></button>
 				</div>
-				<label for="input-pencarian" id="mobile-search"></label>
 				<input id="input-pencarian" type="text" autofocus="on" class="shadow-none border-0 form-control pl-0"
 					   placeholder="Pencarian . . ." value="<?php echo $_GET['query'] ?? '' ?>"
 					   aria-describedby="basic-addon1">
@@ -71,10 +70,12 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url() ?>assets2/js/osahan.js"></script>
 <script>
-	$('#mobile-search').on('click', function () {
-		// do your stuff, in my case some class changes
+	$('#input-pencarian').click(function (e) {
+		$(this).focus();
 	});
+	console.log('test')
 	$(document).ready(function () {
+		$('#input-pencarian').trigger('click');
 		$('#input-pencarian').on('input', function () {
 			var query = $(this).val();
 			var newurl = encodeURI('<?php echo site_url("pencarian?query=") ?>' + query);
