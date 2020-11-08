@@ -22,7 +22,7 @@
           <div class="col-sm-6">
             <h5 class="m-0 text-dark">
               <?php 
-              $menu = $this->session->userdata('menu')." / ".$this->session->userdata('aksi')." data";
+              $menu = "Media Sosial / ".$this->session->userdata('aksi')." data";
               echo strtoupper($menu);
               ?>
             </h5>
@@ -76,7 +76,7 @@
                         <div class="form-group">
                           <label for="icon">Icon Media Sosial</label>
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile" name="icon" accept=".svg" required="" onchange="return validasiFile()">
+                            <input type="file" class="custom-file-input" id="customFile" name="icon" accept=".svg" onchange="return validasiFile()">
                             <label class="custom-file-label" for="customFile">Pilih Icon Medsos (Maksimal 1 MB, Format SVG)</label>
                           </div>
                           <div id="pratinjauGambar"><img src="<?php echo base_url()?>pengaturan/<?= $icon ?>" class="img-thumbnail" style="height: 100px;"></div>

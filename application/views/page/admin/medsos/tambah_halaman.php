@@ -6,7 +6,7 @@
           <div class="col-sm-6">
             <h5 class="m-0 text-dark">
               <?php 
-              $menu = $this->session->userdata('menu')." / ".$this->session->userdata('aksi')." data";
+              $menu = "Media Sosial / ".$this->session->userdata('aksi')." data";
               echo strtoupper($menu);
               ?>
             </h5>

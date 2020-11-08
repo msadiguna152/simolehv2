@@ -242,7 +242,7 @@ foreach ($pengaturan->result() as $data) {
 						   } ?>">
 							<i class="nav-icon fas fa-bookmark"></i>
 							<p>
-								Medsos
+								Media Sosial
 							</p>
 						</a>
 					</li>

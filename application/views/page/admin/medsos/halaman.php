@@ -6,7 +6,7 @@
           <div class="col-sm-6">
             <h5 class="m-0 text-dark">
               <?php 
-              $menu = $this->session->userdata('menu');
+              $menu = "Media Sosial";
               echo strtoupper($menu);
               ?>
             </h5>
@@ -67,9 +67,9 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Medsos</th>
-                    <th>URL Medsos</th>
-                    <th>Icon Medsos</th>
+                    <th>Media Sosial</th>
+                    <th>URL Media Sosial</th>
+                    <th>Icon Media Sosial</th>
                     <th>Pilihan</th>
                   </tr>
                   </thead>
