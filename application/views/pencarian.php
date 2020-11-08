@@ -41,6 +41,13 @@
 				<input id="input-pencarian" type="text" autofocus="on" class="shadow-none border-0 form-control pl-0"
 					   placeholder="Pencarian . . ." value="<?php echo $_GET['query'] ?? '' ?>"
 					   aria-describedby="basic-addon1">
+				<input>
+				<span id="click"></span>
+				<span id="click-timeout"></span>
+				<span id="mousedown"></span>
+				<span id="mousedown-timeout"></span>
+				<span id="mouseup"></span>
+				<span id="mouseup-timeout"></span>
 			</div>
 		</div>
 	</div>
@@ -70,6 +77,25 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url() ?>assets2/js/osahan.js"></script>
 <script>
+	function focus() {
+		$('input#input-pencarian').focus();
+	}
+	$(focus);
+	$(function () {
+		$(document.body).load(focus);
+		$('#click').click(focus);
+		$('#click-timeout').click(function() {
+			setTimeout(focus);
+		});
+		$('#mousedown').mousedown(focus);
+		$('#mousedown-timeout').mousedown(function() {
+			setTimeout(focus);
+		});
+		$('#mouseup').mouseup(focus);
+		$('#mouseup-timeout').mouseup(function() {
+			setTimeout(focus);
+		});
+	});
 	$(document).ready(function () {
 		$('#input-pencarian').on('input', function () {
 			var query = $(this).val();
