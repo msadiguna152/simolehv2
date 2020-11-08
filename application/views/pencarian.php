@@ -38,7 +38,7 @@
 					<button class="border-0 btn btn-outline-secondary text-success bg-white"><i
 								class="icofont-search"></i></button>
 				</div>
-				<input id="input-pencarian" type="text" autofocus="on" class="shadow-none border-0 form-control pl-0"
+				<input id="input-pencarian" type="text" autofocus class="shadow-none border-0 form-control pl-0"
 					   placeholder="Pencarian . . ." value="<?php echo $_GET['query'] ?? '' ?>"
 					   aria-describedby="basic-addon1">
 			</div>
@@ -70,14 +70,7 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url() ?>assets2/js/osahan.js"></script>
 <script>
-	$('#input-pencarian').click(function (e) {
-		$(this).focus();
-		$(this).click();
-	});
 	$(document).ready(function () {
-		setTimeout(function () {
-			$('#input-pencarian').trigger('click');
-		}, 1000)
 		$('#input-pencarian').on('input', function () {
 			var query = $(this).val();
 			var newurl = encodeURI('<?php echo site_url("pencarian?query=") ?>' + query);
