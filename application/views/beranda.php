@@ -97,7 +97,7 @@ foreach ($pengaturan->result() as $data) {
 											   style="height: 30px"><?= strlen($data_p->nama_produk) <= 24 ? $data_p->nama_produk : substr($data_p->nama_produk, 0, 21) . '...'; ?></p>
 										</a>
 
-										<p class="text-muted <?php echo strlen($data_p->nama_produk) >= 24 ? 'mt-2' : '' ?>"
+										<p class="text-muted mt-2"
 										   style="height: 65px">
 											<?php
 											$jml = strlen($data_p->deskripsi);
@@ -168,7 +168,7 @@ foreach ($pengaturan->result() as $data) {
 											<p class="font-weight-bold text-lg mb-0"
 											   style="height: 30px"><?= strlen($data_p->nama_produk) <= 24 ? $data_p->nama_produk : substr($data_p->nama_produk, 0, 21) . '...'; ?></p>
 										</a>
-										<p class="text-muted <?php echo strlen($data_p->nama_produk) >= 24 ? 'mt-2' : '' ?>"
+										<p class="text-muted mt-2"
 										   style="height: 65px">
 											<?php
 											$jml = strlen($data_p->deskripsi);
@@ -243,7 +243,7 @@ foreach ($pengaturan->result() as $data) {
 											<p class="font-weight-bold text-lg mb-0"
 											   style="height: 30px"><?= strlen($data_p->nama_produk ) <= 24 ? $data_p->nama_produk : substr($data_p->nama_produk , 0, 21) . '...'; ?></p>
 										</a>
-										<p class="text-muted <?php echo strlen($data_p->nama_produk ) > 24 ? 'mt-2' : '' ?>"
+										<p class="text-muted mt-2"
 										   style="height: 65px">
 											<?php
 											$jml = strlen($data_p->deskripsi);
