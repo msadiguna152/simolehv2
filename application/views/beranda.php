@@ -6,7 +6,6 @@ foreach ($pengaturan->result() as $data) {
 	$alamat = $data->alamat_toko;
 	$kota = $data->kota;
 	$provinsi = $data->provinsi;
-
 }
 ?>
 
@@ -288,7 +287,7 @@ foreach ($pengaturan->result() as $data) {
 
 		<!-- Most sales -->
 		<div class="title align-items-center pl-4 pr-4 pt-4 pb-2">
-			<center><?= $alamat; ?> Kabupaten <?= $kota; ?> Provensi <?= $provinsi; ?></center>
+			<center><?= $alamat; ?>, <?= $kota; ?>, <?= $provinsi; ?></center>
 		</div>
 		<?php $chunks = array_chunk($data_medsos->result(), 3); ?>
 		<?php foreach ($chunks as $data_chunk): ?>
