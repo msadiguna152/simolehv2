@@ -126,12 +126,13 @@ endforeach;
 											<label for="harga_ongkir_perkm">Harga Ongkir Perkm</label>
 											<input type="number" min="-1" maxlength="12" class="form-control" id=""
 												   name="harga_ongkir_perkm" value="<?= $harga_ongkir_perkm; ?>">
-										</div>
-										<div class="form-group">
-											<label for="xendit_api">Xendit Api</label>
-											<input type="text" class="form-control" id=""
+											<input type="text" hidden=""
 												   name="xendit_api" value="<?= $xendit_api ?? ''; ?>">
 										</div>
+										<!-- <div class="form-group">
+											<label for="xendit_api">Xendit Api</label>
+											
+										</div> -->
 										<div class="form-group">
 											<label for="google_api_key">Google Api Key</label>
 											<input type="text" class="form-control" id=""
