@@ -58,7 +58,7 @@
                <div class="p-3">
                  
                   <p class="font-weight-bold mb-2">Deskripsi Produk</p>
-                  <p class="text-muted small">
+                  <p class="text-muted small text-justify">
                      <?= htmlspecialchars($data_p->deskripsi); ?>
                   </p>
                </div>

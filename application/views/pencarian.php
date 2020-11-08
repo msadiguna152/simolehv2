@@ -38,7 +38,7 @@
 					<button class="border-0 btn btn-outline-secondary text-success bg-white"><i
 								class="icofont-search"></i></button>
 				</div>
-				<input id="input-pencarian" type="text" class="shadow-none border-0 form-control pl-0"
+				<input id="input-pencarian" type="text" autofocus="on" class="shadow-none border-0 form-control pl-0"
 					   placeholder="Pencarian . . ." value="<?php echo $_GET['query'] ?? '' ?>"
 					   aria-describedby="basic-addon1">
 			</div>
