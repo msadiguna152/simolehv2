@@ -72,8 +72,8 @@
 <script>
 	$('#input-pencarian').click(function (e) {
 		$(this).focus();
+		$(this).click();
 	});
-	console.log('test')
 	$(document).ready(function () {
 		$('#input-pencarian').trigger('click');
 		$('#input-pencarian').on('input', function () {
