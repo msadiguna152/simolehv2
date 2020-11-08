@@ -86,7 +86,7 @@ class Mproduk extends CI_Model
 		} else {
 			$promosi = 0;
 			$harga_promosi = 0;
-		}
+		};
 		if ($this->input->post('terlaris') == 1) {
 			$terlaris = 1;
 		} else {
@@ -106,9 +106,9 @@ class Mproduk extends CI_Model
 			$get_gambar = $_FILES['gambar']['name'];
 			$gambar2 = str_replace(" ", "_", "$get_gambar");
 
-			$query = $this->db->query("UPDATE `tb_produk` SET `id_kategori` = '$id_kategori', `nama_produk` = '$nama_produk', `harga` = '$harga', `harga_promosi` = '$harga', `deskripsi` = '$deskripsi', `gambar` = '$gambar2', `promosi` = '$promosi', `terlaris` = '$terlaris', `slug_p` = '$slug' WHERE `tb_produk`.`id_produk` = '$id_produk';");
+			$query = $this->db->query("UPDATE `tb_produk` SET `id_kategori` = '$id_kategori', `nama_produk` = '$nama_produk', `harga` = '$harga', `harga_promosi` = '$harga_promosi', `deskripsi` = '$deskripsi', `gambar` = '$gambar2', `promosi` = '$promosi', `terlaris` = '$terlaris', `slug_p` = '$slug' WHERE `tb_produk`.`id_produk` = '$id_produk';");
 		} else {
-			$query = $this->db->query("UPDATE `tb_produk` SET `id_kategori` = '$id_kategori', `nama_produk` = '$nama_produk', `harga` = '$harga', `harga_promosi` = '$harga', `deskripsi` = '$deskripsi', `promosi` = '$promosi', `terlaris` = '$terlaris', `slug_p` = '$slug' WHERE `tb_produk`.`id_produk` = '$id_produk';");
+			$query = $this->db->query("UPDATE `tb_produk` SET `id_kategori` = '$id_kategori', `nama_produk` = '$nama_produk', `harga` = '$harga', `harga_promosi` = '$harga_promosi', `deskripsi` = '$deskripsi', `promosi` = '$promosi', `terlaris` = '$terlaris', `slug_p` = '$slug' WHERE `tb_produk`.`id_produk` = '$id_produk';");
 		};
 
 		return $query;
