@@ -40,10 +40,11 @@ class Pengaturan extends CI_Controller {
 	}
 
 	public function pinmap(){
+		$data['data_pengaturan'] = $this->mpengaturan->get_pengaturan()->row();
 		$this->session->set_userdata('menu', 'pengaturan');
 		$this->load->view('page/admin/tema/head');
 		$this->load->view('page/admin/tema/menu');
-		$this->load->view('page/admin/pengaturan/pinmap');
+		$this->load->view('page/admin/pengaturan/pinmap',$data);
 		$this->load->view('page/admin/tema/footer');
 	}
 	

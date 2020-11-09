@@ -142,7 +142,7 @@ endforeach;
 										<div class="form-group">
 											<label for="latitude">Latitude</label>
 											<input type="text" class="form-control" id="" name="latitude"
-												   value="<?= $latitude ?? ''; ?>">
+												   value="<?= isset($latitude) ? str_replace('-', '', $latitude) : ''; ?>">
 
 										</div>
 
@@ -209,7 +209,7 @@ endforeach;
 		var lat = localStorage.getItem('lat');
 		var lng = localStorage.getItem('lng');
 		if (lat !== null) {
-			$('input[name="latitude"]').val(lat);
+			$('input[name="latitude"]').val(lat.replace('-', ''));
 		}
 		if (lng !== null) {
 			$('input[name="longitude"]').val(lng);

@@ -115,8 +115,10 @@ class Keranjang extends CI_Controller
 
 	public function alamatpeta()
 	{
+		$data['data_pengaturan'] = $this->mpengaturan->get_pengaturan()->row();
+
 		$this->load->view('tema/head');
-		$this->load->view('alamat_peta');
+		$this->load->view('alamat_peta',$data);
 		$this->load->view('tema/menu');
 		$this->load->view('tema/footer');
 	}

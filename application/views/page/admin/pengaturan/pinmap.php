@@ -78,8 +78,7 @@
 </section>
 <!-- /.content -->
 </div>
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyBakEvFkjYe1zd73WhPmyA_rxkkVigCZXU&libraries=places&amp;"></script>
-
+<script src="https://maps.google.com/maps/api/js?key=<?php echo $data_pengaturan->google_api_key ?? '' ?>&libraries=places&amp;"></script>
 <script type="text/javascript">
 	var lat = 0;
 	var long = 0;
