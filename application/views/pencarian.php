@@ -1,3 +1,9 @@
+<?php
+$pengaturan = $query = $this->db->get('tb_pengaturan');
+foreach ($pengaturan->result() as $data) {
+	$nama_bisnis = $data->nama_bisnis;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +12,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" type="image/png" href="img/logo.svg">
-	<title>Grofar - Online Grocery Supermarket HTML Mobile Template</title>
+	<title><?php echo $nama_bisnis ?? '' ?></title>
 	<!-- Slick Slider -->
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets2/vendor/slick/slick.min.css"/>
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets2/vendor/slick/slick-theme.min.css"/>
