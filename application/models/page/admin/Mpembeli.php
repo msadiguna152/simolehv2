@@ -10,6 +10,10 @@ class Mpembeli extends CI_Model
 		return $query;
 	}
 
+	public function get_pembeli_by_pengguna($id_pengguna){
+		$query = $this->db->query("SELECT * FROM `tb_pembeli` WHERE `tb_pembeli`.`id_pengguna` = '$id_pengguna'");
+		return $query;
+	}
 	public function get_edit_pembeli($id_pembeli)
 	{
 		$query = $this->db->query("SELECT * FROM `tb_pembeli` WHERE `tb_pembeli`.`id_pembeli` = '$id_pembeli'");

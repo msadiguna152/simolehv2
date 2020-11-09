@@ -1,20 +1,23 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Akun extends CI_Controller {
-	function __construct(){
+class Akun extends CI_Controller
+{
+	function __construct()
+	{
 		parent::__construct();
-		$this->load->model('makun');		
+		$this->load->model('makun');
 		$this->load->model('mberanda');
+		$this->load->model('page/admin/mpembeli','mpembeli');
 		$this->session->set_userdata('menu', 'akun');
 	}
-	
+
 	public function index()
 	{
 		$this->load->view('tema/head');
-		if($this->session->userdata('id_pengguna') == NULL){
+		if ($this->session->userdata('id_pengguna') == NULL) {
 			$this->load->view('login');
-		}else{
+		} else {
 			$this->load->view('berhasil_login');
 		}
 		$this->load->view('tema/menu');
@@ -24,9 +27,9 @@ class Akun extends CI_Controller {
 	public function edit()
 	{
 		$this->load->view('tema/head');
-		if($this->session->userdata('id_pengguna') == NULL){
+		if ($this->session->userdata('id_pengguna') == NULL) {
 			$this->load->view('login');
-		}else{
+		} else {
 			$this->load->view('edit_profil');
 		}
 		$this->load->view('tema/menu');
@@ -44,39 +47,39 @@ class Akun extends CI_Controller {
 	public function insert()
 	{
 		$query = $this->makun->regis();
-		if ($query==true) {
+		if ($query == true) {
 			echo '<script language="javascript">alert("Pendaftaran Berhasil :) Silahkan Login!");';
-			echo 'document.location="'.site_url('akun').'";</script>';
-		} elseif ($query==false) {
+			echo 'document.location="' . site_url('akun') . '";</script>';
+		} elseif ($query == false) {
 			echo '<script language="javascript">alert("Gagal Mendaftar Akun!");';
-			echo 'document.location="'.site_url('akun/registrasi').'";</script>';
+			echo 'document.location="' . site_url('akun/registrasi') . '";</script>';
 		}
 	}
 
 	public function update()
 	{
 		$query = $this->makun->update_regis();
-		if ($query==true) {
+		if ($query == true) {
 			echo '<script language="javascript">alert("Silahakan Logout, Lalu Login Kembali!");';
-			echo 'document.location="'.site_url('akun').'";</script>';
-		} elseif ($query==false) {
+			echo 'document.location="' . site_url('akun') . '";</script>';
+		} elseif ($query == false) {
 			echo '<script language="javascript">alert("Silahakan Logout, Lalu Login Kembali!");';
-			echo 'document.location="'.site_url('akun').'";</script>';
+			echo 'document.location="' . site_url('akun') . '";</script>';
 		}
 	}
 
-		//memeriksa hasil inputan di halaman login
-	public function proses_login(){
+	//memeriksa hasil inputan di halaman login
+	public function proses_login()
+	{
 
 		$username = htmlspecialchars($this->input->post('username'));
 		$password = htmlspecialchars(md5($this->input->post('password')));
 
 		$cek = $this->makun->cek($username, $password);
 
-		if($cek->num_rows() == 1)
-		{
+		if ($cek->num_rows() == 1) {
 			$get_pengguna = $this->makun->cek($username, $password);
-			foreach($get_pengguna->result() as $data){
+			foreach ($get_pengguna->result() as $data) {
 				$sess_data['username'] = $data->username;
 				$sess_data['level'] = $data->level;
 				$sess_data['nama_pengguna'] = $data->nama_pengguna;
@@ -87,25 +90,25 @@ class Akun extends CI_Controller {
 				$this->session->set_userdata($sess_data);
 			}
 
-			if($this->session->userdata('level') == 'Pembeli')
-			{
+			if ($this->session->userdata('level') == 'Pembeli') {
+				$pembeli = $this->mpembeli->get_pembeli_by_pengguna($this->session->userdata('id_pengguna'))->row();
+				$this->session->set_userdata('id_pembeli', $pembeli->id_pembeli);
 				$this->session->set_flashdata('hasil', 'berhasillogin');
-				echo '<script language="javascript">document.location="'.site_url('akun').'";</script>';
-			}
-			else {
+				echo '<script language="javascript">document.location="' . site_url('akun') . '";</script>';
+			} else {
 				echo '<script language="javascript">alert("Username dan Password Tidak Valid!");';
-				echo 'document.location="'.site_url('akun').'";</script>';
+				echo 'document.location="' . site_url('akun') . '";</script>';
 			}
-		}
-		else {
+		} else {
 			echo '<script language="javascript">alert("Username dan Password Tidak Valid!");';
-			echo 'document.location="'.site_url('akun').'";</script>';
+			echo 'document.location="' . site_url('akun') . '";</script>';
 		}
 	}
 
-	public function logout(){
+	public function logout()
+	{
 		$this->session->sess_destroy();
 		echo '<script language="javascript">alert("Anda Berhasil Logout!");';
-		echo 'document.location="'.site_url('beranda').'";</script>';
+		echo 'document.location="' . site_url('beranda') . '";</script>';
 	}
 }
