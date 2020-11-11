@@ -28,7 +28,7 @@
 								<p class="font-weight-bold text-lg mb-0"
 								   style="height: 30px"><?= strlen($data->nama_produk) <= 24 ? $data->nama_produk : substr($data->nama_produk, 0, 21) . '...'; ?></p>
 							</a>
-							<p class="text-muted <?php echo strlen($data->nama_produk) >= 24 ? 'mt-2' : '' ?>"
+							<p class="text-muted mt-2"
 							   style="height: 60px">
 								<?php
 								$jml = strlen($data->deskripsi);
