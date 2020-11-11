@@ -37,7 +37,9 @@ class Mproduk extends CI_Model
 		$karakter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';
 		$shuffle  = substr(str_shuffle($karakter), 0, 5);
 
-		$slug = str_replace(" ", "-",strtolower($nama_produk)).'-'.$shuffle;
+		$get_nama = preg_replace("/[^A-Za-z0-9\ ]/", "", $nama_produk);
+
+		$slug = str_replace(" ", "-",strtolower($get_nama)).'-'.$shuffle;
 
 		if ($this->input->post('promosi') == 1) {
 			$promosi = 1;
@@ -70,7 +72,7 @@ class Mproduk extends CI_Model
 	{
 		$id_produk = $this->input->post('id_produk');
 		$id_kategori = $this->input->post('id_kategori');
-		$nama_produk = $this->input->post('nama_produk');
+		$nama_produk = ucwords($this->input->post('nama_produk'));
 		$harga = $this->input->post('harga');
 		$deskripsi = $this->input->post('deskripsi');
 		$gambar = $_FILES['gambar']['name'];
@@ -78,7 +80,9 @@ class Mproduk extends CI_Model
 		$karakter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';
 		$shuffle  = substr(str_shuffle($karakter), 0, 5);
 
-		$slug = str_replace(" ", "-",strtolower($nama_produk)).'-'.$shuffle;
+		$get_nama = preg_replace("/[^A-Za-z0-9\ ]/", "", $nama_produk);
+
+		$slug = str_replace(" ", "-",strtolower($get_nama)).'-'.$shuffle;
 
 		if ($this->input->post('promosi') == 1) {
 			$promosi = 1;
