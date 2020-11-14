@@ -103,7 +103,7 @@
 									type="button" data-toggle="collapse" data-target="#collapseThree"
 									aria-expanded="false"
 									aria-controls="collapseThree">
-								<i class="icofont-dollar mr-3"></i> Cash on Delivery (COD)
+								<i class="icofont-dollar mr-3"></i> Bayar di Tempat (COD)
 								<i class="icofont-rounded-down ml-auto"></i>
 							</button>
 						</h2>
