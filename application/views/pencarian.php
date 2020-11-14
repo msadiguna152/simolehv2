@@ -9,9 +9,9 @@ foreach ($pengaturan->result() as $data) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
+	<meta name="description" content="<?= $nama_bisnis; ?>">
 	<meta name="author" content="">
-	<link rel="icon" type="image/png" href="img/logo.svg">
+	<!--	<link rel="icon" type="image/png" href="img/logo.svg">-->
 	<title><?php echo $nama_bisnis ?? '' ?></title>
 	<!-- Slick Slider -->
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets2/vendor/slick/slick.min.css"/>
