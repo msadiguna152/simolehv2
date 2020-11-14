@@ -9,7 +9,8 @@
 	</div>
 	<!-- status complete -->
 	<div class="p-3 status-order border-bottom bg-white">
-		<p class="small m-0"><i class="icofont-ui-calendar"></i> <?php echo $transaksi[0]->tanggal_pesanan ?? 'NULL' ?>
+		<p class="small m-0"><i
+					class="icofont-ui-calendar"></i> <?php echo tanggal_indo($transaksi[0]->tanggal_pesanan) ?? 'NULL' ?>
 		</p>
 	</div>
 	<div class="p-3 bg-white">

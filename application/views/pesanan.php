@@ -3,10 +3,11 @@
 		<h5 class="font-weight-bold p-3 d-flex align-items-center">Pesanan</h5>
 	</div>
 	<div class="order-body px-3 pt-3">
-		<?php if(count($pesanan ?? []) == 0): ?>
-		<div class="d-flex align-items-center justify-content-center vh-100">
-			<h6 class="text-center p-2">Tidak ada pesanan yang anda buat. Silahkan melakukan pemesanan pada halaman beranda</h6>
-		</div>
+		<?php if (count($pesanan ?? []) == 0): ?>
+			<div class="d-flex align-items-center justify-content-center vh-100">
+				<h6 class="text-center p-2">Tidak ada pesanan yang anda buat. Silahkan melakukan pemesanan pada halaman
+					beranda</h6>
+			</div>
 		<?php endif; ?>
 		<?php foreach ($pesanan ?? [] as $item): ?>
 			<div class="pb-3">
@@ -17,7 +18,8 @@
 							<p class="bg-success text-white py-1 px-2 mb-0 rounded small"><?php echo $item->status == 1 ? 'Baru' : ($item->status == 2 ? 'Diproses' : ($item->status == 3 ? 'Dikirim' : ($item->status == 4 ? 'Selesai' : 'Batal'))); ?></p>
 							<span class="ml-2 bg-<?php echo $item->status_pembayaran == 'PENDING' ? 'danger' : 'success' ?> text-white py-1 px-2 mb-0 rounded small"><?php echo $item->status_pembayaran == 'PENDING' ? 'Belum Bayar' : 'Sudah Bayar' ?></span>
 							<p class="text-muted ml-auto small mb-0"><i
-										class="icofont-clock-time"></i> <?php echo $item->tanggal_pesanan ?></p>
+										class="icofont-clock-time"></i> <?php echo tanggal_indo($item->tanggal_pesanan, true) ?>
+							</p>
 						</div>
 						<div class="d-flex flex-column">
 							<p class="text-muted m-0 my-auto">Alamat Pengiriman<br>
