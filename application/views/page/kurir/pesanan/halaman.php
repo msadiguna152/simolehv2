@@ -108,7 +108,7 @@
 										</td>
 
 										<td>
-					                        <a target="_BLANK" class="btn btn-info btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Alamat Di Map" href="http://www.google.com/maps/place/<?php echo htmlspecialchars($data->lat); ?>,<?php echo htmlspecialchars($data->long); ?>">
+					                        <a target="_BLANK" class="btn btn-info btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Lihat Alamat Di Map" href="http://www.google.com/maps/place/-<?php echo htmlspecialchars($data->lat); ?>,<?php echo htmlspecialchars($data->long); ?>">
 					                            <i class="fas fa-map"></i>
 					                        </a>
 					                    </td>
