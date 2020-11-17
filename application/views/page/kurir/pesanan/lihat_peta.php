@@ -68,9 +68,9 @@ if (!empty($token) and $token == $token2) {
 <script src="https://maps.google.com/maps/api/js?key=<?php echo $pengaturan->google_api_key ?? '' ?>&libraries=places&language=id&region=ID&amp;"></script>
 <script src="<?php echo site_url('assets2/vendor/gmaps/gmaps.min.js') ?>"></script>
 <script>
-	var latToko = '<?php echo $pengaturan->latitude ?? '0' ?>'
+	var latToko = '<?php echo (strpos($pengaturan->latitude, '-') !== false ? $pengaturan->latitude : '-' . $pengaturan->latitude) ?? '0' ?>'
 	var longToko = '<?php echo $pengaturan->longitude ?? '0' ?>'
-	var latTujuan = '<?php echo $lat ?? '0' ?>';
+	var latTujuan = '<?php echo (strpos($lat, '-') !== false ? $lat : '-' . $lat) ?? '0' ?>';
 	var longTujuan = '<?php echo $long ?? '0' ?>';
 	console.log(latToko);
 	console.log(longToko);
